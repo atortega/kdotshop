@@ -1,0 +1,4 @@
+https://appdividend.com/2018/04/16/laravel-datatables-tutorial-with-example/
+
+
+php c:\composer\composer require yajra/laravel-datatables-oracle

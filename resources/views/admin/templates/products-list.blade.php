@@ -157,14 +157,16 @@
 
                         });
 
-                        $('.save-changes').click(function() {
-                            console.log("test")
-                            console.log($( "#modalForm" ).serialize())
+                        $('form#modalForm').submit(function(e) {
+                            e.preventDefault()
+                            var formData = new FormData(this);
                             $.ajax({
-                                type: "POST",
-                                dataType: 'multipart/form-data',
-                                data: $( "#modalForm" ).serialize(),
+                                type: "post",
+                                dataType: 'json',
+                                data: formData,
                                 cache: false,
+                                contentType: false,
+                                processData: false,
                                 url: '/admin/products/edit',
                                 success: function(data){
                                     console.log(data);
@@ -174,12 +176,14 @@
                                 error: function(e){  // error handling
                                     var errors = e.responseJSON;
                                     var errorsHtml = '';
-                                    $.each(errors.errors, function( key, value ) {
-                                        errorsHtml += '<p class="text-danger">' + value[0] + '</p>';
-                                    });
+                                    console.log(errors);
+                                    //$.each(errors.errors, function( key, value ) {
+                                        //errorsHtml += '<p class="text-danger">' + value[0] + '</p>';
+                                    //});
 
-                                    $( '#form-errors' ).html( errorsHtml );
-
+                                    //$( '#form-errors' ).html( errorsHtml );
+                                    datatable.draw('page');
+                                    $('#myModal').modal('hide');
                                 }
                             });
 
@@ -219,8 +223,9 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Product - Update</h4>
                 </div>
-                <div class="modal-body">
-                    <form id="modalForm" name="modalForm" enctype="multipart/form-data">
+                <form id="modalForm" name="modalForm" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="form-errors" id="form-errors"></div>
                         {{ csrf_field() }}
                         <input type="hidden" id="product_id" name="product_id" />
                         <div class="form-group">
@@ -285,13 +290,12 @@
                             <label for="product_image">Product Image</label>
                             <input type="file" name="product_image" placeholder="Enter Product Image" required='require' value="">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save-changes" >Save changes</button>
+                    </div>
+                </form>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

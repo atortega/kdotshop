@@ -142,14 +142,16 @@ class ProductsController extends Controller
 
     public function updateProduct(Request $request)
     {
+
         $request->validate([
             'category'      => 'required',
             'product_name'  => 'required|max:100',
             'quantity'      => 'numeric|min:1',
-            'price'         => 'numeric|min:1'
+            'price'         => 'numeric|min:1',
+            'product_id'    => 'integer|min:1'
         ]);
 
-        if ($request->product_image) {
+        if ($request->file('product_image')->isValid()) {
             $path = Storage::putFile('products/images', $request->product_image, 'public');
         }
 
@@ -162,7 +164,7 @@ class ProductsController extends Controller
         $product->sub_category_id   = $request->sub_category;
         $product->product_name      = $request->product_name;
         $product->product_desc      = $request->description;
-        if ($request->product_image) {
+        if ($request->file('product_image')->isValid()) {
             $product->originalfilename = addslashes($request->product_image->getClientOriginalName());
             $product->filesize = $request->product_image->getClientSize();
             $product->product_image = $path;
@@ -170,7 +172,19 @@ class ProductsController extends Controller
 
         $product->save();
 
-        return redirect()->back()->with('message', 'New product has been added.');
+        //update sku table
+        $sku = Sku::where('product_id', $request->product_id)->first();
+        if (!$sku) {
+            dd($request);
+        }
+        $sku->color_id          = $request->color;
+        $sku->size_id           = $request->size;
+        $sku->number_of_items   = $request->quantity;
+        $sku->unit_price        = $request->price;
+        $sku->save();
+
+        //return redirect()->back()->with('message', 'Product has been updated.');
+        //return response()->json(['error' => 'Error msg'], 404); // Status code here
     }
 
     public function deleteProduct(Request $request)

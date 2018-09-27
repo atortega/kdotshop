@@ -32,8 +32,8 @@
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                <th>Category</th>
                                 <th>Sub-Category</th>
+                                <th>Category</th>
                                 <th>Description</th>
                                  <th>Actions</th>
                             </tr>
@@ -48,8 +48,8 @@
                             serverSide: true,
                             ajax: '{{ url('admin/sub-categories/index') }}',
                             columns: [
-                                { data: 'category_name', name: 'category_name' },
                                 { data: 'sub_category_name', name: 'sub_category_name' },
+                                { data: 'category_name', name: 'category_name' },
                                 { data: 'sub_category_desc', name: 'sub_category_desc' },
                                 { data: 'actions', name: 'actions' },
                             ],
@@ -68,13 +68,20 @@
                         });
 
                         $('#table').on('click', '.category-edit-btn', function(){
-                            var category_id = $(this).attr('sid');
+                            var sub_category_id = $(this).attr('sid');
+                            var subcat = JSON.parse($(this).attr('data-subcat'));
+                            /*
                             $.get( "/categories/get/"+category_id, function( data ) {
                                 $("#description").val(data.category_desc);
                                 $("#category_name").val(data.category_name);
-                                $("#category_id").val(category_id);
-
+                                $("#sub_category_id").val(sub_category_id);
+                                $("#sub_category_name").val(sub_cat.sub_category_name);
                             });
+                            */
+                            $("#description").val(subcat.sub_category_desc);
+                            $("#category_name").val(subcat.category_name);
+                            $("#sub_category_id").val(sub_category_id);
+                            $("#sub_category_name").val(subcat.sub_category_name);
 
                             $('#myModal').modal('show');
                         });
@@ -106,14 +113,18 @@
                             });
                         });
 
-                        $('.save-changes').click(function() {
+                        $('form#modalForm').submit(function(e) {
+                            e.preventDefault();
+                            var formData = new FormData(this);
                             console.log("Cat: " + $("#category_id").val());
                             $.ajax({
-                                type: "POST",
+                                type: "post",
                                 dataType: 'json',
-                                data: {description: $('#description').val(), category_id: $("#category_id").val(), _token: $('meta[name="csrf-token"]').attr('content')},
+                                data: formData,
                                 cache: false,
-                                url: '/admin/categories/edit',
+                                contentType: false,
+                                processData: false,
+                                url: '/admin/sub-categories/edit',
                                 success: function(data){
                                     console.log(data);
                                 },
@@ -161,21 +172,28 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Category - Update</h4>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="category_name">Category</label>
-                        <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Category" disabled>
+                <form id="modalForm" name="modalForm">
+                    {{ csrf_field() }}
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="category_name">Category</label>
+                            <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Category" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_name">Sub Category</label>
+                            <input type="text" class="form-control" id="sub_category_name" name="sub_category_name" placeholder="Enter Sub Category" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" name="description" placeholder="Category Description">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Category Description">
+                    <div class="modal-footer">
+                        <input type="hidden" id="sub_category_id" name="sub_category_id" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary save-changes" >Save changes</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" id="category_id" name="category_id" />
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
-                </div>
+                </form>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

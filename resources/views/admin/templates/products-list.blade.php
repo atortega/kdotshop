@@ -97,6 +97,8 @@
                             $("[name=category]").trigger( "change" );
                             $('[name=color]').val( product.color_id);
                             $('[name=size]').val( product.size_id);
+                            $('[name=product_image]').val('');
+                            $('#form-errors').html('');
                             var img = $('<img />').attr({
                                 'id': 'product_image_'+product.product_id,
                                 'src': '/storage/'+product.product_image,
@@ -158,7 +160,7 @@
                         });
 
                         $('form#modalForm').submit(function(e) {
-                            e.preventDefault()
+                            e.preventDefault();
                             var formData = new FormData(this);
                             $.ajax({
                                 type: "post",
@@ -177,13 +179,13 @@
                                     var errors = e.responseJSON;
                                     var errorsHtml = '';
                                     console.log(errors);
-                                    //$.each(errors.errors, function( key, value ) {
-                                        //errorsHtml += '<p class="text-danger">' + value[0] + '</p>';
-                                    //});
+                                    $.each(errors.errors, function( key, value ) {
+                                        errorsHtml += '<p class="text-danger">' + value[0] + '</p>';
+                                    });
 
-                                    //$( '#form-errors' ).html( errorsHtml );
-                                    datatable.draw('page');
-                                    $('#myModal').modal('hide');
+                                    $( '#form-errors' ).html( errorsHtml );
+                                    //datatable.draw('page');
+                                    //$('#myModal').modal('hide');
                                 }
                             });
 
@@ -225,7 +227,6 @@
                 </div>
                 <form id="modalForm" name="modalForm" enctype="multipart/form-data">
                     <div class="modal-body">
-                        <div class="form-errors" id="form-errors"></div>
                         {{ csrf_field() }}
                         <input type="hidden" id="product_id" name="product_id" />
                         <div class="form-group">
@@ -288,9 +289,10 @@
                         <div class="form-group">
                             <div id="image_container"></div>
                             <label for="product_image">Product Image</label>
-                            <input type="file" name="product_image" placeholder="Enter Product Image" required='require' value="">
+                            <input type="file" id="product_image" name="product_image" placeholder="Enter Product Image" value="">
                         </div>
                     </div>
+                    <div class="form-errors" id="form-errors"></div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary save-changes" >Save changes</button>

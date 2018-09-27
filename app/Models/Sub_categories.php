@@ -8,7 +8,7 @@ class Sub_categories extends Model
 {
     protected $table= 'sub_categories';
 
-    public $timestamp= false;
+    public $timestamps = false;
 
     protected $fillable=[
     	'category_id',

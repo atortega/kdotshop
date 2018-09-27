@@ -12,7 +12,7 @@ class SubCategories extends Model
 
     protected $primaryKey = 'sub_category_id';
 
-    public $timestamp= false;
+    public $timestamps = false;
 
     protected $fillable=[
     	'category_id',

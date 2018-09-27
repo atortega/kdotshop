@@ -148,13 +148,14 @@ class ProductsController extends Controller
             'product_name'  => 'required|max:100',
             'quantity'      => 'numeric|min:1',
             'price'         => 'numeric|min:1',
-            'product_id'    => 'integer|min:1'
+            'product_id'    => 'integer|min:1',
+            'product_image' => 'image|mimes:jpeg,bmp,png,jpg,gif,gpe'
         ]);
-
-        if ($request->file('product_image')->isValid()) {
-            $path = Storage::putFile('products/images', $request->product_image, 'public');
+        if ($request->hasFile('product_image')) {
+            if ($request->file('product_image')->isValid()) {
+                $path = Storage::putFile('products/images', $request->product_image, 'public');
+            }
         }
-
         $product = Products::where('product_id', $request->product_id)->first();
         if (!$product) {
             return redirect()->back()->with('message', 'Product Not found!');
@@ -164,12 +165,13 @@ class ProductsController extends Controller
         $product->sub_category_id   = $request->sub_category;
         $product->product_name      = $request->product_name;
         $product->product_desc      = $request->description;
-        if ($request->file('product_image')->isValid()) {
-            $product->originalfilename = addslashes($request->product_image->getClientOriginalName());
-            $product->filesize = $request->product_image->getClientSize();
-            $product->product_image = $path;
+        if ($request->hasFile('product_image')) {
+            if ($request->file('product_image')->isValid()) {
+                $product->originalfilename = addslashes($request->product_image->getClientOriginalName());
+                $product->filesize = $request->product_image->getClientSize();
+                $product->product_image = $path;
+            }
         }
-
         $product->save();
 
         //update sku table
@@ -184,13 +186,13 @@ class ProductsController extends Controller
         $sku->save();
 
         //return redirect()->back()->with('message', 'Product has been updated.');
-        //return response()->json(['error' => 'Error msg'], 404); // Status code here
+        return response()->json(['error' => false]);
     }
 
     public function deleteProduct(Request $request)
     {
         $request->validate([
-            'product_id'      => 'required'|integer
+            'product_id'      => 'required|integer'
         ]);
 
         $product = Products::where('product_id', $request->product_id)->first();
@@ -199,6 +201,8 @@ class ProductsController extends Controller
         }
 
         $product->delete();
+
+        return response()->json(['error' => false]);
     }
 
 }

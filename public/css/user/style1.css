@@ -165,9 +165,9 @@ tbody {
 }
 
 .header {
-  /*border-top: 1px solid #ffffff; Changes by JRL */
+  border-top: 1px solid #ffffff;
   border-bottom: 2px solid #f1f1f1;
-  background-color: #ff87c3;
+  background-color: #fcfcfc;
 }
 
 .header.dark {
@@ -824,7 +824,7 @@ tbody {
   background-color: #ff87c3;
 }
 
-.transparent-header .sticky-wrapper {
+.transparent-header .sticky-wrapper  {
   position: absolute;
   width: 100%;
   left: 0;
@@ -1409,7 +1409,7 @@ h5 + .separator {
 }
 
 .pv-20 {
-  padding-top: 10%;
+  padding-top: 10%;    /* Changed by JRL */
   padding-bottom: 20px;
 }
 
@@ -7223,21 +7223,11 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 
 /* Login/Register Forms
 ---------------------------------- */
-.form-block-signUp{
+.form-block {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   width: 630px;
-  margin-top: 10%;
-  margin-bottom: 10%
-}
-.form-block-login{
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  width: 450px;
-  margin-top: 15%;
-  margin-bottom: 10%
 }
 
 .form-block .social-links {

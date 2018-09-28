@@ -123,3 +123,45 @@ Route::get('/product', function () {
 Route::get('/about_page', function () {
     return view('user.html.templates.about_page');
 });
+Route::get('/product', 'ProductsController@paginateProducts');
+
+Route::get('/about-us', function () {
+    return view('user.templates.about_page');
+});
+
+
+
+// Route::get('/shop-productDetails', function () {
+//     return view('user.templates.shop-productDetails');
+// });
+// Route::get('/shop-productDetails/{id}', 'ProductDetailsController@getProductDetailsById')->name('getProductDetailsById');
+Route::get('/shop-productDetails/{product_id}','ProductDetailsController@product');
+Route::get('/shop-productDetails', function(){
+    return view('user.templates.shop-productDetails');
+});
+
+// Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
+
+Route::get('/shop-cart', function () {
+    return view('user.templates.shop-cart');
+});
+Route::get('/shop-checkout', function () {
+    return view('user.templates.shop-checkout');
+});
+Route::get('/shop-checkoutPayment', function () {
+    return view('user.templates.shop-checkoutPayment');
+});
+Route::get('/shop-checkoutReview', function () {
+    return view('user.templates.shop-checkoutReview');
+});
+Route::get('/shop-checkoutCompleted', function () {
+    return view('user.templates.shop-checkoutCompleted');
+});
+Route::get('/page-login', function () {
+    return view('user.templates.page-login');
+});
+Route::get('/page-signup', function () {
+    return view('user.templates.page-signup');
+});
+Route::post('/cart-add', 'CartController@addToCart');
+Route::get('/cart-show', 'CartController@cartShow');

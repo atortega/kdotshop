@@ -11,6 +11,8 @@
 |
 */
 
+/* ___________________USER SIDE___________________ */
+
 Route::get('/', 'MainController@index');
 
 
@@ -23,48 +25,90 @@ Route::get('/colors/get/{id}', 'ColorsController@getProductColorById');
 Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');
 Route::get('/categories/get/{id}', 'CategoriesController@getProductCategoryById');
 
+
+Route::get('/product', function () {
+    return view('user.templates.product');
+});
+
+Route::get('/product', 'ProductsController@paginateProducts');
+
+Route::get('/about-us', function () {
+    return view('user.templates.about_page');
+});
+
+Route::get('/shop-productDetails', function () {
+    return view('user.templates.shop-productDetails');
+});
+
+Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
+
+Route::get('/shop-cart', function () {
+    return view('user.templates.shop-cart');
+});
+Route::get('/shop-checkout', function () {
+    return view('user.templates.shop-checkout');
+});
+Route::get('/shop-checkoutPayment', function () {
+    return view('user.templates.shop-checkoutPayment');
+});
+Route::get('/shop-checkoutReview', function () {
+    return view('user.templates.shop-checkoutReview');
+});
+Route::get('/shop-checkoutCompleted', function () {
+    return view('user.templates.shop-checkoutCompleted');
+});
+Route::get('/page-login', function () {
+    return view('user.templates.page-login');
+});
+Route::get('/page-signup', function () {
+    return view('user.templates.page-signup');
+});
+Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
+
+/* ___________________ADMIN SIDE___________________ */
+
 Route::prefix('admin')->group(function () {
-	Route::get('/', function () {
-		return view('admin.templates.index');
-	});
+    Route::get('/', function () {
+        return view('admin.templates.index');
+    });
 
 
-	//Customers
-	Route::get('/customers', function () {
-		return view('admin.templates.customers-list');
-	});
+    //Customers
+    Route::get('/customers', function () {
+        return view('admin.templates.customers-list');
+    });
     Route::get('/customers/create', function () {
         return view('admin.templates.customers-create');
     });
     Route::post('/customers/create/save', 'CustomersController@addCustomer');
-	Route::get('/customers/index', 'CustomersController@index');
+    Route::get('/customers/index', 'CustomersController@index');
     Route::post('/customers/delete', 'CustomersController@deleteCustomer');
     Route::post('/customers/edit', 'CustomersController@editCustomer');
 
 
     //Products
-	Route::get('/products/index', 'ProductsController@index');
+    Route::get('/products/index', 'ProductsController@index');
     Route::get('/products/create', 'ProductsController@createProduct');
     Route::post('/products/create/save', 'ProductsController@addNewProduct');
-	Route::get('/products', 'ProductsController@productLists');
-    Route::post('/products/edit', 'ProductsController@updateProduct');
-    Route::post('/products/delete', 'ProductsController@deleteProduct');
+    Route::get('/products', function () {
+        return view('admin.templates.products-list');
+    });
 
-	Route::get('/orders', function () {
-		return view('admin.templates.orders-list');
-	});
+    Route::get('/orders', function () {
+        return view('admin.templates.orders-list');
+    });
 
-	Route::get('/orders/index', 'OrdersController@index');
+    Route::get('/orders/index', 'OrdersController@index');
 
-	Route::get('/payments/index', 'PaymentsController@index');
+    Route::get('/payments/index', 'PaymentsController@index');
 
-	Route::get('/payments', function () {
-		return view('admin.templates.payments-list');
-	});
+    Route::get('/payments', function () {
+        return view('admin.templates.payments-list');
+    });
 
 
-	//Colors
-	Route::get('/colors/index', 'ColorsController@index');
+    //Colors
+    Route::get('/colors/index', 'ColorsController@index');
     Route::post('/colors/create/save', 'ColorsController@addNew');
     Route::post('/colors/edit', 'ColorsController@editProductColor');
     Route::post('/colors/delete', 'ColorsController@deleteProductColor');
@@ -75,21 +119,21 @@ Route::prefix('admin')->group(function () {
         return view('admin.templates.colors-create');
     });
 
-	//Sizes
-	Route::get('/sizes/index', 'SizesController@index');
+    //Sizes
+    Route::get('/sizes/index', 'SizesController@index');
     Route::post('/sizes/edit', 'SizesController@editProductSize');
     Route::post('/sizes/delete', 'SizesController@deleteProductSize');
     Route::post('/sizes/create/save', 'SizesController@addNew');
-	Route::get('/sizes', function () {
-		return view('admin.templates.sizes-list');
-	});
-	Route::get('/sizes/create', function () {
-		return view('admin.templates.sizes-create');
-	});
+    Route::get('/sizes', function () {
+        return view('admin.templates.sizes-list');
+    });
+    Route::get('/sizes/create', function () {
+        return view('admin.templates.sizes-create');
+    });
 
 
 
-	//Categories
+    //Categories
     Route::get('/categories/create', function () {
         return view('admin.templates.category-create');
     });
@@ -113,13 +157,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/sub-categories/create/save', 'SubCategoriesController@addNew');
     Route::post('/sub-categories/edit', 'SubCategoriesController@editProductSubCategory');
     Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
-    Route::get('/sub-categories/get/{category_id}', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
-});
-
-
-Route::get('/product', function () {
-    return view('user.html.templates.product');
-});
-Route::get('/about_page', function () {
-    return view('user.html.templates.about_page');
+    Route::get('/sub-categories/get/{id}', 'SubCategoriesController@getProductSubCategoryById');
+    Route::get('/sub-categories', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
 });

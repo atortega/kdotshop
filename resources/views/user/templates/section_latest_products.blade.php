@@ -23,7 +23,7 @@
                                 <!--<span class="badge">30% OFF</span>-->
                                 <div class="overlay-to-top links">
                                     <span class="small">
-                                        <a href="/shop-productDetails" class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
+                                        <a href='{{ asset("/shop-productDetails/$product->product_id") }}' class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
                                     </span>
                                 </div>
                             </div>

@@ -28,7 +28,7 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="{{ asset('images/blog-thumb-1.jpg') }}"
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-1.jpg') }}"
                       alt="blog-thumb">
                     <a href="blog-post.html" class="overlay-link small">
                       <i class="fa fa-link"></i>
@@ -44,7 +44,7 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="{{ asset('images/blog-thumb-2.jpg') }}"
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-2.jpg') }}"
                       alt="blog-thumb">
                     <a href="blog-post.html" class="overlay-link small">
                       <i class="fa fa-link"></i>
@@ -60,7 +60,7 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="{{ asset('images/blog-thumb-3.jpg') }}"
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-3.jpg') }}"
                       alt="blog-thumb">
                     <a href="blog-post.html" class="overlay-link small">
                       <i class="fa fa-link"></i>
@@ -76,7 +76,7 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="{{ asset('images/blog-thumb-4.jpg') }}"
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-4.jpg') }}"
                       alt="blog-thumb">
                     <a href="blog-post.html" class="overlay-link small">
                       <i class="fa fa-link"></i>
@@ -109,9 +109,13 @@
               <div class="separator-2"></div>
               <h2 class="title">Contact Us</h2>
               <ul class="list-icons">
-                <li><i class="fa fa-map-marker pr-2 text-default"></i> One infinity loop, 54100</li>
-                <li><i class="fa fa-phone pr-2 text-default"></i> +00 1234567890</li>
-                <li><a href="mailto:email@domain.com"><i class="fa fa-envelope-o pr-2"></i>email@domain.com</a></li>
+                <li><i class="fa fa-map-marker pr-2 text-default"></i> Santorini, Talamban, Cebu City</li>
+                <li><i class="fa fa-phone pr-2 text-default"></i> +63 9336892054</li>
+                <li>
+                  <a href="mailto:kdotshop2k18@gmail.com">
+                    <i class="fa fa-envelope-o pr-2"></i>kdotshop2k18@gmail.com
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -129,16 +133,18 @@
       <div class="subfooter-inner">
         <div class="row">
           <div class="col-md-12">
-            <p class="text-center">Copyright © 2018 The Project. All rights reserved.</p>
+            <p class="text-center">Copyright © 2018 KDot Shop. All rights reserved.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- .subfooter end -->
-  {{ URL::asset('fonts/font-awesome/css/font-awesome.css') }}
+
     <script src="{{ URL::asset('plugins/jquery.min.js') }}"></script>
+    <!-- Bootstrap Scripts -->
     <script src="{{ URL::asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL::asset('js/user/bootstrap-notify.min.js') }}"></script>
     <!-- jQuery Revolution Slider  -->
     <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js') }}"></script>
     <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js') }}"></script>

@@ -16,7 +16,7 @@
             
                   <!-- main image -->
             
-                  <img src="{{ URL::asset('image/products/kdot_logo.jpg')}}" alt="slidebg1" data-bgposition="center center" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
+                  <img src="{{ URL::asset('image/kdot_logo.jpg')}}" alt="slidebg1" data-bgposition="center center" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
 
                   <!-- Transparent Background -->
             
@@ -186,7 +186,7 @@
 
                   <!-- main image -->
             
-                  <img src="{{ URL::asset('image/products/logo2.jpg')}}" alt="slidebg2" data-bgposition="center center" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
+                  <img src="{{ URL::asset('image/logo2.jpg')}}" alt="slidebg2" data-bgposition="center center" data-bgrepeat="no-repeat" data-bgfit="cover" class="rev-slidebg">
 
                   <!-- Transparent Background -->
             

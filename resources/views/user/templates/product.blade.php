@@ -369,9 +369,6 @@
 												</a>
 												<div class="overlay-to-top links">
 													<span class="small">
-														<a href="#" class="btn-sm-link">
-															<i class="fa fa-heart-o pr-10"></i>Add to Wishlist
-														</a>
 														<a href='{{ asset("/shop-productDetails/$row->product_id") }}'
 															class="btn-sm-link">
 															<i class="fa fa-link pr-1"></i>View Details
@@ -380,7 +377,11 @@
 												</div>
 											</div>
 											<div class="body">
-												<h3><a href="#">{{ $row->product_name }}</a></h3>
+												<h3>
+													<a href='{{ asset("/shop-productDetails/$row->product_id") }}'>
+														{{ $row->product_name }}
+													</a>
+												</h3>
 												<p class="small">
 													{{ $row->product_desc }}
 												</p>

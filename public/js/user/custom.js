@@ -13,11 +13,11 @@
 		if (($(".main-navigation.onclick").length>0) && $(window).width() > 991 ){
 			$.notify({
 				// options
-				message: 'The Dropdowns of the Main Menu, are now open with click on Parent Items. Click "Home" to checkout this behavior.'
+				message: 'Welcome to KDot Shop...'
 			},{
 				// settings
 				type: 'info',
-				delay: 10000,
+				delay: 1500,
 				offset : {
 					y: 150,
 					x: 20
@@ -31,7 +31,7 @@
 			},{
 				// settings
 				type: 'info',
-				delay: 10000,
+				delay: 1500,
 				offset : {
 					y: 150,
 					x: 20

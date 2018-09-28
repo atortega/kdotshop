@@ -21,7 +21,11 @@
                                     </div>
                                     <div class="col-md-6 col-lg-8 col-xl-9">
                                         <div class="body">
-                                            <h3 class="margin-clear"><a href="/shop-productDetails">{{ $top_seller->product_name }}</a></h3>
+                                            <h3 class="margin-clear">
+                                                <a href='{{ asset("/shop-productDetails/$top_seller->product_id") }}'>
+                                                    {{ $top_seller->product_name }}
+                                                </a>
+                                            </h3>
                                             <p>
                                                 <i class="fa fa-star text-default"></i>
                                                 <i class="fa fa-star text-default"></i>

@@ -106,4 +106,82 @@ class CustomersController extends Controller
 
         return array('error' => false, "message"  => "Customer successfully updated!");
     }
+    public function createCustomer(Request $request)
+    {
+        $request->validate([
+            'email'             => 'required|email|unique:customer,email',
+            'phone_number'      => 'required',
+            'password'          => 'required',
+            'confirm_password'  => 'required|same:password'
+        ]);
+
+        $customer = new Customers;
+        
+        $customer->email        =  $request['email'];
+        $customer->password     =  md5($request['password']);
+        $customer->phone_number =  $request['phone_number'];
+        
+        $customer->save();
+
+        
+        //return $customer;
+
+        //return redirect()->back()->with('message', 'You are successfully registered.');
+
+        return redirect('/login');
+    }
+  
+    public function loginCustomer(Request $request)
+    {
+        $request->validate([
+            'email'             => 'required|email|unique:customer,email',
+            'password'          => 'required|string',
+        ]);
+
+        $customer = Customers::where("email", $request->email)->first();
+        if (!$customer) {
+            $error="Invalid E-mail!";
+            return false;
+        }
+        
+        if ($customer->password != md5($request->password)) {
+            $error = "Password not correct!";
+            return false;
+        }
+
+        //save to session
+        $request->session()->put('logged_in', true);
+        $request->session()->put('email', $request->email);
+        $request->session()->put('customer', $customer);
+
+        //return redirect()->action('MainController@index');
+        return redirect('/');
+    }
+    public function forgetPassword(Request $request)
+    {
+        $request->validate([
+            'email'             => 'required|email|unique:customer,email',
+            'new_password'          => 'required|string',
+            'confirm_new_password' => 'required|string',
+        ]);
+
+        $customer = Customers::where("email", $request->email)->first();
+        if (!$customer) {
+            $error="Invalid E-mail!";
+            return false;
+        }
+        
+        if ($customer->password != md5($request->password)) {
+            $error = "Password not correct!";
+            return false;
+        }
+
+        //save to session
+        $request->session()->put('logged_in', true);
+        $request->session()->put('email', $request->email);
+        $request->session()->put('customer', $customer);
+
+        //return redirect()->action('MainController@index');
+        return redirect('/');
+    }
 }

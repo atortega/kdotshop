@@ -11,7 +11,7 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <@include('admin.templates.layout.navigation')
+            @include('admin.templates.layout.navigation')
             <!-- /.navbar-static-side -->
         </nav>
 
@@ -29,7 +29,7 @@
                 <div class="container-fluid">
                     <a href="/admin/customers/create" class="btn btn-primary btn-xs" role="button">Add New</a>
                     <div class="mb-3">&nbsp;</div>
-                    <table class="table table-bordered" id="table">
+                    <table class="table table-bordered table-hover" id="table">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -41,6 +41,7 @@
                     </table>
                     <a href="/admin/customers/create" class="btn btn-primary btn-xs" role="button">Add New</a>
                 </div>
+
                 <script>
                     $(function() {
                         var datatable = $('#table').DataTable({
@@ -51,7 +52,7 @@
                                 { data: 'name', name: 'name' },
                                 { data: 'email', name: 'email' },
                                 { data: 'phone_number', name: 'phone_number' },
-                                { data: 'actions', name: 'actions' },
+                                { data: 'actions', name: 'actions', orderable: false },
                             ],
                             drawCallback: function( settings ) {
                                 if (settings.aoData.length > 0) {
@@ -70,9 +71,9 @@
                         $('#table').on('click', '.customer-edit-btn', function(){
                             var customer_id = $(this).attr('sid');
                             $.get( "/customers/get/"+customer_id, function( data ) {
+                                $("#customer_id").val(customer_id);
                                 $("#name").val(data.name);
                                 $("#address").val(data.address);
-                                $("#customer_id").val(customer_id);
                                 $("#email").val(data.email);
                                 $("#phone_number").val(data.phone_number);
                             });
@@ -112,7 +113,12 @@
                             $.ajax({
                                 type: "POST",
                                 dataType: 'json',
-                                data: {name: $('#name').val(), customer_id: $("#customer_id").val(), address: $("#address").val(), email: $("#email").val(), phone_number: $("#phone_number").val(), _token: $('meta[name="csrf-token"]').attr('content')},
+                                data: { customer_id: $("#customer_id").val(), 
+                                        name: $('#name').val(), 
+                                        address: $("#address").val(),
+                                        email: $("#email").val(),
+                                        phone_number: $("#phone_number").val(),
+                                        _token: $('meta[name="csrf-token"]').attr('content')    },
                                 cache: false,
                                 url: '/admin/customers/edit',
                                 success: function(data){
@@ -150,17 +156,17 @@
     
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="{{ URL::asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+    <script src="{{ URL::asset('dist/js/sb-admin-2.js') }}"></script>
 
-    <script src="../js/jquery.dataTables.min.js"></script>
-
-    <script src="../js/bootbox.min.js"></script>
+    <script src="{{ URL::asset('js/admin/jquery.dataTables.min.js') }}"></script>
+            
+    <script src="{{ URL::asset('js/admin/bootbox.min.js') }}"></script>
 
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">
@@ -189,7 +195,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="size_id" name="size_id" />
+                    <input type="hidden" id="customer_id" name="size_id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary save-changes" >Save changes</button>
                 </div>

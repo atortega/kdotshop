@@ -20,6 +20,7 @@ Route::get('/customers/list', 'CustomersController@customersList');
 
 Route::get('/customers/add', 'CustomersController@addCustomer');
 
+Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/sizes/get/{id}', 'SizesController@getProductSizeById');
 Route::get('/colors/get/{id}', 'ColorsController@getProductColorById');
 Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');

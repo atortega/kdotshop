@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Datatables;
-
 use Illuminate\Http\Request;
+use Datatables;
 
 use App\Models\Customers;
 

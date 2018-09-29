@@ -35,15 +35,28 @@ class ProductsController extends Controller
         $datatables = Datatables::of($products)
             ->addColumn('actions', function ($data) {
                 return "
-                    <button class='btn btn-xs btn-primary product-edit-btn' sid='$data->product_id'>Edit</button>
-                    <button class='btn btn-xs btn-danger product-delete-btn' sid='$data->product_id' sname='$data->product_name'>Delete</button>
+                    <div align='center'>
+                        <button class='btn btn-xs btn-primary product-edit-btn'
+                            sid='$data->product_id'>Edit</button>
+                        <button class='btn btn-xs btn-danger product-delete-btn'
+                            sid='$data->product_id' sname='$data->product_name'>Delete</button>
+                    </div>
                     ";
             })
+
             ->escapeColumns('actions')
             ->make(true);
 
 		return ($datatables);
 	}
+
+    public function getProductById($id)
+    {
+        $product = Products::where('product_id', $id)->first();
+        
+        return $product;
+        
+    }
 
 	/*
 	 * Create New Product

@@ -130,7 +130,20 @@ class CustomersController extends Controller
 
         return redirect('/login');
     }
-  
+
+
+    /*
+     * Login Form
+     *
+     */
+    public function loginFormCustomer(Request $request)
+    {
+        if ($request->session()->get('logged_in')) {
+            return redirect('/');
+        }
+        return view('user.templates.page-login');
+    }
+
     public function loginCustomer(Request $request)
     {
         $request->validate([

@@ -138,6 +138,7 @@ Route::get('/login', function () {
 });
 
 
+Route::get('/login', 'CustomersController@loginFormCustomer');
 Route::post('/login/submit', 'CustomersController@loginCustomer');
 //Route::post('/signup/verificationCode', 'CustomersController@getVerificationCode');
 

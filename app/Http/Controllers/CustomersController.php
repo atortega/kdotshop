@@ -134,19 +134,18 @@ class CustomersController extends Controller
     public function loginCustomer(Request $request)
     {
         $request->validate([
-            'email'             => 'required|email|unique:customer,email',
+            'email'             => 'required|email|exists:customer,email',
             'password'          => 'required|string',
         ]);
 
+
         $customer = Customers::where("email", $request->email)->first();
         if (!$customer) {
-            $error="Invalid E-mail!";
-            return false;
+            return back()->withErrors('Invalid E-mail!');
         }
         
         if ($customer->password != md5($request->password)) {
-            $error = "Password not correct!";
-            return false;
+            return back()->withErrors('Password not correct!');
         }
 
         //save to session
@@ -154,7 +153,6 @@ class CustomersController extends Controller
         $request->session()->put('email', $request->email);
         $request->session()->put('customer', $customer);
 
-        //return redirect()->action('MainController@index');
         return redirect('/');
     }
     public function forgetPassword(Request $request)

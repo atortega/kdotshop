@@ -64,13 +64,24 @@
                                   style="color: #f49ac1; font-weight: bold; text-decoration:none;">SignUp
                                  </a> 
                               <h2 class="title">Login</h2>
-                           @if ($error = $errors->first('password'))
-                              <div class="alert alert-danger">
-                                {{ $error }}
-                              </div>
-                            @endif
 
-                                <form class="form-horizontal" action="{{ url('/login/submit')}}" method="get">
+                                  @if ($errors->any())
+                                      <div class="alert alert-danger">
+                                          <ul>
+                                              @foreach ($errors->all() as $error)
+                                                  <li>{{ $error }}</li>
+                                              @endforeach
+                                          </ul>
+                                      </div>
+                                  @endif
+                                  @if(session()->has('message'))
+                                      <div class="alert alert-success">
+                                          {{ session()->get('message') }}
+                                      </div>
+                                  @endif
+
+                                <form class="form-horizontal" action="{{ url('/login/submit')}}" method="post">
+                                  {{ csrf_field() }}
                                   <div class="form-group has-feedback row">
                                     <!-- <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label> -->
                                     <div class="col-md-12">

@@ -165,3 +165,6 @@ Route::get('/page-signup', function () {
 });
 Route::post('/cart-add', 'CartController@addToCart');
 Route::get('/cart-show', 'CartController@cartShow');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

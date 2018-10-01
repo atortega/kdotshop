@@ -3,8 +3,8 @@
 
   <head>
     
-     @include('user.templates.layouts.header')
-
+      @include('user.templates.layouts.header')
+ 
 
     <title>KDot | Sign Up</title>
     
@@ -19,13 +19,18 @@
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
   <body class="front-page transparent-header">
 
+
     <!-- scrollToTop -->
     <!-- ================ -->
     <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
 
+
     <!-- page wrapper start -->
     <!-- ================ -->
     <div class="page-wrapper">
+
+    </div>
+
       <!-- header-container start -->
       
         <!-- header-top start -->
@@ -53,6 +58,7 @@
               <!-- header-container end -->
               <!-- breadcrumb start -->
               <!-- ================ -->
+          <div>
              <div class="breadcrumb-container">
                 <div class="container">
                   <ol class="breadcrumb">
@@ -62,13 +68,14 @@
                   </ol>
                 </div>
               </div>
-              
+            </div>  
             
               <!-- breadcrumb end -->
 
               <!-- main-container start -->
               <!-- ================ -->
               <!-- <div class="main-container dark-translucent-bg" style="background-image:url('images/background-img-6.jpg');"> -->
+                <!-- <br><br><br><br> -->
                 <div class="container">
                   <div class="row justify-content-center">
                     <div class="col-auto">
@@ -80,7 +87,7 @@
                               style="color: #f49ac1; font-weight: bold; text-decoration:none;">Login
                             </a> 
                           <h2 class="title">Sign Up</h2>
-
+ 
                            @if ($errors->any())
                               <div class="alert alert-danger">
                                   <ul>
@@ -98,14 +105,40 @@
 
                           
                           <form class="form-horizontal" action="{{ url('/signup/submit')}}" method="post">
-                             {{ csrf_field() }}            
+                             {{ csrf_field() }} 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="phone_number" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="phone_number" class="form-control" id="phone_number" placeholder="Enter Phone Number" name="phone_number" required>
+                                     <i class="fa fa-user form-control-feedback pr-4"> </i> <button type="submit" class="btn" style="background-color: pink; float:right;">Submit</button>
+                                  </div>  
+                              </div>   
+
+                               <div class="form-group has-feedback row" > 
+                                <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="fname" class="form-control" id="fname" placeholder="First Name" name="fname" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="full_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="name" class="form-control" id="name" placeholder="Last Name" name="full_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+
                               <div class="form-group has-feedback row" >
-                              <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label>
-                              <div class="col-md-8">
-                                <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" required>
-                                <i class="fa fa-user form-control-feedback pr-4"></i>
-                              </div>
-                            </div> 
+                                <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
 
 
                             <div class="form-group has-feedback row">

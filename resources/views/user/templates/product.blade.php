@@ -380,16 +380,25 @@
 												</div>
 											</div>
 											<div class="body">
-												<h3><a href="#">{{ $row->product_name }}</a></h3>
+												<h3>
+													<a href="/shop-productDetails/{{ $row->product_id }}">
+													{{ $row->product_name }}
+													</a>
+												</h3>
 												<p class="small">
 													{{ $row->product_desc }}
 												</p>
 												<div class="elements-list clearfix">
-													<span class="price">₱ {{ $row->unit_price }}</span>
-													<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent 
-														btn-animated">
-														Add To Cart<i class="fa fa-shopping-cart"></i>
-													</a>
+													<span class="price">
+														₱ {{ $row->unit_price }}
+													</span>
+														 {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+						                                    <input type="hidden" name="product_id" value="{{ $row->product_id }}">
+						                                    <input type="hidden" name="qty" value="1">
+						                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+
+						                                {!! Form::close()!!}
 												</div>
 											</div>
 										</div>

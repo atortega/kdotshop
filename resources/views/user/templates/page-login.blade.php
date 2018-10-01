@@ -16,8 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page transparent-header">
-
+  <body class="front-page" >
     <!-- scrollToTop -->
     <!-- ================ -->
     <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>

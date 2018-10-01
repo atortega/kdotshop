@@ -8,7 +8,8 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="footer-content">
-              <div class="logo-footer"><img id="logo-footer" src="image/kdot_logo.png" alt=""></div>
+              <div class="logo-footer"><img id="logo-footer" 
+                src="{{ asset('image/kdot_newlogo.png')}}" alt=""></div>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus illo vel dolorum soluta consectetur doloribus sit. Delectus non tenetur odit dicta vitae debitis suscipit doloribus. Ipsa, aut voluptas quaerat... <a href="page-about.html">Learn More<i class="fa fa-long-arrow-right pl-1"></i></a></p>
               <div class="separator-2"></div>
               <nav>
@@ -27,8 +28,11 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="images/blog-thumb-1.jpg" alt="blog-thumb">
-                    <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-1.jpg') }}"
+                      alt="blog-thumb">
+                    <a href="blog-post.html" class="overlay-link small">
+                      <i class="fa fa-link"></i>
+                    </a>
                   </div>
                 </div>
                 <div class="media-body">
@@ -40,8 +44,11 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="images/blog-thumb-2.jpg" alt="blog-thumb">
-                    <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-2.jpg') }}"
+                      alt="blog-thumb">
+                    <a href="blog-post.html" class="overlay-link small">
+                      <i class="fa fa-link"></i>
+                    </a>
                   </div>
                 </div>
                 <div class="media-body">
@@ -53,8 +60,11 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="images/blog-thumb-3.jpg" alt="blog-thumb">
-                    <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-3.jpg') }}"
+                      alt="blog-thumb">
+                    <a href="blog-post.html" class="overlay-link small">
+                      <i class="fa fa-link"></i>
+                    </a>
                   </div>
                 </div>
                 <div class="media-body">
@@ -66,8 +76,11 @@
               <div class="media margin-clear">
                 <div class="d-flex pr-2">
                   <div class="overlay-container">
-                    <img class="media-object" src="images/blog-thumb-4.jpg" alt="blog-thumb">
-                    <a href="blog-post.html" class="overlay-link small"><i class="fa fa-link"></i></a>
+                    <img class="media-object" src="{{ asset('image/templates/blog-thumb-4.jpg') }}"
+                      alt="blog-thumb">
+                    <a href="blog-post.html" class="overlay-link small">
+                      <i class="fa fa-link"></i>
+                    </a>
                   </div>
                 </div>
                 <div class="media-body">
@@ -96,9 +109,13 @@
               <div class="separator-2"></div>
               <h2 class="title">Contact Us</h2>
               <ul class="list-icons">
-                <li><i class="fa fa-map-marker pr-2 text-default"></i> One infinity loop, 54100</li>
-                <li><i class="fa fa-phone pr-2 text-default"></i> +00 1234567890</li>
-                <li><a href="mailto:email@domain.com"><i class="fa fa-envelope-o pr-2"></i>email@domain.com</a></li>
+                <li><i class="fa fa-map-marker pr-2 text-default"></i> Santorini, Talamban, Cebu City</li>
+                <li><i class="fa fa-phone pr-2 text-default"></i> +63 9336892054</li>
+                <li>
+                  <a href="mailto:kdotshop2k18@gmail.com">
+                    <i class="fa fa-envelope-o pr-2"></i>kdotshop2k18@gmail.com
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -116,33 +133,36 @@
       <div class="subfooter-inner">
         <div class="row">
           <div class="col-md-12">
-            <p class="text-center">Copyright © 2018 The Project. All rights reserved.</p>
+            <p class="text-center">Copyright © 2018 KDot Shop. All rights reserved.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!-- .subfooter end -->
-    <script src="plugins/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{{ URL::asset('plugins/jquery.min.js') }}"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="{{ URL::asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL::asset('js/user/bootstrap-notify.min.js') }}"></script>
     <!-- jQuery Revolution Slider  -->
-    <script src="plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js"></script>
-    <script src="plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js') }}"></script>
     <!-- Isotope javascript -->
-    <script src="plugins/isotope/imagesloaded.pkgd.min.js"></script>
-    <script src="plugins/isotope/isotope.pkgd.min.js"></script>
+    <script src="{{ URL::asset('plugins/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/isotope/isotope.pkgd.min.js') }}"></script>
     <!-- Magnific Popup javascript -->
-    <script src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <!-- Appear javascript -->
-    <script src="plugins/waypoints/jquery.waypoints.min.js"></script>
-    <script src="plugins/waypoints/sticky.min.js"></script>
+    <script src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/waypoints/sticky.min.js') }}"></script>
     <!-- Count To javascript -->
-    <script src="plugins/countTo/jquery.countTo.js"></script>
+    <script src="{{ URL::asset('plugins/countTo/jquery.countTo.js') }}"></script>
     <!-- Slick carousel javascript -->
-    <script src="plugins/slick/slick.min.js"></script>
+    <script src="{{ URL::asset('plugins/slick/slick.min.js') }}"></script>
     <!-- Initialization of Plugins -->
-    <script src="js/user/template.js"></script>
+    <script src="{{ URL::asset('js/user/template.js') }}"></script>
     <!-- Custom Scripts -->
-    <script src="js/user/custom.js"></script>
+    <script src="{{ URL::asset('js/user/custom.js') }}"></script>
 
 </footer>

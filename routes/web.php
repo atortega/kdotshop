@@ -116,52 +116,56 @@ Route::prefix('admin')->group(function () {
     Route::get('/sub-categories/get/{category_id}', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
 });
 
+/* ---------------------------------- USER SIDE --------------------------------*/
 
+
+/*------------------------P R O D U C T S -----------------*/
+Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/product', function () {
-    return view('user.html.templates.product');
-});
-Route::get('/about_page', function () {
-    return view('user.html.templates.about_page');
+    return view('user.templates.product');
 });
 Route::get('/product', 'ProductsController@paginateProducts');
+Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
 
+/* -------------------- A B O U T - P A G E -----------------*/
 Route::get('/about-us', function () {
     return view('user.templates.about_page');
 });
 
-
-
-// Route::get('/shop-productDetails', function () {
-//     return view('user.templates.shop-productDetails');
-// });
-// Route::get('/shop-productDetails/{id}', 'ProductDetailsController@getProductDetailsById')->name('getProductDetailsById');
-Route::get('/shop-productDetails/{product_id}','ProductDetailsController@product');
-Route::get('/shop-productDetails', function(){
-    return view('user.templates.shop-productDetails');
-});
-
-// Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
-
+/*--------------------- S H O P - C A R T ------------------*/
 Route::get('/shop-cart', function () {
     return view('user.templates.shop-cart');
 });
+
+/*--------------------- S H O P - C H E C K O U T ------------------*/
 Route::get('/shop-checkout', function () {
     return view('user.templates.shop-checkout');
 });
+
+/*--------------------- S H O P - C H E C K O U T P A Y M E N T ------------------*/
 Route::get('/shop-checkoutPayment', function () {
     return view('user.templates.shop-checkoutPayment');
 });
+/*--------------------- S H O P - C H E C K O U T R E V I E W ------------------*/
 Route::get('/shop-checkoutReview', function () {
     return view('user.templates.shop-checkoutReview');
 });
+
+/*--------------------- S H O P - C H E C K O U T C O M P L E T E D ------------------*/
 Route::get('/shop-checkoutCompleted', function () {
     return view('user.templates.shop-checkoutCompleted');
 });
+
+/*--------------------- P A G E - L O G I N------------------*/
 Route::get('/page-login', function () {
     return view('user.templates.page-login');
 });
+
+/*--------------------- P A G E - S I G N U P-----------------*/
 Route::get('/page-signup', function () {
     return view('user.templates.page-signup');
 });
+
+/*--------------------- S H O P - C A R T ------------------*/
 Route::post('/cart-add', 'CartController@addToCart');
-Route::get('/cart-show', 'CartController@cartShow');
+Route::get('/shop-cart', 'CartController@cartShow');

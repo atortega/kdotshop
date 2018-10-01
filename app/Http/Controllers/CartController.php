@@ -31,7 +31,7 @@ class CartController extends Controller
         ]);
         // Session::put('cart', $cart);
 
-        return redirect('/cart-show');
+        return redirect('/shop-cart');
     }
 
     public function cartShow(){

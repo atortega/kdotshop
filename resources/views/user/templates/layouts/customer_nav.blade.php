@@ -105,7 +105,8 @@
 
 							<!-- logo-->
 							<div id="logo" class="logo">
-								<a href="/"><img id="logo_img" src="image/kdot_newlogo.png" alt="kdot_newlogo"></a>
+								<a href="/"><img id="logo_img" src="{{ asset('image/kdot_newlogo.png') }}"
+									alt="kdot_newlogo"></a>
 							</div>
 
 							<!-- name-and-slogan
@@ -133,7 +134,7 @@
 										<!-- logo -->
 										<div id="logo-mobile" class="logo">
 											<a href="/">
-												<img id="logo-img-mobile" src="image/kdot_newlogo.png" alt="kdot_newlogo">
+												<img id="logo-img-mobile" src="{{ asset('image/kdot_newlogo.png') }}" alt="kdot_newlogo">
 											</a>
 										</div>
 										<!-- name-and-slogan -->
@@ -178,20 +179,20 @@
 										<ul class="navbar-nav ml-xl-auto">
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--wide">
+										<li class="nav-item dropdown home-alert mega-menu mega-menu--wide">
 											<a href="/" class="nav-link" >Home</a>
 										<!--  -->
 										</li>
 										<!-- mega-menu end -->
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--wide">
+										<li class="nav-item dropdown products-alert mega-menu mega-menu--wide">
 											<a href="/product" class="nav-link " >Products</a>
 										</li>
 										<!-- mega-menu end -->
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--narrow">
+										<li class="nav-item dropdown about-us-alert mega-menu mega-menu--narrow">
 										<a href="/about-us" class="nav-link " >About Us</a>
 
 										</li>

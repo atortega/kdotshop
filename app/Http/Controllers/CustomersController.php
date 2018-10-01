@@ -138,9 +138,9 @@ class CustomersController extends Controller
      */
     public function loginFormCustomer(Request $request)
     {
-        if ($request->session()->get('logged_in')) {
-            return redirect('/');
-        }
+        //if ($request->session()->get('logged_in')) {
+           // return redirect('/');
+        //}
         return view('user.templates.page-login');
     }
 
@@ -148,7 +148,7 @@ class CustomersController extends Controller
     {
         $request->validate([
             'email'             => 'required|email|exists:customer,email',
-            'password'          => 'required|string',
+            'password'          => 'required|string|min:8',
         ]);
 
 
@@ -166,7 +166,10 @@ class CustomersController extends Controller
         $request->session()->put('email', $request->email);
         $request->session()->put('customer', $customer);
 
-        return redirect('/');
+        //$url = $request->input('url'); 
+
+       //return redirect($url);
+         return redirect('/');
     }
     public function forgetPassword(Request $request)
     {

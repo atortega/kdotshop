@@ -62,6 +62,9 @@
 						<!-- header-top-first end -->
 					</div>
 
+				@if(Session:has('logged_in')) 
+				
+
 					<div class="col-9 col-sm-6 col-lg-3">
 						<!-- header-top-second start -->
 						<!-- ================ -->
@@ -70,19 +73,38 @@
 							<!-- ================ -->
 							<div class="header-top-dropdown text-right">
 								<div class="btn-group">
-									<a href="/page-signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
-								</div>
-								<div class="btn-group">
-									<a href="/page-login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> {{ Session::get('email') }}</a>
 								</div>
 							</div>
 							<!--  header top dropdowns end -->
 						</div>
 						<!-- header-top-second end -->
 					</div>
+
+				 @else 
+				   <div class="col-9 col-sm-6 col-lg-3">
+						<!-- header-top-second start -->
+						<!-- ================ -->
+						<div id="header-top-second"  class="clearfix">
+							<!-- header top dropdowns start -->
+							<!-- ================ -->
+							<div class="header-top-dropdown text-right">
+								<div class="btn-group">
+									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+								</div>
+								<div class="btn-group">
+									<a href="/login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+								</div>
+							</div>
+							<!--  header top dropdowns end -->
+						</div>
+						<!-- header-top-second end -->
+					</div>
+				 @endif 
 				</div>
 			</div>
 		</div>
+				
 		<!-- header-top end -->
 
 

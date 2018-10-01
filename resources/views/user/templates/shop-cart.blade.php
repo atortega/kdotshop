@@ -3,7 +3,7 @@
 
   <head>
     
-    @include('user.templates.header')
+    @include('user.templates.layouts.header')
 
     <title>KDot | Shopping Cart</title>
     
@@ -33,7 +33,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.customer_nav')
+        @include('user.templates.layouts.customer_nav')
       <!-- header-container end -->
       <!-- breadcrumb start -->
       <!-- ================ -->
@@ -71,55 +71,51 @@
                     <th>Price </th>
                     <th>Quantity</th>
                     <th>Remove </th>
-                    <th class="amount">Total </th>
+                    <th class="amount">Subtotal </th>
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+                      // $i=0;
+                      $total = 0;
+                      $subTotal = 0;
+                  ?>
+                 
+                    @foreach($cartProducts as $cartProduct)   
                   <tr class="remove-data">
-                    <td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-                    <td class="price">$99.50 </td>
+                    <td class="product">
+                      <a href="/shop-product">{{$cartProduct->product_name}}</a>
+                      <small>{{$cartProduct->desc}}</small>
+                    </td>
+                    <td class="price">₱ {{$cartProduct->price}}  </td>
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="text" class="form-control" value="2">
+                        <input type="text" class="form-control" value="{{$cartProduct->qty}}">
                       </div>
                     </td>
                     <td class="remove"><a href="#" class="btn btn-remove btn-sm btn-default">Remove</a></td>
-                    <td class="amount">$199.00 </td>
+                      <?php
+                        $subTotal = $cartProduct->qty * $cartProduct->price;
+                      ?>  
+                    <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
-                  <tr class="remove-data">
-                    <td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
-                    <td class="price"> $99.66 </td>
-                    <td class="quantity">
-                      <div class="form-group">
-                        <input type="text" class="form-control" value="3">
-                      </div>
-                    </td>
-                    <td class="remove"><a href="#" class="btn btn-remove btn-sm btn-default">Remove</a></td>
-                    <td class="amount">$299.00 </td>
-                  </tr>
-                  <tr class="remove-data">
-                    <td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
-                    <td class="price"> $499.66 </td>
-                    <td class="quantity">
-                      <div class="form-group">
-                        <input type="text" class="form-control" value="3">
-                      </div>
-                    </td>
-                    <td class="remove"><a href="#" class="btn btn-remove btn-sm btn-default">Remove</a></td>
-                    <td class="amount">$1499.00 </td>
-                  </tr>
-                  <tr>
+                  <!-- <tr>
                     <td colspan="3">Discount Coupon</td>
                     <td colspan="2">
                       <div class="form-group">
                         <input type="text" class="form-control">
                       </div>
-                    </td>
+                    </td> -->
                   </tr>
+                    @endforeach                  
                   <tr>
-                    <td class="total-quantity" colspan="4">Total 8 Items</td>
-                    <td class="total-amount">$1997.00</td>
+                    <td class="total-quantity" colspan="4">Total {{Cart::count()}} Items</td>
+                    <?php
+                      $total = $total + $subTotal;
+                    ?>
+                    <td class="total-amount">₱ {{$total}}</td>
                   </tr>
+                    
                 </tbody>
               </table>
               <div class="text-right">
@@ -140,7 +136,7 @@
 
         <!-- .subfooter end -->
 
-       @include('user.templates.footer')
+       @include('user.templates.layouts.footer')
       <!-- footer end -->
     </div>
     <!-- page-wrapper end -->

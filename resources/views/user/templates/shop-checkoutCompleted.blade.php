@@ -3,7 +3,7 @@
 
   <head>
     
-    @include('user.templates.header')
+    @include('user.templates.layouts.header')
 
     <title>KDot | Checkout Completed</title>
     
@@ -33,7 +33,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.customer_nav')
+        @include('user.templates.layouts.customer_nav')
       <!-- header-container end -->
       <!-- breadcrumb start -->
       <!-- ================ -->
@@ -82,7 +82,7 @@
 
         <!-- .subfooter end -->
 
-      @include('user.templates.footer')
+      @include('user.templates.layouts.footer')
       <!-- footer end -->
     </div>
     <!-- page-wrapper end -->

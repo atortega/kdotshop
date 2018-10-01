@@ -3,7 +3,7 @@
 
   <head>
     
-    @include('user.templates.header')
+    @include('user.templates.layouts.header')
 
     <title>KDot | Checkout </title>
     
@@ -33,7 +33,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.customer_nav')
+        @include('user.templates.layouts.customer_nav')
 
       <!-- header-container end -->
       <!-- breadcrumb start -->
@@ -86,34 +86,14 @@
                     <td class="amount">$199.00 </td>
                   </tr>
                   <tr>
-                    <td class="product"><a href="shop-product.html">Product Title 2</a> <small>Quas inventore modi</small></td>
-                    <td class="price"> $99.66 </td>
-                    <td class="quantity">
-                      <div class="form-group">
-                        <input type="text" class="form-control" value="3" disabled>
-                      </div>                      
-                    </td>
-                    <td class="amount">$299.00 </td>
-                  </tr>
-                  <tr>
-                    <td class="product"><a href="shop-product.html">Product Title 3</a> <small>Fugiat nemo enim officiis repellendus</small></td>
-                    <td class="price"> $499.66 </td>
-                    <td class="quantity">
-                      <div class="form-group">
-                        <input type="text" class="form-control" value="3" disabled>
-                      </div>                      
-                    </td>
-                    <td class="amount">$1499.00 </td>
-                  </tr>
-                  <tr>
                     <td class="total-quantity" colspan="3">Subtotal</td>
                     <td class="amount">$1997.00</td>
                   </tr>
-                  <tr>                    
+                  <!-- <tr>                    
                     <td class="total-quantity" colspan="2">Discount Coupon</td>
                     <td class="price">TheProject25672</td>
                     <td class="amount">-20%</td>
-                  </tr>
+                  </tr> -->
                   <tr>
                     <td class="total-quantity" colspan="3">Total 8 Items</td>
                     <td class="total-amount">$1597.00</td>
@@ -148,12 +128,6 @@
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="billingFax" class="col-lg-2 control-label text-lg-right col-form-label">Fax</label>
-                        <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingFax" value="Fax">
-                        </div>
-                      </div>
-                      <div class="form-group row">
                         <label for="billingemail" class="col-lg-2 control-label text-lg-right col-form-label">Email<small class="text-default">*</small></label>
                         <div class="col-lg-10">
                           <input type="email" class="form-control" id="billingemail" value="Email">
@@ -168,15 +142,9 @@
                     </div>
                     <div class="col-xl-8 ml-xl-auto">
                       <div class="form-group row">
-                        <label for="billingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address 1<small class="text-default">*</small></label>
+                        <label for="billingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address <small class="text-default">*</small></label>
                         <div class="col-lg-10">
                           <input type="text" class="form-control" id="billingAddress1" value="Address 1">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="billingAddress2" class="col-lg-2 control-label text-lg-right col-form-label">Address 2</label>
-                        <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingAddress2" value="Address 2">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -244,12 +212,6 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="shippingFax" class="col-lg-2 control-label text-lg-right col-form-label">Fax</label>
-                          <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingFax" value="Fax">
-                          </div>
-                        </div>
-                        <div class="form-group row">
                           <label for="shippingemail" class="col-lg-2 control-label text-lg-right col-form-label">Email<small class="text-default">*</small></label>
                           <div class="col-lg-10">
                             <input type="email" class="form-control" id="shippingemail" value="Email">
@@ -264,15 +226,9 @@
                       </div>
                       <div class="col-xl-8 ml-xl-auto">
                         <div class="form-group row">
-                          <label for="shippingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address 1<small class="text-default">*</small></label>
+                          <label for="shippingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address <small class="text-default">*</small></label>
                           <div class="col-lg-10">
                             <input type="text" class="form-control" id="shippingAddress1" value="Address 1">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="shippingAddress2" class="col-lg-2 control-label text-lg-right col-form-label">Address 2</label>
-                          <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingAddress2" value="Address 2">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -324,7 +280,7 @@
 
         <!-- .subfooter end -->
 
-      @include('user.templates.footer')
+      @include('user.templates.layouts.footer')
       <!-- footer end -->
     </div>
     <!-- page-wrapper end -->

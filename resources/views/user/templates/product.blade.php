@@ -387,7 +387,7 @@
 												</p>
 												<div class="elements-list clearfix">
 													<span class="price">₱ {{ $row->unit_price }}</span>
-													<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent 
+													<a href="/shop-cart" class="pull-right margin-clear btn btn-sm btn-default-transparent 
 														btn-animated">
 														Add To Cart<i class="fa fa-shopping-cart"></i>
 													</a>

@@ -16,11 +16,10 @@ class CartController extends Controller
     	$product_id = $request->product_id;
 
 
-        $productById = Products::where('product_id', $product_id)
-            ->first();
+        $productById = Products::where('product_id', $product_id)->first();
 
-        $skuById = Sku::where('product_id', $product_id)
-            ->first();
+        $skuById = Sku::where('product_id', $product_id)->first();
+        
         // $cart = Session::get('cart');
         Cart::add([
             'product_id'    =>  $product_id,
@@ -31,7 +30,7 @@ class CartController extends Controller
         ]);
         // Session::put('cart', $cart);
 
-        return redirect('/cart-show');
+        return redirect('/shop-cart');
     }
 
     public function cartShow(){
@@ -42,5 +41,10 @@ class CartController extends Controller
 
     }
 
+    public function cartRemove($rowId){
+        Cart::remove($rowId);
+
+        return redirect('/shop-cart');
+    }
     
 }

@@ -387,10 +387,18 @@
 												</p>
 												<div class="elements-list clearfix">
 													<span class="price">₱ {{ $row->unit_price }}</span>
-													<a href="/shop-cart" class="pull-right margin-clear btn btn-sm btn-default-transparent 
-														btn-animated">
+													
+												{!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+													<input type="hidden" name="product_id" value="{{ $row->product_id }}">
+													<input type="hidden" name="qty" value="1">
+													<button type="submit" class="pull-right margin-clear btn btn-sm
+														btn-default-transparent btn-animated">
 														Add To Cart<i class="fa fa-shopping-cart"></i>
-													</a>
+													</button>
+
+												{!! Form::close()!!}
+
 												</div>
 											</div>
 										</div>
@@ -421,7 +429,8 @@
 												<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</p>
 												<div class="elements-list clearfix">
 													<span class="price">$199.00</span>
-													<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent
+													<a href="#" class="pull-right margin-clear btn btn-sm 
+													btn-default-transparent
 														btn-animated">
 														Add To Cart<i class="fa fa-shopping-cart"></i>
 													</a>

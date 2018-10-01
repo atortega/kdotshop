@@ -20,51 +20,72 @@ Route::get('/customers/list', 'CustomersController@customersList');
 
 Route::get('/customers/add', 'CustomersController@addCustomer');
 
-Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/sizes/get/{id}', 'SizesController@getProductSizeById');
 Route::get('/colors/get/{id}', 'ColorsController@getProductColorById');
 Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');
 Route::get('/categories/get/{id}', 'CategoriesController@getProductCategoryById');
 
 
+// P R O D U C T S - P A G E
 Route::get('/product', function () {
     return view('user.templates.product');
 });
-
+Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/product', 'ProductsController@paginateProducts');
-
-Route::get('/about-us', function () {
-    return view('user.templates.about_page');
-});
+Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
 
 Route::get('/shop-productDetails', function () {
     return view('user.templates.shop-productDetails');
 });
-
 Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
 
+// A B O U T - P A G E
+Route::get('/about-us', function () {
+    return view('user.templates.about_page');
+});
+
+
+
+// S H O P - C A R T
 Route::get('/shop-cart', function () {
     return view('user.templates.shop-cart');
 });
+Route::post('/cart-add', 'CartController@addToCart');
+Route::get('/shop-cart', 'CartController@cartShow');
+Route::get('/cart-remove/{rowId}', 'CartController@cartRemove');
+
+// S H O P - C H E C K O U T
 Route::get('/shop-checkout', function () {
     return view('user.templates.shop-checkout');
 });
+Route::post('/checkout','CartController@cartShow');
+
+// S H O P - C H E C K O U T P A Y M E N T
 Route::get('/shop-checkoutPayment', function () {
     return view('user.templates.shop-checkoutPayment');
 });
+
+// S H O P - C H E C K O U T R E V I E W
 Route::get('/shop-checkoutReview', function () {
     return view('user.templates.shop-checkoutReview');
 });
+
+// S H O P - C H E C K O U T C O M P L E T E D
 Route::get('/shop-checkoutCompleted', function () {
     return view('user.templates.shop-checkoutCompleted');
 });
+
+// L O G I N - P A G E
 Route::get('/page-login', function () {
     return view('user.templates.page-login');
 });
+
+// S I G N U P - P A G E
 Route::get('/page-signup', function () {
     return view('user.templates.page-signup');
 });
-Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
+
+
 
 /* ___________________ADMIN SIDE___________________ */
 

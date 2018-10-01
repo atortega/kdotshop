@@ -21,7 +21,7 @@
 
 	<!-- page wrapper start -->
 	<!-- ================ -->
-	<div class="page-wrapper">
+<div class="page-wrapper">
 		<!-- header-container start -->
 
 		<!-- header-top start -->
@@ -46,125 +46,140 @@
 				</ol>
 			</div>
 		</div>
-	</div>
+
 		<!-- breadcrumb end -->
 
 		<!-- main-container start -->
 		<!-- ================ -->
-		<!-- <div class="main-container dark-translucent-bg" style="background-image:url('images/background-img-6.jpg');"> -->
-		<div class="container">
-			<div class="clearfix"></div>
-			<div class="row justify-content-center">
-				<div class="col-md-6">
-					<!-- main start -->
-					<!-- ================ -->
-					<div class="main space-top" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
-						<div class="form-block-login p-30 light-gray-bg border-clear">
-							<a href="{{ url('/signup')}}" class="d-inline-block float-right" 
-								style="color: #f49ac1; font-weight: bold; text-decoration:none;">
-								Sign Up
-							</a> 
+		<!-- <div class="main-container dark-translucent-bg" style="background-image:url('image/background-img-6.jpg');"> -->
+			<div class="container">
+				<div class="clearfix"></div>
+				<div class="row justify-content-center">
+					<div class="col-md-6">
+						<!-- main start -->
+						<!-- ================ -->
+						<div class="main space-top" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+							<div class="form-block-login p-30 light-gray-bg border-clear">
+								<a href="{{ url('/signup')}}" class="d-inline-block float-right" 
+									style="color: #f49ac1; font-weight: bold; text-decoration:none;">
+									Sign Up
+								</a> 
+								
+								<h2 class="title">Login</h2>
+
+								@if ($errors->any())
+								<div class="alert alert-danger">
+									<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+									</ul>
+								</div>
+								@endif
 							
-							<h2 class="title">Login</h2>
-
-							@if ($errors->any())
-							<div class="alert alert-danger">
-								<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-								</ul>
-							</div>
-							@endif
-						
-							@if(session()->has('message'))
-							<div class="alert alert-success">
-								{{ session()->get('message') }}
-							</div>
-							@endif
-
-							<form class="form-horizontal" action="{{ url('/login/submit')}}" method="post">
-								{{ csrf_field() }}
-								<div class="form-group has-feedback row">
-									<!-- <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label> -->
-									<div class="col-md-12">
-										<input type="email" class="form-control" id="email" placeholder="User Name"
-											name="email" required>
-										<i class="fa fa-user form-control-feedback pr-4"></i>
-									</div>
+								@if(session()->has('message'))
+								<div class="alert alert-success">
+									{{ session()->get('message') }}
 								</div>
-								<div class="form-group has-feedback row">
-									<!-- <label for="password" class="col-md-3 text-md-right control-label col-form-label"></label> -->
-									<div class="col-md-12">
-										<input type="password" class="form-control" id="password" placeholder="Password"
-											name="password" required>
-										<i class="fa fa-lock form-control-feedback pr-4"></i>
+								@endif
+
+								<form class="form-horizontal" action="{{ url('/login/submit')}}" method="post">
+									{{ csrf_field() }}
+									<div class="form-group has-feedback row">
+										<!-- <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label> -->
+										<div class="col-md-12">
+											<input type="email" class="form-control" id="email" placeholder="Username"
+												name="email" required>
+											<i class="fa fa-user form-control-feedback pr-4"></i>
+										</div>
 									</div>
-								</div>
-								<div class="form-group row">
-									<div class="ml-md-auto col-md-12">
-										<div class="d-inline-block col-md-12">
-											<div class="checkbox form-check pull-left">
-												<input class="form-check-input" type="checkbox">
-												<label class="form-check-label">
-													Remember me.
-												</label>
+									<div class="form-group has-feedback row">
+										<!-- <label for="password" class="col-md-3 text-md-right control-label col-form-label"></label> -->
+										<div class="col-md-12">
+											<input type="password" class="form-control" id="password" placeholder="Password"
+												name="password" required>
+											<i class="fa fa-lock form-control-feedback pr-4"></i>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="ml-md-auto col-md-12">
+											<div class="d-inline-block col-md-12">
+												<div class="checkbox form-check pull-left">
+													<input class="form-check-input" type="checkbox">
+													<label class="form-check-label">
+														Remember me.
+													</label>
+												</div>
+												<button type="submit" class="btn btn-animated btn-default pull-right">
+													Log-in
+													<i class="fa fa-lock"></i>
+												</button>
 											</div>
-											<button type="submit" class="btn btn-animated btn-default pull-right">
-												Log-in
-												<i class="fa fa-lock"></i>
-											</button>
-										</div>
 
-										<div class="space-top">
-											<a href="forgetpassworrdchuchu.php" style="color: red; font-weight: bold;">
-												Forget Password ?
-											</a>
-										</div>
-										
-										<span class="text-center text-muted">Login with</span>
+											<div class="space-top">
+												<a href="forgetpassworrdchuchu.php" style="color: red; font-weight: bold;">
+													Forget Password ?
+												</a>
+											</div>
+											
+											<span class="text-center text-muted">Login with</span>
 
-										<ul class="social-links colored circle clearfix">
-											<li class="facebook">
-												<a href="#">
-													<i class="fa fa-facebook"></i>
-												</a>
-											</li>
-											<li class="googleplus">
-												<a href="#">
-													<i class="fa fa-google-plus"></i>
-												</a>
-											</li>
-										</ul>
+											<ul class="social-links colored circle clearfix">
+												<li class="facebook">
+													<a href="#">
+														<i class="fa fa-facebook"></i>
+													</a>
+												</li>
+												<li class="googleplus">
+													<a href="#">
+														<i class="fa fa-google-plus"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
 									</div>
-								</div>
-							</form>
+								</form>
+								<p class="text-center space-top" align="center">
+									Don't have an account yet?
+									<a href="/page-signup">Sign Up</a>
+								</p>
+							</div>
+
 						</div>
-						<p class="text-center space-top" align="center">
-							Don't have an account yet?
-							<a href="/page-signup">Sign Up</a>
-						</p>
+						<!-- main end -->
 					</div>
-					<!-- main end -->
 				</div>
 			</div>
-		</div>
-	</div>
-	<!-- main-container end -->
-
-
-
-	<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
-	<!-- ================ -->
-	@include('user.templates.layouts.footer')
-	<!-- footer end -->
-	</div>
-	<!-- page-wrapper end -->
+		<!-- </div> -->
+		<!-- main-container end -->
+</div>
+<!-- page-wrapper end -->
 
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
-	<!-- ================================================== -->
-	<!-- Jquery and Bootstap core js files -->
 
+    <script src="{{ URL::asset('plugins/jquery.min.js') }}"></script>
+    <!-- Bootstrap Scripts -->
+    <script src="{{ URL::asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ URL::asset('js/user/bootstrap-notify.min.js') }}"></script>
+    <!-- jQuery Revolution Slider  -->
+    <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <!-- Isotope javascript -->
+    <script src="{{ URL::asset('plugins/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/isotope/isotope.pkgd.min.js') }}"></script>
+    <!-- Magnific Popup javascript -->
+    <script src="{{ URL::asset('plugins/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <!-- Appear javascript -->
+    <script src="{{ URL::asset('plugins/waypoints/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ URL::asset('plugins/waypoints/sticky.min.js') }}"></script>
+    <!-- Count To javascript -->
+    <script src="{{ URL::asset('plugins/countTo/jquery.countTo.js') }}"></script>
+    <!-- Slick carousel javascript -->
+    <script src="{{ URL::asset('plugins/slick/slick.min.js') }}"></script>
+    <!-- Initialization of Plugins -->
+    <script src="{{ URL::asset('js/user/template.js') }}"></script>
+    <!-- Custom Scripts -->
+    <script src="{{ URL::asset('js/user/custom.js') }}"></script>
 
 </body>       
 </html>

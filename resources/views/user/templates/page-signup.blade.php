@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="zxx">
 
+
   <head>
     
       @include('user.templates.layouts.header')
+
  
 
     <title>KDot | Sign Up</title>
@@ -110,7 +112,7 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="phone_number" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="phone_number" class="form-control" id="phone_number" placeholder="Enter Phone Number" name="phone_number" required>
+                                    <input type="phone_number" class="form-control" id="phone_number" placeholder="*Enter Phone Number" name="phone_number" required >
                                      <i class="fa fa-user form-control-feedback pr-4"> </i> <button type="submit" class="btn" style="background-color: pink; float:right;">Submit</button>
                                   </div>  
                               </div>   
@@ -118,7 +120,7 @@
                                <div class="form-group has-feedback row" > 
                                 <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="fname" class="form-control" id="fname" placeholder="First Name" name="fname" required>
+                                    <input type="fname" class="form-control" id="fname" placeholder="*First Name" name="fname" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 
@@ -126,16 +128,24 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="full_name" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="name" class="form-control" id="name" placeholder="Last Name" name="full_name" required>
+                                    <input type="name" class="form-control" id="name" placeholder="*Last Name" name="full_name" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="dob" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <div class="col-md-8">
+                                  <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
+                                  <i class="fa fa-user form-control-feedback pr-4"></i>
+                                </div>
                               </div> 
 
 
                               <div class="form-group has-feedback row" >
                                 <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="email" class="form-control" id="email" placeholder="E-mail" name="email" required>
+                                    <input type="email" class="form-control" id="email" placeholder="*E-mail" name="email" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 
@@ -158,21 +168,15 @@
                               </div>
 
 
-                              <div class="form-group has-feedback row" >
-                                <label for="phone_number" class="col-md-3 text-md-right control-label col-form-label"></label>
-                                <div class="col-md-8">
-                                  <input type="text" class="form-control" id="phone_number" placeholder="Phone Number" name="phone_number" required>
-                                  <i class="fa fa-user form-control-feedback pr-4"></i>
-                                </div>
-                              </div>
+                      
 
                               
                               <div class="form-group row">
                                 <div class="ml-md-auto col-md-9">
                                   <div class="checkbox form-check">
-                                    <input class="form-check-input" type="checkbox" required>
+                                    <!-- <input class="form-check-input" type="checkbox" required> -->
                                     <label class="form-check-label">
-                                      <p style="color: red;">By signing this, you agree to <a href="termsandconditions.php" style="color: red; font-weight: bold;"> KDot's Terms and Conditions</a></p>
+                                      <p style="color: red;">By signing up, you agree to <a href="termsandconditions.php" style="color: red; font-weight: bold;"> KDot's Terms and Conditions</a></p>
                                     </label>
                                   </div>
                                    <!--  <button type="submit" class="btn btn-group btn-default btn-animated">Log In <i class="fa fa-user"></i></button> -->
@@ -193,6 +197,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
               <!-- main-container end -->
 
@@ -206,7 +211,8 @@
             <!-- JavaScript files placed at the end of the document so the pages load faster -->
             <!-- ================================================== -->
             <!-- Jquery and Bootstap core js files -->
-            
+       
   </body>  
+
          
 </html>

@@ -9041,3 +9041,14 @@ h6.media-heading {
 element.style{
   margin-top: 8%;
 }
+.column{
+  float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}

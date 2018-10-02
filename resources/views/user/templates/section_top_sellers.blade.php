@@ -31,8 +31,11 @@
                                             </p>
                                             <p class="small">{{ $top_seller->product_desc }}</p>
                                             <div class="elements-list clearfix">
-                                                <!--<span class="price"><del>$199.00</del>--> ₱{{ $top_seller->unit_price }}</span>
 
+                                                <span class="price"><!--<del>$100.00</del>--> 
+                                                    ₱ {{ $top_seller->unit_price }}
+                                                </span>
+                                               
                                                 {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
                                                 <input type="hidden" name="product_id" value="{{ $top_seller->product_id }}">

@@ -78,16 +78,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
-                      // $i=0;
-                      $total = 0;
-                      $subTotal = 0;
-                  ?>
+                  
                  
                     @foreach($cartProducts as $cartProduct)   
                   <tr class="remove-data">
                     <td class="product">
-                      <a href="/shop-productDetails/{{$cartProduct->product_name}}">
+                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
                         {{$cartProduct->product_name}}
                       </a>
                       <small>{{$cartProduct->desc}}</small>
@@ -98,10 +94,13 @@
                         <input type="text" class="form-control" value="{{$cartProduct->qty}}">
                       </div>
                     </td>
-                    <td class="remove"><a href="#" class="btn btn-remove btn-sm btn-default">Remove</a></td>
-                      <?php
+                    <td class="remove">
+                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">Remove</a>
+                    </td>
+                     <?php
                         $subTotal = $cartProduct->qty * $cartProduct->price;
-                      ?>  
+                      ?>
+                    
                     <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
                   <!-- <tr>
@@ -115,10 +114,8 @@
                     @endforeach                  
                   <tr>
                     <td class="total-quantity" colspan="4">Total {{Cart::count()}} Items</td>
-                    <?php
-                      $total = $total + $subTotal;
-                    ?>
-                    <td class="total-amount">₱ {{$total}}</td>
+                    
+                    <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                     
                 </tbody>

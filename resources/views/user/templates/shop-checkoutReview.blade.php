@@ -86,28 +86,43 @@
                   </tr>
                 </thead>
                 <tbody>
+                  
+                 
+                    @foreach($cartProducts as $cartProduct)   
                   <tr>
-                    <td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-                    <td class="price">$99.50 </td>
+                    <td class="product">
+                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
+                         {{$cartProduct->product_name}}
+                      </a> 
+                      <small>
+                        {{$cartProduct->desc}}
+                      </small>
+                    </td>
+                    <td class="price">₱ {{$cartProduct->price}} </td>
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="text" class="form-control" value="2" disabled>
+                        <input type="text" class="form-control" value="{{$cartProduct->qty}}" disabled>
                       </div>                      
                     </td>
-                    <td class="amount">$199.00 </td>
+                     <?php
+                        $subTotal = $cartProduct->qty * $cartProduct->price;
+                      ?>  
+                    <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
-                  <tr>
+                  @endforeach
+                 <!--  <tr>
                     <td class="total-quantity" colspan="3">Subtotal</td>
                     <td class="amount">$1997.00</td>
-                  </tr>
+                  </tr> -->
                   <!-- <tr>                    
                     <td class="total-quantity" colspan="2">Discount Coupon</td>
                     <td class="price">TheProject25672</td>
                     <td class="amount">-20%</td>
                   </tr> -->
                   <tr>
-                    <td class="total-quantity" colspan="3">Total 8 Items</td>
-                    <td class="total-amount">$1597.00</td>
+                    <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
+                    
+                    <td class="total-amount">₱ {{$total}}</td>
                   </tr>
                 </tbody>
               </table>

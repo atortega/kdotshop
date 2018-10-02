@@ -44,7 +44,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item active">Shop Product</li>
           </ol>
         </div>
@@ -64,7 +64,7 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h1 class="page-title">Shop Product</h1>
+              <h3 class="title-page">Shop Product</h3>
               <div class="separator-2"></div>
               <!-- page-title end -->
             

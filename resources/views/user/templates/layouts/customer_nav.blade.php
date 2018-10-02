@@ -1,5 +1,4 @@
-
-	<!-- header-container start -->
+!-- header-container start -->
 	<div class="header-container">
 		<!-- header-top start -->
 		<!-- classes:  -->
@@ -161,9 +160,11 @@
 											</ul>
 										</div>
 										<div class="btn-group">
-											<button type="button" class="btn dropdown-toggle dropdown-toggle--no-caret" id="header-drop-4"  aria-haspopup="true" aria-expanded="false">
-												<i class="fa fa-shopping-basket" href="/shop-cart"></i>
-												<span class="cart-count default-bg">8</span>
+											<button type="button" id="header-drop-4"  
+													class="btn dropdown-toggle dropdown-toggle--no-caret"
+													aria-haspopup="true" aria-expanded="false">
+												<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+												<span class="cart-count default-bg">{{ Cart::count() }}</span>
 											</button>
 										</div>
 									</div>
@@ -228,9 +229,11 @@
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn dropdown-toggle dropdown-toggle--no-caret" id="header-drop-2" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-shopping-basket" href="/shop-cart"></i>
-									<span class="cart-count default-bg">8</span>
+								<button type="button" href="/shop-cart" id="header-drop-2"
+										class="btn dropdown-toggle dropdown-toggle--no-caret" 
+										aria-haspopup="true" aria-expanded="false">
+									<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+									<span class="cart-count default-bg">{{ Cart::count() }}</span>
 								</button>
 							</div>
 						</div>

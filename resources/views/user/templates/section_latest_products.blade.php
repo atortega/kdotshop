@@ -35,7 +35,9 @@
                                 </h3>
                                 <p class="small">{{ $product->product_desc }}</p>
                                 <div class="elements-list clearfix">
-                                    <!--<span class="price"><del>$100.00</del>--> ₱{{ $product->unit_price }}</span>
+                                    <span class="price"><!--<del>$100.00</del>--> 
+                                        ₱ {{ $product->unit_price }}
+                                    </span>
 
                                 {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 

@@ -42,5 +42,26 @@ class CartController extends Controller
 
     }
 
-    
+    public function cartShowCheckout(){
+        $cartProducts = Cart::Content();
+       
+
+        return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts]);
+
+    }
+
+    public function cartShowCheckoutReview(){
+        $cartProducts = Cart::Content();
+       
+
+        return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts]);
+
+    }
+
+    public function cartRemove($rowId){
+        Cart::remove($rowId);
+        return redirect('/shop-cart');
+    }
+
+     
 }

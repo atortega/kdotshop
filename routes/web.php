@@ -133,10 +133,11 @@ Route::get('/signup', function () {
 
 Route::post('/signup/submit', 'CustomersController@createCustomer');
 
+/*
 Route::get('/login', function () {
     return view('user.templates.page-login');
 });
-
+*/
 
 Route::get('/login', 'CustomersController@loginFormCustomer');
 Route::post('/login/submit', 'CustomersController@loginCustomer');
@@ -203,3 +204,7 @@ Route::get('/shop-checkoutCompleted', function () {
 /*Route::get('/page-signup', function () {
     return view('user.templates.page-signup');
 });*/
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -66,7 +66,7 @@
 
 
 
-				   <div class="col-9 col-sm-6 col-lg-3">
+					<div class="col-9 col-sm-6 col-lg-3">
 						<!-- header-top-second start -->
 						<!-- ================ -->
 						<div id="header-top-second"  class="clearfix">

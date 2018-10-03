@@ -4,7 +4,7 @@
 
   <head>
     
-      @include('user.templates.layouts.header')
+       @include('user.templates.layouts.header')
 
  
 
@@ -41,7 +41,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.layouts.customer_nav')
+        @include('user.templates.layouts.customer_nav') 
                 
                 <!-- header-top end -->
 
@@ -112,23 +112,31 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="phone_number" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="phone_number" class="form-control" id="phone_number" placeholder="*Enter Phone Number" name="phone_number" required >
-                                     <i class="fa fa-user form-control-feedback pr-4"> </i> <button type="submit" class="btn" style="background-color: pink; float:right;">Submit</button>
+                                    <input type="phone_number" class="form-control" id="phonenumber" placeholder="*Enter Phone Number" name="phone_number" required>
+                                     <i class="fa fa-user form-control-feedback pr-4"> </i> <button type="submit" class="btn" style="background-color: pink; float:right;">Send Verification Code</button>
                                   </div>  
                               </div>   
 
                                <div class="form-group has-feedback row" > 
-                                <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <label for="verification-code" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="fname" class="form-control" id="fname" placeholder="*First Name" name="fname" required>
+                                    <input type="vCode" class="form-control" id="vCode" placeholder="*Verification Code" name="code">
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 
 
                               <div class="form-group has-feedback row" > 
-                                <label for="full_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="name" class="form-control" id="name" placeholder="*Last Name" name="full_name" required>
+                                    <input type="fname" class="form-control" id="fname" placeholder="*First Name" name="first_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="last_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="lname" class="form-control" id="lname" placeholder="*Last Name" name="last_name" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 
@@ -136,11 +144,21 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="dob" class="col-md-3 text-md-right control-label col-form-label"></label>
                                 <div class="col-md-8">
-                                  <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="dob" required>
+                                  <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="birthdate" required>
                                   <i class="fa fa-user form-control-feedback pr-4"></i>
                                 </div>
                               </div> 
 
+
+                               <div class="form-group has-feedback row" > 
+                                <label for="dob" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <div class="col-md-8">
+                                 <select class="form-control" id="gender" placeholder="Gender" name="gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>  
+                                </div>
+                              </div> 
 
                               <div class="form-group has-feedback row" >
                                 <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label>

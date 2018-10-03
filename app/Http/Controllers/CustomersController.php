@@ -37,7 +37,10 @@ class CustomersController extends Controller
 	public function addCustomer(Request $request)
 	{
         $request->validate([
-            'name'              => 'required|max:30',
+            'first_name'        => 'required|max:30',
+            'last_name'         => 'required|max:30',
+            'birthdate'         => 'required',
+            'gender'            => '',
             'address'           => 'required|max:100',
             'phone_number'      => 'required',
             'email'             => 'required|email|unique:customer,email',
@@ -47,7 +50,11 @@ class CustomersController extends Controller
 
 		$customer = new Customers;
 		
-		$customer->name 		= $request['name'];
+
+        $customer->first_name   = $request['first_name'];
+		$customer->last_name    = $request['last_name'];
+        $customer->birthdate    = $request['birthdate'];
+        $customer->gender       = $request['gender'];
 		$customer->address 		=  $request['address'];
 		$customer->phone_number =  $request['phone_number'];
 		$customer->email 		=  $request['email'];

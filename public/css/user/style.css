@@ -506,6 +506,8 @@ tbody {
   background-color: #fafafa;
   border-top: 1px solid #f3f3f3;
   border-bottom: 1px solid #f3f3f3;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .footer-top.light-gray-bg {
@@ -3191,6 +3193,7 @@ ul.pagination .page-item.active .page-link,
 .breadcrumb-container {
   background-color: #f8f8f8;
   border-bottom: 1px solid #f4f4f4;
+  margin-top: 80px;
 }
 
 .dark.breadcrumb-container {

@@ -74,10 +74,18 @@
 							<!-- ================ -->
 							<div class="header-top-dropdown text-right">
 								<div class="btn-group">
+									@if(Auth::check())
+									<a href="/logout" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Logout</a>
+									@else
 									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+									@endif
 								</div>
 								<div class="btn-group">
+									@if(Auth::check())
+										
+									@else
 									<a href="/login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+									@endif
 								</div>
 							</div>
 							<!--  header top dropdowns end -->

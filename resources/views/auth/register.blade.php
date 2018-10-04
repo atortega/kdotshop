@@ -72,8 +72,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-control" id="gender" name="gender">
-                                    <option value="M" >Male</option>
-                                    <option value="F" >Female</option>
+                                    <option value="M" {{ (old("gender") == "M" ? "selected" : "") }} >Male</option>
+                                    <option value="F" {{ (old("gender") == "F" ? "selected" : "") }} >Female</option>
                                 </select>
                             </div>
                         </div>

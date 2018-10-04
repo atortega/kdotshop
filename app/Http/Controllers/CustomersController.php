@@ -39,6 +39,7 @@ class CustomersController extends Controller
         $request->validate([
             'first_name'        => 'required|max:30',
             'last_name'         => 'required|max:30',
+            'middle_name'       => 'required',
             'birthdate'         => 'required',
             'gender'            => '',
             'address'           => 'required|max:100',

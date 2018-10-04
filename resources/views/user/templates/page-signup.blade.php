@@ -117,7 +117,7 @@
                                   </div>  
                               </div>   
 
-                               <div class="form-group has-feedback row" > 
+                              <div class="form-group has-feedback row" > 
                                 <label for="verification-code" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
                                     <input type="vCode" class="form-control" id="vCode" placeholder="*Verification Code" name="code">
@@ -128,7 +128,7 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="fname" class="form-control" id="fname" placeholder="*First Name" name="first_name" required>
+                                    <input type="text" class="form-control" id="fname" placeholder="*First Name" name="first_name" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 
@@ -136,7 +136,15 @@
                               <div class="form-group has-feedback row" > 
                                 <label for="last_name" class="col-md-3 text-md-right control-label col-form-label"></label>
                                   <div class="col-md-8">
-                                    <input type="lname" class="form-control" id="lname" placeholder="*Last Name" name="last_name" required>
+                                    <input type="text" class="form-control" id="lname" placeholder="*Last Name" name="last_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="middle_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="text" class="form-control" id="mname" placeholder="*Middle Name" name="middle_name" required>
                                     <i class="fa fa-user form-control-feedback pr-4"></i>
                                   </div>
                               </div> 

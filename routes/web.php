@@ -208,3 +208,4 @@ Route::get('/shop-checkoutCompleted', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+

@@ -19,7 +19,15 @@ class CustomUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username','email', 'password'
+        'first_name',
+        'middle_name',
+        'last_name',
+        'birthdate',
+        'gender',
+        'phone_number',
+        'remember_token',
+        'email',
+        'password'
     ];
 
     /**

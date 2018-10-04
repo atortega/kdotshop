@@ -89,31 +89,31 @@
                 <div class="col-lg-6">
                   <div class="slick-carousel content-slider-with-controls">
                     <div class="overlay-container overlay-visible">
-                      <img src="images/page-about-1.jpg" alt="">
+                      <img src='{{ asset("image/templates/page-about-1.jpg") }}' alt="">
                       <div class="overlay-bottom hidden-sm-down">
                         <div class="text">
                           <h3 class="title">We Can Do It</h3>
                         </div>
                       </div>
-                      <a href="images/page-about-1.jpg" class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
+                      <a href='{{ asset("image/templates/page-about-1.jpg") }}' class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
                     </div>
                     <div class="overlay-container overlay-visible">
-                      <img src="images/page-about-2.jpg" alt="">
+                      <img src='{{ asset("image/templates/page-about-2.jpg") }}' alt="">
                       <div class="overlay-bottom hidden-sm-down">
                         <div class="text">
                           <h3 class="title">You Can Trust Us</h3>
                         </div>
                       </div>
-                      <a href="images/page-about-2.jpg" class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
+                      <a href='{{ asset("image/templates/page-about-2.jpg") }}' class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
                     </div>
                     <div class="overlay-container overlay-visible">
-                      <img src="images/page-about-3.jpg" alt="">
+                      <img src='{{ asset("image/templates/page-about-3.jpg") }}' alt="">
                       <div class="overlay-bottom hidden-sm-down">
                         <div class="text">
                           <h3 class="title">We Love What We Do</h3>
                         </div>
                       </div>
-                      <a href="images/page-about-3.jpg" class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
+                      <a href='{{ asset("image/templates/page-about-3.jpg") }}' class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src="storage/team/jrl.jpg" alt="">
+                    <img src='{{ asset("storage/team/jrl.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -155,7 +155,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src="images/team-member-2.jpg" alt="">
+                    <img src='{{ asset("image/templates/team-member-2.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -175,7 +175,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src="images/team-member-3.jpg" alt="">
+                    <img src='{{ asset("image/templates/team-member-3.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -195,7 +195,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src="images/team-member-4.jpg" alt="">
+                    <img src='{{ asset("image/templates/team-member-4.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>

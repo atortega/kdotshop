@@ -16,7 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page transparent-header">
+  <body class="front-page ">
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -41,7 +41,18 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i>
+              <a class="link-dark" href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-cart">Shopping Cart</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-checkout">Checkout</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-checkoutPayment">Checkout Payment</a>
+            </li>
             <li class="breadcrumb-item active">Checkout Review</li>
           </ol>
         </div>
@@ -61,7 +72,7 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h1 class="page-title">Checkout Review</h1>
+              <h3 class="title-page">Checkout Review</h3>
               <div class="separator-2"></div>
               <!-- page-title end -->
 
@@ -75,28 +86,43 @@
                   </tr>
                 </thead>
                 <tbody>
+                  
+                 
+                    @foreach($cartProducts as $cartProduct)   
                   <tr>
-                    <td class="product"><a href="shop-product.html">Product Title 1</a> <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</small></td>
-                    <td class="price">$99.50 </td>
+                    <td class="product">
+                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
+                         {{$cartProduct->product_name}}
+                      </a> 
+                      <small>
+                        {{$cartProduct->desc}}
+                      </small>
+                    </td>
+                    <td class="price">₱ {{$cartProduct->price}} </td>
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="text" class="form-control" value="2" disabled>
+                        <input type="text" class="form-control" value="{{$cartProduct->qty}}" disabled>
                       </div>                      
                     </td>
-                    <td class="amount">$199.00 </td>
+                     <?php
+                        $subTotal = $cartProduct->qty * $cartProduct->price;
+                      ?>  
+                    <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
-                  <tr>
+                  @endforeach
+                 <!--  <tr>
                     <td class="total-quantity" colspan="3">Subtotal</td>
                     <td class="amount">$1997.00</td>
-                  </tr>
+                  </tr> -->
                   <!-- <tr>                    
                     <td class="total-quantity" colspan="2">Discount Coupon</td>
                     <td class="price">TheProject25672</td>
                     <td class="amount">-20%</td>
                   </tr> -->
                   <tr>
-                    <td class="total-quantity" colspan="3">Total 8 Items</td>
-                    <td class="total-amount">$1597.00</td>
+                    <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
+                    
+                    <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                 </tbody>
               </table>

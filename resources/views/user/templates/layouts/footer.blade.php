@@ -165,4 +165,56 @@
     <!-- Custom Scripts -->
     <script src="{{ URL::asset('js/user/custom.js') }}"></script>
 
+    <!-- Shopping Cart Page Redirect -->
+    <script>
+      $(document).ready(function() {
+
+        //triggers basket icon (button), then redirects to shopping cart
+        $(".gotoshopcart").click(function(){
+          window.location.href = '/shop-cart';
+        });
+
+        //tester for <input id="qty"> and <p id="qty_display"/>
+        $("#qty").keyup(function() {
+          var value = $(this).val();
+          $("#qty_display").text(value);
+        }).keyup();
+
+        var dataArray = new Array();
+
+        $('.update-cart').each(function(){
+          var dataCart = $(this).data('cart');
+          //checks if data-cart is already processed  
+          if(dataArray.indexOf(dataCart) < 0){
+            //update data array
+            dataArray.push(dataCart);
+            $('.update-cart[data-cart="'+dataCart+'"]').click(function() {
+              $.ajax({
+                  type: "post",
+                  dataType: 'json',
+                  data: {
+                          rowId: $('#rowId').val(),
+                          qty: $("#qty").val(),
+                          _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                  cache: false,
+                  url: '/cart-update',
+                  success: function(data){
+                      console.log(data);
+                      window.location.href = '/shop-cart';
+                  },
+                  error: function(){  // error handling
+                      console.log();
+                  }
+              });
+            });
+          }
+          console.log(dataCart);
+        });
+
+        // console.log(dataArray);
+
+      });
+    </script>
+
 </footer>

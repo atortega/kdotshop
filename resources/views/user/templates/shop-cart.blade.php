@@ -16,7 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page transparent-header">
+  <body class="front-page">
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -40,7 +40,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item active">Shopping Cart</li>
           </ol>
         </div>
@@ -60,19 +60,20 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h1 class="page-title">Shopping Cart</h1>
+              <h3 class="page-title">Shopping Cart</h3>
               <div class="separator-2"></div>
               <!-- page-title end -->
 
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
-                    <th>Product </th>
-                    <th>Price </th>
-                    <th>Tax</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <!-- <th>Tax</th> -->
                     <th>Quantity</th>
-                    <th>Remove </th>
-                    <th class="amount">Subtotal </th>
+                    <th style="text-align: center">Action</th>
+                    <th class="amount">Subtotal</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
@@ -92,21 +93,33 @@
                     <td class="price">
                       ₱ {{$cartProduct->price}}
                     </td>
-
-                    <td class="tax">
-                      {{ Cart::tax() }}
-                    </td>
+                    
+                    <!-- <td class="tax">
+                      Cart : : tax()
+                    </td> -->
 
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="text" class="form-control" value="{{$cartProduct->qty}}">
+                        <input type="number" id="qty" class="form-control" value="{{$cartProduct->qty}}" min="1">
+                        <!-- <p id="qty_display"></p> -->
                       </div>
                     </td>
 
-                    <td class="remove">
-                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">
-                        Remove
-                      </a>
+                    <td class="remove" align="center">
+                      <div style="margin-top: auto;">                    
+
+                      </div>
+                      <div style="margin-top: auto;">
+                        <input type="text" id="rowId" value="{{ $cartProduct->rowId }}" hidden>
+                        <button style="padding: 2px 16px;" class="btn btn-sm btn-info update-cart"
+                          data-cart="{{ $cartProduct->product_id }}">
+                          Update
+                        </button>
+                        <a href="/cart-remove/{{ $cartProduct->rowId }}" style="padding: 2px 14px;" 
+                          class="btn btn-sm btn-danger">
+                          Remove
+                        </a>
+                      </div>
                     </td>
 
                       <?php
@@ -116,6 +129,8 @@
                     <td class="amount">
                       ₱ {{$subTotal}}
                     </td>
+
+
 
                   </tr>
                   <!-- <tr>
@@ -128,14 +143,14 @@
                     @endforeach
 
                   <tr>
-                    <td class="total-quantity" colspan="5">Total {{ Cart::count() }} Items</td>
+                    <td class="total-quantity" colspan="4">Total {{ Cart::count() }} Items</td>
                     <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                     
                 </tbody>
               </table>
               <div class="text-right">
-                <a href="/shop-cart" class="btn btn-group btn-default">Update Cart</a>
+                <a href="/cart-destroy" class="btn btn-group btn-danger">Clear Item(s)</a>
                 <a href="/shop-checkout" class="btn btn-group btn-default">Checkout</a>
               </div>
 

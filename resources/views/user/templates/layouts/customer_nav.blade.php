@@ -162,9 +162,9 @@
 										</div>
 										<div class="btn-group">
 											<button type="button" id="header-drop-4"  
-													class="btn dropdown-toggle dropdown-toggle--no-caret"
+													class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart"
 													aria-haspopup="true" aria-expanded="false">
-												<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+												<i class="fa fa-shopping-basket"></i>
 												<span class="cart-count default-bg">{{ Cart::count() }}</span>
 											</button>
 										</div>
@@ -230,10 +230,10 @@
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" href="/shop-cart" id="header-drop-2"
-										class="btn dropdown-toggle dropdown-toggle--no-caret" 
+								<button type="button" id="header-drop-2"
+										class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart " 
 										aria-haspopup="true" aria-expanded="false">
-									<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+									<i class="fa fa-shopping-basket" ></i>
 									<span class="cart-count default-bg">{{ Cart::count() }}</span>
 								</button>
 							</div>

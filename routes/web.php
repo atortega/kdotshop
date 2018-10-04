@@ -52,13 +52,15 @@ Route::get('/shop-cart', function () {
 });
 Route::post('/cart-add', 'CartController@addToCart');
 Route::get('/shop-cart', 'CartController@cartShow');
+Route::post('/cart-update', 'CartController@cartUpdate');
 Route::get('/cart-remove/{rowId}', 'CartController@cartRemove');
+Route::get('/cart-destroy', 'CartController@cartDestroy');
 
 // S H O P - C H E C K O U T
 Route::get('/shop-checkout', function () {
     return view('user.templates.shop-checkout');
 });
-Route::post('/checkout','CartController@cartShow');
+Route::get('/shop-checkout','CartController@cartShowCheckout');
 
 // S H O P - C H E C K O U T P A Y M E N T
 Route::get('/shop-checkoutPayment', function () {
@@ -69,6 +71,7 @@ Route::get('/shop-checkoutPayment', function () {
 Route::get('/shop-checkoutReview', function () {
     return view('user.templates.shop-checkoutReview');
 });
+Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
 
 // S H O P - C H E C K O U T C O M P L E T E D
 Route::get('/shop-checkoutCompleted', function () {

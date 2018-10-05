@@ -35,4 +35,11 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+   'google' => [
+    'client_id'     => env('153395492265-84af51p6e81o378a7v5p9bh151lfggfo.apps.googleusercontent.com'),
+    'client_secret' => env('NeKCFBQO1YgDS2N2zEy60pjM'),
+    'redirect'      => env('http://local.kdotshop.com/callback'),
+    ]
+
+
 ];

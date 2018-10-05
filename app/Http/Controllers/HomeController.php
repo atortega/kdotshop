@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $request->session()->flush();
         return view('home');
     }
 }

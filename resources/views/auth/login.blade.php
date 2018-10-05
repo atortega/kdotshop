@@ -4,18 +4,22 @@
 <div class="container">
     <div class="clearfix"></div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="main space-top" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+            <div class="form-block-login p-30 light-gray-bg border-clear">
+                <a href="{{ url('/signup')}}" class="d-inline-block float-right"
+                     style="color: #f49ac1; font-weight: bold; text-decoration:none;">SignUp
+                </a>
+                <h2 class="title">{{ __('Login') }}</h2>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+                <!-- <div class="card-body"> -->
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                         @csrf
 
+                    
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -25,11 +29,12 @@
                                 @endif
                             </div>
                         </div>
+                    
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -64,6 +69,9 @@
                             </div>
                         </div>
                     </form>
+                     <div class="card-header">
+                                <p class="text-center space-top">Don't have an account yet? <a href="/signup">Sign Up</a> now.</p>
+                            </div>
                 </div>
             </div>
         </div>

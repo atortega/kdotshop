@@ -63,5 +63,10 @@ class CartController extends Controller
         return redirect('/shop-cart');
     }
 
+    // public function cartUpdate(){
+    //     Cart::update($rowId, $qty);
+    //     return redirect('/shop-cart',['cartProducts'=>$cartProducts]);
+    // }
+
      
 }

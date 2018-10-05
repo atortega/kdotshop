@@ -16,7 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page ">
+  <body class="front-page transparent-header">
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -33,17 +33,14 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.layouts.customer_nav')
+      @include('user.templates.layouts.customer_nav')
       <!-- header-container end -->
       <!-- breadcrumb start -->
       <!-- ================ -->
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <i class="fa fa-home pr-2"></i>
-              <a class="link-dark" href="/">Home</a>
-            </li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
             <li class="breadcrumb-item active">Shopping Cart</li>
           </ol>
         </div>
@@ -63,7 +60,7 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h3 class="title-page">Shopping Cart</h3>
+              <h1 class="page-title">Shopping Cart</h1>
               <div class="separator-2"></div>
               <!-- page-title end -->
 
@@ -72,36 +69,54 @@
                   <tr>
                     <th>Product </th>
                     <th>Price </th>
+                    <th>Tax</th>
                     <th>Quantity</th>
                     <th>Remove </th>
                     <th class="amount">Subtotal </th>
                   </tr>
                 </thead>
                 <tbody>
-                  
                  
-                    @foreach($cartProducts as $cartProduct)   
+                  @foreach($cartProducts as $cartProduct)   
                   <tr class="remove-data">
+
                     <td class="product">
-                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
+                      <a href='{{ asset("/shop-productDetails/$cartProduct->product_id") }}'>
                         {{$cartProduct->product_name}}
                       </a>
-                      <small>{{$cartProduct->desc}}</small>
+                      <small>
+                        {{$cartProduct->desc}}
+                      </small>
                     </td>
-                    <td class="price">₱ {{$cartProduct->price}}  </td>
+
+                    <td class="price">
+                      ₱ {{$cartProduct->price}}
+                    </td>
+
+                    <td class="tax">
+                      {{ Cart::tax() }}
+                    </td>
+
                     <td class="quantity">
                       <div class="form-group">
                         <input type="text" class="form-control" value="{{$cartProduct->qty}}">
                       </div>
                     </td>
+
                     <td class="remove">
-                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">Remove</a>
+                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">
+                        Remove
+                      </a>
                     </td>
-                     <?php
+
+                      <?php
                         $subTotal = $cartProduct->qty * $cartProduct->price;
                       ?>
-                    
-                    <td class="amount">₱ {{$subTotal}}</td>
+
+                    <td class="amount">
+                      ₱ {{$subTotal}}
+                    </td>
+
                   </tr>
                   <!-- <tr>
                     <td colspan="3">Discount Coupon</td>
@@ -110,11 +125,10 @@
                         <input type="text" class="form-control">
                       </div>
                     </td> -->
-                  </tr>
-                    @endforeach                  
+                    @endforeach
+
                   <tr>
-                    <td class="total-quantity" colspan="4">Total {{Cart::count()}} Items</td>
-                    
+                    <td class="total-quantity" colspan="5">Total {{ Cart::count() }} Items</td>
                     <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                     
@@ -148,4 +162,4 @@
     <!-- Jquery and Bootstap core js files -->
     
   </body>
-</html>
+</html>\ 

@@ -73,16 +73,30 @@
 							<!-- header top dropdowns start -->
 							<!-- ================ -->
 							<div class="header-top-dropdown text-right">
-								<div class="btn-group">
+
+								<div class="btn-group dark">
 									@if(Auth::check())
-									<a href="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>{{ Auth::user()->first_name }}</a>
-									<ul class="dropdown-menu">
-										<li><a href="" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>My Purchase</a></li>
-										<li class="divider"></li>
-										<li><a href="" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>My Account</a></li>
-										<li class="divider"></li>
-										<li><a href="/logout" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i> Logout, {{ Auth::user()->first_name }}</a></li>
-									</ul>
+									<button type="button" class="btn btn-dark btn-sm">
+										<i class="fa fa-user pr-2"></i>{{ Auth::user()->first_name }} 
+									</button>
+									<button type="button" class="btn btn-dark btn-sm dropdown-toggle dropdown-toggle-split"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									</button>
+									<div class="dropdown-menu">
+										<a href="" class="dropdown-item">
+											<i class="fa fa-shopping-bag pr-2"></i>
+											<span>My Purchase</span>
+										</a>
+										<a href="" class="dropdown-item">
+											<i class="fa fa-user pr-12"></i>
+											<span class="pr-10">My Account</span>
+										</a>
+										<div class="dropdown-divider"></div>
+										<a href="/logout" class="dropdown-item">
+											<i class="fa fa-sign-out pr-2"></i>
+											<span>Logout</span>
+										</a>
+									</div>
 									@else
 									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
 									@endif

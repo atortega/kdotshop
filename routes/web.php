@@ -29,7 +29,7 @@ Route::prefix('admin')->group(function () {
 	});
 
 
-	//Customers
+	//////////////////////////////////////////////C U S T O M E R S///////////////////////////////////////////////////
 	Route::get('/customers', function () {
 		return view('admin.templates.customers-list');
 	});
@@ -42,7 +42,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/customers/edit', 'CustomersController@editCustomer');
 
 
-    //Products
+    /////////////////////////////////////////////P R O D U C T S ////////////////////////////////////////////////////
 	Route::get('/products/index', 'ProductsController@index');
     Route::get('/products/create', 'ProductsController@createProduct');
     Route::post('/products/create/save', 'ProductsController@addNewProduct');
@@ -63,7 +63,7 @@ Route::prefix('admin')->group(function () {
 	});
 
 
-	//Colors
+	//////////////////////////////////////////////////C O L O R S///////////////////////////////////////////////////
 	Route::get('/colors/index', 'ColorsController@index');
     Route::post('/colors/create/save', 'ColorsController@addNew');
     Route::post('/colors/edit', 'ColorsController@editProductColor');
@@ -75,7 +75,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.templates.colors-create');
     });
 
-	//Sizes
+	///////////////////////////////////////////////S I Z E S////////////////////////////////////////////////////////
 	Route::get('/sizes/index', 'SizesController@index');
     Route::post('/sizes/edit', 'SizesController@editProductSize');
     Route::post('/sizes/delete', 'SizesController@deleteProductSize');
@@ -89,7 +89,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-	//Categories
+	//////////////////////////////////////////////C A T E G O R I E S//////////////////////////////////////////////////
     Route::get('/categories/create', function () {
         return view('admin.templates.category-create');
     });
@@ -102,7 +102,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories/delete', 'CategoriesController@deleteProductCategory');
 
 
-    //Sub Categories
+    /////////////////////////////////////////////////SUB- C A T E G O R I E S/////////////////////////////////////////
     Route::get('/sub-categories/create', function () {
         return view('admin.templates.sub-categories-create');
     });
@@ -126,7 +126,7 @@ Route::get('/about_page', function () {
 
 //updated
 
-///sign-up and login
+////////////////////////////////////////////////////S I G N - U P & L O G I N//////////////////////////////////////
 Route::get('/signup', function () {
     return view('user.templates.page-signup');
 });
@@ -144,14 +144,14 @@ Route::post('/login/submit', 'CustomersController@loginCustomer');
 //Route::post('/signup/verificationCode', 'CustomersController@getVerificationCode');
 
 
-//verificationCode
+///////////////////////////////////////////V E R I F I C A T I O N C O D E////////////////////////////////////////////
 Route::get('page-verificationCode', function () {
     return view('user.templates.page-verificationCode');
 });
 Route::post('/signup/submit', 'CustomersController@createCustomer');
 
 
-//user-profile
+////////////////////////////////////////////// U S E R P R O F I L E////////////////////////////////////////////////
 Route::get('/', 'MainController@index');
 
 
@@ -164,11 +164,14 @@ Route::get('/colors/get/{id}', 'ColorsController@getProductColorById');
 Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');
 Route::get('/categories/get/{id}', 'CategoriesController@getProductCategoryById');
 
+/////////////////////////////////////////////////// P R O D U C T///////////////////////////////////////////////////////////
 Route::get('/product', function () {
     return view('user.templates.product');
 });
 
 Route::get('/product', 'ProductsController@paginateProducts');
+
+//////////////////////////////////////////////////////A B O U T U S////////////////////////////////////////////////////////
 
 Route::get('/about-us', function () {
     return view('user.templates.about_page');

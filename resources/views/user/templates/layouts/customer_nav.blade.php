@@ -75,7 +75,14 @@
 							<div class="header-top-dropdown text-right">
 								<div class="btn-group">
 									@if(Auth::check())
-									<a href="/logout" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Logout, {{ Auth::user()->first_name }}</a>
+									<a href="" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>{{ Auth::user()->first_name }}</a>
+									<ul class="dropdown-menu">
+										<li><a href="" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>My Purchase</a></li>
+										<li class="divider"></li>
+										<li><a href="" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i>My Account</a></li>
+										<li class="divider"></li>
+										<li><a href="/logout" class="btn btn-default btn-sm" data-toggle="dropdown"><i class="fa fa-user pr-2"></i> Logout, {{ Auth::user()->first_name }}</a></li>
+									</ul>
 									@else
 									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
 									@endif

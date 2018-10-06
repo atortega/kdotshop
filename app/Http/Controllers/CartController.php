@@ -64,13 +64,13 @@ class CartController extends Controller
     public function cartRemove($rowId){
         Cart::remove($rowId);
 
-        return redirect('/shop-cart');
+        return redirect()->back()->with('item-removed-message', 'An item has been removed. 🙁');
     }
 
     public function cartDestroy(){
         Cart::destroy();
 
-        return redirect('/shop-cart');
+        return redirect()->back()->with('clear-items-message', 'All items has been removed. 😥');
     }
     
 }

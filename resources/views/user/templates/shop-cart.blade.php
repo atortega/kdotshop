@@ -53,7 +53,6 @@
 
         <div class="container">
           <div class="row">
-
             <!-- main start -->
             <!-- ================ -->
             <div class="main col-12">
@@ -61,8 +60,28 @@
               <!-- page-title start -->
               <!-- ================ -->
               <h3 class="page-title">Shopping Cart</h3>
-              <div class="separator-2"></div>
               <!-- page-title end -->
+              
+              <!-- Alert Messages -->
+              <div class="pull-right">
+                @if(session()->has('item-removed-message'))
+                <div class="alert alert-danger alert-dismissible fade show pull-left" role="alert">
+                    <strong>{{ session()->get('item-removed-message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @elseif(session()->has('clear-items-message'))
+                <div class="alert alert-danger alert-dismissible fade show pull-left" role="alert">
+                    <strong>{{ session()->get('clear-items-message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+              </div>
+
+              <div class="separator-2"></div>
 
               <table class="table cart table-hover table-colored">
                 <thead>
@@ -100,7 +119,8 @@
 
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="number" id="qty" class="form-control" value="{{$cartProduct->qty}}" min="1">
+                        <input id="qty_{{ $cartProduct->rowId }}" class="form-control"
+                          value="{{$cartProduct->qty}}" type="number" min="1">
                         <!-- <p id="qty_display"></p> -->
                       </div>
                     </td>
@@ -110,9 +130,8 @@
 
                       </div>
                       <div style="margin-top: auto;">
-                        <input type="text" id="rowId" value="{{ $cartProduct->rowId }}" hidden>
-                        <button style="padding: 2px 16px;" class="btn btn-sm btn-info update-cart"
-                          data-cart="{{ $cartProduct->product_id }}">
+                        <button class="btn btn-sm btn-info update-cart" data-cart="{{ $cartProduct->rowId }}"
+                          style="padding: 2px 16px;">
                           Update
                         </button>
                         <a href="/cart-remove/{{ $cartProduct->rowId }}" style="padding: 2px 14px;" 

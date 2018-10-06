@@ -22,7 +22,11 @@
 								
 								<!-- <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
 								<!-- <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li> -->
-								<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li class="facebook">
+									<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" target="_blank">
+										<i class="fa fa-facebook"></i>
+									</a>
+								</li>
 								<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
 								<!-- <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
 							</ul>
@@ -134,7 +138,8 @@
 										<!-- logo -->
 										<div id="logo-mobile" class="logo">
 											<a href="/">
-												<img id="logo-img-mobile" src="{{ asset('image/kdot_newlogo.png') }}" alt="kdot_newlogo">
+												<img src="{{ asset('image/kdot_newlogo.png') }}"
+													id="logo-img-mobile" " alt="kdot_newlogo">
 											</a>
 										</div>
 										<!-- name-and-slogan -->
@@ -165,7 +170,7 @@
 													class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart"
 													aria-haspopup="true" aria-expanded="false">
 												<i class="fa fa-shopping-basket"></i>
-												<span class="cart-count default-bg">{{ Cart::count() }}</span>
+												<span id="basket-reload" class="cart-count default-bg">{{ Cart::count() }}</span>
 											</button>
 										</div>
 									</div>

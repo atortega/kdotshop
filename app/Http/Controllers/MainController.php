@@ -48,7 +48,7 @@ class MainController extends Controller
             'top_sellers' => $top_sellers
         ];
 
-        return view('user.html.templates.index', $data);
+        return view('user.templates.index', $data);
     }
 
 

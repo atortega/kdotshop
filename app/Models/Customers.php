@@ -13,7 +13,11 @@ class Customers extends Model
 	public $timestamps = false;
 	
 	protected $fillable = [
-		'name',
+		'first_name',
+		'last_name',
+		'middle_name'
+		'birthdate',
+		'gender',
 		'address',
 		'phone_number',
 		'email',

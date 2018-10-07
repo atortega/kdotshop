@@ -479,8 +479,16 @@ header:not(.dark) .dropdown-menu > li.active > a i {
 }
 
 .dark.header-top .dropdown-menu {
+  /*
   border: 1px solid #241e20;
-  background: #31292c;
+  background: #31292c; 
+
+  Changed by JRL
+  */
+  background-color: #333333;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
 }
 
 .colored.header-top .dropdown-menu {

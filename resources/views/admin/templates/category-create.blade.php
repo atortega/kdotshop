@@ -3,6 +3,7 @@
 
 <head>
     @include('admin.templates.layout.header')
+    @include('admin.templates.layout.customer-nav')
 </head>
 
 <body>

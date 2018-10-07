@@ -58,18 +58,17 @@
 
                             <!-- main start -->
                             <!-- ================ -->
-                            <div class="main col-12">
-
+                            
                               <!-- page-title start -->
                               <!-- ================ -->
                               <h1 class="page-title">Username</h1>
                               <div class="separator-2"></div>
                               <!-- page-title end -->
-                            
-                        
+                             
+                        <div class="col">
+
                               <form method="POST" action="">
                                         @csrf
-
                                         <div class="form-group has-feedback row">
                                             <div class="col-md-5">
                                               <h5>First Name</h5>
@@ -131,11 +130,30 @@
                                                 <input id="first_name" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" required autofocus>
                                             </div>
                                         </div>
+                                      </div>
+                                  
 
+                                      <!--   Another Row -->
+                                         <div class="row">
+                                            
+                                        <div class=" ml-xl-auto">
+                                          <h3 class="title">My Profile</h3>
+                                          <ul class="list-icons">
+                                            <li><a href=" ">Edit Profile</a></li>
+                                            <li><a href=" ">Change Password</a></li>
+                                          </ul>
+                                          <h3 class="title">My Purchase</h3>
+                                          <ul class="list-icons">
+                                            <li><a href=" ">Edit Profile</a></li>
+                                            <li><a href=" ">Change Password</a></li>
+                                          </ul>
+                                        </div>
+                                      </div>
   
                                     </form>
 
                                   </div>
+                              </div>
                             </div>
                             <!-- main end -->
 

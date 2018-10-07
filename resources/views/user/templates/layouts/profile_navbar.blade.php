@@ -10,8 +10,8 @@
                         </ul>
                         <h3 class="title">My Purchase</h3>
                         <ul class="list-icons">
-                            <li><a href="">Edit Profile</a></li>
-                            <li><a href="">Change Password</a></li>
+                            <li><a href=""></a></li>
+                            <li><a href=""></a></li>
                         </ul>
                     </div>
                 </div>

@@ -87,7 +87,7 @@
 											<i class="fa fa-shopping-bag pr-2"></i>
 											<span>My Purchase</span>
 										</a>
-										<a href="" class="dropdown-item">
+										<a href="/account" class="dropdown-item">
 											<i class="fa fa-user pr-12"></i>
 											<span class="pr-10">My Account</span>
 										</a>

@@ -213,3 +213,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+/*Page Account*/
+Route::get('/account', function () {
+    return view('user.templates.page-account');
+});

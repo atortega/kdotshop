@@ -206,4 +206,10 @@ class CustomersController extends Controller
         //return redirect()->action('MainController@index');
         return redirect('/');
     }
+
+    public function account(Request $request)
+    {
+       
+    }
+
 }

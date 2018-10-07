@@ -218,3 +218,10 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/account', function () {
     return view('user.templates.page-account');
 });
+
+Route::get('/updateProfile', function () {
+    return view('user.templates.editprofile');
+});
+Route::get('/updatePassword', function () {
+    return view('user.templates.updatePassword');
+});

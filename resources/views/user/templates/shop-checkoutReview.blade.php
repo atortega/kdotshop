@@ -143,6 +143,7 @@
                     <td class="information">youremail@domain.com </td>
                   </tr>
                   <tr>
+                    <td>Contact Number</td>
                     <td class="information">+00 123 123 1234</td>
                   </tr>
                   <tr>
@@ -172,7 +173,7 @@
                     <td class="information">youremail@domain.com </td>
                   </tr>
                   <tr>
-                    <td>Telephone</td>
+                    <td>Contact Number</td>
                     <td class="information">+00 123 123 1234</td>
                   </tr>
                   <tr>

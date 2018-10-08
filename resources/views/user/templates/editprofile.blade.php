@@ -67,7 +67,20 @@
                 <!-- page-title end -->
 
                 <div class="col-10">
-
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                     <form method="POST" action="/saveProfile">
                         @csrf
                         <div class="row">
@@ -90,7 +103,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Birthdate</h5>
-                                        <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate')== '' ? Auth::user()->birthdate : old('birthdate') }}" required autofocus>
+                                        <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate')== '' ? $birthdate : old('birthdate') }}" required autofocus>
                                     </div>
                                 </div>
 

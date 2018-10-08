@@ -89,7 +89,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Birthdate</h5>
-                                        <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
+                                        <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
                                     </div>
                                 </div>
 

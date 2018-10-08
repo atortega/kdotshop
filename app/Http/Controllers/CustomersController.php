@@ -221,16 +221,19 @@ class CustomersController extends Controller
             'first_name'        => 'required',
             'last_name'         => 'required',
             'gender'            => 'required',
-            'phone_number'      => 'required'
+            'phone_number'      => 'required',
+            'birthdate'         => 'date'
         ]);
 
         $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
+
+        $birthdate = date('Y-m-d', strtotime($request['birthdate']));
 
         $customer->first_name   =  $request['first_name'];
         $customer->middle_name  =  $request['middle_name'];
         $customer->last_name    =  $request['last_name'];
         $customer->gender       =  $request['gender'];
-        $customer->birthdate    =  $request['birthdate'];
+        $customer->birthdate    =  $birthdate;
         $customer->phone_number =  $request['phone_number'];
 
         $customer->save();
@@ -261,5 +264,11 @@ class CustomersController extends Controller
             return redirect()->back()->with('message', 'Current Password not correct!');
         }
 
+    }
+
+    public function updateProfileForm()
+    {
+        $birthdate = date('m/d/Y', strtotime(Auth::user()->birthdate));
+        return view('user.templates.editprofile', ["birthdate" => $birthdate]);
     }
 }

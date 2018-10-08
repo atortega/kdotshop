@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Datatables;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Customers;
 
@@ -212,4 +214,52 @@ class CustomersController extends Controller
        
     }
 
+    public function saveProfile(Request $request)
+    {
+        $request->validate([
+            'phone_number'      => 'required',
+            'first_name'        => 'required',
+            'last_name'         => 'required',
+            'gender'            => 'required',
+            'phone_number'      => 'required'
+        ]);
+
+        $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
+
+        $customer->first_name   =  $request['first_name'];
+        $customer->middle_name  =  $request['middle_name'];
+        $customer->last_name    =  $request['last_name'];
+        $customer->gender       =  $request['gender'];
+        $customer->birthdate    =  $request['birthdate'];
+        $customer->phone_number =  $request['phone_number'];
+
+        $customer->save();
+
+        return redirect('/account');
+    }
+
+    /*
+     * Change Password
+     *
+     * @param Array $request
+     *
+     * @return void
+     */
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password'  => 'required',
+            'new_password'      => 'required|min:8|confirmed'
+        ]);
+
+        if (Hash::check($request['current_password'], Auth::user()->getAuthPassword())) {
+            $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
+            $customer->password = Hash::make($request['new_password']);
+            $customer->save();
+            return redirect()->back()->with('message', 'Password changed successfully');
+        } else {
+            return redirect()->back()->with('message', 'Current Password not correct!');
+        }
+
+    }
 }

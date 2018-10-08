@@ -74,14 +74,14 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>First Name</h5>
-                                        <input id="fname" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name') }}" disabled>
+                                        <input id="fname" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Last Name</h5>
-                                        <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}"disabled>
+                                        <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ Auth::user()->last_name }}"disabled>
                                     </div>
                                 </div>
 
@@ -89,7 +89,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Birthdate</h5>
-                                        <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate') }}" disabled>
+                                        <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
                                     </div>
                                 </div>
 
@@ -110,25 +110,25 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Middle Name</h5>
-                                         <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ old('middle_name') }}" disabled>
+                                         <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ Auth::user()->middle_name }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Gender</h5>
-                                        <input id="gender" type="text" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender') }}" disabled>
+                                        <input id="gender" type="text" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ Auth::user()->gender }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Phone Number</h5>
-                                        <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" disabled>
+                                        <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>E-mail</h5>
-                                       <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" disabled>
+                                       <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ Auth::user()->email }}" disabled>
                                     </div>
                                 </div>
                             </div>

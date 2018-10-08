@@ -67,8 +67,21 @@
                 <!-- page-title end -->
 
                 <div class="col-10">
-
-                    <form method="POST" action="">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                    <form method="POST" action="/change-password">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -90,7 +103,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Re-Enter New Password</h5>
-                                        <input id="new_password" type="text" class="form-control{{ $errors->has('new_password') ? ' is-invalid' : '' }}" name="new_password" value="{{ old('new_password') }}" required autofocus>
+                                        <input id="new_password_confirmation" type="text" class="form-control{{ $errors->has('new_password_confirmation') ? ' is-invalid' : '' }}" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" required autofocus>
                                     </div>
                                 </div>
 

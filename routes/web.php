@@ -225,3 +225,6 @@ Route::get('/updateProfile', function () {
 Route::get('/updatePassword', function () {
     return view('user.templates.updatePassword');
 });
+
+Route::post('/saveProfile', 'CustomersController@saveProfile');
+Route::post('/change-password', 'CustomersController@changePassword');

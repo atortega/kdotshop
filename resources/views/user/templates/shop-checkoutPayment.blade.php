@@ -80,14 +80,16 @@
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="optionsRadios1" value="option1" checked>
                         <label class="form-check-label">
-                          PayMaya<i class="fa fa-cc-visa pl-10"></i>
+                          <img src='{{ asset("image/payment-methods/paymaya-218x48.png") }}'>
+                          <i class="fa fa-cc-mastercard pl-10"></i>
+                          <i class="fa fa-cc-visa pl-10"></i>
                         </label>
                       </div>
                       <div class="space-bottom"></div>
                     </div>
-                    <div class="col-xl-9">
-                      <p>After submitting your order, you will be redirected to the PayMaya website where you can make your payment. Once your payment has been successfully completed and confirmed by PayMaya, delivery of the ordered products will be initiated.</p>
-                    </div>
+                    <!-- <div class="col-xl-9">
+                      <p></p>
+                    </div> -->
                   </div>
                   <div class="space"></div>
                   <div class="row">
@@ -95,7 +97,8 @@
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="optionsRadios2" value="option2">
                         <label class="form-check-label">
-                          Paypal<i class="fa fa-cc-paypal pl-10"></i>
+                          <img src='{{ asset("image/payment-methods/paypal-180x48.png") }}'>
+                          <i class="fa fa-cc-paypal pl-10"></i>
                         </label>
                       </div>
                       <div class="space-bottom"></div>
@@ -119,14 +122,14 @@
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="exampleRadios" id="optionsRadios3" value="option3">
                         <label class="form-check-label">
-                          Palawan Express Padala
+                          <img src='{{ asset("image/payment-methods/palawan-express-padala-180x60.png") }}'>
                         </label>
                       </div>
-                      <div class="space-bottom"></div>
+                      <!-- <div class="space-bottom"></div> -->
                     </div>
-                    <div class="col-xl-9">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, quo, non sint nisi, corrupti fuga qui quod autem totam, molestias reiciendis ex unde. Molestias, nostrum numquam, beatae totam esse ab.</p>
-                    </div>
+                    <!-- <div class="col-xl-9">
+                      <p></p>
+                    </div> -->
                   </div>
                 </form>
               </fieldset>

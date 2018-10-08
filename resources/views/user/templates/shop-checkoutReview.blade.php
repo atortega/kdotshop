@@ -122,7 +122,7 @@
                   <tr>
                     <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
                     
-                    <td class="total-amount">₱ {{$total}}</td>
+                    <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                 </tbody>
               </table>

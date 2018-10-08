@@ -98,14 +98,13 @@
                         <input type="text" class="form-control" value="{{$cartProduct->qty}}" disabled>
                       </div>                      
                     </td>
-                     
+                    <?php
+                      $subTotal = $cartProduct->qty * $cartProduct->price;
+                    ?>
                     <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
                    @endforeach
-                  <!-- <tr>
-                    <td class="total-quantity" colspan="3">Subtotal</td>
-                    <td class="amount">₱ {{$subTotal}}</td>
-                  </tr> -->
+
                   <!-- <tr>                    
                     <td class="total-quantity" colspan="2">Discount Coupon</td>
                     <td class="price">TheProject25672</td>
@@ -115,7 +114,7 @@
                   <tr>
                     <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
                     
-                    <td class="total-amount">₱ {{$total}}</td>
+                    <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -189,7 +188,7 @@
                     </div>
                   </div>
                   <div class="space"></div>
-                  <div class="row">
+                 <!--  <div class="row">
                     <div class="col-xl-3">
                       <h3 class="title mt-5 mt-lg-0">Additional Info</h3>
                     </div>
@@ -200,7 +199,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </form>
               </fieldset>
               <fieldset>

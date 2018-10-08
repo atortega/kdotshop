@@ -1,4 +1,5 @@
-!-- header-container start -->
+
+	<!-- header-container start -->
 	<div class="header-container">
 		<!-- header-top start -->
 		<!-- classes:  -->
@@ -68,17 +69,46 @@
 							<!-- header top dropdowns start -->
 							<!-- ================ -->
 							<div class="header-top-dropdown text-right">
-								<div class="btn-group">
-									<a href="/page-signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+
+								<div class="btn-group dark">
+									@if(Auth::check())
+									<button type="button" class="btn btn-dark btn-sm">
+										<i class="fa fa-user pr-2"></i>{{ Auth::user()->first_name }} 
+									</button>
+									<button type="button" class="btn btn-dark btn-sm dropdown-toggle dropdown-toggle-split"
+										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									</button>
+									<div class="dropdown-menu">
+										<a href="" class="dropdown-item">
+											<i class="fa fa-shopping-bag pr-2"></i>
+											<span>My Purchase</span>
+										</a>
+										<a href="/account" class="dropdown-item">
+											<i class="fa fa-user pr-12"></i>
+											<span class="pr-10">My Account</span>
+										</a>
+										<div class="dropdown-divider"></div>
+										<a href="/logout" class="dropdown-item">
+											<i class="fa fa-sign-out pr-2"></i>
+											<span>Logout</span>
+										</a>
+									</div>
+									@else
+									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+									@endif
 								</div>
 								<div class="btn-group">
-									<a href="/page-login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+									@if(Auth::check())
+										
+									@else
+									<a href="/login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+									@endif
 								</div>
 							</div>
 							<!--  header top dropdowns end -->
 						</div>
-						<!-- header-top-second end -->
-					</div>
+						<!-- header-top-second end -->		
+					</div>	
 				</div>
 			</div>
 		</div>
@@ -161,9 +191,9 @@
 										</div>
 										<div class="btn-group">
 											<button type="button" id="header-drop-4"  
-													class="btn dropdown-toggle dropdown-toggle--no-caret"
+													class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart"
 													aria-haspopup="true" aria-expanded="false">
-												<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+												<i class="fa fa-shopping-basket"></i>
 												<span class="cart-count default-bg">{{ Cart::count() }}</span>
 											</button>
 										</div>
@@ -229,10 +259,10 @@
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" href="/shop-cart" id="header-drop-2"
-										class="btn dropdown-toggle dropdown-toggle--no-caret" 
+								<button type="button" id="header-drop-2"
+										class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart " 
 										aria-haspopup="true" aria-expanded="false">
-									<a class="fa fa-shopping-basket" style="color: black" href="/shop-cart"></a>
+									<i class="fa fa-shopping-basket" ></i>
 									<span class="cart-count default-bg">{{ Cart::count() }}</span>
 								</button>
 							</div>

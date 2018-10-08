@@ -16,7 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page ">
+  <body class="front-page">
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -33,17 +33,14 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.layouts.customer_nav')
+      @include('user.templates.layouts.customer_nav')
       <!-- header-container end -->
       <!-- breadcrumb start -->
       <!-- ================ -->
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <i class="fa fa-home pr-2"></i>
-              <a class="link-dark" href="/">Home</a>
-            </li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item active">Shopping Cart</li>
           </ol>
         </div>
@@ -56,52 +53,104 @@
 
         <div class="container">
           <div class="row">
-
             <!-- main start -->
             <!-- ================ -->
             <div class="main col-12">
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h3 class="title-page">Shopping Cart</h3>
-              <div class="separator-2"></div>
+              <h3 class="page-title">Shopping Cart</h3>
               <!-- page-title end -->
+              
+              <!-- Alert Messages -->
+              <div class="pull-right">
+                @if(session()->has('item-removed-message'))
+                <div class="alert alert-danger alert-dismissible fade show pull-left" role="alert">
+                    <strong>{{ session()->get('item-removed-message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @elseif(session()->has('clear-items-message'))
+                <div class="alert alert-danger alert-dismissible fade show pull-left" role="alert">
+                    <strong>{{ session()->get('clear-items-message') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+              </div>
+
+              <div class="separator-2"></div>
 
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
-                    <th>Product </th>
-                    <th>Price </th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <!-- <th>Tax</th> -->
                     <th>Quantity</th>
-                    <th>Remove </th>
-                    <th class="amount">Subtotal </th>
+                    <th style="text-align: center">Action</th>
+                    <th class="amount">Subtotal</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
-                  
                  
-                    @foreach($cartProducts as $cartProduct)   
+                  @foreach($cartProducts as $cartProduct)   
                   <tr class="remove-data">
+
                     <td class="product">
-                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
+                      <a href='{{ asset("/shop-productDetails/$cartProduct->product_id") }}'>
                         {{$cartProduct->product_name}}
                       </a>
-                      <small>{{$cartProduct->desc}}</small>
+                      <small>
+                        {{$cartProduct->desc}}
+                      </small>
                     </td>
-                    <td class="price">₱ {{$cartProduct->price}}  </td>
+
+                    <td class="price">
+                      ₱ {{$cartProduct->price}}
+                    </td>
+                    
+                    <!-- <td class="tax">
+                      Cart : : tax()
+                    </td> -->
+
                     <td class="quantity">
                       <div class="form-group">
-                        <input type="text" class="form-control" value="{{$cartProduct->qty}}">
+                        <input id="qty_{{ $cartProduct->rowId }}" class="form-control"
+                          value="{{$cartProduct->qty}}" type="number" min="1">
+                        <!-- <p id="qty_display"></p> -->
                       </div>
                     </td>
-                    <td class="remove">
-                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">Remove</a>
+
+                    <td class="remove" align="center">
+                      <div style="margin-top: auto;">                    
+
+                      </div>
+                      <div style="margin-top: auto;">
+                        <button class="btn btn-sm btn-info update-cart" data-cart="{{ $cartProduct->rowId }}"
+                          style="padding: 2px 16px;">
+                          Update
+                        </button>
+                        <a href="/cart-remove/{{ $cartProduct->rowId }}" style="padding: 2px 14px;" 
+                          class="btn btn-sm btn-danger">
+                          Remove
+                        </a>
+                      </div>
                     </td>
-                     <?php
+
+                      <?php
                         $subTotal = $cartProduct->qty * $cartProduct->price;
                       ?>
-                    
-                    <td class="amount">₱ {{$subTotal}}</td>
+
+                    <td class="amount">
+                      ₱ {{$subTotal}}
+                    </td>
+
+
+
                   </tr>
                   <!-- <tr>
                     <td colspan="3">Discount Coupon</td>
@@ -110,18 +159,17 @@
                         <input type="text" class="form-control">
                       </div>
                     </td> -->
-                  </tr>
-                    @endforeach                  
+                    @endforeach
+
                   <tr>
-                    <td class="total-quantity" colspan="4">Total {{Cart::count()}} Items</td>
-                    
+                    <td class="total-quantity" colspan="4">Total {{ Cart::count() }} Items</td>
                     <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                     
                 </tbody>
               </table>
               <div class="text-right">
-                <a href="/shop-cart" class="btn btn-group btn-default">Update Cart</a>
+                <a href="/cart-destroy" class="btn btn-group btn-danger">Clear Item(s)</a>
                 <a href="/shop-checkout" class="btn btn-group btn-default">Checkout</a>
               </div>
 

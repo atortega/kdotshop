@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="zxx">
 
+
   <head>
     
-    @include('user.templates.layouts.header')
+       @include('user.templates.layouts.header')
+
+ 
 
     <title>KDot | Sign Up</title>
     
@@ -16,15 +19,20 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page ">
+  <body class="front-page transparent-header">
+
 
     <!-- scrollToTop -->
     <!-- ================ -->
     <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
 
+
     <!-- page wrapper start -->
     <!-- ================ -->
     <div class="page-wrapper">
+
+    </div>
+
       <!-- header-container start -->
       
         <!-- header-top start -->
@@ -33,7 +41,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.layouts.customer_nav')
+        @include('user.templates.layouts.customer_nav') 
                 
                 <!-- header-top end -->
 
@@ -52,7 +60,8 @@
               <!-- header-container end -->
               <!-- breadcrumb start -->
               <!-- ================ -->
-              <div class="breadcrumb-container">
+          <div>
+             <div class="breadcrumb-container">
                 <div class="container">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
@@ -61,96 +70,160 @@
                   </ol>
                 </div>
               </div>
+            </div>  
             
               <!-- breadcrumb end -->
 
               <!-- main-container start -->
               <!-- ================ -->
               <!-- <div class="main-container dark-translucent-bg" style="background-image:url('images/background-img-6.jpg');"> -->
+                <!-- <br><br><br><br> -->
                 <div class="container">
                   <div class="row justify-content-center">
                     <div class="col-auto">
                       <!-- main start -->
                       <!-- ================ -->
-                      <div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                      <div class="main" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
                         <div class="form-block-signUp p-30 light-gray-bg border-clear">
-                            <a href="/page-login" class="d-inline-block float-right"
+                            <a href="{{ url('/login')}}" class="d-inline-block float-right"
                               style="color: #f49ac1; font-weight: bold; text-decoration:none;">Login
                             </a> 
                           <h2 class="title">Sign Up</h2>
-                          
-                          <form class="form-horizontal">
-
-                            <div class="form-group has-feedback row" >
-                              <label for="inputE-mail" class="col-md-3 text-md-right control-label col-form-label"></label>
-                              <div class="col-md-8">
-                                <input type="text" class="form-control" id="inputUserName" placeholder="E-mail" required>
-                                <i class="fa fa-user form-control-feedback pr-4"></i>
+ 
+                           @if ($errors->any())
+                              <div class="alert alert-danger">
+                                  <ul>
+                                      @foreach ($errors->all() as $error)
+                                          <li>{{ $error }}</li>
+                                      @endforeach
+                                  </ul>
                               </div>
-                            </div> 
+                          @endif
+                          @if(session()->has('message'))
+                              <div class="alert alert-success">
+                                  {{ session()->get('message') }}
+                              </div>
+                          @endif
+
+                          
+                          <form class="form-horizontal" action="{{ url('/signup/submit')}}" method="post">
+                             {{ csrf_field() }} 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="phone_number" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="phone_number" class="form-control" id="phonenumber" placeholder="*Enter Phone Number" name="phone_number" required>
+                                     <i class="fa fa-user form-control-feedback pr-4"> </i> <button type="submit" class="btn" style="background-color: pink; float:right;">Send Verification Code</button>
+                                  </div>  
+                              </div>   
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="verification-code" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="vCode" class="form-control" id="vCode" placeholder="*Verification Code" name="code">
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="firstname" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="text" class="form-control" id="fname" placeholder="*First Name" name="first_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="last_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="text" class="form-control" id="lname" placeholder="*Last Name" name="last_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="middle_name" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="text" class="form-control" id="mname" placeholder="*Middle Name" name="middle_name" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" > 
+                                <label for="dob" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <div class="col-md-8">
+                                  <input type="date" class="form-control" id="dob" placeholder="Date of Birth" name="birthdate" required>
+                                  <i class="fa fa-user form-control-feedback pr-4"></i>
+                                </div>
+                              </div> 
+
+
+                               <div class="form-group has-feedback row" > 
+                                <label for="gender" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <div class="col-md-8">
+                                 <select class="form-control" id="gender" placeholder="Gender" name="gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>  
+                                </div>
+                              </div> 
+
+                              <div class="form-group has-feedback row" >
+                                <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                  <div class="col-md-8">
+                                    <input type="email" class="form-control" id="email" placeholder="*E-mail" name="email" required>
+                                    <i class="fa fa-user form-control-feedback pr-4"></i>
+                                  </div>
+                              </div> 
 
 
                             <div class="form-group has-feedback row">
-                              <label for="inputPassword" class="col-md-3 text-md-right control-label col-form-label"></label>
+                              <label for="password" class="col-md-3 text-md-right control-label col-form-label"></label>
                               <div class="col-md-8">
-                                <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                                 <i class="fa fa-lock form-control-feedback pr-4"></i>
                               </div>
                             </div>
 
                               <div class="form-group has-feedback row" >
-                                <label for="inputConfirmPassword" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <label for="confirm_password" class="col-md-3 text-md-right control-label col-form-label"></label>
                                 <div class="col-md-8">
-                                  <input type="text" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
+                                  <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password" required>
                                   <i class="fa fa-user form-control-feedback pr-4"></i>
                                 </div>
                               </div>
 
 
-                              <div class="form-group has-feedback row" >
-                                <label for="inputPhoneNumber" class="col-md-3 text-md-right control-label col-form-label"></label>
-                                <div class="col-md-8">
-                                  <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" required>
-                                  <i class="fa fa-user form-control-feedback pr-4"></i>
-                                  <button type="button" class="btn" style="background-color: pink">Submit</button>
-                                </div>
-                              </div>
+                      
 
-                              <div class="form-group has-feedback row" >
-                                <label for="inputVerficationCode" class="col-md-3 text-md-right control-label col-form-label"></label>
-                                <div class="col-md-8">
-                                  <input type="text" class="form-control" id="inputVerficationCode" placeholder="Verification Code" required>
-                                  <i class="fa fa-user form-control-feedback pr-4"></i>
-                                </div>
-                              </div>
-
+                              
                               <div class="form-group row">
                                 <div class="ml-md-auto col-md-9">
                                   <div class="checkbox form-check">
-                                    <input class="form-check-input" type="checkbox" required>
+                                    <!-- <input class="form-check-input" type="checkbox" required> -->
                                     <label class="form-check-label">
-                                      <p style="color: red;">By signing this, you agree to <a href="termsandconditions.php" style="color: red; font-weight: bold;"> KDot's Terms and Conditions</a></p>
+                                      <p style="color: red;">By signing up, you agree to <a href="termsandconditions.php" style="color: red; font-weight: bold;"> KDot's Terms and Conditions</a></p>
                                     </label>
                                   </div>
                                    <!--  <button type="submit" class="btn btn-group btn-default btn-animated">Log In <i class="fa fa-user"></i></button> -->
-                                    <button type="button" class="btn" style="background-color: pink">SignUp</button>
+                                    <button type="submit" class="btn" style="background-color: pink">SignUp</button>
                                     <button type="button" class="btn">Cancel</button>
                                     <br>
 
                                     <span class="text-center text-muted">Login with</span>
                                     <ul class="social-links colored circle clearfix">
                                       <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                      <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>  
+                                      <li class="googleplus"><a href="{{ url('/redirect') }} "><i class="fa fa-google-plus"></i></a></li>  
                                     </ul>
                                 </div>
                               </div>
                           </form>
                         </div>   
-                      </div>
                       <!-- main end -->
                     </div>
                   </div>
                 </div>
+
               </div>
               <!-- main-container end -->
 
@@ -158,13 +231,14 @@
 
               <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
               <!-- ================ -->
-               @include('user.templates.layouts.footer')
+              @include('user.templates.layouts.footer')
             <!-- page-wrapper end -->
 
             <!-- JavaScript files placed at the end of the document so the pages load faster -->
             <!-- ================================================== -->
             <!-- Jquery and Bootstap core js files -->
-            
+       
   </body>  
+
          
 </html>

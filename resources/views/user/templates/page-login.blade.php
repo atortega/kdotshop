@@ -3,7 +3,8 @@
 
   <head>
     
-    @include('user.templates.layouts.header')
+     @include('user.templates.layouts.header')
+
 
     <title>KDot | Login </title>
     
@@ -16,7 +17,8 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page" >
+  <body class="front-page transparent-header">
+
     <!-- scrollToTop -->
     <!-- ================ -->
     <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
@@ -32,14 +34,14 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.layouts.customer_nav')
+       @include('user.templates.layouts.customer_nav')
                     <!-- header-container end -->
                     <!-- breadcrumb start -->
                     <!-- ================ -->
                     <div class="breadcrumb-container">
                       <div class="container">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
+                          <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
                           <li class="breadcrumb-item active">Page Login</li>
                         </ol>
                       </div>
@@ -51,44 +53,64 @@
                     <!-- ================ -->
                     <!-- <div class="main-container dark-translucent-bg" style="background-image:url('images/background-img-6.jpg');"> -->
                       <div class="container">
+                        <div class="clearfix"></div>
                         <div class="row justify-content-center">
-                          <div class="col-auto">
+                          <div class="col-md-6">
                             <!-- main start -->
                             <!-- ================ -->
-                            <div class="main object-non-visible" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
+                            <div class="main space-top" data-animation-effect="fadeInUpSmall" data-effect-delay="100">
                               <div class="form-block-login p-30 light-gray-bg border-clear">
-                                <a href="/page-signup" class="d-inline-block float-right"
+                                <a href="{{ url('/signup')}}" class="d-inline-block float-right"
                                   style="color: #f49ac1; font-weight: bold; text-decoration:none;">SignUp
                                  </a> 
                               <h2 class="title">Login</h2>
 
-                                <form class="form-horizontal">
+                                  @if ($errors->any())
+                                      <div class="alert alert-danger">
+                                          <ul>
+                                              @foreach ($errors->all() as $error)
+                                                  <li>{{ $error }}</li>
+                                              @endforeach
+                                          </ul>
+                                      </div>
+                                  @endif
+                                  @if(session()->has('message'))
+                                      <div class="alert alert-success">
+                                          {{ session()->get('message') }}
+                                      </div>
+                                  @endif
+
+                                <form class="form-horizontal" action="{{ url('/login/submit')}}" method="post">
+                                  {{ csrf_field() }}
                                   <div class="form-group has-feedback row">
-                                    <label for="inputUserName" class="col-md-3 text-md-right control-label col-form-label"></label>
-                                    <div class="col-md-8">
-                                      <input type="text" class="form-control" id="inputUserName" placeholder="User Name" required>
+                                    <!-- <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label> -->
+                                    <div class="col-md-12">
+                                      <input type="email" class="form-control" id="email" placeholder="User Name" name="email" required>
                                       <i class="fa fa-user form-control-feedback pr-4"></i>
                                     </div>
                                   </div>
                                   <div class="form-group has-feedback row">
-                                    <label for="inputPassword" class="col-md-3 text-md-right control-label col-form-label"></label>
-                                    <div class="col-md-8">
-                                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                                    <!-- <label for="password" class="col-md-3 text-md-right control-label col-form-label"></label> -->
+                                    <div class="col-md-12">
+                                      <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                                       <i class="fa fa-lock form-control-feedback pr-4"></i>
                                     </div>
                                   </div>
                                   <div class="form-group row">
-                                    <div class="ml-md-auto col-md-9">
-                                      <div class="checkbox form-check">
-                                        <input class="form-check-input" type="checkbox" required>
-                                        <label class="form-check-label">
-                                          Remember me.
-                                        </label>
+                                    <div class="ml-md-auto col-md-12">
+                                      <div class="d-inline-block col-md-12">
+                                        <div class="checkbox form-check pull-left">
+                                          <input class="form-check-input" type="checkbox">
+                                          <label class="form-check-label">
+                                            Remember me.
+                                          </label>
+                                        </div>
+                                        <button type="submit" class="btn pull-right" style="background-color: pink">Log-in</button>
                                       </div>
-                                     <button type="button" class="btn" style="background-color: pink">SignUp</button>
-                                      <ul class="space-top">
-                                        <li><a href="forgetpassworrdchuchu.php" style="color: red; font-weight: bold;"> Forget Password ?</a></li>
-                                      </ul>
+
+                                      <div class="space-top">
+                                        <a href="forgetpassworrdchuchu.php" style="color: red; font-weight: bold;"> Forget Password ?</a>
+                                      </div>
                                       <span class="text-center text-muted">Login with</span>
                                       <ul class="social-links colored circle clearfix">
                                         <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -98,7 +120,7 @@
                                   </div>
                                 </form>
                               </div>
-                              <p class="text-center space-top">Don't have an account yet? <a href="/page-signup">Sign Up</a> now.</p>
+                              <p class="text-center space-top">Don't have an account yet? <a href="/signup">Sign Up</a> now.</p>
                             </div>
                             <!-- main end -->
                           </div>
@@ -111,7 +133,7 @@
 
                 <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
                 <!-- ================ -->
-                  @include('user.templates.layouts.footer')
+                 @include('user.templates.layouts.footer')
                 <!-- footer end -->
               </div>
               <!-- page-wrapper end -->

@@ -93,17 +93,6 @@
                                         <input id="birthdate" type="date" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate') }}" required autofocus>
                                     </div>
                                 </div>
-
-
-                                
-
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Address</h5>
-                                        <input id=dob" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
-                                    </div>
-                                </div>
-                          
                             </div>
 
                             <!---2nd Column --->
@@ -124,12 +113,6 @@
                                     <div class="col-md-8">
                                         <h5>Phone Number</h5>
                                         <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" required autofocus>
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>E-mail</h5>
-                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
                             </div>

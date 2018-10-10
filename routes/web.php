@@ -134,70 +134,67 @@ Route::get('page-verificationCode', function () {
 
 
 Route::prefix('admin')->group(function () {
-	Route::get('/', function () {
-		return view('admin.templates.index');
-	});
+    Route::get('/', function () {
+        return view('admin.templates.index');
+    });
 
 
 
 /*---------------------C U S T O M E R S -----------------------*/
-	
-    Route::get('/customers', function () {
+    
 
-	Route::get('/customers', function () {
-		return view('admin.templates.customers-list');
-	});
+    Route::get('/customers', function () {
+        return view('admin.templates.customers-list');
+    });
     Route::get('/customers/create', function () {
         return view('admin.templates.customers-create');
     });
     Route::post('/customers/create/save', 'CustomersController@addCustomer');
-	Route::get('/customers/index', 'CustomersController@index');
+    Route::get('/customers/index', 'CustomersController@index');
     Route::post('/customers/delete', 'CustomersController@deleteCustomer');
     Route::post('/customers/edit', 'CustomersController@editCustomer');
 
 
 
 /*-------------------------P R O D U C T S ---------------------------------*/
-	
+    
     Route::get('/products/index', 'ProductsController@index');
 
     Route::get('/products/create', 'ProductsController@createProduct');
     Route::post('/products/create/save', 'ProductsController@addNewProduct');
-	Route::get('/products', 'ProductsController@productLists');
+    Route::get('/products', 'ProductsController@productLists');
     Route::post('/products/edit', 'ProductsController@updateProduct');
     Route::post('/products/delete', 'ProductsController@deleteProduct');
 
 
 /*------------------------------O R D E R S---------------------------------*/
-	
+    
+
+
     Route::get('/orders', function () {
 
-	Route::get('/orders', function () {
+        return view('admin.templates.orders-list');
+    });
 
-		return view('admin.templates.orders-list');
-	});
-
-	Route::get('/orders/index', 'OrdersController@index');
+    Route::get('/orders/index', 'OrdersController@index');
 
 
+    /*-------------------------------P A Y M E N T S ---------------------------------*/
 
-/*-------------------------------P A Y M E N T S ---------------------------------*/
-	
     Route::get('/payments/index', 'PaymentsController@index');
 
-	Route::get('/payments/index', 'PaymentsController@index');
+    Route::get('/payments/index', 'PaymentsController@index');
 
-	Route::get('/payments', function () {
-		return view('admin.templates.payments-list');
-	});
+    Route::get('/payments', function () {
+        return view('admin.templates.payments-list');
+    });
 
 
+    /*-------------------------C O L O R S ---------------------------------*/
 
-/*-------------------------C O L O R S ---------------------------------*/
-	
     Route::get('/colors/index', 'ColorsController@index');
 
-	Route::get('/colors/index', 'ColorsController@index');
+    Route::get('/colors/index', 'ColorsController@index');
 
     Route::post('/colors/create/save', 'ColorsController@addNew');
     Route::post('/colors/edit', 'ColorsController@editProductColor');
@@ -210,28 +207,25 @@ Route::prefix('admin')->group(function () {
     });
 
 
-/*-----------------------------S I Z E S ---------------------------------*/
-	
+    /*-----------------------------S I Z E S ---------------------------------*/
+
     Route::get('/sizes/index', 'SizesController@index');
 
-	
-	Route::get('/sizes/index', 'SizesController@index');
+
+    Route::get('/sizes/index', 'SizesController@index');
 
     Route::post('/sizes/edit', 'SizesController@editProductSize');
     Route::post('/sizes/delete', 'SizesController@deleteProductSize');
     Route::post('/sizes/create/save', 'SizesController@addNew');
-	Route::get('/sizes', function () {
-		return view('admin.templates.sizes-list');
-	});
-	Route::get('/sizes/create', function () {
-		return view('admin.templates.sizes-create');
-	});
+    Route::get('/sizes', function () {
+        return view('admin.templates.sizes-list');
+    });
+    Route::get('/sizes/create', function () {
+        return view('admin.templates.sizes-create');
+    });
 
 
-
-
-/*------------------------------C A T E G O R I E S ---------------------------------*/
-   
+    /*------------------------------C A T E G O R I E S ---------------------------------*/
 
 
     Route::get('/categories/create', function () {
@@ -246,8 +240,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/categories/delete', 'CategoriesController@deleteProductCategory');
 
 
-
-/*-------------------------S U B- C A T E G O R I E S---------------------------------*/
+    /*-------------------------S U B- C A T E G O R I E S---------------------------------*/
 
 
     Route::get('/sub-categories/create', function () {
@@ -262,7 +255,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
     Route::get('/sub-categories/get/{category_id}', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
 
-
+});
 
 /*-------------------------------------------U S E R A C C O U N T S ------------------------------*/
 Auth::routes();
@@ -287,7 +280,3 @@ Route::post('/change-password', 'CustomersController@changePassword');
 
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
-
-
-
-

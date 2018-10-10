@@ -98,9 +98,17 @@
                         <input type="text" class="form-control" value="{{$cartProduct->qty}}" disabled>
                       </div>                      
                     </td>
+
                     <?php
                       $subTotal = $cartProduct->qty * $cartProduct->price;
                     ?>
+
+                     
+                      <?php
+                        $subTotal = $cartProduct->qty * $cartProduct->price;
+                      ?>
+
+
                     <td class="amount">₱ {{$subTotal}}</td>
                   </tr>
                    @endforeach
@@ -130,25 +138,25 @@
                       <div class="form-group row">
                         <label for="billingFirstName" class="col-lg-2 control-label text-lg-right col-form-label">First Name<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingFirstName" placeholder ="First Name">
+                          <input type="text" class="form-control" id="billing_first_name" placeholder ="First Name">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="billingLastName" class="col-lg-2 control-label text-lg-right col-form-label">Last Name<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingLastName" placeholder ="Last Name">
+                          <input type="text" class="form-control" id="billing_last_name" placeholder ="Last Name">
                         </div>
                       </div>
                       <div class="form-group row">
-                        <label for="billingTel" class="col-lg-2 control-label text-lg-right col-form-label">Telephone<small class="text-default">*</small></label>
+                        <label for="billingTel" class="col-lg-2 control-label text-lg-right col-form-label">Contact Number<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingTel" placeholder ="Telephone">
+                          <input type="text" class="form-control" id="billing_contact_number" placeholder ="Contact Number">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="billingemail" class="col-lg-2 control-label text-lg-right col-form-label">Email<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="email" class="form-control" id="billingemail" placeholder ="Email">
+                          <input type="email" class="form-control" id="billing_email" placeholder ="Email">
                         </div>
                       </div>
                     </div>
@@ -162,7 +170,7 @@
                       <div class="form-group row">
                         <label for="billingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address <small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingAddress1" placeholder ="Address ">
+                          <input type="text" class="form-control" id="billing_address" placeholder ="Address ">
                         </div>
                       </div>
                       <div class="form-group row">
@@ -176,18 +184,19 @@
                       <div class="form-group row">
                         <label for="billingCity" class="col-lg-2 control-label text-lg-right col-form-label">City<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingCity" placeholder ="City">
+                          <input type="text" class="form-control" id="billing_city" placeholder ="City">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="billingPostalCode" class="col-lg-2 control-label text-lg-right col-form-label">Zip Code<small class="text-default">*</small></label>
                         <div class="col-lg-10">
-                          <input type="text" class="form-control" id="billingPostalCode" placeholder ="Postal Code">
+
+                          <input type="text" class="form-control" id="billing_zipcode" placeholder ="Postal Code">
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="space"></div>
+                 <!--  <div class="space"></div>
                   <div class="row">
                     <div class="col-xl-3">
                       <h3 class="title mt-5 mt-lg-0">Additional Info</h3>
@@ -200,6 +209,14 @@
                       </div>
                     </div>
                   </div>
+
+                          <input type="text" class="form-control" id="zip_code" placeholder ="Postal Code">
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                  <!--     -->
+
                 </form>
               </fieldset>
               <fieldset>
@@ -212,27 +229,27 @@
                       </div>
                       <div class="col-xl-8 ml-xl-auto">
                         <div class="form-group row">
-                          <label for="shippingFirstName" class="col-lg-2 control-label text-lg-right col-form-label">First Name<small class="text-default">*</small></label>
+                          <label for="first_name" class="col-lg-2 control-label text-lg-right col-form-label">First Name<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingFirstName" placeholder ="First Name">
+                            <input type="text" class="form-control" id="shipping_first_name" placeholder ="First Name">
                           </div>placeholder 
                         </div>
                         <div class="form-group row">
-                          <label for="shippingLastName" class="col-lg-2 control-label text-lg-right col-form-label">Last Name<small class="text-default">*</small></label>
+                          <label for="last_name" class="col-lg-2 control-label text-lg-right col-form-label">Last Name<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingLastName" placeholder ="Last Name">
+                            <input type="text" class="form-control" id="shipping_last_name" placeholder ="Last Name">
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="shippingTel" class="col-lg-2 control-label text-lg-right col-form-label">Telephone<small class="text-default">*</small></label>
+                          <label for="contact_number" class="col-lg-2 control-label text-lg-right col-form-label">Contact Number<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingTel" placeholder ="Telephone">
+                            <input type="text" class="form-control" id="shipping_phone_number" placeholder ="Contact Number">
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="shippingemail" class="col-lg-2 control-label text-lg-right col-form-label">Email<small class="text-default">*</small></label>
+                          <label for="email" class="col-lg-2 control-label text-lg-right col-form-label">Email<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="email" class="form-control" id="shippingemail" placeholder ="Email">
+                            <input type="email" class="form-control" id="shipping_email" placeholder ="Email">
                           </div>
                         </div>
                       </div>
@@ -244,9 +261,9 @@
                       </div>
                       <div class="col-xl-8 ml-xl-auto">
                         <div class="form-group row">
-                          <label for="shippingAddress1" class="col-lg-2 control-label text-lg-right col-form-label">Address <small class="text-default">*</small></label>
+                          <label for="address" class="col-lg-2 control-label text-lg-right col-form-label">Address <small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingAddress1" placeholder ="Address ">
+                            <input type="text" class="form-control" id="shipping_address" placeholder ="Address ">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -258,22 +275,22 @@
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="shippingCity" class="col-lg-2 control-label text-lg-right col-form-label">City<small class="text-default">*</small></label>
+                          <label for="city" class="col-lg-2 control-label text-lg-right col-form-label">City<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingCity" placeholder ="City">
+                            <input type="text" class="form-control" id="shipping_city" placeholder ="City">
                           </div>
                         </div>
                         <div class="form-group row">
-                          <label for="shippingPostalCode" class="col-lg-2 control-label text-lg-right col-form-label">Zip Code<small class="text-default">*</small></label>
+                          <label for="zip_code" class="col-lg-2 control-label text-lg-right col-form-label">Zip Code<small class="text-default">*</small></label>
                           <div class="col-lg-10">
-                            <input type="text" class="form-control" id="shippingPostalCode" placeholder ="Postal Code">
+                            <input type="text" class="form-control" id="shipping_zip_code" placeholder ="Postal Code">
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="checkbox padding-top-clear form-check">
-                    <input class="form-check-input" type="checkbox" id="shipping-info-check" checked>
+                    <input class="form-check-input" type="checkbox" id="shipping-info-check"  onclick="SetBilling(this.checked);" checked>
                     <label class="form-check-label">
                       My Shipping information is the same as my Billing information.
                     </label>

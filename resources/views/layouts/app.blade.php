@@ -13,11 +13,7 @@
 
     <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
 
-
-    
-
     <div class="page-wrapper">
-
 
         @include('user.templates.layouts.customer_nav')
 
@@ -43,6 +39,4 @@
         @include('user.templates.layouts.footer')
     </div>
 </body>
-
 </html>
-

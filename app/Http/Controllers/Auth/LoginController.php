@@ -6,8 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 
-
-
 class LoginController extends Controller
 {
     /*
@@ -28,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -39,7 +37,11 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
+        /**
+      * Redirect the user to the Google authentication page.
+      *
+      * @return \Illuminate\Http\Response
+      */
     public function redirectToProvider()
     {
         return Socialite::driver('google')->redirect();
@@ -79,4 +81,5 @@ class LoginController extends Controller
         }
         return redirect()->to('/home');
     }
+
 }

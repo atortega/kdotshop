@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html dir="ltr" lang="zxx">
 
   <head>
@@ -41,7 +41,7 @@
                     <div class="breadcrumb-container">
                       <div class="container">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+                          <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
                           <li class="breadcrumb-item active">Page Login</li>
                         </ol>
                       </div>

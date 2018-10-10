@@ -101,7 +101,7 @@ Route::get('/shop-checkoutCompleted', function () {
 
 
 /*---------------------------------------S I G N - U P & L O G I N-------------------------------------*/
-Route::get('/signup', function () {
+Route::get('/register', function () {
     return view('user.templates.page-signup');
 });
 Route::post('/signup/submit', 'CustomersController@createCustomer');

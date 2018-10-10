@@ -94,7 +94,7 @@
 										</a>
 									</div>
 									@else
-									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+									<a href="/register" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
 									@endif
 								</div>
 								<div class="btn-group">

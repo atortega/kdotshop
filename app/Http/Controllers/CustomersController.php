@@ -142,7 +142,7 @@ class CustomersController extends Controller
 
         //return redirect()->back()->with('message', 'You are successfully registered.');
 
-        return redirect('/login');
+        return redirect('/');
     }
 
 

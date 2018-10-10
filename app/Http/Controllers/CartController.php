@@ -67,19 +67,10 @@ class CartController extends Controller
         return redirect()->back()->with('item-removed-message', 'An item has been removed. 🙁');
     }
 
-
     public function cartDestroy(){
         Cart::destroy();
 
         return redirect()->back()->with('clear-items-message', 'All items has been removed. 😥');
     }
     
-
-    // public function cartUpdate(){
-    //     Cart::update($rowId, $qty);
-    //     return redirect('/shop-cart',['cartProducts'=>$cartProducts]);
-    // }
-
-     
-
 }

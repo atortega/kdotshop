@@ -219,9 +219,17 @@ Route::get('/account', function () {
     return view('user.templates.page-account');
 });
 
+
 Route::get('/updateProfile', function () {
     return view('user.templates.editprofile');
 });
 Route::get('/updatePassword', function () {
     return view('user.templates.updatePassword');
 });
+Route::get('/addresses', function () {
+    return view('user.templates.addresses');
+});
+
+Route::get('/updateProfile', 'CustomersController@updateProfileForm');
+Route::post('/saveProfile', 'CustomersController@saveProfile');
+Route::post('/change-password', 'CustomersController@changePassword');

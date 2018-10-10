@@ -281,7 +281,19 @@
 				}
 			});
 		});
-		// console.log(dataArray);
+
+		// Sign Up button is disabled if checkbox is unchecked
+		$("#signUpButtonID").attr("disabled", !this.checked);
+		$("#signUpCheckBoxID").click(function() {
+			$("#signUpButtonID").attr("disabled", !this.checked);
+		});
+
+		// Verification Code input field is disabled if keypress is .off("keypress")
+		$("#vCode").attr('disabled','disabled');
+		$("#phonenumber").keypress(function() {
+			$("#vCode").removeAttr('disabled');
+		});
+
 	});
 	</script>
 

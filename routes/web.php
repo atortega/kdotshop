@@ -17,14 +17,52 @@ Route::get('/', 'MainController@index');
 
 
 Route::get('/customers/list', 'CustomersController@customersList');
-
 Route::get('/customers/add', 'CustomersController@addCustomer');
 
 Route::get('/sizes/get/{id}', 'SizesController@getProductSizeById');
 Route::get('/colors/get/{id}', 'ColorsController@getProductColorById');
 Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');
 Route::get('/categories/get/{id}', 'CategoriesController@getProductCategoryById');
+Route::get('/sub-categories/get/{id}', 'SubCategoriesController@getProductSubCategoryById');
 
+
+// U S E R . A C C O U N T S
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// S I G N - U P & L O G I N (Updated Version)
+Route::get('/signup', function () {
+    return view('user.templates.page-signup');
+});
+Route::post('/signup/submit', 'CustomersController@createCustomer');
+
+Route::get('/login', 'CustomersController@loginFormCustomer');
+Route::post('/login/submit', 'CustomersController@loginCustomer');
+
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+// P A G E . A C C O U N T
+Route::get('/account', function () {
+    return view('user.templates.page-account');
+});
+Route::get('/updateProfile', function () {
+    return view('user.templates.editprofile');
+});
+Route::get('/updatePassword', function () {
+    return view('user.templates.updatePassword');
+});
+Route::get('/updateProfile', 'CustomersController@updateProfileForm');
+Route::post('/saveProfile', 'CustomersController@saveProfile');
+Route::post('/change-password', 'CustomersController@changePassword');
+
+Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+
+// P A G E - V E R I F I C A T I O N
+Route::get('page-verificationCode', function () {
+    return view('user.templates.page-verificationCode');
+});
 
 // P R O D U C T S - P A G E
 Route::get('/product', function () {
@@ -32,19 +70,13 @@ Route::get('/product', function () {
 });
 Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/product', 'ProductsController@paginateProducts');
-Route::get('/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
-
-Route::get('/shop-productDetails', function () {
-    return view('user.templates.shop-productDetails');
-});
+Route::get('/products/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
 Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
 
 // A B O U T - P A G E
 Route::get('/about-us', function () {
     return view('user.templates.about_page');
 });
-
-
 
 // S H O P - C A R T
 Route::get('/shop-cart', function () {
@@ -61,6 +93,8 @@ Route::get('/shop-checkout', function () {
     return view('user.templates.shop-checkout');
 });
 Route::get('/shop-checkout','CartController@cartShowCheckout');
+Route::post('/shop-checkout', 'CheckoutDetailsController@billingInfo'); // SURE?
+Route::post('/shop-checkout', 'CheckoutDetailsController@shipInfo');    // SURE?
 
 // S H O P - C H E C K O U T P A Y M E N T
 Route::get('/shop-checkoutPayment', function () {
@@ -78,16 +112,17 @@ Route::get('/shop-checkoutCompleted', function () {
     return view('user.templates.shop-checkoutCompleted');
 });
 
-// L O G I N - P A G E
+/*
+// L O G I N - P A G E (Outdated Version)
 Route::get('/page-login', function () {
     return view('user.templates.page-login');
 });
 
-// S I G N U P - P A G E
+// S I G N U P - P A G E (Outdated Version)
 Route::get('/page-signup', function () {
     return view('user.templates.page-signup');
 });
-
+*/
 
 
 /* ___________________ADMIN SIDE___________________ */
@@ -119,12 +154,15 @@ Route::prefix('admin')->group(function () {
         return view('admin.templates.products-list');
     });
 
+
+    //Orders
+    Route::get('/orders/index', 'OrdersController@index');
     Route::get('/orders', function () {
         return view('admin.templates.orders-list');
     });
 
-    Route::get('/orders/index', 'OrdersController@index');
 
+    //Payments
     Route::get('/payments/index', 'PaymentsController@index');
 
     Route::get('/payments', function () {
@@ -144,6 +182,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.templates.colors-create');
     });
 
+
     //Sizes
     Route::get('/sizes/index', 'SizesController@index');
     Route::post('/sizes/edit', 'SizesController@editProductSize');
@@ -155,7 +194,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/sizes/create', function () {
         return view('admin.templates.sizes-create');
     });
-
 
 
     //Categories
@@ -182,6 +220,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/sub-categories/create/save', 'SubCategoriesController@addNew');
     Route::post('/sub-categories/edit', 'SubCategoriesController@editProductSubCategory');
     Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
-    Route::get('/sub-categories/get/{id}', 'SubCategoriesController@getProductSubCategoryById');
     Route::get('/sub-categories', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
 });

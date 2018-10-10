@@ -930,7 +930,7 @@
 			$('#category').on('change', function(e) {
 				$('#sub_category').empty();
 				$.ajax({
-					url: '/sub-categories/get/' + e.target.value,
+					url: '/products/sub-categories/get/' + e.target.value,
 					success: data => {
 						$('#sub_category').append('<option value="0">-- Select --</option>')
 						$.each(data, function(index,subCatObj) {

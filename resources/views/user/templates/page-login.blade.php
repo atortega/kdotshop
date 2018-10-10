@@ -21,7 +21,7 @@
 
 	<!-- page wrapper start -->
 	<!-- ================ -->
-<div class="page-wrapper">
+	<div class="page-wrapper">
 		<!-- header-container start -->
 
 		<!-- header-top start -->
@@ -38,7 +38,7 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">
 						<i class="fa fa-home pr-2"></i>
-						<a class="link-dark" href="index.html">Home</a>
+						<a class="link-dark" href="/">Home</a>
 					</li>
 					<li class="breadcrumb-item active">
 						Page Login
@@ -88,7 +88,7 @@
 									<div class="form-group has-feedback row">
 										<!-- <label for="email" class="col-md-3 text-md-right control-label col-form-label"></label> -->
 										<div class="col-md-12">
-											<input type="email" class="form-control" id="email" placeholder="Username"
+											<input type="email" class="form-control" id="email" placeholder="E-mail"
 												name="email" required>
 											<i class="fa fa-user form-control-feedback pr-4"></i>
 										</div>
@@ -104,44 +104,60 @@
 									<div class="form-group row">
 										<div class="ml-md-auto col-md-12">
 											<div class="d-inline-block col-md-12">
-												<div class="checkbox form-check pull-left">
+<!-- 												<div class="checkbox form-check pull-left">
 													<input class="form-check-input" type="checkbox">
 													<label class="form-check-label">
 														Remember me.
 													</label>
+												</div> -->
+
+												<div class="checkbox form-check pull-left">
+													<input class="form-check-input" name="remember" type="checkbox">
+													<div class="form-check">
+														<label class="form-check-label">
+															Remember me.
+														</label>
+													</div>
 												</div>
+
 												<button type="submit" class="btn btn-animated btn-default pull-right">
 													Log-in
-													<i class="fa fa-lock"></i>
+													<i class="fa fa-sign-in"></i>
 												</button>
 											</div>
 
-											<div class="space-top">
+											<div class="col-md-12 text-center">
 												<a href="forgetpassworrdchuchu.php" style="color: red; font-weight: bold;">
-													Forget Password ?
+													Forgot your password?
 												</a>
 											</div>
 											
-											<span class="text-center text-muted">Login with</span>
+											<div class="separator mt-10"></div>
 
-											<ul class="social-links colored circle clearfix">
-												<li class="facebook">
-													<a href="#">
-														<i class="fa fa-facebook"></i>
-													</a>
-												</li>
-												<li class="googleplus">
-													<a href="#">
-														<i class="fa fa-google-plus"></i>
-													</a>
-												</li>
-											</ul>
+											<div class="form-group row">
+												<div class="col-md-12 text-center">						
+													<span class="text-center text-muted">Login with</span>
+													
+													<ul class="social-links circle colored margin-clear space-top">
+														<li class="facebook">
+															<a href="#">
+																<i class="fa fa-facebook"></i>
+															</a>
+														</li>
+														<li class="googleplus">
+															<a href="{{ url('/redirect') }} ">
+																<i class="fa fa-google-plus"></i>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
 										</div>
 									</div>
 								</form>
 								<p class="text-center space-top" align="center">
 									Don't have an account yet?
-									<a href="/page-signup">Sign Up</a>
+									<a href="{{ url('/signup')}}">Sign Up</a>
 								</p>
 							</div>
 
@@ -152,8 +168,8 @@
 			</div>
 		<!-- </div> -->
 		<!-- main-container end -->
-</div>
-<!-- page-wrapper end -->
+	</div>
+	<!-- page-wrapper end -->
 
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
 

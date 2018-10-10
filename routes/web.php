@@ -37,8 +37,8 @@ Route::get('/signup', function () {
 });
 Route::post('/signup/submit', 'CustomersController@createCustomer');
 
-Route::get('/login', 'CustomersController@loginFormCustomer');
-Route::post('/login/submit', 'CustomersController@loginCustomer');
+//Route::get('/login', 'CustomersController@loginFormCustomer');
+//Route::post('/login/submit', 'CustomersController@loginCustomer');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

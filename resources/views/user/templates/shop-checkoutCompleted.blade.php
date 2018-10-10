@@ -16,7 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page transparent-header">
+  <body class="front-page ">
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -40,7 +40,21 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i>
+              <a class="link-dark" href="/">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-cart">Shopping Cart</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-checkout">Checkout</a>
+            </li>
+            <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-checkoutPayment">Checkout Payment</a>
+            </li>
+             <li class="breadcrumb-item">
+              <a class="link-dark" href="/shop-checkoutReview">Checkout Review</a>
+            </li>
             <li class="breadcrumb-item active">Thank You</li>
           </ol>
         </div>

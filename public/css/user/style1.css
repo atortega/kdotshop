@@ -165,9 +165,9 @@ tbody {
 }
 
 .header {
-  /*border-top: 1px solid #ffffff; Changes by JRL */
+  border-top: 1px solid #ffffff;
   border-bottom: 2px solid #f1f1f1;
-  background-color: #ff87c3;
+  background-color: #fcfcfc;
 }
 
 .header.dark {
@@ -503,11 +503,9 @@ tbody {
 }
 
 .light-gray-bg {
-  background-color: #eeeeee;
+  background-color: #fafafa;
   border-top: 1px solid #f3f3f3;
   border-bottom: 1px solid #f3f3f3;
-  margin-top: 10%;
-  margin-bottom: 10%;
 }
 
 .footer-top.light-gray-bg {
@@ -826,7 +824,7 @@ tbody {
   background-color: #ff87c3;
 }
 
-.transparent-header .sticky-wrapper {
+.transparent-header .sticky-wrapper  {
   position: absolute;
   width: 100%;
   left: 0;
@@ -1411,7 +1409,7 @@ h5 + .separator {
 }
 
 .pv-20 {
-  padding-top: 10%;
+  padding-top: 10%;    /* Changed by JRL */
   padding-bottom: 20px;
 }
 
@@ -3193,7 +3191,6 @@ ul.pagination .page-item.active .page-link,
 .breadcrumb-container {
   background-color: #f8f8f8;
   border-bottom: 1px solid #f4f4f4;
-  margin-top: 80px;
 }
 
 .dark.breadcrumb-container {
@@ -7125,10 +7122,9 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 
 /*Header Top Dropdowns*/
 .header-top-dropdown .dropdown-menu {
-  /*
   z-index: 103;
   padding: 20px;
-  min-width: 100%;
+  min-width: 280px;
   margin-top: 6px;
   border: 1px solid #D0D0D0;
   border-top: none;
@@ -7137,21 +7133,6 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
-
-  Changed by JRL
-  */
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  float: left;
-  min-width: 10rem;
-  padding: 0.5rem 0;
-  margin: 0.125rem 0 0;
-  font-size: 1rem;
-  color: #212529;
-  text-align: left;
-  list-style: none;
 }
 
 .header-top-dropdown .login-form ul {
@@ -7214,7 +7195,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 .dark.btn-group .dropdown-menu .dropdown-item,
 .dark.btn-group .mega-menu .menu .dropdown-item {
   color: #cccccc;
-  border-bottom: 1px #424242; /*border-bottom: 1px solid #424242; Changed by JRL*/
+  border-bottom: 1px solid #424242;
   text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -7242,21 +7223,11 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 
 /* Login/Register Forms
 ---------------------------------- */
-.form-block-signUp{
+.form-block {
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   width: 630px;
-  margin-top: 10%;
-  margin-bottom: 10%
-}
-.form-block-login{
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  width: 450px;
-  margin-top: 15%;
-  margin-bottom: 10%
 }
 
 .form-block .social-links {
@@ -9069,15 +9040,4 @@ h6.media-heading {
 
 element.style{
   margin-top: 8%;
-}
-.column{
-  float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px;
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }

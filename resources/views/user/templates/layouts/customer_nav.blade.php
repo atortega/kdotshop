@@ -62,10 +62,6 @@
 						<!-- header-top-first end -->
 					</div>
 
-				
-
-
-
 					<div class="col-9 col-sm-6 col-lg-3">
 						<!-- header-top-second start -->
 						<!-- ================ -->
@@ -87,7 +83,7 @@
 											<i class="fa fa-shopping-bag pr-2"></i>
 											<span>My Purchase</span>
 										</a>
-										<a href="" class="dropdown-item">
+										<a href="/account" class="dropdown-item">
 											<i class="fa fa-user pr-12"></i>
 											<span class="pr-10">My Account</span>
 										</a>
@@ -111,12 +107,11 @@
 							</div>
 							<!--  header top dropdowns end -->
 						</div>
-						<!-- header-top-second end -->
-					</div>
+						<!-- header-top-second end -->		
+					</div>	
 				</div>
 			</div>
 		</div>
-				
 		<!-- header-top end -->
 
 
@@ -139,7 +134,8 @@
 
 							<!-- logo-->
 							<div id="logo" class="logo">
-								<a href="/"><img id="logo_img" src="image/kdot_newlogo.png" alt="kdot_newlogo"></a>
+								<a href="/"><img id="logo_img" src="{{ asset('image/kdot_newlogo.png') }}"
+									alt="kdot_newlogo"></a>
 							</div>
 
 							<!-- name-and-slogan
@@ -167,7 +163,7 @@
 										<!-- logo -->
 										<div id="logo-mobile" class="logo">
 											<a href="/">
-												<img id="logo-img-mobile" src="image/kdot_newlogo.png" alt="kdot_newlogo">
+												<img id="logo-img-mobile" src="{{ asset('image/kdot_newlogo.png') }}" alt="kdot_newlogo">
 											</a>
 										</div>
 										<!-- name-and-slogan -->
@@ -194,9 +190,11 @@
 											</ul>
 										</div>
 										<div class="btn-group">
-											<button type="button" class="btn dropdown-toggle dropdown-toggle--no-caret" id="header-drop-4"  aria-haspopup="true" aria-expanded="false">
-												<i class="fa fa-shopping-basket" href="/shop-cart"></i>
-												<span class="cart-count default-bg">8</span>
+											<button type="button" id="header-drop-4"  
+													class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart"
+													aria-haspopup="true" aria-expanded="false">
+												<i class="fa fa-shopping-basket"></i>
+												<span class="cart-count default-bg">{{ Cart::count() }}</span>
 											</button>
 										</div>
 									</div>
@@ -212,20 +210,20 @@
 										<ul class="navbar-nav ml-xl-auto">
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--wide">
+										<li class="nav-item dropdown home-alert mega-menu mega-menu--wide">
 											<a href="/" class="nav-link" >Home</a>
 										<!--  -->
 										</li>
 										<!-- mega-menu end -->
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--wide">
+										<li class="nav-item dropdown products-alert mega-menu mega-menu--wide">
 											<a href="/product" class="nav-link " >Products</a>
 										</li>
 										<!-- mega-menu end -->
 
 										<!-- mega-menu start -->
-										<li class="nav-item dropdown  mega-menu mega-menu--narrow">
+										<li class="nav-item dropdown about-us-alert mega-menu mega-menu--narrow">
 										<a href="/about-us" class="nav-link " >About Us</a>
 
 										</li>
@@ -261,9 +259,11 @@
 								</ul>
 							</div>
 							<div class="btn-group">
-								<button type="button" class="btn dropdown-toggle dropdown-toggle--no-caret" id="header-drop-2" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-shopping-basket" href="/shop-cart"></i>
-									<span class="cart-count default-bg">8</span>
+								<button type="button" id="header-drop-2"
+										class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart " 
+										aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-shopping-basket" ></i>
+									<span class="cart-count default-bg">{{ Cart::count() }}</span>
 								</button>
 							</div>
 						</div>

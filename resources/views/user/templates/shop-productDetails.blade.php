@@ -33,7 +33,7 @@
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-        @include('user.templates.customer_nav')
+        @include('user.templates.layouts.customer_nav')
 
         <!-- header end -->
       
@@ -44,7 +44,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item active">Shop Product</li>
           </ol>
         </div>
@@ -64,12 +64,11 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h1 class="page-title">Shop Product</h1>
+              <h3 class="title-page">Shop Product</h3>
               <div class="separator-2"></div>
               <!-- page-title end -->
-            @extends('front.master')
-            @section('content')
-            @foreach($products as $product)
+            
+            
               <div class="row">
                 <div class="col-lg-4">
                   <!-- pills start -->
@@ -77,69 +76,71 @@
                   <!-- Nav tabs -->
                   
                     <ul class="nav nav-pills">
-                      <li class="nav-item"><a class="nav-link active" href="#pill-1" data-toggle="tab" title="images"><i class="fa fa-camera pr-1"></i> Photo</a></li>
-                      
+                      <li class="nav-item"><a class="nav-link active" href="#pill-1"
+                          data-toggle="tab" title="images">
+                        <i class="fa fa-camera pr-1"></i> Photo</a>
+                      </li>
                     </ul>
                     <!-- Tab panes -->
-                  
+                    
                     <div class="tab-content clear-style">
                       <div class="tab-pane active" id="pill-1">
                           <div class="slick-carousel content-slider-with-large-controls">
                             <div class="overlay-container overlay-visible">
-                              <img src='{{ asset("storage/$product->product_image") }}' alt="">
-                              <a href='{{ asset("storage/$product->product_image") }}' class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
+                              <img src='{{ URL::asset("storage/$getProductQuery->product_image") }}' alt="">
+                              <a href='{{ URL::asset("storage/$getProductQuery->product_image") }}'
+                                class="slick-carousel--popup-img overlay-link"
+                                title="{{ $getProductQuery->product_name }}">
+                                <i class="fa fa-plus"></i>
+                              </a>
                             </div>
-                            <div class="overlay-container overlay-visible">
-                              <img src='{{ asset("storage/$product->product_image") }}' alt="">
-                              <a href='{{ asset("storage/$product->product_image") }}' class="slick-carousel--popup-img overlay-link" title="image title"><i class="fa fa-plus"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tab-pane" id="pill-2">
-                          <div class="overlay-container">
-                            <img src='{{ asset("storage/$product->product_image") }}' alt="">
-                            <a class="overlay-link" href="#"><i class="fa fa-link"></i></a>
                           </div>
                         </div>
                       </div>
                     <!-- pills end -->
                     </div>
                     <div class="col-lg-8 pv-30">
-                      <h2 class="mt-4">{{ $product->product_name }}</h2>
+                      <h2 class="mt-4">{{ $getProductQuery->product_name }}</h2> <!-- Product Name -->
                       
-                      
+                      <p>{{ $getProductQuery->product_desc }}</p>
+
                       <hr class="mb-10">
                         <form class="clearfix row grid-space-10">
                             <div class="form-group col-lg-4">
                               <label>Quantity</label>
-                              <input type="text" class="form-control" value="1">
+                              <input type="number" class="form-control" value="1" min="1" max="100">
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Color</label>
                               <select class="form-control">
-                                <option>{{ $product->color }}</option>
-                                
+                                @foreach($getColorQuery as $colors)
+                                  <option value="{{$colors->color_id}}">{{$colors->color}}</option>
+                                @endforeach
                               </select>
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Size</label>
                               <select class="form-control">
-                                <option>{{ $product->size }}</option>
-                                <option>5.7"</option>
+                                @foreach($getSizeQuery as $sizes)
+                                  <option value="{{$sizes->size_id}}">{{$sizes->size}}</option>
+                                @endforeach
                               </select>
                             </div>
                         </form>
                       <div class="light-gray-bg p-20 bordered clearfix">
-                        <span class="product price"><i class="fa fa-tag pr-10"></i>PHP {{ $product->unit_price }}</span>
-                        <div class="product elements-list pull-right clearfix">
-                          <a href="/shop-cart">
-                            <input type="submit" value="Add to Cart" class="margin-clear btn btn-default"/>
-                          </a>
-                        </div>
+                        <span class="product price"><i class="fa fa-tag pr-10"></i>
+                            ₱ {{ $getSkuQuery->unit_price }}
+                        </span>
+                         {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+                                    <input type="hidden" name="product_id" value="{{ $getSkuQuery->product_id }}">
+                                    <input type="hidden" name="qty" value="1">
+                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+                          {!! Form::close()!!}
                       </div>
                     </div>
-                  @endforeach
-                  @endsection
+                  
+                  
                 </div>
               </div>
             <!-- main end -->
@@ -156,12 +157,12 @@
       <!-- footer top start -->
       <!-- ================ -->
 
-      @include('user.templates.layouts.footer')
+      
     </div>
     <!-- page-wrapper end -->
 
     <!-- JavaScript files placed at the end of the document so the pages load faster -->
     <!-- ================================================== -->
-
+      @include('user.templates.layouts.footer')
   </body>
 </html>

@@ -7,7 +7,7 @@
         </div>
     </div>
 
-        <!-- Tab panes -->
+    <!-- Tab panes -->
     <div class="tab-content clear-style">
         <div class="tab-pane active" id="pill-1">
             <div class="row grid-space-10">
@@ -15,22 +15,37 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="listing-item white-bg bordered mb-20">
                             <div class="overlay-container">
-                                <img src="{{ asset("storage/$product->product_image") }}" alt="">
-                                <a class="overlay-link popup-img-single" href="images/product-1.jpg"><i class="fa fa-search-plus"></i></a>
+                                <img src='{{ asset("storage/$product->product_image") }}' alt="">
+                                <a class="overlay-link popup-img-single" 
+                                    href='{{ asset("storage/$product->product_image") }}'>
+                                        <i class="fa fa-search-plus"></i>
+                                </a>
                                 <!--<span class="badge">30% OFF</span>-->
                                 <div class="overlay-to-top links">
                                     <span class="small">
-                                        <a href="#" class="btn-sm-link"><i class="fa fa-heart-o pr-10"></i>Add to Wishlist</a>
-                                        <a href="#" class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
+                                        <a href="/shop-productDetails" class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
                                     </span>
                                 </div>
                             </div>
                             <div class="body">
-                                <h3><a href="shop-product.html">{{ $product->product_name }}</a></h3>
+                                <h3>
+                                    <a href="{{ url('/shop-productDetails/' .$product->product_id) }}">
+                                        {{ $product->product_name }}
+                                    </a>
+                                </h3>
                                 <p class="small">{{ $product->product_desc }}</p>
                                 <div class="elements-list clearfix">
-                                    <!--<span class="price"><del>$100.00</del>--> PHP{{ $product->unit_price }}</span>
-                                    <a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+                                    <span class="price"><!--<del>$100.00</del>--> 
+                                        ₱ {{ $product->unit_price }}
+                                    </span>
+
+                                {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+                                    <input type="hidden" name="product_id" value="{{ $product->product_id }}">
+                                    <input type="hidden" name="qty" value="1">
+                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+
+                                {!! Form::close()!!}
                                 </div>
                             </div>
                         </div>

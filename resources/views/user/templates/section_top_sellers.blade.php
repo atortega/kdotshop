@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-8 col-xl-9">
                                         <div class="body">
-                                            <h3 class="margin-clear"><a href="shop-product.html">{{ $top_seller->product_name }}</a></h3>
+                                            <h3 class="margin-clear"><a href="/shop-productDetails">{{ $top_seller->product_name }}</a></h3>
                                             <p>
                                                 <i class="fa fa-star text-default"></i>
                                                 <i class="fa fa-star text-default"></i>
@@ -31,8 +31,18 @@
                                             </p>
                                             <p class="small">{{ $top_seller->product_desc }}</p>
                                             <div class="elements-list clearfix">
-                                                <!--<span class="price"><del>$199.00</del>--> PHP{{ $top_seller->unit_price }}</span>
-                                                    <a href="#" class="pull-right btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></a>
+
+                                                <span class="price"><!--<del>$100.00</del>--> 
+                                                    ₱ {{ $top_seller->unit_price }}
+                                                </span>
+                                               
+                                                {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+                                                <input type="hidden" name="product_id" value="{{ $top_seller->product_id }}">
+                                                <input type="hidden" name="qty" value="1">
+                                                <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+
+                                                {!! Form::close()!!}
                                             </div>
                                         </div>
                                     </div>

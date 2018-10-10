@@ -7032,7 +7032,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 }
 
 .transparent-header .header-dropdown-buttons .btn-group > .btn {
-  background-color: transparent;
+  background-color: #ffeef7; /* Changes by JRL (default: transparent) */
   border: 1px solid #999999;
   color: #000000;
 }
@@ -7054,7 +7054,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   padding: 0;
   line-height: 38px;
   text-align: center;
-  background-color: #f2f2f2;
+  background-color: #ffeef7; /* Changes by JRL */
   border: 1px solid #e9e9e9;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;

@@ -16,34 +16,38 @@
 						<!-- ================ -->
 						<div class="header-top-first clearfix">
 							<ul class="social-links circle small clearfix hidden-sm-down">
-								<!-- <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-								<!-- <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li> -->
-								<!-- <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-								
-								<!-- <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
-								<!-- <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li> -->
-								<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<!-- <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+								<li class="facebook">
+									<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" 
+										target="_blank">
+										<i class="fa fa-facebook"></i>
+									</a>
+								</li>
+								<li class="googleplus">
+									<a href="#">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</li>
 							</ul>
 							<div class="social-links hidden-md-up circle small">
 								<div class="btn-group dropdown">
-									<button id="header-top-drop-1" type="button" class="btn dropdown-toggle
+									<button id="header-top-drop-1" type="button" class="btn dropdown-toggle 
 											dropdown-toggle--no-caret" data-toggle="dropdown"
 											aria-haspopup="true" aria-expanded="false">
 										<i class="fa fa-share-alt"></i>
 									</button>
 									<ul class="dropdown-menu dropdown-animation" aria-labelledby="header-top-drop-1"
 										style="min-width: 76px">
-									<!-- <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-									<!-- <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li> -->
-									<!-- <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li> -->
-									
-									<!-- <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li> -->
-									<!-- <li class="flickr"><a href="#"><i class="fa fa-flickr"></i></a></li> -->
-									<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-									<!-- <li class="pinterest"><a href="#"><i class="fa fa-pinterest"></i></a></li> -->
+										<li class="facebook">
+											<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" 
+												target="_blank">
+												<i class="fa fa-facebook"></i>
+											</a>
+										</li>
+										<li class="googleplus">
+											<a href="#">
+												<i class="fa fa-google-plus"></i>
+											</a>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -69,7 +73,6 @@
 							<!-- header top dropdowns start -->
 							<!-- ================ -->
 							<div class="header-top-dropdown text-right">
-
 								<div class="btn-group dark">
 									@if(Auth::check())
 									<button type="button" class="btn btn-dark btn-sm">
@@ -94,21 +97,25 @@
 										</a>
 									</div>
 									@else
-									<a href="/signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+									<a href="{{ url('/signup')}}" class="btn btn-default btn-sm">
+										<i class="fa fa-user pr-2"></i> Sign Up
+									</a>
 									@endif
 								</div>
 								<div class="btn-group">
 									@if(Auth::check())
 										
 									@else
-									<a href="/login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+									<a href="/login" class="btn btn-default btn-sm">
+										<i class="fa fa-user pr-2"></i> Login
+									</a>
 									@endif
 								</div>
 							</div>
 							<!--  header top dropdowns end -->
 						</div>
-						<!-- header-top-second end -->		
-					</div>	
+						<!-- header-top-second end -->
+					</div>
 				</div>
 			</div>
 		</div>
@@ -124,6 +131,8 @@
 		<!-- "centered": mandatory class for the centered logo layout -->
 		<!-- ================ -->
 
+
+
 		<header class="header fixed fixed-desktop clearfix">
 			<div class="container">
 				<div class="row">
@@ -134,8 +143,10 @@
 
 							<!-- logo-->
 							<div id="logo" class="logo">
-								<a href="/"><img id="logo_img" src="{{ asset('image/kdot_newlogo.png') }}"
-									alt="kdot_newlogo"></a>
+								<a href="/">
+									<img src="{{ asset('image/kdot_newlogo.png') }}"
+										id="logo_img" alt="kdot_newlogo">
+								</a>
 							</div>
 
 							<!-- name-and-slogan
@@ -163,7 +174,8 @@
 										<!-- logo -->
 										<div id="logo-mobile" class="logo">
 											<a href="/">
-												<img id="logo-img-mobile" src="{{ asset('image/kdot_newlogo.png') }}" alt="kdot_newlogo">
+												<img src="{{ asset('image/kdot_newlogo.png') }}"
+													id="logo-img-mobile" " alt="kdot_newlogo">
 											</a>
 										</div>
 										<!-- name-and-slogan -->
@@ -194,40 +206,44 @@
 													class="btn dropdown-toggle dropdown-toggle--no-caret gotoshopcart"
 													aria-haspopup="true" aria-expanded="false">
 												<i class="fa fa-shopping-basket"></i>
-												<span class="cart-count default-bg">{{ Cart::count() }}</span>
+												<span id="basket-reload" class="cart-count default-bg">
+													{{ Cart::count() }}
+												</span>
 											</button>
 										</div>
 									</div>
 									<!-- header dropdown buttons end -->
 
-									<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-1"
-										aria-controls="navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
+									<button class="navbar-toggler" type="button"
+											data-toggle="collapse" data-target="#navbar-collapse-1"
+											aria-controls="navbar-collapse-1" aria-expanded="false" 
+											aria-label="Toggle navigation">
 										<span class="navbar-toggler-icon"></span>
 									</button>
 
 									<div class="collapse navbar-collapse" id="navbar-collapse-1">
 										<!-- main-menu -->
 										<ul class="navbar-nav ml-xl-auto">
+											<!-- mega-menu start -->
+											<li class="nav-item dropdown home-alert
+												mega-menu mega-menu--wide">
+												<a href="/" class="nav-link" >Home</a>
+											</li>
+											<!-- mega-menu end -->
 
-										<!-- mega-menu start -->
-										<li class="nav-item dropdown home-alert mega-menu mega-menu--wide">
-											<a href="/" class="nav-link" >Home</a>
-										<!--  -->
-										</li>
-										<!-- mega-menu end -->
+											<!-- mega-menu start -->
+											<li class="nav-item dropdown products-alert
+												mega-menu mega-menu--wide">
+												<a href="/product" class="nav-link " >Products</a>
+											</li>
+											<!-- mega-menu end -->
 
-										<!-- mega-menu start -->
-										<li class="nav-item dropdown products-alert mega-menu mega-menu--wide">
-											<a href="/product" class="nav-link " >Products</a>
-										</li>
-										<!-- mega-menu end -->
-
-										<!-- mega-menu start -->
-										<li class="nav-item dropdown about-us-alert mega-menu mega-menu--narrow">
-										<a href="/about-us" class="nav-link " >About Us</a>
-
-										</li>
-
+											<!-- mega-menu start -->
+											<li class="nav-item dropdown about-us-alert
+												mega-menu mega-menu--narrow">
+												<a href="/about-us" class="nav-link " >About Us</a>
+											</li>
+											<!-- mega-menu end -->
 										</ul>
 										<!-- main-menu end -->
 									</div>
@@ -273,6 +289,3 @@
 		</header>
 		<!-- header end -->
 	</div>
-  <!-- header-container end -->
-  <!-- breadcrumb start -->
-  <!-- ================ -->

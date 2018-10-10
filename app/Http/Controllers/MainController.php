@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use links;
+use App\Http\Controllers\Controller;
 
+// use View;
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\SubCategories;
 use App\Models\Sku;
+
 class MainController extends Controller
 {
     public function index()
@@ -48,8 +55,9 @@ class MainController extends Controller
             'top_sellers' => $top_sellers
         ];
 
-        return view('user.templates.index', $data);
+        return View('user.templates.index', $data);
     }
+    
 
 
 }

@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="container">
+                <div class="container-fluid">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -45,7 +45,7 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="size" name="name" placeholder="Enter Name" value="{{ old('name') }}">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
                             <label for="address">Address</label>
@@ -89,13 +89,13 @@
     
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="{{ URL::asset('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../../dist/js/sb-admin-2.js"></script>
+    <script src="{{ URL::asset('dist/js/sb-admin-2.js') }}"></script>
 
 
 

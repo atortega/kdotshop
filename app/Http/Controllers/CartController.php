@@ -13,7 +13,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function addToCart(Request $request){
-        
+    	
         $product_id = $request->product_id;
 
         $productById = Products::where('product_id', $product_id)->first();
@@ -67,19 +67,10 @@ class CartController extends Controller
         return redirect()->back()->with('item-removed-message', 'An item has been removed. 🙁');
     }
 
-
     public function cartDestroy(){
         Cart::destroy();
 
         return redirect()->back()->with('clear-items-message', 'All items has been removed. 😥');
     }
     
-
-    // public function cartUpdate(){
-    //     Cart::update($rowId, $qty);
-    //     return redirect('/shop-cart',['cartProducts'=>$cartProducts]);
-    // }
-
-     
-
 }

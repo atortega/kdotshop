@@ -34,7 +34,7 @@
                             <tr>
                                 <th>Category</th>
                                 <th>Description</th>
-                                 <th>Actions</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                     </table>
@@ -109,7 +109,9 @@
                             $.ajax({
                                 type: "POST",
                                 dataType: 'json',
-                                data: {description: $('#description').val(), category_id: $("#category_id").val(), _token: $('meta[name="csrf-token"]').attr('content')},
+                                data: { description: $('#description').val(),
+                                        category_id: $("#category_id").val(),
+                                        _token: $('meta[name="csrf-token"]').attr('content')},
                                 cache: false,
                                 url: '/admin/categories/edit',
                                 success: function(data){
@@ -148,9 +150,9 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    <script src="../js/jquery.dataTables.min.js"></script>
+    <script src="../js/admin/jquery.dataTables.min.js"></script>
 
-    <script src="../js/bootbox.min.js"></script>
+    <script src="../js/admin/bootbox.min.js"></script>
 
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">

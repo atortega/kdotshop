@@ -5,7 +5,7 @@
     
     @include('user.templates.layouts.header')
 
-    <title>KDot | Product Details</title>
+    <title>KDot | Update Profile</title>
     
     
   </head>

@@ -57,15 +57,16 @@
         <div class="container">
             <div class="row">
 
-               <div class="col-3">
-                    @include('user.templates.layouts.page-right-sidebar')
+                <!-- main start -->
+                <!-- ================ -->
 
-                </div>
-                
+                <!-- page-title start -->
+                <!-- ================ -->
+                <h1 class="page-title">My Profile</h1>
+                <div class="separator-2"></div>
+                <!-- page-title end -->
 
-
-                <!--   Another Column -->
-                <div class="main col-lg-8 order-lg-2 ml-xl-auto">
+                <div class="col-10">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -118,6 +119,10 @@
                          </div>
                     </form>
                 </div>
+
+
+                <!--   Another Column -->
+                 @include('user.templates.layouts.profile_navbar')
 
 
             </div>

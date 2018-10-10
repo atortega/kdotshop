@@ -2,12 +2,11 @@
 <html dir="ltr" lang="zxx">
 
   <head>
-    <meta charset="utf-8">
-    <title>The Project | Home</title>
-    <meta name="description" content="The Project a Bootstrap-based, Responsive HTML5 Template">
-    <meta name="author" content="author">
-
+    
     @include('user.templates.layouts.header')
+
+    <title>KDot | Home</title>
+    
     
   </head>
 
@@ -27,24 +26,21 @@
     <!-- ================ -->
     <div class="page-wrapper">
       <!-- header-container start -->
-      <div class="header-container">
+    
         <!-- header-top start -->
         <!-- classes:  -->
         <!-- "dark": dark version of header top e.g. class="header-top dark" -->
         <!-- "colored": colored version of header top e.g. class="header-top colored" -->
         <!-- ================ -->
 
-      @include('user.templates.layouts.customer_nav')
+        <!-- header-container start -->
+        @include('user.templates.layouts.customer_nav')
+        <!-- header-container end -->
 
-        <!-- header end -->
-      </div>
-    
-
-      <!-- header-container end -->
-      <!-- banner start -->
-      <!-- ================ -->
-      @include('user.templates.layouts.banner')
-      <!-- banner end -->
+        <!-- banner start -->
+        <!-- ================ -->
+        @include('user.templates.layouts.banner')
+        <!-- banner end -->
 
       <div id="page-start"></div>
 
@@ -117,6 +113,9 @@
     </div>
     <!-- page-wrapper end -->
 
+    <!-- JavaScript files placed at the end of the document so the pages load faster -->
+    <!-- ================================================== -->
+    <!-- Jquery and Bootstap core js files -->
 
 
   </body>

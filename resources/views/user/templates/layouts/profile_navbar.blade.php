@@ -7,7 +7,6 @@
                         <ul class="list-icons">
                             <li><a href="/updateProfile">Edit Profile</a></li>
                             <li><a href="/updatePassword">Change Password</a></li>
-                            <li><a href="/addresses">Addresses</a></li>
                         </ul>
                         <h3 class="title">My Purchase</h3>
                         <ul class="list-icons">
@@ -24,5 +23,3 @@
 
     </section>
 <!-- main-container end -->
-
-

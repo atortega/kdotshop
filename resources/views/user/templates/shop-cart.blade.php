@@ -16,11 +16,7 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-
   <body class="front-page">
-
-  <body class="front-page transparent-header">
-
 
     <!-- scrollToTop -->
     <!-- ================ -->
@@ -44,11 +40,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-
             <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
-
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
-
             <li class="breadcrumb-item active">Shopping Cart</li>
           </ol>
         </div>
@@ -67,12 +59,7 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-
               <h3 class="page-title">Shopping Cart</h3>
-
-              <h1 class="page-title">Shopping Cart</h1>
-              <div class="separator-2"></div>
-
               <!-- page-title end -->
               
               <!-- Alert Messages -->
@@ -99,15 +86,9 @@
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
-
                     <th>Product</th>
                     <th>Price</th>
                     <!-- <th>Tax</th> -->
-
-                    <th>Product </th>
-                    <th>Price </th>
-                    <th>Tax</th>
-
                     <th>Quantity</th>
                     <th style="text-align: center">Action</th>
                     <th class="amount">Subtotal</th>
@@ -126,7 +107,6 @@
                       <small>
                         {{$cartProduct->desc}}
                       </small>
-
                     </td>
 
                     <td class="price">
@@ -137,18 +117,6 @@
                       Cart : : tax()
                     </td> -->
 
-
-                    </td>
-
-                    <td class="price">
-                      ₱ {{$cartProduct->price}}
-                    </td>
-
-                    <td class="tax">
-                      {{ Cart::tax() }}
-                    </td>
-
-
                     <td class="quantity">
                       <div class="form-group">
                         <input id="qty_{{ $cartProduct->rowId }}" class="form-control"
@@ -156,7 +124,6 @@
                         <!-- <p id="qty_display"></p> -->
                       </div>
                     </td>
-
 
                     <td class="remove" align="center">
                       <div style="margin-top: auto;">                    
@@ -172,12 +139,6 @@
                           Remove
                         </a>
                       </div>
-
-                    <td class="remove">
-                      <a href="/cart-remove/{{ $cartProduct->rowId }}" class="btn btn-remove btn-sm btn-default">
-                        Remove
-                      </a>
-
                     </td>
 
                       <?php
@@ -187,8 +148,6 @@
                     <td class="amount">
                       ₱ {{$subTotal}}
                     </td>
-
-
 
 
 
@@ -203,11 +162,7 @@
                     @endforeach
 
                   <tr>
-
                     <td class="total-quantity" colspan="4">Total {{ Cart::count() }} Items</td>
-
-                    <td class="total-quantity" colspan="5">Total {{ Cart::count() }} Items</td>
-
                     <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
                     
@@ -241,6 +196,4 @@
     <!-- Jquery and Bootstap core js files -->
     
   </body>
-
 </html>
-

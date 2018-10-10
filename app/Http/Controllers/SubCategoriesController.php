@@ -3,32 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 use Datatables;
-use DB;
 
+use App\Http\Controllers\Controller;
+use App\Models\Categories;
 use App\Models\SubCategories;
 
 class SubCategoriesController extends Controller
 {
     public function index()
     {
-        $subCategories = DB::table('sub_categories')
-            ->leftJoin('categories', 'sub_categories.category_id', '=', 'categories.category_id')
-            ->select('sub_categories.*','categories.category_name')
-            ->get();
 
-        $datatables = Datatables::of($subCategories)
+        $subcategories = Datatables::of(DB::table('sub_categories')
+                            ->leftJoin('categories', 'sub_categories.category_id', '=', 'categories.category_id')
+                        )
             ->addColumn('actions', function ($data) {
                 return "
-                	<button class='btn btn-xs btn-primary category-edit-btn' sid='$data->category_id' data-subcat='" . json_encode($data) . "'>Edit</button>
-                    <button class='btn btn-xs btn-danger category-delete-btn' sid='$data->category_id' sname='$data->category_name'>Delete</button>
+                	<button class='btn btn-xs btn-primary sub-category-edit-btn' sid='$data->sub_category_id'>Edit</button>
+                    <button class='btn btn-xs btn-danger sub-category-delete-btn' sid='$data->sub_category_id' sname='$data->sub_category_name'>Delete</button>
                 	";
             })
             ->escapeColumns('actions')
             ->make(true);
 
-        return ($datatables);
+
+        return ($subcategories);
+    }
+
+    public function getIndex()
+    {
+        
+        $categories = Categories::all();
+
+        return View::make('admin.templates.sub-categories-create', compact('categories'));
+        // or use this --> // return \View::make('admin.templates.sub-categories-create', compact('categories'));
+
+        // $users = DB::table('categories')->get();
+        // return view('user.index', ['users' => $users]);
     }
 
     /*
@@ -42,21 +55,35 @@ class SubCategoriesController extends Controller
     public function addNew(Request $request)
     {
         $request->validate([
-            'category' => 'bail|required|unique:categories,category_name|max:30',
-            'description' => 'required|max:100',
+            'category_id'       => 'bail|required|unique:categories,category_name|max:30',
+            'sub_category_name' => 'required|max:30',
+            'sub_category_desc' => 'required|max:100',
         ]);
 
-        $category = new Categories();
-        $category->category_name = $request['category'];
-        $category->category_desc = $request['description'];
-        $category->save();
+        $subcategory = new SubCategories();
+        $subcategory->category_id       = $request['category_id'];
+        $subcategory->sub_category_name = $request['sub_category_name'];
+        $subcategory->sub_category_desc = $request['sub_category_desc'];
+        $subcategory->save();
 
-        return redirect()->back()->with('message', 'New product category has been added.');
+        return redirect()->back()->with('message', 'New product sub category has been added.');
     }
 
-    public function getProductSubCategoriesByCategoryId($category_id)
+    public function getProductSubCategoryById($id)
     {
-        return SubCategories::where('category_id', $category_id)->get();
+        return SubCategories::where('sub_category_id', $id)->first();
+    }
+
+    public function getProductSubCategoriesByCategoryId()
+    {
+
+        $query = DB::table('categories')
+            ->orderBy('categories.category_id', 'asc')
+            ->get();
+
+        // return SubCategories::where('category_id', $category_id)->get();
+
+        return View::make('admin.templates.sub-categories-list',  compact('query'));
     }
 
     /*
@@ -69,18 +96,18 @@ class SubCategoriesController extends Controller
     public function editProductSubCategory(Request $request)
     {
         $request->validate([
-            'sub_category_id'   => 'integer|required',
-            'sub_category_name' => 'required|string',
-            'description' => 'string|max:100'
+            'sub_category_desc' => 'required|max:100',
+            'category_id'       => 'required',
+            'sub_category_name' => 'required',
         ]);
 
-        $subcat = SubCategories::where('sub_category_id', $request['sub_category_id'])->first();
+        $subcategory = SubCategories::where('sub_category_id', $request['sub_category_id'])->first();
+        $subcategory->category_id = $request['category_id'];
+        $subcategory->sub_category_name = $request['sub_category_name'];
+        $subcategory->sub_category_desc = $request['sub_category_desc'];
+        $subcategory->save();
 
-        $subcat->sub_category_name  = $request['sub_category_name'];
-        $subcat->sub_category_desc      = $request['description'];
-        $subcat->save();
-
-        return array('error' => false, "message"  => "Product sub category successfully updated!");
+        return array('error' => false, "message" => "Product sub category successfully updated!");
     }
 
     /*
@@ -90,18 +117,15 @@ class SubCategoriesController extends Controller
      *
      * @return Array $return
      */
-    public function deleteProductCategory(Request $request)
+    public function deleteProductSubCategory(Request $request)
     {
         $request->validate([
-            'category_id' => 'required',
+            'sub_category_id' => 'required',
         ]);
 
-        $category = Categories::find($request['category_id']);
-        $category->delete();
+        $subcategory = SubCategories::find($request['sub_category_id']);
+        $subcategory->delete();
 
-        return array('error' => false, "message"  => "Product category successfully deleted!");
+        return array('error' => false, "message"  => "Product sub category successfully deleted!");
     }
-
-    
-
 }

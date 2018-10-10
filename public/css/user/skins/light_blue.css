@@ -25,7 +25,7 @@ mark,
 }
 
 .text-default {
-  color: pink;
+  color: #09afdf;
 }
 
 /* Tables
@@ -44,8 +44,8 @@ mark,
 -------------------------------------------------
 -------------------------------------------------*/
 .header-top.dark {
-  background-color: #000000;
-  border-bottom: 1px solid #4c1f36;
+  background-color: #2e3537;
+  border-bottom: 1px solid #252a2c;
 }
 
 .header.dark {
@@ -59,7 +59,7 @@ mark,
 }
 
 .default-bg {
-  background-color: #ffb6c1;
+  background-color: #09afdf;
   color: #ffffff;
 }
 
@@ -137,7 +137,7 @@ fieldset[disabled] .btn-default {
 }
 
 .btn-default-transparent {
-  border-color: deeppink;
+  border-color: #09afdf;
 }
 
 .btn-default-transparent:hover,
@@ -146,9 +146,9 @@ fieldset[disabled] .btn-default {
 .btn-default-transparent:active,
 .btn-default-transparent.active,
 .show > .dropdown-toggle.btn-default-transparent {
-  background-color: #b24a59;
-  border-color: #b24a59;
-
+  background-color: #0c9ec7;
+  border-color: #0c9ec7;
+}
 
 .default-bg .btn-default,
 .default-translucent-bg .btn-default,
@@ -271,8 +271,8 @@ ul.pagination .page-item.active .page-link,
 /*Listing Items
 ---------------------------------- */
 .listing-item .overlay-container .badge {
-  border: 1px solid pink;
-  color: deeppink;
+  border: 1px solid #09afdf;
+  color: #09afdf;
 }
 
 /*Modals
@@ -340,7 +340,7 @@ ul.pagination .page-item.active .page-link,
 
 .header .navbar-nav .active > .nav-link,
 .header .navbar-nav li .nav-link.active {
-  color: white;
+  color: #09afdf;
 }
 
 .header .navbar-nav li li a:focus,
@@ -369,7 +369,7 @@ header:not(.dark) .dropdown-menu > li.active > a i {
   .header .navbar-nav .active .nav-link,
   .header .navbar-nav .active .nav-link:hover,
   .header .navbar-nav .active .nav-link:focus {
-    color: #ffffff;
+    color: #0c9ec7;
   }
   /* first level item hover and focus states */
   .header .navbar-nav li > a:hover,
@@ -526,7 +526,7 @@ header:not(.dark) .dropdown-menu > li.active > a i {
 -------------------------------------------------
 -------------------------------------------------*/
 .tp-bannertimer {
-  background-color:#000000;
+  background-color: rgba(9, 175, 223, 0.8);
 }
 
 /* 9 Slick Carousel

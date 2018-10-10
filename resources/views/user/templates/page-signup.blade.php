@@ -159,7 +159,7 @@
 
 
                                <div class="form-group has-feedback row" > 
-                                <label for="dob" class="col-md-3 text-md-right control-label col-form-label"></label>
+                                <label for="gender" class="col-md-3 text-md-right control-label col-form-label"></label>
                                 <div class="col-md-8">
                                  <select class="form-control" id="gender" placeholder="Gender" name="gender">
                                     <option>Male</option>

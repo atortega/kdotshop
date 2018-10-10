@@ -13,31 +13,31 @@ use App\Models\Customers;
 class CustomersController extends Controller
 {
     public function index()
-    {
-        $customers = Datatables::of(Customers::query())
-            ->addColumn('actions', function ($data) {
+	{
+		$customers = Datatables::of(Customers::query())
+			->addColumn('actions', function ($data) {
                 return "
-                    <button class='btn btn-xs btn-primary customer-edit-btn' sid='$data->customer_id'>Edit</button>
+                	<button class='btn btn-xs btn-primary customer-edit-btn' sid='$data->customer_id'>Edit</button>
                     <button class='btn btn-xs btn-danger customer-delete-btn' sid='$data->customer_id' sname='$data->name'>Delete</button>
-                    ";
+                	";
                 //return "Edit";
             })
             ->escapeColumns('actions')
             ->make(true);
-        
-        return ($customers);
-    }
-    
-    public function getCustomerById($id)
-    {
-        $customer = Customers::where('customer_id', $id)->first();
-        
-        return $customer;
-        
-    }
-    
-    public function addCustomer(Request $request)
-    {
+		
+		return ($customers);
+	}
+	
+	public function getCustomerById($id)
+	{
+		$customer = Customers::where('customer_id', $id)->first();
+		
+		return $customer;
+		
+	}
+	
+	public function addCustomer(Request $request)
+	{
         $request->validate([
             'first_name'        => 'required|max:30',
             'last_name'         => 'required|max:30',
@@ -51,24 +51,24 @@ class CustomersController extends Controller
             'confirm_password'  => 'required|same:password'
         ]);
 
-        $customer = new Customers;
-        
+		$customer = new Customers;
+		
 
         $customer->first_name   = $request['first_name'];
-        $customer->last_name    = $request['last_name'];
+		$customer->last_name    = $request['last_name'];
         $customer->birthdate    = $request['birthdate'];
         $customer->gender       = $request['gender'];
-        $customer->address      =  $request['address'];
-        $customer->phone_number =  $request['phone_number'];
-        $customer->email        =  $request['email'];
-        $customer->password     =  md5($request['password']);
-        
-        $customer->save();
-        
-        //return $customer;
+		$customer->address 		=  $request['address'];
+		$customer->phone_number =  $request['phone_number'];
+		$customer->email 		=  $request['email'];
+		$customer->password 	=  md5($request['password']);
+		
+		$customer->save();
+		
+		//return $customer;
 
         return redirect()->back()->with('message', 'New customer has been added.');
-    }
+	}
 
 
     /*
@@ -126,11 +126,7 @@ class CustomersController extends Controller
         ]);
 
         $customer = new Customers;
-        $customer->first_name   = $request['first_name'];
-        $customer->last_name    = $request['last_name'];
-        $customer->birthdate    = $request['birthdate'];
-        $customer->gender       = $request['gender'];
-        $customer->address      =  $request['address'];
+        
         $customer->email        =  $request['email'];
         $customer->password     =  md5($request['password']);
         $customer->phone_number =  $request['phone_number'];

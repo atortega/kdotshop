@@ -141,7 +141,7 @@ Route::prefix('admin')->group(function () {
 
 
 /*---------------------C U S T O M E R S -----------------------*/
-    
+
 
     Route::get('/customers', function () {
         return view('admin.templates.customers-list');
@@ -168,7 +168,7 @@ Route::prefix('admin')->group(function () {
 
 
 /*------------------------------O R D E R S---------------------------------*/
-    
+
 
 
     Route::get('/orders', function () {

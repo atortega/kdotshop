@@ -11,7 +11,7 @@ class Delivery_addresses extends Model
     public $timestamp= false;
 
     protected $fillable=[
-    	'customer_id',
+        'customer_id',
         'billing_first_name',
         'billing_last_name',
         'billing_contact_number',

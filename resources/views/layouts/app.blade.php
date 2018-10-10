@@ -39,4 +39,6 @@
         @include('user.templates.layouts.footer')
     </div>
 </body>
+
+
 </html>

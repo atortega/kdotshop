@@ -503,9 +503,11 @@ tbody {
 }
 
 .light-gray-bg {
-  background-color: #fafafa;
+  background-color: #eeeeee;
   border-top: 1px solid #f3f3f3;
   border-bottom: 1px solid #f3f3f3;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .footer-top.light-gray-bg {
@@ -3191,6 +3193,7 @@ ul.pagination .page-item.active .page-link,
 .breadcrumb-container {
   background-color: #f8f8f8;
   border-bottom: 1px solid #f4f4f4;
+  margin-top: 80px;
 }
 
 .dark.breadcrumb-container {
@@ -7029,7 +7032,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 }
 
 .transparent-header .header-dropdown-buttons .btn-group > .btn {
-  background-color: transparent;
+  background-color: #ffeef7; /* Changes by JRL (default: transparent) */
   border: 1px solid #999999;
   color: #000000;
 }
@@ -7051,7 +7054,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   padding: 0;
   line-height: 38px;
   text-align: center;
-  background-color: #f2f2f2;
+  background-color: #ffeef7; /* Changes by JRL */
   border: 1px solid #e9e9e9;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -7122,9 +7125,10 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 
 /*Header Top Dropdowns*/
 .header-top-dropdown .dropdown-menu {
+  /*
   z-index: 103;
   padding: 20px;
-  min-width: 280px;
+  min-width: 100%;
   margin-top: 6px;
   border: 1px solid #D0D0D0;
   border-top: none;
@@ -7133,6 +7137,21 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
+
+  Changed by JRL
+  */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
 }
 
 .header-top-dropdown .login-form ul {
@@ -7195,7 +7214,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
 .dark.btn-group .dropdown-menu .dropdown-item,
 .dark.btn-group .mega-menu .menu .dropdown-item {
   color: #cccccc;
-  border-bottom: 1px solid #424242;
+  border-bottom: 1px #424242; /*border-bottom: 1px solid #424242; Changed by JRL*/
   text-shadow: 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -9050,4 +9069,15 @@ h6.media-heading {
 
 element.style{
   margin-top: 8%;
+}
+.column{
+  float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }

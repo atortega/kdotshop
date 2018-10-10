@@ -63,10 +63,10 @@
 
                   <div class="header-top-dropdown text-right">
                     <div class="btn-group">
-                      <a href="/page-signup" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
+                      <a href="{{ url('/signup')}}" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Sign Up</a>
                     </div>
                     <div class="btn-group">
-                      <a href="/page-login" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
+                      <a href="{{ url('/login')}}" class="btn btn-default btn-sm"><i class="fa fa-user pr-2"></i> Login</a>
                     </div>
 
                  <!--  <?php 

@@ -116,6 +116,7 @@ class CustomersController extends Controller
 
         return array('error' => false, "message"  => "Customer successfully updated!");
     }
+    
     public function createCustomer(Request $request)
     {
         $request->validate([
@@ -130,10 +131,10 @@ class CustomersController extends Controller
         $customer->last_name    = $request['last_name'];
         $customer->birthdate    = $request['birthdate'];
         $customer->gender       = $request['gender'];
-        $customer->address      =  $request['address'];
-        $customer->email        =  $request['email'];
-        $customer->password     =  md5($request['password']);
-        $customer->phone_number =  $request['phone_number'];
+        $customer->address      = $request['address'];
+        $customer->email        = $request['email'];
+        $customer->password     = md5($request['password']);
+        $customer->phone_number = $request['phone_number'];
         
         $customer->save();
 

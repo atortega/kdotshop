@@ -41,7 +41,7 @@
                 <div class="container">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Page Signup</li>
+                    <li class="breadcrumb-item active">Page Verification</li>
 
                   </ol>
                 </div>

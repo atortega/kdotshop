@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ URL::asset('/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-
+    <link href="{{ URL::asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('bootstrap/css/bootstrap-glyphicons.css') }}" rel="stylesheet">
     <!-- Font Awesome CSS -->
     <link href="{{ URL::asset('fonts/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
 

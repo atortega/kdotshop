@@ -26,7 +26,7 @@
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
-<link  href="../css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="{{ URL::asset('css/admin/jquery.dataTables.min.css') }}" rel="stylesheet">
 
 <!-- jQuery -->
 <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>

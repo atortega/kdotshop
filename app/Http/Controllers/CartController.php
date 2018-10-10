@@ -13,7 +13,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class CartController extends Controller
 {
     public function addToCart(Request $request){
-        
+    	
         $product_id = $request->product_id;
 
         $productById = Products::where('product_id', $product_id)->first();

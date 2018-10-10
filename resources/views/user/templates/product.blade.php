@@ -369,10 +369,7 @@
 												</a>
 												<div class="overlay-to-top links">
 													<span class="small">
-														<a href="#" class="btn-sm-link">
-															<i class="fa fa-heart-o pr-10"></i>Add to Wishlist
-														</a>
-														<a href="/shop-productDetails/{{ $row->product_id }}"
+														<a href='{{ asset("/shop-productDetails/$row->product_id") }}'
 															class="btn-sm-link">
 															<i class="fa fa-link pr-1"></i>View Details
 														</a>
@@ -381,24 +378,27 @@
 											</div>
 											<div class="body">
 												<h3>
-													<a href="/shop-productDetails/{{ $row->product_id }}">
-													{{ $row->product_name }}
+													<a href='{{ asset("/shop-productDetails/$row->product_id") }}'>
+														{{ $row->product_name }}
 													</a>
 												</h3>
 												<p class="small">
 													{{ $row->product_desc }}
 												</p>
 												<div class="elements-list clearfix">
-													<span class="price">
-														₱ {{ $row->unit_price }}
-													</span>
-														 {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+													<span class="price">₱ {{ $row->unit_price }}</span>
+													
+												{!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
-						                                    <input type="hidden" name="product_id" value="{{ $row->product_id }}">
-						                                    <input type="hidden" name="qty" value="1">
-						                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+													<input type="hidden" name="product_id" value="{{ $row->product_id }}">
+													<input type="hidden" name="qty" value="1">
+													<button type="submit" class="pull-right margin-clear btn btn-sm
+														btn-default-transparent btn-animated">
+														Add To Cart<i class="fa fa-shopping-cart"></i>
+													</button>
 
-						                                {!! Form::close()!!}
+												{!! Form::close()!!}
+
 												</div>
 											</div>
 										</div>
@@ -429,7 +429,8 @@
 												<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas inventore modi.</p>
 												<div class="elements-list clearfix">
 													<span class="price">$199.00</span>
-													<a href="#" class="pull-right margin-clear btn btn-sm btn-default-transparent
+													<a href="#" class="pull-right margin-clear btn btn-sm 
+													btn-default-transparent
 														btn-animated">
 														Add To Cart<i class="fa fa-shopping-cart"></i>
 													</a>
@@ -929,7 +930,7 @@
 			$('#category').on('change', function(e) {
 				$('#sub_category').empty();
 				$.ajax({
-					url: '/sub-categories/get/' + e.target.value,
+					url: '/products/sub-categories/get/' + e.target.value,
 					success: data => {
 						$('#sub_category').append('<option value="0">-- Select --</option>')
 						$.each(data, function(index,subCatObj) {

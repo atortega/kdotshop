@@ -41,6 +41,7 @@
 
                                 {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
+                                    <input type="hidden" name="id" value="{{ $product->product_id }}">
                                     <input type="hidden" name="product_id" value="{{ $product->product_id }}">
                                     <input type="hidden" name="qty" value="1">
                                     <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>

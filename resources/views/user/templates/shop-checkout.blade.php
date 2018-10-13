@@ -85,8 +85,8 @@
                    @foreach($cartProducts as $cartProduct)   
                   <tr>
                     <td class="product">
-                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
-                        {{$cartProduct->product_name}}
+                      <a href="/shop-productDetails/{{$cartProduct->id}}">
+                        {{$cartProduct->name}}
                       </a> 
                       <small>
                         {{$cartProduct->desc}}

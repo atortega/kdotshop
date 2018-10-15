@@ -57,16 +57,15 @@
         <div class="container">
             <div class="row">
 
-                <!-- main start -->
-                <!-- ================ -->
+               <div class="col-3">
+                    @include('user.templates.layouts.page-profile-sidebar')
 
-                <!-- page-title start -->
-                <!-- ================ -->
-                <h1 class="page-title">My Profile</h1>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
+                </div>
+                
 
-                <div class="col-10">
+
+                <!--   Another Column -->
+                <div class="main col-lg-8 order-lg-2 ml-xl-auto">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -88,14 +87,14 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Enter Current Password</h5>
-                                        <input id="current_password" type="text" class="form-control{{ $errors->has('current_password') ? ' is-invalid' : '' }}" name="current_password" value="{{ old('current_password') }}" required autofocus>
+                                        <input id="current_password" type="password" class="form-control{{ $errors->has('current_password') ? ' is-invalid' : '' }}" name="current_password" value="{{ old('current_password') }}" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Enter New Password</h5>
-                                         <input id="new_password" type="text" class="form-control{{ $errors->has('new_password') ? ' is-invalid' : '' }}" name="new_password" value="{{ old('new_password') }}" required autofocus>
+                                         <input id="new_password" type="password" class="form-control{{ $errors->has('new_password') ? ' is-invalid' : '' }}" name="new_password" value="{{ old('new_password') }}" required autofocus>
                                     </div>
                                 </div>
 
@@ -103,7 +102,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Re-Enter New Password</h5>
-                                        <input id="new_password_confirmation" type="text" class="form-control{{ $errors->has('new_password_confirmation') ? ' is-invalid' : '' }}" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" required autofocus>
+                                        <input id="new_password_confirmation" type="password" class="form-control{{ $errors->has('new_password_confirmation') ? ' is-invalid' : '' }}" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" required autofocus>
                                     </div>
                                 </div>
 
@@ -119,10 +118,6 @@
                          </div>
                     </form>
                 </div>
-
-
-                <!--   Another Column -->
-                 @include('user.templates.layouts.profile_navbar')
 
 
             </div>

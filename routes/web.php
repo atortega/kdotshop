@@ -52,6 +52,9 @@ Route::get('/updateProfile', function () {
 Route::get('/updatePassword', function () {
     return view('user.templates.updatePassword');
 });
+Route::get('/addresses', function () {
+    return view('user.templates.addresses');
+});
 Route::get('/updateProfile', 'CustomersController@updateProfileForm');
 Route::post('/saveProfile', 'CustomersController@saveProfile');
 Route::post('/change-password', 'CustomersController@changePassword');
@@ -63,7 +66,10 @@ Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('page-verificationCode', function () {
     return view('user.templates.page-verificationCode');
 });
-
+//P U R C H A S E  P A G E
+Route::get('/purchase', function () {
+    return view('user.templates.myPurchase');
+});
 // P R O D U C T S - P A G E
 Route::get('/product', function () {
     return view('user.templates.product');

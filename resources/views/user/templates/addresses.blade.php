@@ -61,7 +61,7 @@
                 <!-- ================ -->
 
                 <div class="col-3">
-                    @include('user.templates.layouts.page-right-sidebar')
+                    @include('user.templates.layouts.page-profile-sidebar')
 
                 </div>
 

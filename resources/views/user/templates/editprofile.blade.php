@@ -52,21 +52,27 @@
 
     <!-- main-container start -->
     <!-- ================ -->
-    <section class="main-container">
+    <section class="main-container"> 
 
-        <div class="container">
-            <div class="row">
+      <div class="container">
+             <div class="row">
 
                 <!-- main start -->
                 <!-- ================ -->
 
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h1 class="page-title">My Profile</h1>
-                <div class="separator-2"></div>
                 <!-- page-title end -->
 
-                <div class="col-10">
+                <div class="col-3">
+                    @include('user.templates.layouts.page-profile-sidebar')
+
+                </div>
+                <!--   Another Column -->
+           
+                <!-- <div class="row-8s"> -->
+                     <div class="main col-lg-8 order-lg-2 ml-xl-auto">
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -106,12 +112,6 @@
                                         <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate')== '' ? $birthdate : old('birthdate') }}" required autofocus>
                                     </div>
                                 </div>
-
-
-                                
-
-
-                          
                             </div>
 
                             <!---2nd Column --->
@@ -135,12 +135,12 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Phone Number</h5>
-                                        <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number')== '' ? Auth::user()->phone_number : old('phone_number') }}" required autofocus>
+                                        <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" required autofocus>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
+
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -149,14 +149,11 @@
                                 </button>
                             </div>
                          </div>
+                     </div>
                     </form>
                 </div>
-
-
-                <!--   Another Column -->
-                 @include('user.templates.layouts.profile_navbar')
-
-
+                </div>
+                
 
             </div>
         </div>

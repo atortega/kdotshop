@@ -61,12 +61,13 @@
 
                 <!-- page-title start -->
                 <!-- ================ -->
-                <h1 class="page-title">My Profile</h1>
-                <div class="separator-2"></div>
-                <!-- page-title end -->
+                <div class="col-3">
+                    @include('user.templates.layouts.page-profile-sidebar')
 
-                <div class="col-10">
+                </div>
 
+                <!-- <div class="col-10"> -->
+                  <div class="main col-lg-8 order-lg-2 ml-xl-auto">
                     <form method="POST" action="">
                         @csrf
                         <div class="row">
@@ -92,17 +93,6 @@
                                         <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
                                     </div>
                                 </div>
-
-
-                                
-
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Address</h5>
-                                        <input id=dob" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" disabled>
-                                    </div>
-                                </div>
-                          
                             </div>
 
                             <!---2nd Column --->
@@ -134,13 +124,9 @@
                             </div>
                         </div>
                     </form>
-                </div>
+                  </div>
 
-
-                <!--   Another Column -->
-                  @include('user.templates.layouts.profile_navbar')
-
-
+              </div>
 
             </div>
         </div>

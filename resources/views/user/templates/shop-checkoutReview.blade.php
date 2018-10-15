@@ -76,7 +76,7 @@
               <div class="separator-2"></div>
               <!-- page-title end -->
 
-              <table class="table cart">
+              <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
                     <th>Product </th>
@@ -127,7 +127,7 @@
                 </tbody>
               </table>
               <div class="space-bottom"></div>
-              <table class="table">
+              <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
                     <th colspan="2">Billing Information </th>
@@ -136,15 +136,15 @@
                 <tbody>
                   <tr>
                     <td>Full Name</td>
-                    <td class="information">John Doe </td>
+                    <td class="information">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td class="information">youremail@domain.com </td>
+                    <td class="information">{{ Auth::user()->email }} </td>
                   </tr>
                   <tr>
-                    <td>Telephone</td>
-                    <td class="information">+00 123 123 1234</td>
+                    <td>Contact Number</td>
+                    <td class="information">{{ Auth::user()->phone_number }}</td>
                   </tr>
                   <tr>
                     <td>Address</td>
@@ -157,7 +157,7 @@
                 </tbody>
               </table>
               <div class="space-bottom"></div>
-              <table class="table">
+              <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
                     <th colspan="2">Shipping Information </th>
@@ -183,7 +183,7 @@
                 </tbody>
               </table>
               <div class="space-bottom"></div>
-              <table class="table">
+              <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
                     <th colspan="2">Payment </th>

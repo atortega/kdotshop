@@ -2,12 +2,12 @@
 <html dir="ltr" lang="zxx">
 
   <head>
-    
-    @include('user.templates.layouts.header')
 
-    <title>KDot | Product Details</title>
-    
-    
+  @include('user.templates.layouts.header')
+
+  <title>KDot | Products </title>
+
+
   </head>
 
   <!-- body classes:  -->
@@ -16,24 +16,20 @@
   <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
   <!-- "gradient-background-header": applies gradient background to header -->
   <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-  <body class="front-page transparent-header">
+  <body class="front-page">
 
-    <!-- scrollToTop -->
-    <!-- ================ -->
-    <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
+  <!-- scrollToTop -->
+  <!-- ================ -->
+  <div class="scrollToTop circle"><i class="fa fa-angle-up"></i></div>
 
-    <!-- page wrapper start -->
-    <!-- ================ -->
-    <div class="page-wrapper">
-      <!-- header-container start -->
-      
-        <!-- header-top start -->
-        <!-- classes:  -->
-        <!-- "dark": dark version of header top e.g. class="header-top dark" -->
-        <!-- "colored": colored version of header top e.g. class="header-top colored" -->
-        <!-- ================ -->
+  <!-- page wrapper start -->
+  <!-- ================ -->
+  <div class="page-wrapper">
+    <!-- header-container start -->
+      @include('user.templates.layouts.customer_nav')
+    <!-- header-container end -->
 
-        @include('user.templates.layouts.customer_nav')
+
 
         <!-- header end -->
       
@@ -44,7 +40,7 @@
       <div class="breadcrumb-container">
         <div class="container">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
             <li class="breadcrumb-item active">Shop Product</li>
           </ol>
         </div>
@@ -64,7 +60,7 @@
 
               <!-- page-title start -->
               <!-- ================ -->
-              <h1 class="page-title">Shop Product</h1>
+              <h3 class="title-page">Shop Product</h3>
               <div class="separator-2"></div>
               <!-- page-title end -->
             
@@ -128,12 +124,15 @@
                             </div>
                         </form>
                       <div class="light-gray-bg p-20 bordered clearfix">
-                        <span class="product price"><i class="fa fa-tag pr-10"></i>₱ {{ $getSkuQuery->unit_price }}</span>
-                        <div class="product elements-list pull-right clearfix">
-                          <a href="/shop-cart">
-                            <input type="submit" value="Add to Cart" class="margin-clear btn btn-default"/>
-                          </a>
-                        </div>
+                        <span class="product price"><i class="fa fa-tag pr-10"></i>
+                            ₱ {{ $getSkuQuery->unit_price }}
+                        </span>
+                         {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+
+                                    <input type="hidden" name="product_id" value="{{ $getSkuQuery->product_id }}">
+                                    <input type="hidden" name="qty" value="1">
+                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+                          {!! Form::close()!!}
                       </div>
                     </div>
                   

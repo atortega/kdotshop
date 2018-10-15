@@ -75,20 +75,20 @@
 							<div class="header-top-dropdown text-right">
 								<div class="btn-group dark">
 									@if(Auth::check())
-									<button type="button" class="btn btn-dark btn-sm">
+									<button id="user-profile" class="btn btn-dark btn-sm">
 										<i class="fa fa-user pr-2"></i>{{ Auth::user()->first_name }} 
 									</button>
 									<button type="button" class="btn btn-dark btn-sm dropdown-toggle dropdown-toggle-split"
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									</button>
 									<div class="dropdown-menu">
-										<a href="/purchase" class="dropdown-item">
+										<a href="" class="dropdown-item">
 											<i class="fa fa-shopping-bag pr-2"></i>
 											<span>My Purchase</span>
 										</a>
 										<a href="/account" class="dropdown-item">
-											<i class="fa fa-user pr-12"></i>
-											<span class="pr-10">My Account</span>
+											<i class="fa fa-user pr-2"></i>
+											<span class="pl-5px">My Account</span>
 										</a>
 										<div class="dropdown-divider"></div>
 										<a href="/logout" class="dropdown-item">
@@ -97,7 +97,7 @@
 										</a>
 									</div>
 									@else
-									<a href="{{ url('/signup')}}" class="btn btn-default btn-sm">
+									<a href="{{ url('/register')}}" class="btn btn-default btn-sm">
 										<i class="fa fa-user pr-2"></i> Sign Up
 									</a>
 									@endif

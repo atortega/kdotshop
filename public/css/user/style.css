@@ -503,11 +503,9 @@ tbody {
 }
 
 .light-gray-bg {
-  background-color: #eeeeee;
+  background-color: #fafafa;
   border-top: 1px solid #f3f3f3;
   border-bottom: 1px solid #f3f3f3;
-  margin-top: 10%;
-  margin-bottom: 10%;
 }
 
 .footer-top.light-gray-bg {
@@ -1377,6 +1375,10 @@ h5 + .separator {
 
 .pr-10 {
   padding-right: 10px;
+}
+
+.pl-5px { /* Added by JRL */
+  padding-left: 5px; 
 }
 
 .pr-20 {
@@ -3193,7 +3195,6 @@ ul.pagination .page-item.active .page-link,
 .breadcrumb-container {
   background-color: #f8f8f8;
   border-bottom: 1px solid #f4f4f4;
-  margin-top: 80px;
 }
 
 .dark.breadcrumb-container {
@@ -7137,7 +7138,6 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   -webkit-border-radius: 0 0 5px 5px;
   -moz-border-radius: 0 0 5px 5px;
   border-radius: 0 0 5px 5px;
-
   Changed by JRL
   */
   position: absolute;
@@ -7255,7 +7255,7 @@ header .container-fluid .animated.main-navigation .dropdown-menu .show .dropdown
   -moz-border-radius: 10px;
   border-radius: 10px;
   width: 450px;
-  margin-top: 15%;
+  margin-top: 10%; /* Changed by JRL - 15% */
   margin-bottom: 10%
 }
 
@@ -9069,15 +9069,4 @@ h6.media-heading {
 
 element.style{
   margin-top: 8%;
-}
-.column{
-  float: left;
-    width: 50%;
-    padding: 10px;
-    height: 300px;
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
 }

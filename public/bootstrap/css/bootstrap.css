@@ -2016,7 +2016,7 @@ pre code {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 2px);
+  height: 40px; /* Changed by JRL - height : calc(2.25rem + 2px);*/
 }
 
 select.form-control:focus::-ms-value {
@@ -2143,13 +2143,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-check {
   position: relative;
   display: block;
-  padding-left: 1.25rem;
+  padding-left: 0.70rem; /* Changed by JRL — 1.25rem */
 }
 
 .form-check-input {
   position: absolute;
   margin-top: 0.3rem;
-  margin-left: -1.25rem;
+  margin-left: -0.6rem; /* Changed by JRL — 1.25rem */
 }
 
 .form-check-input:disabled ~ .form-check-label {
@@ -2506,15 +2506,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #000000;
-  background-color: pink;
-  border-color: #ffffff;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color:#e75480;
-  border-color: #e75480;
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -3273,7 +3273,7 @@ tbody.collapse.show {
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color: #212529; /*color: #212529; Changed by JRL*/
+  color: #212529;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;

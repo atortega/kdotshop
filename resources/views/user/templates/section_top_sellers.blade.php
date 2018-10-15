@@ -26,20 +26,14 @@
                                                     {{ $top_seller->product_name }}
                                                 </a>
                                             </h3>
-                                            <p>
-                                                <i class="fa fa-star text-default"></i>
-                                                <i class="fa fa-star text-default"></i>
-                                                <i class="fa fa-star text-default"></i>
-                                                <i class="fa fa-star text-default"></i>
-                                                <i class="fa fa-star"></i>
-                                            </p>
+                                           
                                             <p class="small">{{ $top_seller->product_desc }}</p>
                                             <div class="elements-list clearfix">
-                                                <span class="price"><!--<del>$199.00</del>-->
+                                                <span class="price" style="color: #ff87c3;"><!--<del>$100.00</del>--> 
                                                     ₱ {{ $top_seller->unit_price }}
                                                 </span>
 
-                                                {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+                                               <!--  {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
                                                 <input type="hidden" name="product_id" value="{{ $top_seller->product_id }}">
                                                 <input type="hidden" name="qty" value="1">
@@ -48,7 +42,7 @@
                                                     Add To Cart<i class="fa fa-shopping-cart"></i>
                                                 </button>
 
-                                                {!! Form::close()!!}
+                                                {!! Form::close()!!} -->
 
                                             </div>
                                         </div>

@@ -15,6 +15,7 @@ use App\Models\SubCategories;
 use App\Models\Colors;
 use App\Models\Sizes;
 use App\Models\Sku;
+use App\Models\Sub_categories;
 class ProductsController extends Controller
 {
     public function index()

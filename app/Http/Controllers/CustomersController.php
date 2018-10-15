@@ -232,7 +232,7 @@ class CustomersController extends Controller
 
         $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
 
-        $birthdate = date('Y-m-d', strtotime($request['birthdate']));
+        $birthdate = date('Y-m-d H:i:s', strtotime($request['birthdate']));
 
         $customer->first_name   =  $request['first_name'];
         $customer->middle_name  =  $request['middle_name'];

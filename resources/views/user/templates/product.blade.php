@@ -122,7 +122,7 @@
 					<div class="main col-12">
 						<!-- page-title start -->
 						<!-- ================ -->
-						<h1 class="page-title">Wellcome To Shop</h1>
+						<h1 class="page-title">Welcome To Shop</h1>
 						<div class="separator-2"></div>
 						<!-- page-title end -->
 						<!-- pills start -->

@@ -64,13 +64,54 @@
                 <!-- ================ -->
                 <!-- page-title end -->
 
-                <div class="col-3">
-                    @include('user.templates.layouts.page-purchase-sidebar')
+               
 
-                </div>
-                <!--   Another Column -->
-           
-                <!-- <div class="row-8s"> -->
+        <div class="container">
+          <div class="row">
+            <!-- main start -->
+            <!-- ================ -->
+            <div class="main col-12">
+
+              <!-- page-title start -->
+              <!-- ================ -->
+             
+              <!-- page-title end -->
+              
+              <!-- Alert Messages -->
+              
+              <div class="separator-2"></div>
+
+              <table class="table cart table-hover table-colored">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Date Purchased</th>
+                    <th>Serial Number</th>
+                    <th>Invoice</th>
+                    <th>Total Items</th>
+                  </tr>
+                </thead>
+                <tbody>
+    
+                  </tr>
+                    
+
+                  <tr>
+                    <td class="total-quantity" colspan="6"></td>
+                    <td class="total-amount"></td>
+                  </tr>
+                    
+                </tbody>
+              </table>
+
+            </div>
+            <!-- main end -->
+
+          </div>
+        </div>
+      </section>
                    
                         
 

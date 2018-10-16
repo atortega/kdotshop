@@ -283,8 +283,22 @@ class CustomersController extends Controller
     {
         $countries = Country::orderBy('code')->get();
         $user = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
-
-        return view('user.templates.addresses', ['countries' => $countries, 'user' => $user ]);
+        if (!$user) {
+            $address = new CustomersAddress();
+            $address->billing_address1  = '';
+            $address->billing_barangay  = '';
+            $address->billing_city      = '';
+            $address->billing_province  = '';
+            $address->billing_zipcode   = '';
+            $address->billing_country   = '';
+            $address->shipping_address1 = '';
+            $address->shipping_barangay = '';
+            $address->shipping_city     = '';
+            $address->shipping_province = '';
+            $address->shipping_zipcode  = '';
+            $address->shipping_country  = '';
+        }
+        return view('user.templates.addresses', ['countries' => $countries, 'user' => $address ]);
     }
 
     public function insertAddress(Request $request)

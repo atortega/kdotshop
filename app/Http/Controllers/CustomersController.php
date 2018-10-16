@@ -282,8 +282,8 @@ class CustomersController extends Controller
     public function AddressViewForm()
     {
         $countries = Country::orderBy('code')->get();
-        $user = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
-        if (!$user) {
+        $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+        if (!$address) {
             $address = new CustomersAddress();
             $address->billing_address1  = '';
             $address->billing_barangay  = '';

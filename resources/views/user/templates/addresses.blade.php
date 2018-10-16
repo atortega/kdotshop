@@ -84,48 +84,55 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <form method="POST" action="/saveProfile">
+                    <form method="POST" action="/addresses/add">
                         @csrf
                         <div class="row">
                             <div class="col">
                                 <h2 style="color: gray">Billing Address</h2><br>
+
+                                <div class="form-group has-feedback row">
+                                    <div class="col-md-8">
+                                        <h5>House No., Street</h5>
+                                        <input id="billing_address1" type="text" class="form-control" name="billing_address1" value="{{ $user->billing_address1 }}" required autofocus>
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Barangay</h5>
-                                        <input id="fname" type="text" class="form-control" name="barangay" value="" required autofocus>
+                                        <input id="billing_barangay" type="text" class="form-control" name="billing_barangay" value="{{ $user->billing_barangay }}" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
-                                        <h5>Municipality</h5>
-                                         <input id="fname" type="text" class="form-control" name="municipality" value="" required autofocus>
+                                        <h5>Municipality/City</h5>
+                                         <input id="billing_city" type="text" class="form-control" name="billing_city" value="{{ $user->billing_city }}" required autofocus>
                                     </div>
                                 </div>
 
 
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>City</h5>
-                                       <input id="fname" type="text" class="form-control" name="city" value="" required autofocus>
-                                    </div>
-                                </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Province</h5>
-                                       <input id="fname" type="text" class="form-control" name="province" value="" required autofocus>
+                                       <input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}" required autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Country</h5>
-                                       <input id="fname" type="text" class="form-control" name="country" value="" required autofocus>
+                                        <select class="form-control" id="billing_country" name="billing_country">
+                                            @foreach($countries as $country)
+                                                <option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}>{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Zipcode</h5>
-                                       <input id="fname" type="text" class="form-control" name="zipcode" value="" required autofocus>
+                                       <input id="billing_zipcode" type="text" class="form-control" name="billing_zipcode" value="{{ $user->billing_zipcode }}" required autofocus>
                                     </div>
                                 </div>
 
@@ -134,41 +141,48 @@
                             <!---2nd Column --->
                             <div class="col">
                                 <h2 style="color: gray">Shipping Address</h2><br>
+
+                                <div class="form-group has-feedback row">
+                                    <div class="col-md-8">
+                                        <h5>House No., Street</h5>
+                                        <input id="shipping_address1" type="text" class="form-control" name="shipping_address1" value="{{ $user->shipping_address1 }}" required autofocus>
+                                    </div>
+                                </div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Barangay</h5>
-                                       <input id="fname" type="text" class="form-control" name="barangay" value="" required autofocus>
+                                       <input id="shipping_barangay" type="text" class="form-control" name="shipping_barangay" value="{{ $user->shipping_barangay }}" required autofocus>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
-                                        <h5>Municipality</h5>
-                                       <input id="fname" type="text" class="form-control" name="municipality" value="" required autofocus>
+                                        <h5>Municipality/City</h5>
+                                       <input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}" required autofocus>
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>City</h5>
-                                       <input id="fname" type="text" class="form-control" name="city" value="" required autofocus>
-                                    </div>
-                                </div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Province</h5>
-                                       <input id="fname" type="text" class="form-control" name="province" value="" required autofocus>
+                                       <input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}" required autofocus>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Country</h5>
-                                       <input id="fname" type="text" class="form-control" name="country" value="" required autofocus>
+                                        <select class="form-control" id="shipping_country" name="shipping_country">
+                                            @foreach($countries as $country)
+                                                <option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Zipcode</h5>
-                                       <input id="fname" type="text" class="form-control" name="zipcode" value="" required autofocus>
+                                       <input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="{{ $user->shipping_zipcode }}" required autofocus>
                                     </div>
                                 </div>
                             </div>
@@ -180,6 +194,10 @@
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                      {{ __('Save Changes') }}
+                                </button>
+
+                                <button type="reset" class="btn btn-warning">
+                                    {{ __('Reset Form') }}
                                 </button>
                             </div>
                          </div>

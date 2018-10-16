@@ -52,12 +52,18 @@ Route::get('/updateProfile', function () {
 Route::get('/updatePassword', function () {
     return view('user.templates.updatePassword');
 });
+/*
 Route::get('/addresses', function () {
     return view('user.templates.addresses');
 });
+*/
+
 Route::get('/updateProfile', 'CustomersController@updateProfileForm');
 Route::post('/saveProfile', 'CustomersController@saveProfile');
 Route::post('/change-password', 'CustomersController@changePassword');
+Route::post('/change-password', 'CustomersController@changePassword');
+Route::post('/addresses/add', 'CustomersController@insertAddress');
+Route::get('/addresses', 'CustomersController@AddressViewForm');
 
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');

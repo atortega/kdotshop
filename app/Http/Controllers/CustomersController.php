@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\Customers;
+use App\Models\Country;
+use App\Models\CustomersAddress;
 
 class CustomersController extends Controller
 {
@@ -275,5 +277,42 @@ class CustomersController extends Controller
     {
         $birthdate = date('m/d/Y', strtotime(Auth::user()->birthdate));
         return view('user.templates.editprofile', ["birthdate" => $birthdate]);
+    }
+
+    public function AddressViewForm()
+    {
+        $countries = Country::orderBy('code')->get();
+        $user = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+
+        return view('user.templates.addresses', ['countries' => $countries, 'user' => $user ]);
+    }
+
+    public function insertAddress(Request $request)
+    {
+
+        $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+        if (!$address) {
+            $address = new CustomersAddress();
+            $address->customer_id       = Auth::user()->customer_id;
+        }
+
+
+        $address->billing_address1  = $request['billing_address1'];
+        $address->billing_barangay  = $request['billing_barangay'];
+        $address->billing_city      = $request['billing_city'];
+        $address->billing_province  = $request['billing_province'];
+        $address->billing_zipcode   = $request['billing_zipcode'];
+        $address->billing_country   = $request['billing_country'];
+        $address->shipping_address1 = $request['shipping_address1'];
+        $address->shipping_barangay = $request['shipping_barangay'];
+        $address->shipping_city     = $request['shipping_city'];
+        $address->shipping_province = $request['shipping_province'];
+        $address->shipping_zipcode  = $request['shipping_zipcode'];
+        $address->shipping_country  = $request['shipping_country'];
+        $address->shipping_same_as_billing_address  = 0;
+
+        $address->save();
+
+        return redirect()->back()->with('message', 'Customers Address has been added.');
     }
 }

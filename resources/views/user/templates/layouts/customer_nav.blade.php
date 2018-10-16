@@ -22,11 +22,6 @@
 										<i class="fa fa-facebook"></i>
 									</a>
 								</li>
-								<li class="googleplus">
-									<a href="#">
-										<i class="fa fa-google-plus"></i>
-									</a>
-								</li>
 							</ul>
 							<div class="social-links hidden-md-up circle small">
 								<div class="btn-group dropdown">

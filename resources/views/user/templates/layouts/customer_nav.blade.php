@@ -77,7 +77,7 @@
 										data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									</button>
 									<div class="dropdown-menu">
-										<a href="" class="dropdown-item">
+										<a href="/purchase" class="dropdown-item">
 											<i class="fa fa-shopping-bag pr-2"></i>
 											<span>My Purchase</span>
 										</a>

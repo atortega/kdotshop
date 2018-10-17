@@ -22,6 +22,12 @@
 										<i class="fa fa-facebook"></i>
 									</a>
 								</li>
+								<li class="googleplus">
+									<a href="{{ URL::asset('https://plus.google.com/u/0/109139515253704692407') }}"
+										target="_blank">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</li>
 							</ul>
 							<div class="social-links hidden-md-up circle small">
 								<div class="btn-group dropdown">
@@ -39,7 +45,8 @@
 											</a>
 										</li>
 										<li class="googleplus">
-											<a href="#">
+											<a href="{{ URL::asset('https://plus.google.com/u/0/109139515253704692407') }}"
+												target="_blank">
 												<i class="fa fa-google-plus"></i>
 											</a>
 										</li>
@@ -93,7 +100,7 @@
 									</div>
 									@else
 									<a href="{{ url('/register')}}" class="btn btn-default btn-sm">
-										<i class="fa fa-user pr-2"></i> Sign Up
+										<i class="fa fa-check-square-o pr-2"></i> Sign Up
 									</a>
 									@endif
 								</div>
@@ -174,9 +181,11 @@
 											</a>
 										</div>
 										<!-- name-and-slogan -->
+										<!--
 										<div class="site-slogan">
-											Multipurpose HTML5 Template
+											KDot Shop
 										</div>
+										-->
 									</div>
 
 									<!-- header dropdown buttons -->

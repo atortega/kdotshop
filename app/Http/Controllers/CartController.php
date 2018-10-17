@@ -22,8 +22,8 @@ class CartController extends Controller
         
         // $cart = Session::get('cart');
         Cart::add([
-            'product_id'    =>  $product_id,
-            'product_name'  =>  $productById->product_name,
+            'id'    =>  $product_id,
+            'name'  =>  $productById->product_name,
             'desc'          =>  $productById->product_desc,
             'price'         =>  $skuById->unit_price,
             'qty'           =>  $request->qty

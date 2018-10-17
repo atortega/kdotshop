@@ -101,8 +101,8 @@
                   <tr class="remove-data">
 
                     <td class="product">
-                      <a href='{{ asset("/shop-productDetails/$cartProduct->product_id") }}'>
-                        {{$cartProduct->product_name}}
+                      <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
+                        {{$cartProduct->name}}
                       </a>
                       <small>
                         {{$cartProduct->desc}}

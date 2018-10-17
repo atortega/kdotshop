@@ -142,48 +142,56 @@
                             <div class="col">
                                 <h2 style="color: gray">Shipping Address</h2><br>
 
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>House No., Street</h5>
-                                        <input id="shipping_address1" type="text" class="form-control" name="shipping_address1" value="{{ $user->shipping_address1 }}" required autofocus>
+                                <div id="shipping" style="display:none">
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>House No., Street</h5>
+                                            <input id="shipping_address1" type="text" class="form-control" name="shipping_address1" value="{{ $user->shipping_address1 }}" autofocus>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Barangay</h5>
-                                       <input id="shipping_barangay" type="text" class="form-control" name="shipping_barangay" value="{{ $user->shipping_barangay }}" required autofocus>
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>Barangay</h5>
+                                           <input id="shipping_barangay" type="text" class="form-control" name="shipping_barangay" value="{{ $user->shipping_barangay }}" autofocus>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Municipality/City</h5>
-                                       <input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}" required autofocus>
-                                    </div>
-                                </div>
 
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Province</h5>
-                                       <input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}" required autofocus>
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>Municipality/City</h5>
+                                           <input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}" autofocus>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>Province</h5>
+                                           <input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}" autofocus>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>Country</h5>
+                                            <select class="form-control" id="shipping_country" name="shipping_country">
+                                                @foreach($countries as $country)
+                                                    <option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback row">
+                                        <div class="col-md-8">
+                                            <h5>Zipcode</h5>
+                                           <input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="{{ $user->shipping_zipcode }}" autofocus>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Country</h5>
-                                        <select class="form-control" id="shipping_country" name="shipping_country">
-                                            @foreach($countries as $country)
-                                                <option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Zipcode</h5>
-                                       <input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="{{ $user->shipping_zipcode }}" required autofocus>
-                                    </div>
+                                <div class="checkbox padding-top-clear form-check">
+                                    <input class="form-check-input" type="checkbox" id="shipping-info-check" name="same_ss_billing" checked>
+                                    <label class="form-check-label">
+                                        My Shipping information is the same as my Billing information.
+                                    </label>
                                 </div>
                             </div>
 
@@ -226,6 +234,16 @@
 <!-- ================================================== -->
 <!-- Jquery and Bootstap core js files -->
 
-
+    <script>
+        $(function() {
+            $("#shipping-info-check").click(function() {
+                if ($(this).prop('checked')) {
+                    $("#shipping").hide();
+                } else {
+                    $("#shipping").show();
+                }
+            });
+        });
+    </script>
 </body>
 </html>

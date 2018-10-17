@@ -13,6 +13,8 @@ class CustomUser extends Authenticatable
 
     protected $primaryKey = 'customer_id';
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *

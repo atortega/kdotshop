@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\CustomUser;
 use App\Http\Controllers\Controller;
+use App\Models\CustomersAddress;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -61,7 +62,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return CustomUser::create([
+        $user =  CustomUser::create([
             'first_name' => $data['first_name'],
             'middle_name' => $data['middle_name'],
             'last_name' => $data['last_name'],
@@ -70,5 +71,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $address = CustomersAddress::create([
+           'customer_id' => $user->customer_id,
+            'shipping_same_as_billing_address' => 0
+        ]);
+
+        return $user;
     }
 }

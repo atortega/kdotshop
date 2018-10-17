@@ -72,7 +72,7 @@
 
             <!-- page-title start -->
             <!-- ================ -->
-            <h3 class="page-title">My Purchase History</h3>
+            <h3 class="page-title">To Ship</h3>
             <!-- page-title end -->
 
             <!-- Alert Messages -->

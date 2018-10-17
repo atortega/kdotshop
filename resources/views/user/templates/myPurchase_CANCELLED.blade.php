@@ -72,7 +72,7 @@
 
             <!-- page-title start -->
             <!-- ================ -->
-            <h3 class="page-title">My Purchase History</h3>
+            <h3 class="page-title">Cancelled Orders</h3>
             <!-- page-title end -->
 
             <!-- Alert Messages -->

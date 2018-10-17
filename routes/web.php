@@ -109,29 +109,7 @@ Route::post('/cart-update', 'CartController@cartUpdate');
 Route::get('/cart-remove/{rowId}', 'CartController@cartRemove');
 Route::get('/cart-destroy', 'CartController@cartDestroy');
 
-// S H O P - C H E C K O U T
-Route::get('/shop-checkout', function () {
-    return view('user.templates.shop-checkout');
-});
-Route::get('/shop-checkout','CartController@cartShowCheckout');
-Route::post('/shop-checkout', 'CheckoutDetailsController@billingInfo'); // SURE?
-Route::post('/shop-checkout', 'CheckoutDetailsController@shipInfo');    // SURE?
 
-// S H O P - C H E C K O U T P A Y M E N T
-Route::get('/shop-checkoutPayment', function () {
-    return view('user.templates.shop-checkoutPayment');
-});
-
-// S H O P - C H E C K O U T R E V I E W
-Route::get('/shop-checkoutReview', function () {
-    return view('user.templates.shop-checkoutReview');
-});
-Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
-
-// S H O P - C H E C K O U T C O M P L E T E D
-Route::get('/shop-checkoutCompleted', function () {
-    return view('user.templates.shop-checkoutCompleted');
-});
 
 /*
 // L O G I N - P A G E (Outdated Version)
@@ -242,4 +220,31 @@ Route::prefix('admin')->group(function () {
     Route::post('/sub-categories/edit', 'SubCategoriesController@editProductSubCategory');
     Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
     Route::get('/sub-categories', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
+});
+
+
+Route::group(['middleware' => 'auth' ], function() {
+    // S H O P - C H E C K O U T
+    Route::get('/shop-checkout', function () {
+        return view('user.templates.shop-checkout');
+    });
+    Route::get('/shop-checkout','CartController@cartShowCheckout');
+    Route::post('/shop-checkout', 'CheckoutDetailsController@billingInfo'); // SURE?
+    Route::post('/shop-checkout', 'CheckoutDetailsController@shipInfo');    // SURE?
+
+    // S H O P - C H E C K O U T P A Y M E N T
+    Route::get('/shop-checkoutPayment', function () {
+        return view('user.templates.shop-checkoutPayment');
+    });
+
+    // S H O P - C H E C K O U T R E V I E W
+    Route::get('/shop-checkoutReview', function () {
+        return view('user.templates.shop-checkoutReview');
+    });
+    Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
+
+    // S H O P - C H E C K O U T C O M P L E T E D
+    Route::get('/shop-checkoutCompleted', function () {
+        return view('user.templates.shop-checkoutCompleted');
+    });
 });

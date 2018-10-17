@@ -52,7 +52,12 @@
 				<div class="row">
 					<!-- main start -->
 					<!-- ================ -->
-					<div class="main col-12">
+					<div class="col-3">
+                    @include('user.templates.layouts.page-purchase-sidebar')
+
+                </div>
+
+					<div class="main col-9">
 
 						<!-- page-title start -->
 						<!-- ================ -->
@@ -72,7 +77,7 @@
 									<th>Date Purchased</th>
 									<th>Serial Number</th>
 									<th>Invoice</th>
-									<th>Total Items</th>
+									<th>Total Payments</th>
 								</tr>
 							</thead>
 							<tbody>

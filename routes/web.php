@@ -76,6 +76,15 @@ Route::get('page-verificationCode', function () {
 Route::get('/purchase', function () {
     return view('user.templates.myPurchase');
 });
+Route::get('/ship', function () {
+    return view('user.templates.myPurchase_SHIP');
+});
+Route::get('/completed', function () {
+    return view('user.templates.myPurchase_COMPLETED');
+});
+Route::get('/cancelled', function () {
+    return view('user.templates.myPurchase_CANCELLED');
+});
 // P R O D U C T S - P A G E
 Route::get('/product', function () {
     return view('user.templates.product');

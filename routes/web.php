@@ -109,7 +109,7 @@ Route::post('/cart-update', 'CartController@cartUpdate');
 Route::get('/cart-remove/{rowId}', 'CartController@cartRemove');
 Route::get('/cart-destroy', 'CartController@cartDestroy');
 
-
+Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 /*
 // L O G I N - P A G E (Outdated Version)

@@ -29,7 +29,9 @@ class CustomUser extends Authenticatable
         'phone_number',
         'remember_token',
         'email',
-        'password'
+        'password',
+        'provider',
+        'provider_id'
     ];
 
     /**

@@ -69,8 +69,8 @@ Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 
-Route::get('/redirect', 'Auth\LoginController@redirect');
-Route::get('/callback', 'Auth\LoginController@callback');
+//Route::get('/redirect', 'Auth\LoginController@redirect');
+//Route::get('/callback', 'Auth\LoginController@callback');
 
 // P A G E - V E R I F I C A T I O N
 Route::get('page-verificationCode', function () {

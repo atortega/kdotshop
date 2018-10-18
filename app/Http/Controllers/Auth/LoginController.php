@@ -75,6 +75,15 @@ class LoginController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
-        return redirect()->to('/');
+        return redirect()->to('/home');
+    }
+     public function redirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function callback()
+    {
+       
     }
 }

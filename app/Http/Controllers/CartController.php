@@ -22,8 +22,8 @@ class CartController extends Controller
         
         // $cart = Session::get('cart');
         Cart::add([
-            'id'    =>  $product_id,
-            'name'  =>  $productById->product_name,
+            'id'            =>  $product_id,
+            'name'          =>  $productById->product_name,
             'desc'          =>  $productById->product_desc,
             'price'         =>  $skuById->unit_price,
             'qty'           =>  $request->qty
@@ -49,6 +49,12 @@ class CartController extends Controller
         $cartProducts = Cart::Content();
        
          return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts]);
+     }
+
+     public function cartShowInvoice(){
+        $cartProducts = Cart::Content();
+       
+         return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
      }
 
     public function cartUpdate(Request $request)

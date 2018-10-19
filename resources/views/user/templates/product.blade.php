@@ -385,10 +385,10 @@
 												<p class="small">
 													{{ $row->product_desc }}
 												</p>
-												<div class="elements-list clearfix">
+												<div class="elements-list clearfix" style="color: #ff87c3;">
 													<span class="price">₱ {{ $row->unit_price }}</span>
 													
-												{!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
+												<!-- {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
 													<input type="hidden" name="product_id" value="{{ $row->product_id }}">
 													<input type="hidden" name="qty" value="1">
@@ -397,7 +397,7 @@
 														Add To Cart<i class="fa fa-shopping-cart"></i>
 													</button>
 
-												{!! Form::close()!!}
+												{!! Form::close()!!} -->
 
 												</div>
 											</div>

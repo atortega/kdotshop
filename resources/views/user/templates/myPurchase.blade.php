@@ -71,18 +71,19 @@
 						<table class="table cart table-hover table-colored">
 							<thead>
 								<tr>
-									<th>Order ID</th>
-									<th>Product Name</th>
-									<th>Quantity</th>
+									<th>Order Number</th>
+									<th>Product Name</th>									
+									<th>Payment Methods</th>
 									<th>Date Purchased</th>
 									<th>Serial Number</th>
-									<th>Invoice</th>
+									<th>Invoice Number</th>
+									<th>Total Quantity</th>
 									<th>Total Payments</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td class="total-quantity" colspan="6"></td>
+									<td class="total-quantity" colspan="7"></td>
 									<td class="total-amount"></td>
 								</tr>
 							</tbody>

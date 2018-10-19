@@ -65,8 +65,15 @@ Route::post('/change-password', 'CustomersController@changePassword');
 Route::post('/addresses/add', 'CustomersController@insertAddress');
 Route::get('/addresses', 'CustomersController@AddressViewForm');
 
+/*GOOGLE LOGIN */
 Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+
+/*FACEBOOK LOGIN */
+// Route::get('/redirectfb', 'Auth\LoginController@redirect');
+// Route::get('/callbackfb', 'Auth\LoginController@callback');
+
+
 
 
 //Route::get('/redirect', 'Auth\LoginController@redirect');
@@ -127,6 +134,15 @@ Route::get('/page-signup', function () {
 });
 */
 
+//PALAWAN INSTRTUCTIONS//
+Route::get('/palawan', function () {
+    return view('user.templates.palawan');
+});
+
+Route::get('/invoice', function () {
+    return view('user.templates.invoice.invoice ');
+});
+Route::get('/invoice','CartController@cartShowInvoice');
 
 
 
@@ -157,6 +173,7 @@ Route::group(['middleware' => 'auth' ], function() {
     });
 
     Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
+        
         /* ___________________ADMIN SIDE___________________ */
 
         Route::prefix('admin')->group(function () {

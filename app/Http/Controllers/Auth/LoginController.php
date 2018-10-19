@@ -82,13 +82,44 @@ class LoginController extends Controller
         }
         return redirect()->to('/home');
     }
-     public function redirect()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
+    //  public function redirect()
+    // {
+    //     return Socialite::driver('facebook')->redirect();
+    // }
 
-    public function callback()
-    {
+    // public function callback()
+    // {
+    //     try {
+    //         $user = Socialite::driver('facebook')->user();
+    //     } catch (\Exception $e) {
+    //         return redirect('/login');
+    //     }
+    //     // only allow people with @company.com to login
+    //     /*
+    //     if(explode("@", $user->email)[1] !== 'company.com'){
+    //         return redirect()->to('/');
+    //     }
+    //     */
+    //     // check if they're an existing user
+    //     $existingUser = CustomUser::where('email', $user->email)->first();
+    //     if($existingUser){
+    //         // log them in
+    //         auth()->login($existingUser, true);
+    //     } else {
+    //         // create a new user
+    //         $newUser                  = new CustomUser;
+    //         $newUser->last_name       = $user->name;
+    //         $newUser->first_name      = $user->name;    
+    //         $newUser->email           = $user->email;
+    //         $newUser->provider        = 'facebook';
+    //         $newUser->provider_id     = $user->id;
+    //         $newUser->avatar          = $user->avatar;
+    //         $newUser->avatar_original = $user->avatar_original;
+    //         $newUser->save();
+    //         auth()->login($newUser, true);
+    //     }
+    //     return redirect()->to('/home');
+    
        
-    }
+    // }
 }

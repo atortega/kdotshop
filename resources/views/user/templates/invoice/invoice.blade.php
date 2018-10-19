@@ -25,51 +25,37 @@
 					<th><span  >Customer Name</span></th>
 					<td><span  >{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span></td>
 				</tr>
-				   
-				
 			</table>
 			<table class="inventory">
 				<thead>
 					<tr>
 						<!-- <th><span  >Image</span></th> -->
-						<th><span  >Product</span></th>
+						<th><span>Product</span></th>
 						<!-- <th><span  >Color</span></th> -->
-						<th><span  >Price</span></th>
-						<th><span  >Quantity</span></th>
-						<th><span  >Total</span></th>
+						<th><span>Price</span></th>
+						<th><span>Quantity</span></th>
+						<th><span>Total</span></th>
 						<!--<th><span  >Remove</span></th>-->
 					</tr>
 				</thead>
 				<tbody>
-				
-
-                 
                   @foreach($cartProducts as $cartProduct)   
                  	<tr>
 
 	                    <td style="text-align: center;">
-	                      
-	                      {{$cartProduct->name }}
-
-
+							{{$cartProduct->name }}
 	                    </td>
 
 	                    <td style="text-align: center;">
-
-	                      ₱ {{$cartProduct->price}}
-
+							₱ {{$cartProduct->price}}
 	                    </td>
 	                    
 	                    <!-- <td class="tax">
 	                      Cart : : tax()
 	                    </td> -->
 
-	                    <td >
-	                     <!--  <div class="form-group"> -->
-	                        <input  style="text-align: center;"
-	                          value="{{$cartProduct->qty}}" type="text" min="1">
-	                        <!-- <p id="qty_display"></p> -->
-	                      </div>
+	                    <td style="text-align: center;">
+	                    	{{ $cartProduct->qty }}
 	                    </td>
 
 	                    <!-- <td class="remove" align="center">
@@ -88,61 +74,57 @@
 	                      </div>
 	                    </td> -->
 
-	                      <?php
-	                        $subTotal = $cartProduct->qty * $cartProduct->price;
-	                      ?>
+						<?php
+						$subTotal = $cartProduct->qty * $cartProduct->price;
+						?>
 
-	                    <td style="text-align: center;">
-
-	                      ₱ {{$subTotal}}
-
-	                    </td>
+						<td style="text-align: center;">
+							₱ {{$subTotal}}
+						</td>
 	                </tr>
-                  <!-- <tr>
-                    <td colspan="3">Discount Coupon</td>
-                    <td colspan="2">
-                      <div class="form-group">
-                        <input type="text" class="form-control">
-                      </div>
-                    </td> -->
+					<!-- <tr>
+						<td colspan="3">Discount Coupon</td>
+						<td colspan="2">
+						<div class="form-group">
+							<input type="text" class="form-control">
+						</div>
+					</td> -->
                     @endforeach
 
-                  <!-- <tr>
-                    <td>₱ {{ Cart::total() }}</td>
-                  </tr> -->
+				<!-- <tr>
+					<td>₱ {{ Cart::total() }}</td>
+				</tr> -->
                     
                 </tbody>
-              </table>
 				
-				
-					<!--<tr>
-						<td><span  >Front End Consultation</span></td>
-						<td><span  >Experience Review</span></td>
-						<td><span data-prefix>$</span><span  >150.00</span></td>
-						<td><span  >4</span></td>
-						<td><span data-prefix>$</span><span>600.00</span></td>
-					</tr> -->
-				</tbody>
+				<!--<tr>
+					<td><span  >Front End Consultation</span></td>
+					<td><span  >Experience Review</span></td>
+					<td><span data-prefix>$</span><span  >150.00</span></td>
+					<td><span  >4</span></td>
+					<td><span data-prefix>$</span><span>600.00</span></td>
+				</tr> -->
 			</table>
 			
 			<table class="balance">
-				<tr>
-					<th><span  >Total Amount</span></th>
-					<td style="text-align: center;"><span data-prefix>₱ {{ Cart::total() }}</span><span>
-				
+				<thead>
+					<tr>
+						<th><strong>Total Amount</strong></th>
+						<td style="text-align: center;"><span data-prefix>₱ {{ Cart::total() }}</span>
+					</tr>
+				</thead>
 			</table>
 		</article>
 		<aside>
-			<h1><span  >Additional Notes</span></h1>
+			<h1><span>Additional Notes</span></h1>
 			<div>
 				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
-				<br>
-				<br>
+				<br><br>
 				<div align="center" >
 					<button onclick="printpage();"
-						style="cursor: pointer;padding:6px 12px;border:1px solid transparent;
-						border-radius:4px;" id="printpagebutton" class='btn'>
-							Print this page
+							style="cursor: pointer;padding:6px 12px;border:1px solid transparent;
+							border-radius:4px" id="printpagebutton" class='btn'>
+						<span class="fa fa-print"></span> Print this page
 					</button>
 				</div>
 			</div>

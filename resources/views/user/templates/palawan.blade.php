@@ -41,73 +41,84 @@
       </div>
     </div>
 
-
     <div class='container'>
-			<div class='row'>
-				<div class='col-md-10 col-md-offset-1' style='padding:0;margin:0;width:100%;'>
-					<h2>Palawan Express Instructions</h2><br>
-					<div class="alert alert-danger">
-						<strong><i>Reminder: Don't forget the Total Payment of the Products you want to buy. <button onclick="window.open('/invoice', '_blank')" style="background-color: white;width: 150px">See Invoice Here</button></i></strong>
-					</div>
+		<div class='row'>
+			<div class='col-md-12 space-top' style='padding:0;margin:0;width:100%;'>
+				<h2 class="space-top">Palawan Express Padala <strong class="text-danger">Instructions</strong></h2>
+				<div class="alert alert-danger">
+					<strong>
+						<i>Reminder: Don't forget the Total Payment of the Products you want to buy.
+							<button class="btn btn-animated btn-colored btn-sm"
+									onclick="window.open('/invoice', '_blank')"
+									style="background-color: white;width: 150px; margin-left: 1%;">
+								See Invoice Here
+								<i class="fa fa-info"></i>
+							</button>
 
-					<div class="alert alert-warning">
-							<strong>STEP 1: </strong> Go to any Palawan Branches near you.<br><br>
-							<strong>STEP 2: </strong> Get a Palawan Express Form titled "SEND MONEY FORM".<br><br>
-							<strong>STEP 3: </strong> Fill up the required fields:		
-							<button id='thisButton'  data-toggle='modal' data-target='#seeImage' style="background-color: white;width: 150px"><strong>See Sample Form</strong></button>
-						<br><br>
-							<table class="table table-bordered" style="background-color: white">
-								<tr class='active'>
-									<td colspan="2">SENDER</td>
-								</tr>
-								<tr>
-									<td>Name: </td>
-									<td><font color="red">(Insert your Name here) </font><i>Ex: Juan de la Cruz</i></td>
-								</tr>
-								<tr>
-									<td>Mobile No: </td>
-									<td><font color="red">(Insert your mobile number here) </font><i>Ex: 0912345678</i></td>
-								</tr>
-								<tr class='active'>
-									<td colspan="2">RECEIVER</td>
-								</tr>
-								<tr>
-									<td>Name: </td>
-									<td><font color="red">Khristyl Alyssa U. Cutaran </font><i>(This is the name you will be sending money from)</i></td>
-								</tr>
-								<tr>
-									<td>Mobile No: </td>
-									<td><font color="red">09085488476 </font><i>(This is the mobile number that will contact our company to secure your payment)</i></td>
-								</tr>
-								<tr class='active'>
-									<td colspan="2">AMOUNT</td>
-								</tr>
-								<tr>
-									<td colspan="2"><i>(Enter the total amount of the products.) Ex: Php 13,000</i></td>
-									
-								</tr>
-								<tr class='danger'>
-									<td colspan="3" ><strong><i>NOTE: We will validate the amount, so be sure to enter the exact amount.</i></strong></td>
-								</tr>
-							</table><br>
-							<strong>STEP 4: </strong>Go back to our website and Log in. Go to "My Account > My Purchase > View Order Details"<br><br>
-							<strong>STEP 5: </strong>Screenshot or Capture a Picture of your form provided by Palawan Express Form <br><br>
-							<strong>STEP 6: </strong>Wait for your orders to be proccessed. It will be delivered based on the Method you choose during your purchase. Thank you! 
-					</div>
-					
-						 
-						
-
-
-
-						
-
+						</i>
+					</strong>
 				</div>
 
-			</div>
-			
+				<div class="alert alert-warning">
+						<strong>STEP 1: </strong> Go to any Palawan Branches near you.<br><br>
+						<strong>STEP 2: </strong> Get a Palawan Express Form titled "SEND MONEY FORM".<br><br>
+						<strong>STEP 3: </strong> Fill up the required fields:		
+						<button class="btn btn-animated btn-colored btn-sm" 
+								id='thisButton'  data-toggle='modal' data-target='#seeImage'
+								style="background-color: white; margin-left: 1%;">
+							  <strong>Click here to see Sample Form</strong>
+							<i class="fa fa-file-text-o"></i>
+						</button>
+					<br><br>
+						<table class="table table-bordered" style="background-color: white">
+							<tr class='active'>
+								<td colspan="2">SENDER</td>
+							</tr>
+							<tr>
+								<td>Name: </td>
+								<td><font color="red">(Insert your Name here) </font><i>Ex: Juan de la Cruz</i></td>
+							</tr>
+							<tr>
+								<td>Mobile No: </td>
+								<td><font color="red">(Insert your mobile number here) </font><i>Ex: 0912345678</i></td>
+							</tr>
+							<tr class='active'>
+								<td colspan="2">RECEIVER</td>
+							</tr>
+							<tr>
+								<td>Name: </td>
+								<td><font color="red">Khristyl Alyssa U. Cutaran </font><i>(This is the name you will be sending money from)</i></td>
+							</tr>
+							<tr>
+								<td>Mobile No: </td>
+								<td><font color="red">09085488476 </font><i>(This is the mobile number that will contact our company to secure your payment)</i></td>
+							</tr>
+							<tr class='active'>
+								<td colspan="2">AMOUNT</td>
+							</tr>
+							<tr>
+								<td colspan="2"><i>(Enter the total amount of the products.) Ex: Php 13,000</i></td>
+								
+							</tr>
+							<tr class='danger'>
+								<td colspan="3" ><strong><i>NOTE: We will validate the amount, so be sure to enter the exact amount.</i></strong></td>
+							</tr>
+						</table><br>
+						<strong>STEP 4: </strong>Go back to our website and Log in. Go to "My Account > My Purchase > View Order Details"<br><br>
+						<strong>STEP 5: </strong>Screenshot or Capture a Picture of your form provided by Palawan Express Form <br><br>
+						<strong>STEP 6: </strong>Wait for your orders to be proccessed. It will be delivered based on the Method you choose during your purchase. Thank you! 
+				</div>
+				
+					 
+					
 
+
+
+					
+
+			</div>
 		</div>
+	</div>
 
     <div class='modal fade' id='seeImage' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
     <div class='modal-dialog' role='document'>

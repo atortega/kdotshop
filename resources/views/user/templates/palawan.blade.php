@@ -5,7 +5,7 @@
 
   @include('user.templates.layouts.header')
 
-  <title>KDot | Products </title>
+  <title>KDot | Palawan Express Padala </title>
 
 
   </head>
@@ -36,7 +36,7 @@
       <div class="container">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a></li>
-          <li class="breadcrumb-item active">Products</li>
+          <li class="breadcrumb-item active">Palawan Express Padala</li>
         </ol>
       </div>
     </div>

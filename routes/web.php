@@ -52,8 +52,10 @@ Route::get('/addresses', function () {
 
 
 /*GOOGLE LOGIN */
-Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
-Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('/redirect/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('/twitter', 'Auth\LoginController@redirectToTwitter');
+
+Route::get('/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
 
 /*FACEBOOK LOGIN */
 // Route::get('/redirectfb', 'Auth\LoginController@redirect');

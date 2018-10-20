@@ -117,11 +117,11 @@
                                 <div class="row">
                                     <div class="col-md-12 text-center">                     
                                         <span class="text-center text-muted clearfix">Login with</span>
-                                        <a href="{{ url('/redirect') }}" class="btn btn-animated googleplus clearfix">
+                                        <a href="{{ url('/redirect/google') }}" class="btn btn-animated googleplus clearfix">
                                             Sign in with Google
                                             <i class="fa fa-google-plus"></i>
                                         </a>
-                                        <a href="{{ url('#') }}" class="btn btn-animated twitter clearfix">
+                                        <a href="{{ url('/redirect/twitter') }}" class="btn btn-animated twitter clearfix">
                                             Sign in with Twitter
                                             <i class="fa fa-twitter"></i>
                                         </a>

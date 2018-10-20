@@ -39,20 +39,22 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToProvider()
+    public function redirectToProvider($provider)
     {
         //dd(Socialite::driver('google'));
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver($provider)->redirect();
     }
+
+
     /**
      * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
         try {
-            $user = Socialite::driver('google')->user();
+            $user = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
             return redirect('/login');
         }
@@ -69,18 +71,29 @@ class LoginController extends Controller
             auth()->login($existingUser, true);
         } else {
             // create a new user
-            $newUser                  = new CustomUser;
-            $newUser->last_name       = $user->name;
-            $newUser->first_name      = $user->name;    
-            $newUser->email           = $user->email;
-            $newUser->provider        = 'google';
-            $newUser->provider_id     = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
+            if ($provider == 'google') {
+                $newUser = new CustomUser;
+                $newUser->last_name = $user->name;
+                $newUser->first_name = $user->name;
+                $newUser->email = $user->email;
+                $newUser->provider = 'google';
+                $newUser->provider_id = $user->id;
+                $newUser->avatar = $user->avatar;
+                $newUser->avatar_original = $user->avatar_original;
+            } else {
+                $newUser = new CustomUser;
+                $newUser->last_name = $user->name;
+                $newUser->first_name = $user->name;
+                $newUser->email = $user->email;
+                $newUser->provider = 'twitter';
+                $newUser->provider_id = $user->id;
+                $newUser->avatar = $user->avatar;
+                $newUser->avatar_original = $user->avatar_original;
+            }
             $newUser->save();
             auth()->login($newUser, true);
         }
-        return redirect()->to('/home');
+        return redirect()->to('/');
     }
     //  public function redirect()
     // {

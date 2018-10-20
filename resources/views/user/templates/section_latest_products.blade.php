@@ -3,7 +3,7 @@
         <div class="col-lg-8">
             <h2 class="text-center mt-4">Latest<strong> Arrival </strong></h2>
             <div class="separator"></div>
-            <p class="large text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam voluptas facere vero ex tempora saepe perspiciatis ducimus sequi animi.</p>
+            <p class="large text-center">Here is our newly added products that will help you select your own style for fashion. Start your style journey through our high and quality clothes and easy to wear designs.</p>
         </div>
     </div>
 

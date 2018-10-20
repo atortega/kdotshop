@@ -4,65 +4,90 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Auth;
 use Socialite;
-Use App\CustomUser;
-use App\SocialIdentity;
+use App\CustomUser;
 
 class LoginController extends Controller
-
 {
-	
-	use AuthenticatesUsers;
-		
-   public function redirectToProvider($provider)
-   {
-       return Socialite::driver($provider)->redirect();
-   }
+    /*
+    |--------------------------------------------------------------------------
+    | Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles authenticating users for the application and
+    | redirecting them to your home screen. The controller uses a trait
+    | to conveniently provide its functionality to your applications.
+    |
+    */
 
-   public function handleProviderCallback($provider)
-   {
-       try {
-           $user = Socialite::driver($provider)->user();
-       } catch (Exception $e) {
-           return redirect('/login');
-       }
+    use AuthenticatesUsers;
 
-       $authUser = $this->findOrCreateUser($user, $provider);
-       Auth::login($authUser, true);
-       return redirect($this->redirectTo);
-   }
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
 
-   public function findOrCreateUser($providerUser, $provider)
-   {
-       $account = SocialIdentity::whereProviderName($provider)
-                  ->whereProviderId($providerUser->getId())
-                  ->first();
-
-       if ($account) {
-           return $account->user;
-       } else {
-           $user = CustomUser::whereEmail($providerUser->getEmail())->first();
-
-           if (! $user) {
-               $newUser                  = new CustomUser;
+    public function redirectToProvider()
+    {
+        //dd(Socialite::driver('google'));
+        return Socialite::driver('google')->redirect();
+    }
+    /**
+     * Obtain the user information from Google.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (\Exception $e) {
+            return redirect('/login');
+        }
+        // only allow people with @company.com to login
+        /*
+        if(explode("@", $user->email)[1] !== 'company.com'){
+            return redirect()->to('/');
+        }
+        */
+        // check if they're an existing user
+        $existingUser = CustomUser::where('email', $user->email)->first();
+        if($existingUser){
+            // log them in
+            auth()->login($existingUser, true);
+        } else {
+            // create a new user
+            $newUser                  = new CustomUser;
             $newUser->last_name       = $user->name;
             $newUser->first_name      = $user->name;    
             $newUser->email           = $user->email;
+            $newUser->provider        = 'google';
+            $newUser->provider_id     = $user->id;
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;
             $newUser->save();
             auth()->login($newUser, true);
-           }
+        }
+        return redirect()->to('/home');
+    }
+    public function redirect($service) {
+        return Socialite::driver ( $service )->redirect ();
+    }
 
-           $user->identities()->create([
-               'provider_id'   => $providerUser->getId(),
-               'provider_name' => $provider,
-           ]);
-
-           return $user;
-       }
-   }
-
+    public function callback($service) {
+        $user = Socialite::with ( $service )->user ();
+        return view ( '/home' )->withDetails ( $user )->withService ( $service );
+    }
 }

@@ -16,16 +16,22 @@
 						<!-- ================ -->
 						<div class="header-top-first clearfix">
 							<ul class="social-links circle small clearfix hidden-sm-down">
+								<li class="googleplus">
+									<a href="{{ URL::asset('https://plus.google.com/u/0/109139515253704692407') }}"
+										target="_blank">
+										<i class="fa fa-google-plus"></i>
+									</a>
+								</li>
 								<li class="facebook">
 									<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" 
 										target="_blank">
 										<i class="fa fa-facebook"></i>
 									</a>
 								</li>
-								<li class="googleplus">
-									<a href="{{ URL::asset('https://plus.google.com/u/0/109139515253704692407') }}"
+								<li class="twitter">
+									<a href="{{ URL::asset('https://twitter.com/KdotShop') }}"
 										target="_blank">
-										<i class="fa fa-google-plus"></i>
+										<i class="fa fa-twitter"></i>
 									</a>
 								</li>
 							</ul>

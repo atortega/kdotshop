@@ -19,33 +19,6 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-<<<<<<< HEAD
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
-    public function redirectToProvider()
-    {
-        //dd(Socialite::driver('google'));
-        return Socialite::driver('google')->redirect();
-    }
-=======
 
     use AuthenticatesUsers;
 
@@ -73,23 +46,15 @@ class LoginController extends Controller
     }
 
 
->>>>>>> 51bbbea5949bf38ab32b4f2679476f0e3bea8776
     /**
      * Obtain the user information from Google.
      *
      * @return \Illuminate\Http\Response
      */
-<<<<<<< HEAD
-    public function handleProviderCallback()
-    {
-        try {
-            $user = Socialite::driver('google')->user();
-=======
     public function handleProviderCallback($provider)
     {
         try {
             $user = Socialite::driver($provider)->user();
->>>>>>> 51bbbea5949bf38ab32b4f2679476f0e3bea8776
         } catch (\Exception $e) {
             return redirect('/login');
         }
@@ -106,30 +71,6 @@ class LoginController extends Controller
             auth()->login($existingUser, true);
         } else {
             // create a new user
-<<<<<<< HEAD
-            $newUser                  = new CustomUser;
-            $newUser->last_name       = $user->name;
-            $newUser->first_name      = $user->name;    
-            $newUser->email           = $user->email;
-            $newUser->provider        = 'google';
-            $newUser->provider_id     = $user->id;
-            $newUser->avatar          = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
-            $newUser->save();
-            auth()->login($newUser, true);
-        }
-        return redirect()->to('/home');
-    }
-    public function redirect($service) {
-        return Socialite::driver ( $service )->redirect ();
-    }
-
-    public function callback($service) {
-        $user = Socialite::with ( $service )->user ();
-        return view ( '/home' )->withDetails ( $user )->withService ( $service );
-    }
-}
-=======
             if ($provider == 'google') {
                 $newUser = new CustomUser;
                 $newUser->last_name = $user->name;
@@ -195,4 +136,3 @@ class LoginController extends Controller
        
     // }
 }
->>>>>>> 51bbbea5949bf38ab32b4f2679476f0e3bea8776

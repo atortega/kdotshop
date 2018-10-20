@@ -56,7 +56,7 @@
                 <!-- The  --> <span class="text-default">KDot</span> <!-- Shop. -->
               </h3>
               <div class="separator object-non-visible mt-10" data-animation-effect="fadeIn" data-effect-delay="100"></div>
-              <p class="text-center object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi perferendis magnam ea necessitatibus, officiis voluptas odit! Aperiam omnis, cupiditate laudantium velit nostrum, exercitationem accusamus, possimus soluta illo deserunt tempora qui.</p>
+              <p class="text-center object-non-visible" data-animation-effect="fadeIn" data-effect-delay="100"></p>
             </div>
           </div>
         </div>
@@ -77,14 +77,8 @@
               <div class="separator-2"></div>
               <div class="row">
                 <div class="col-lg-6">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus illo vero cupiditate, sed enim voluptatibus provident consectetur. Quo dolor sunt nostrum, eligendi illo accusamus odit, ipsam excepturi voluptatem nulla minus.</p>
-                  <p>Blanditiis aspernatur, non quasi, maxime corporis officiis quia. Cupiditate, voluptatibus ducimus, natus, labore mollitia dolorem incidunt voluptatum, delectus eius fugit porro placeat animi voluptatem autem hic eligendi sint. Amet pariatur odit repudiandae sunt. Rem ipsum dolor sit amet, consectetur adipisicing elit. Sunt asperiores a.</p>
-                  <ul class="list-icons">
-                    <li><i class="fa fa-check-square-o"></i> Unt in culpa qui deserunt</li>
-                    <li><i class="fa fa-check-square-o"></i> Elegant Design</li>
-                    <li><i class="fa fa-check-square-o"></i> Labore et dolore magna aliqua</li>
-                    <li><i class="fa fa-check-square-o"></i> ipsam asperiores fugiat quo</li>
-                  </ul>
+                  <p>KDot Fashion Shop started its business in 2017 owned by Khristyl Alyssa U. Cutaran. KDot offers the wide range of products in categories from apparel products to accesories, fashion, bags, shoes and gadgets.</p>
+                  <p>It also offers multiple payment methods including Paypal, Palawan and PayMaya. The customer can choose the mode of delivery between LBC delivery or he can pick up the products he ordered at the actual store.Based in Santorini, Talamban, Cebu City.</p>
                 </div>
                 <div class="col-lg-6">
                   <div class="slick-carousel content-slider-with-controls">

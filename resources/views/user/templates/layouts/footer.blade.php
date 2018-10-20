@@ -11,10 +11,7 @@
 							<div class="logo-footer">
 								<img id="logo-footer" src="{{ asset('image/kdot_newlogo.png')}}" alt="">
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus illo vel dolorum soluta consectetur doloribus sit. Delectus non tenetur odit dicta vitae debitis suscipit doloribus. Ipsa, aut voluptas quaerat...
-								<a href="page-about.html">
-									Learn More<i class="fa fa-long-arrow-right pl-1"></i>
-								</a>
+							<p>KDot Fashion Shop started its business in 2017 owned by Khristyl Alyssa U. Cutaran. KDot offers the wide range of products in categories from apparel products to accesories, fashion, shoes and gadgets. 
 							</p>
 							<div class="separator-2"></div>
 							<nav>
@@ -23,7 +20,9 @@
 										<a class="nav-link" href="/about-us">About</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="#">Terms and Condition</a>
+										<a class="nav-link" href="#" data-toggle="modal" data-target="#tAndCModal">
+											Terms and Condition
+										</a>
 									</li>
 								</ul>
 							</nav>
@@ -32,100 +31,32 @@
 
 					<div class="col-lg-3">
 						<div class="footer-content">
-							<h2 class="title">Payments</h2>
+							<h2 class="title">Payment Methods</h2>
 							<div class="separator-2"></div>
-							<div class="media margin-clear">
+							<div class="margin-clear">
 								<div class="d-flex pr-2">
-									<div class="overlay-container">
-										<img class="media-object" alt="blog-thumb"
-											src="{{ asset('image/templates/blog-thumb-1.jpg') }}">
-										<a href="blog-post.html" class="overlay-link small">
-											<i class="fa fa-link"></i>
-										</a>
+									<div class="">
+										<img src='{{ asset("image/payment-methods/paymaya-218x48.png") }}'>
 									</div>
-								</div>
-
-								<div class="media-body">
-									<h6 class="media-heading">
-										<a href="blog-post.html">Lorem ipsum dolor sit amet...</a>
-									</h6>
-									<p class="small margin-clear">
-										<i class="fa fa-calendar pr-2"></i>Mar 23, 2017
-									</p>
 								</div>
 							</div>
 
 							<hr>
 
-							<div class="media margin-clear">
+							<div class="margin-clear">
 								<div class="d-flex pr-2">
 									<div class="overlay-container">
-										<img src="{{ asset('image/templates/blog-thumb-2.jpg') }}"
-											class="media-object" alt="blog-thumb">
-										<a href="blog-post.html" class="overlay-link small">
-											<i class="fa fa-link"></i>
-										</a>
+										<img src='{{ asset("image/payment-methods/paypal-180x48.png") }}'>
 									</div>
-								</div>
-								<div class="media-body">
-									<h6 class="media-heading">
-										<a href="blog-post.html">Lorem ipsum dolor sit amet...</a>
-									</h6>
-									<p class="small margin-clear">
-										<i class="fa fa-calendar pr-2"></i>Mar 22, 2017
-									</p>
 								</div>
 							</div>
 
 							<hr>
 
-							<div class="media margin-clear">
+							<div class="margin-clear">
 								<div class="d-flex pr-2">
-									<div class="overlay-container">
-										<img src="{{ asset('image/templates/blog-thumb-3.jpg') }}"
-											class="media-object" alt="blog-thumb">
-										<a href="blog-post.html" class="overlay-link small">
-											<i class="fa fa-link"></i>
-										</a>
-									</div>
+									<img src='{{ asset("image/payment-methods/palawan-express-padala-180x60.png") }}'>
 								</div>
-								<div class="media-body">
-									<h6 class="media-heading">
-										<a href="blog-post.html">Lorem ipsum dolor sit amet...</a>
-									</h6>
-									<p class="small margin-clear">
-										<i class="fa fa-calendar pr-2"></i>Mar 21, 2017
-									</p>
-								</div>
-							</div>
-
-							<hr>
-
-							<div class="media margin-clear">
-								<div class="d-flex pr-2">
-									<div class="overlay-container">
-										<img src="{{ asset('image/templates/blog-thumb-4.jpg') }}"
-											class="media-object" alt="blog-thumb">
-										<a href="blog-post.html" class="overlay-link small">
-											<i class="fa fa-link"></i>
-										</a>
-									</div>
-								</div>
-
-								<div class="media-body">
-									<h6 class="media-heading">
-										<a href="blog-post.html">Lorem ipsum dolor sit amet...</a>
-									</h6>
-									<p class="small margin-clear">
-										<i class="fa fa-calendar pr-2"></i>Mar 21, 2017
-									</p>
-								</div>
-							</div>
-
-							<div class="text-right space-top">
-								<a href="blog-large-image-right-sidebar.html" class="link-dark">
-									<i class="fa fa-plus-circle pl-1 pr-1"></i>More
-								</a>
 							</div>
 						</div>
 					</div>
@@ -134,22 +65,15 @@
 						<div class="footer-content">
 							<h2 class="title">Follow Us</h2>
 							<div class="separator-2"></div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium odio voluptatem necessitatibus illo vel dolorum soluta.</p>
+							
 							<ul class="social-links circle animated-effect-1">
 								<li class="facebook">
-									<a href="#"><i class="fa fa-facebook"></i></a>
+									<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" 
+										target="_blank"><i class="fa fa-facebook"></i></a>
 								</li>
 								<li class="twitter">
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li class="googleplus">
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-								</li>
-								<li class="linkedin">
-									<a href="#"><i class="fa fa-linkedin"></i></a>
-								</li>
-								<li class="xing">
-									<a href="#"><i class="fa fa-xing"></i></a>
+									<a href="{{ URL::asset('https://twitter.com/KdotShop') }}" 
+										target="_blank"><i class="fa fa-twitter"></i></a>
 								</li>
 							</ul>
 
@@ -198,6 +122,93 @@
 		</div>
 	</div>
 	<!-- .subfooter end -->
+	
+	<!-- T&C modal start -->
+	<div class="modal fade bd-example-modal-lg" id="tAndCModal"
+		tabindex="-1" role="dialog" aria-labelledby="tAndCModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="tAndCModalLabel">Terms and Conditions</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						<span class="sr-only">Close</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h3>Introduction</h3> 
+					<div class="separator-2"></div>
+					<p>These Website Standard Terms and Conditions written on this webpage shall manage your use of our website, KDot Shop accessible at www.kdotshop.com.</p>
+					<p>These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms and conditions written in here. You must not use this Website if you disagree with any of these Website Standard Terms and Conditions.</p>
+					<p>Minors or people below 18 years old are not allowed to use this Website.</p>
+
+					
+					<h3 class="space-top">Intellectual Property Rights</h3>
+					<div class="separator-2"></div>
+					<p>Other than the content you own, under these Terms, KDot Shop and/or its licensors own all the intellectual property rights and materials contained in this Website.</p>
+					<p>You are granted limited license only for purposes of viewing the material contained on this Website.</p>
+
+					<h3 class="space-top">Restrictions</h3>
+					<div class="separator-2"></div>
+					<p>You are specifically restricted from all of the following:</p>
+					<ul>
+						<li>publishing any Website material in any other media;</li>
+						<li>selling, sublicensing and/or otherwise commercializing any Website material;</li>
+						<li>publicly performing and/or showing any Website material;</li>
+						<li>using this Website in any way that is or may be damaging to this Website;</li>
+						<li>using this Website in any way that impacts user access to this Website;</li>
+						<li>using this Website contrary to applicable laws and regulations, or in any way may cause harm to the Website, or to any person or business entity;</li>
+						<li>engaging in any data mining, data harvesting, data extracting or any other similar activity in relation to this Website;</li>
+						<li>using this Website to engage in any advertising or marketing.</li>
+					</ul>
+					<p>Certain areas of this Website are restricted from being access by you and KDot Shop may further restrict access by you to any areas of this Website, at any time, in absolute discretion. Any user ID and password you may have for this Website are confidential and you must maintain confidentiality as well.</p>
+
+					<h3 class="space-top">Your Content</h3>
+					<div class="separator-2"></div>
+					<p>In these Website Standard Terms and Conditions, "Your Content" shall mean any audio, video text, images or other material you choose to display on this Website. By displaying Your Content, you grant KDot Shop a non-exclusive, worldwide irrevocable, sub licensable license to use, reproduce, adapt, publish, translate and distribute it in any and all media.</p>
+					<p>Your Content must be your own and must not be invading any third-party’s rights. KDot Shop reserves the right to remove any of Your Content from this Website at any time without notice.</p>
+
+					<h3 class="space-top">No warranties</h3>
+					<div class="separator-2"></div>
+					<p>This Website is provided "as is," with all faults, and KDot Shop express no representations or warranties, of any kind related to this Website or the materials contained on this Website. Also, nothing contained on this Website shall be interpreted as advising you.</p>
+
+					<h3 class="space-top">Limitation of liability</h3>
+					<div class="separator-2"></div>
+					<p>In no event shall KDot Shop, nor any of its officers, directors and employees, shall be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract.  KDot Shop, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website.</p>
+
+					<h3 class="space-top">Indemnification</h3>
+					<div class="separator-2"></div>
+					<p>You hereby indemnify to the fullest extent KDot Shop from and against any and/or all liabilities, costs, demands, causes of action, damages and expenses arising in any way related to your breach of any of the provisions of these Terms.</p>
+
+					<h3 class="space-top">Severability</h3>
+					<div class="separator-2"></div>
+					<p>If any provision of these Terms is found to be invalid under any applicable law, such provisions shall be deleted without affecting the remaining provisions herein.</p>
+
+					<h3 class="space-top">Variation of Terms</h3>
+					<div class="separator-2"></div>
+					<p>KDot Shop is permitted to revise these Terms at any time as it sees fit, and by using this Website you are expected to review these Terms on a regular basis.</p>
+
+					<h3 class="space-top">Assignment</h3>
+					<div class="separator-2"></div>
+					<p>The KDot Shop is allowed to assign, transfer, and subcontract its rights and/or obligations under these Terms without any notification. However, you are not allowed to assign, transfer, or subcontract any of your rights and/or obligations under these Terms.</p>
+
+					<h3 class="space-top">Entire Agreement</h3>
+					<div class="separator-2"></div>
+					<p>These Terms constitute the entire agreement between KDot Shop and you in relation to your use of this Website, and supersede all prior agreements and understandings.</p>
+
+					<h3 class="space-top">Governing Law & Jurisdiction</h3>
+					<div class="separator-2"></div>
+					<p>These Terms will be governed by and interpreted in accordance with the laws of the State of ph, and you submit to the non-exclusive jurisdiction of the state and federal courts located in ph for the resolution of any disputes.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- T&C modal end -->
 
 	<script src="{{ URL::asset('plugins/jquery.min.js') }}"></script>
 	<!-- Bootstrap Scripts -->

@@ -64,7 +64,7 @@
 									<i class="fa fa-map-marker pr-1 pl-2"></i>Santorini, Talamban, Cebu City
 								</li>
 								<li class="list-inline-item">
-									<i class="fa fa-phone pr-1 pl-2"></i>+63 933 689 2054
+									<i class="fa fa-phone pr-1 pl-2"></i>+63 9085488476
 								</li>
 								<li class="list-inline-item">
 									<i class="fa fa-envelope-o pr-1 pl-2"></i> kdotshop2k18@gmail.com

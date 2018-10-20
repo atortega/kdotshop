@@ -299,7 +299,10 @@ class CustomersController extends Controller
             $address->shipping_country  = '';
         }
         return view('user.templates.addresses', ['countries' => $countries, 'user' => $address ]);
+
     }
+    
+    
 
     public function insertAddress(Request $request)
     {

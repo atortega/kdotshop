@@ -42,36 +42,30 @@ Route::post('/signup/submit', 'CustomersController@createCustomer');
 
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
-// P A G E . A C C O U N T
-Route::get('/account', function () {
-    return view('user.templates.page-account');
-});
-Route::get('/updateProfile', function () {
-    return view('user.templates.editprofile');
-});
-Route::get('/updatePassword', function () {
-    return view('user.templates.updatePassword');
-});
+
 /*
 Route::get('/addresses', function () {
     return view('user.templates.addresses');
 });
 */
 
-Route::get('/updateProfile', 'CustomersController@updateProfileForm');
-Route::post('/saveProfile', 'CustomersController@saveProfile');
-Route::post('/change-password', 'CustomersController@changePassword');
-Route::post('/change-password', 'CustomersController@changePassword');
-Route::post('/addresses/add', 'CustomersController@insertAddress');
-Route::get('/addresses', 'CustomersController@AddressViewForm');
 
-//Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
-//Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
-//Route::get('/redirect/{service}', 'Auth\LoginController@redirect');
-//Route::get('/callback/{service}', 'Auth\LoginController@callback');
+/*GOOGLE LOGIN */
+Route::get('/redirect/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('/twitter', 'Auth\LoginController@redirectToTwitter');
+
+Route::get('/callback/{provider}', 'Auth\LoginController@handleProviderCallback');
+
+/*FACEBOOK LOGIN */
+// Route::get('/redirectfb', 'Auth\LoginController@redirect');
+// Route::get('/callbackfb', 'Auth\LoginController@callback');
+
+
+
+
+//Route::get('/redirect', 'Auth\LoginController@redirect');
+//Route::get('/callback', 'Auth\LoginController@callback');
 
 // P A G E - V E R I F I C A T I O N
 Route::get('page-verificationCode', function () {
@@ -114,7 +108,7 @@ Route::post('/cart-update', 'CartController@cartUpdate');
 Route::get('/cart-remove/{rowId}', 'CartController@cartRemove');
 Route::get('/cart-destroy', 'CartController@cartDestroy');
 
-Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 /*
 // L O G I N - P A G E (Outdated Version)
@@ -128,11 +122,39 @@ Route::get('/page-signup', function () {
 });
 */
 
+//PALAWAN INSTRTUCTIONS//
+Route::get('/palawan', function () {
+    return view('user.templates.palawan');
+});
+
+Route::get('/invoice', function () {
+    return view('user.templates.invoice.invoice ');
+});
+Route::get('/invoice','CartController@cartShowInvoice');
 
 
 
 
 Route::group(['middleware' => 'auth' ], function() {
+    // P A G E . A C C O U N T
+    Route::get('/account', function () {
+        return view('user.templates.page-account');
+    });
+    Route::get('/updateProfile', function () {
+        return view('user.templates.editprofile');
+    });
+    Route::get('/updatePassword', function () {
+        return view('user.templates.updatePassword');
+    });
+
+    Route::get('/updateProfile', 'CustomersController@updateProfileForm');
+    Route::post('/saveProfile', 'CustomersController@saveProfile');
+    Route::post('/change-password', 'CustomersController@changePassword');
+    Route::post('/change-password', 'CustomersController@changePassword');
+    Route::post('/addresses/add', 'CustomersController@insertAddress');
+    Route::get('/addresses', 'CustomersController@AddressViewForm');
+    
+
     // S H O P - C H E C K O U T
     Route::get('/shop-checkout', function () {
         return view('user.templates.shop-checkout');
@@ -151,6 +173,8 @@ Route::group(['middleware' => 'auth' ], function() {
         return view('user.templates.shop-checkoutReview');
     });
     Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
+    // Route::get('/shop-checkoutReview', 'CartController@CheckoutAddressViewForm');
+
 
     // S H O P - C H E C K O U T C O M P L E T E D
     Route::get('/shop-checkoutCompleted', function () {
@@ -158,6 +182,7 @@ Route::group(['middleware' => 'auth' ], function() {
     });
 
     Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
+        
         /* ___________________ADMIN SIDE___________________ */
 
         Route::prefix('admin')->group(function () {

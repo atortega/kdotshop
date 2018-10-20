@@ -117,16 +117,12 @@
                                 <div class="row">
                                     <div class="col-md-12 text-center">                     
                                         <span class="text-center text-muted clearfix">Login with</span>
-                                        <a href="{{ url('/login/google') }}" class="btn btn-animated googleplus clearfix">
+                                        <a href="{{ url('/redirect/google') }}" class="btn btn-animated googleplus clearfix">
                                             Sign in with Google
                                             <i class="fa fa-google-plus"></i>
                                         </a>
-                                        <a href="{{ url('/login/twitter') }}" class="btn btn-animated twitter clearfix">
+                                        <a href="{{ url('/redirect/twitter') }}" class="btn btn-animated twitter clearfix">
                                             Sign in with Twitter
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-										<a href="{{ url('/login/facebook') }}" class="btn btn-animated twitter clearfix">
-                                            Sign in with Facebook
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </div>

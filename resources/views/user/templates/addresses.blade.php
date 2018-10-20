@@ -41,9 +41,11 @@
         <div class="breadcrumb-container">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Page Account</li>
-                     <li class="breadcrumb-item active">Edit Profile</li>
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">Page Account</a></li>
+                    <li class="breadcrumb-item active">Addresses</li>
                 </ol>
             </div>
         </div>
@@ -57,19 +59,18 @@
         <div class="container">
             <div class="row">
 
-                <!-- main start -->
+                <!-- page-title start -->
                 <!-- ================ -->
+                <!-- page-title end -->
 
                 <div class="col-3">
                     @include('user.templates.layouts.page-profile-sidebar')
 
                 </div>
 
-                
-
-
-                <!--   Another Column -->
-                 <div class="main col-lg-8 order-lg-2 ml-xl-auto">
+                <!-- main start -->
+                <!-- ================ -->
+                <div class="main col-lg-8 order-lg-2 ml-xl-auto">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -86,41 +87,43 @@
                     @endif
                     <form method="POST" action="/addresses/add">
                         @csrf
-                        <div class="row">
-                            <div class="col">
-                                <h2 style="color: gray">Billing Address</h2><br>
+                        <div class="card-header row border-clear">
+                            <!-- 1st Column start -->
+                            <div class="col-md-6">
+                                <h2 class="clearfix" style="color: gray">Billing Address</h2>
+
+                                <div class="separator-2"></div>
 
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>House No., Street</h5>
                                         <input id="billing_address1" type="text" class="form-control" name="billing_address1" value="{{ $user->billing_address1 }}" required autofocus>
                                     </div>
                                 </div>
 
-
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Barangay</h5>
                                         <input id="billing_barangay" type="text" class="form-control" name="billing_barangay" value="{{ $user->billing_barangay }}" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Municipality/City</h5>
                                          <input id="billing_city" type="text" class="form-control" name="billing_city" value="{{ $user->billing_city }}" required autofocus>
                                     </div>
                                 </div>
 
-
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Province</h5>
                                        <input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}" required autofocus>
                                     </div>
                                 </div>
+
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Country</h5>
                                         <select class="form-control" id="billing_country" name="billing_country">
                                             @foreach($countries as $country)
@@ -129,49 +132,52 @@
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Zipcode</h5>
                                        <input id="billing_zipcode" type="text" class="form-control" name="billing_zipcode" value="{{ $user->billing_zipcode }}" required autofocus>
                                     </div>
                                 </div>
-
                             </div>
+                            <!-- 1st Column end -->
 
-                            <!---2nd Column --->
-                            <div class="col">
-                                <h2 style="color: gray">Shipping Address</h2><br>
+                            <!---2nd Column start --->
+                            <div class="col-md-6">
+                                <h2 class="clearfix" style="color: gray">Shipping Address</h2>
+                                
+                                <div class="separator-2"></div>
 
                                 <div id="shipping" style="display:none">
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>House No., Street</h5>
                                             <input id="shipping_address1" type="text" class="form-control" name="shipping_address1" value="{{ $user->shipping_address1 }}" autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>Barangay</h5>
                                            <input id="shipping_barangay" type="text" class="form-control" name="shipping_barangay" value="{{ $user->shipping_barangay }}" autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>Municipality/City</h5>
                                            <input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}" autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>Province</h5>
                                            <input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}" autofocus>
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>Country</h5>
                                             <select class="form-control" id="shipping_country" name="shipping_country">
                                                 @foreach($countries as $country)
@@ -181,39 +187,45 @@
                                         </div>
                                     </div>
                                     <div class="form-group has-feedback row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <h5>Zipcode</h5>
                                            <input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="{{ $user->shipping_zipcode }}" autofocus>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="checkbox padding-top-clear form-check">
-                                    <input class="form-check-input" type="checkbox" id="shipping-info-check" name="same_ss_billing" checked>
-                                    <label class="form-check-label">
+                            </div>
+                            <!-- 2nd Column end -->
+                        </div>
+
+                        <div class="card-header row border-clear">
+                            <div class="checkbox padding-top-clear form-check">
+                                <input class="form-check-input" type="checkbox" id="shipping-info-check" name="same_ss_billing" checked>
+                                <div class="form-check">
+                                    <strong class="form-check-label">
                                         My Shipping information is the same as my Billing information.
-                                    </label>
+                                    </strong>
                                 </div>
                             </div>
-
                         </div>
-                        <br>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="clearfix"></div>
+
+                        <div class="form-group row mb-0 clearfix">
+                            <div class="card-footer col-md-12 text-center">
+                                <button type="submit" class="btn btn-animated btn-default btn-md">
                                      {{ __('Save Changes') }}
+                                     <i class="fa fa-save"></i>
                                 </button>
 
-                                <button type="reset" class="btn btn-warning">
+                                <button type="reset" class="btn btn-animated btn-danger btn-md">
                                     {{ __('Reset Form') }}
+                                    <i class="fa fa-refresh"></i>
                                 </button>
                             </div>
                          </div>
                     </form>
                 </div>
-
-
-
+                <!-- main end -->
             </div>
         </div>
 

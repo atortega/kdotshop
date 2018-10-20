@@ -41,9 +41,11 @@
         <div class="breadcrumb-container">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Page Account</li>
-                     <li class="breadcrumb-item active">Edit Profile</li>
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">Page Account</a></li>
+                     <li class="breadcrumb-item active">Change Password</li>
                 </ol>
             </div>
         </div>
@@ -57,14 +59,16 @@
         <div class="container">
             <div class="row">
 
+                <!-- page-title start -->
+                <!-- ================ -->
+                <!-- page-title end -->
+
                <div class="col-3">
                     @include('user.templates.layouts.page-profile-sidebar')
-
                 </div>
                 
-
-
-                <!--   Another Column -->
+                <!-- main start -->
+                <!-- ================ -->
                 <div class="main col-lg-8 order-lg-2 ml-xl-auto">
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -83,16 +87,16 @@
                     <form method="POST" action="/change-password">
                         @csrf
                         <div class="row">
-                            <div class="col">
+                            <div class="card-header col-md-8">
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Enter Current Password</h5>
                                         <input id="current_password" type="password" class="form-control{{ $errors->has('current_password') ? ' is-invalid' : '' }}" name="current_password" value="{{ old('current_password') }}" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Enter New Password</h5>
                                          <input id="new_password" type="password" class="form-control{{ $errors->has('new_password') ? ' is-invalid' : '' }}" name="new_password" value="{{ old('new_password') }}" required autofocus>
                                     </div>
@@ -100,7 +104,7 @@
 
 
                                 <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <h5>Re-Enter New Password</h5>
                                         <input id="new_password_confirmation" type="password" class="form-control{{ $errors->has('new_password_confirmation') ? ' is-invalid' : '' }}" name="new_password_confirmation" value="{{ old('new_password_confirmation') }}" required autofocus>
                                     </div>
@@ -110,16 +114,16 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="card-footer col-md-8 text-center border-clear">
+                                <button type="submit" class="btn btn-animated btn-default btn-md">
                                      {{ __('Update Password') }}
+                                     <i class="fa fa-lock"></i>
                                 </button>
                             </div>
-                         </div>
+                        </div>
                     </form>
                 </div>
-
-
+                <!-- main end -->
             </div>
         </div>
 

@@ -17,7 +17,7 @@
 <!-- "transparent-header": makes the header transparent and pulls the banner to top -->
 <!-- "gradient-background-header": applies gradient background to header -->
 <!-- "page-loader-1 ... page-loader-6": add a page loader to the page (more info @components-page-loaders.html) -->
-<body class="front-page transparent-header">
+<body class="front-page">
 
 <!-- scrollToTop -->
 <!-- ================ -->
@@ -41,7 +41,9 @@
         <div class="breadcrumb-container">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i><a class="link-dark" href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">
+                        <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
+                    </li>
                     <li class="breadcrumb-item active">Page Account</li>
                 </ol>
             </div>
@@ -63,15 +65,28 @@
                 <!-- ================ -->
                 <div class="col-3">
                     @include('user.templates.layouts.page-profile-sidebar')
-
                 </div>
 
                 <!-- <div class="col-10"> -->
                   <div class="main col-lg-8 order-lg-2 ml-xl-auto">
                     <form method="POST" action="">
                         @csrf
+
                         <div class="row">
+
+                            <!-- 1st Column start -->
                             <div class="col">
+                                <div class="col-md-8 form-group has-feedback row">
+                                    <div class="overlay-container">
+                                        <img src="{{ asset('image/templates/gym-team-1.jpg') }}" alt="">
+                                        <a href="{{ asset('image/templates/gym-team-1.jpg') }}"
+                                            class="overlay-link popup-img-single"
+                                            title="First image title">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>First Name</h5>
@@ -81,47 +96,60 @@
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
+                                        <h5>Middle Name</h5>
+                                         <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ Auth::user()->middle_name }}" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group has-feedback row">
+                                    <div class="col-md-8">
                                         <h5>Last Name</h5>
                                         <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ Auth::user()->last_name }}"disabled>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- 1st Column end -->
 
-
+                            <!---2nd Column start --->
+                            <div class="col">
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Birthdate</h5>
                                         <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!---2nd Column --->
-                            <div class="col">
-                                <div class="form-group has-feedback row">
-                                    <div class="col-md-8">
-                                        <h5>Middle Name</h5>
-                                         <input id="middle_name" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ Auth::user()->middle_name }}" disabled>
-                                    </div>
-                                </div>
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Gender</h5>
                                         <input id="gender" type="text" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ Auth::user()->gender }}" disabled>
                                     </div>
                                 </div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Phone Number</h5>
                                         <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
                                     </div>
                                 </div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>E-mail</h5>
                                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ Auth::user()->email }}" disabled>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-md-8 text-center">
+                                        <a href="/updateProfile" class="btn btn-animated btn-default clearfix">
+                                            Edit Profile
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                            <!-- 2nd Column end -->
                         </div>
                     </form>
                   </div>

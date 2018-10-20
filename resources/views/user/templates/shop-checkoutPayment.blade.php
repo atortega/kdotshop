@@ -135,7 +135,7 @@
               </fieldset>
               <div class="text-right">
                 <a href="/shop-checkout" class="btn btn-group btn-default">Go Back</a>
-                <a href="/shop-checkoutReview" class="btn btn-group btn-default">Review and Complete Your Order</a>
+                <a href="/palawan" class="btn btn-group btn-default">Review and Complete Your Order</a>
               </div>
 
             </div>

@@ -24,9 +24,9 @@ class CartController extends Controller
         Cart::add([
             'id'    =>  $product_id,
             'name'  =>  $productById->product_name,
-            'desc'          =>  $productById->product_desc,
-            'price'         =>  $skuById->unit_price,
-            'qty'           =>  $request->qty
+            'desc'  =>  $productById->product_desc,
+            'price' =>  $skuById->unit_price,
+            'qty'   =>  $request->qty
         ]);
         // Session::put('cart', $cart);
 
@@ -71,6 +71,12 @@ class CartController extends Controller
         Cart::destroy();
 
         return redirect()->back()->with('clear-items-message', 'All items has been removed. 😥');
+    }
+
+    public function cartShowInvoice(){
+        $cartProducts = Cart::Content();
+       
+        return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
     }
     
 }

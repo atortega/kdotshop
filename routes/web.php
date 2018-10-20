@@ -65,12 +65,13 @@ Route::post('/change-password', 'CustomersController@changePassword');
 Route::post('/addresses/add', 'CustomersController@insertAddress');
 Route::get('/addresses', 'CustomersController@AddressViewForm');
 
-Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
-Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('/redirect', 'Auth\LoginController@redirectToProvider');
+//Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
-
-//Route::get('/redirect', 'Auth\LoginController@redirect');
-//Route::get('/callback', 'Auth\LoginController@callback');
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+//Route::get('/redirect/{service}', 'Auth\LoginController@redirect');
+//Route::get('/callback/{service}', 'Auth\LoginController@callback');
 
 // P A G E - V E R I F I C A T I O N
 Route::get('page-verificationCode', function () {

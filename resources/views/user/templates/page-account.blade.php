@@ -77,11 +77,22 @@
                             <!-- 1st Column start -->
                             <div class="col">
                                 <div class="col-md-8 form-group has-feedback row">
-                                    <div class="overlay-container">
-                                        <img src="{{ asset('image/templates/gym-team-1.jpg') }}" alt="">
-                                        <a href="{{ asset('image/templates/gym-team-1.jpg') }}"
-                                            class="overlay-link popup-img-single"
-                                            title="First image title">
+                                    <div class="overlay-container" style="min-height: 203.33px;">
+                                        <img src="
+                                                @if(Auth::user()->avatar_original)
+                                                    {{ Auth::user()->avatar_original }}
+                                                @else
+                                                    {{ asset('image/templates/gym-team-1.jpg') }}
+                                                @endif
+                                                " alt="">
+                                        <a href="
+                                                @if(Auth::user()->avatar_original)
+                                                    {{ Auth::user()->avatar_original }}
+                                                @else
+                                                    {{ asset('image/templates/gym-team-1.jpg') }}
+                                                @endif
+                                            "
+                                            class="overlay-link popup-img-single">
                                             <i class="fa fa-plus"></i>
                                         </a>
                                     </div>

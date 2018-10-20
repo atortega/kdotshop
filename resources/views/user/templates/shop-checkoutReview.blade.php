@@ -148,12 +148,9 @@
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td class="information">One infinity loop, 54100, United States</td>
+                    <td class="information"></td>
                   </tr>
-                  <tr>
-                    <td>Additional Info</td>
-                    <td class="information">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum accusamus pariatur odit neque.</td>
-                  </tr>
+                  
                 </tbody>
               </table>
               <div class="space-bottom"></div>

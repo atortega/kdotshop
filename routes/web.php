@@ -173,6 +173,8 @@ Route::group(['middleware' => 'auth' ], function() {
         return view('user.templates.shop-checkoutReview');
     });
     Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
+    // Route::get('/shop-checkoutReview', 'CartController@CheckoutAddressViewForm');
+
 
     // S H O P - C H E C K O U T C O M P L E T E D
     Route::get('/shop-checkoutCompleted', function () {

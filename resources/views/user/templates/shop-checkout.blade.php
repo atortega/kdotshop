@@ -181,8 +181,8 @@
 												<strong class="text-default" style="font-size: 18px;"> *</strong>
 											</label>
 											<div class="col-lg-9">
-												<input class="form-control" id="billingemail"
-													type="email" placeholder="E-mail">
+												<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+													type="text" name="email" value="{{ Auth::user()->email }}" disabled>
 											</div>
 										</div>
 									</div>

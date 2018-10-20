@@ -144,10 +144,16 @@
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
                       <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
-                      <li class="facebook"><a href="{{ url('https://www.facebook.com/joshikawa') }}" target="_blank">
-                        <i class="fa fa-facebook"></i></a>
+                      <li class="facebook">
+                        <a href="{{ url('https://fb.com/joshikawa') }}" target="_blank">
+                          <i class="fa fa-facebook"></i>
+                        </a>
                       </li>
-                      <li class="googleplus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                      <li class="googleplus">
+                        <a href="#">
+                          <i class="fa fa-google-plus"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -155,7 +161,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src='{{ asset("image/templates/team-member-2.jpg") }}' alt="">
+                    <img src='{{ asset("storage/team/cmso.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -166,8 +172,16 @@
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
                       <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
-                      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="xing"><a href="#"><i class="fa fa-xing"></i></a></li>
+                      <li class="facebook">
+                        <a href="{{ url('https://fb.com/cheriemae.ortega') }}" target="_blank">
+                          <i class="fa fa-facebook"></i>
+                        </a>
+                      </li>
+                      <li class="googleplus">
+                        <a href="#">
+                          <i class="fa fa-google-plus"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -175,7 +189,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src='{{ asset("image/templates/team-member-3.jpg") }}' alt="">
+                    <img src='{{ asset("storage/team/ecp.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -186,8 +200,16 @@
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
                       <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
-                      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="xing"><a href="#"><i class="fa fa-xing"></i></a></li>
+                      <li class="facebook">
+                        <a href="{{ url('https://fb.com/elijahJek2') }}" target="_blank">
+                          <i class="fa fa-facebook"></i>
+                        </a>
+                      </li>
+                      <li class="googleplus">
+                        <a href="#">
+                          <i class="fa fa-google-plus"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -195,7 +217,7 @@
               <div class="col-md-6 col-lg-3">
                 <div class="image-box team-member style-2 shadow-2 bordered mb-20 text-center">
                   <div class="overlay-container overlay-visible">
-                    <img src='{{ asset("image/templates/team-member-4.jpg") }}' alt="">
+                    <img src='{{ asset("storage/team/gmmt.jpg") }}' alt="">
                     <div class="overlay-bottom">
                       <p class="small margin-clear">Team Member</p>
                     </div>
@@ -206,8 +228,16 @@
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
                       <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
-                      <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                      <li class="xing"><a href="#"><i class="fa fa-xing"></i></a></li>
+                      <li class="facebook">
+                        <a href="{{ url('https://fb.com/gesshchamix') }}" target="_blank">
+                          <i class="fa fa-facebook"></i>
+                        </a>
+                      </li>
+                      <li class="googleplus">
+                        <a href="#">
+                          <i class="fa fa-google-plus"></i>
+                        </a>
+                      </li>
                     </ul>
                   </div>
                 </div>

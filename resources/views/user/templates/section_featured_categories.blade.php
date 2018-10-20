@@ -3,7 +3,7 @@
         <div class="col-lg-8">
             <h2 class="text-center mt-4">Featured <strong>Categories</strong></h2>
             <div class="separator"></div>
-            <p class="lead text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa unde sequi consectetur atque blanditiis rem sed porro ducimus, quidem inventore eum quis.</p>
+            <p class="lead text-center">Kdot’s fashion collections are complemented by these kinds of categories. The best and easy way for you to find the desired products that accomodate the things you do everyday without ever slowing you down.</p>
         </div>
     </div>
 </div>

@@ -22,11 +22,11 @@ class CartController extends Controller
         
         // $cart = Session::get('cart');
         Cart::add([
-            'id'            =>  $product_id,
-            'name'          =>  $productById->product_name,
-            'desc'          =>  $productById->product_desc,
-            'price'         =>  $skuById->unit_price,
-            'qty'           =>  $request->qty
+            'id'    =>  $product_id,
+            'name'  =>  $productById->product_name,
+            'desc'  =>  $productById->product_desc,
+            'price' =>  $skuById->unit_price,
+            'qty'   =>  $request->qty
         ]);
         // Session::put('cart', $cart);
 
@@ -51,12 +51,6 @@ class CartController extends Controller
          return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts]);
      }
 
-     public function cartShowInvoice(){
-        $cartProducts = Cart::Content();
-       
-         return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
-     }
-
     public function cartUpdate(Request $request)
     {
         $rowId = $request->rowId;
@@ -77,6 +71,12 @@ class CartController extends Controller
         Cart::destroy();
 
         return redirect()->back()->with('clear-items-message', 'All items has been removed. 😥');
+    }
+
+    public function cartShowInvoice(){
+        $cartProducts = Cart::Content();
+       
+        return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
     }
     
 }

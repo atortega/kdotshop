@@ -61,7 +61,7 @@
                     <div class="row">
                       <div class="col-lg-8">
                         <h1 class="title">Don't Miss Our Products</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quasi explicabo consequatur consectetur, a atque voluptate officiis eligendi nostrum.</p>
+                        <p>Help boose your confidence by using Kdot’s Clothing and Accessories. Shop Now and Don’t miss our hottest item!!</p>
                       </div>
                       <div class="col-lg-4">
                         <br>

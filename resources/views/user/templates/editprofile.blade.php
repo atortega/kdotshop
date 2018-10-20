@@ -134,7 +134,7 @@
                                     <div class="form-group has-feedback row">
                                         <div class="col-md-12">
                                             <h5>Phone Number</h5>
-                                            <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" required autofocus>
+                                            <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number')== '' ? Auth::user()->phone_number : old('phone_number') }}" required autofocus>
                                         </div>
                                     </div>
                                 </div>

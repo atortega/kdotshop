@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Products;
 use App\Models\Sku;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Models\Customers;
+use App\Models\Country;
+use App\Models\CustomersAddress;
 // use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class CartController extends Controller
@@ -78,5 +82,28 @@ class CartController extends Controller
        
         return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
     }
+
+    // public function CheckoutAddressViewForm()
+    // {
+    //     $countries = Country::orderBy('code')->get();
+    //     $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+    //     if (!$address) {
+    //         $address = new CustomersAddress();
+    //         $address->billing_address1  = '';
+    //         $address->billing_barangay  = '';
+    //         $address->billing_city      = '';
+    //         $address->billing_province  = '';
+    //         $address->billing_zipcode   = '';
+    //         $address->billing_country   = '';
+    //         $address->shipping_address1 = '';
+    //         $address->shipping_barangay = '';
+    //         $address->shipping_city     = '';
+    //         $address->shipping_province = '';
+    //         $address->shipping_zipcode  = '';
+    //         $address->shipping_country  = '';
+    //     }
+    //     return view('user.templates.shop-checkoutReview', ['countries' => $countries, 'user' => $address ]);
+       
+    // }
     
 }

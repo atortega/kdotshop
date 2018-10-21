@@ -45,8 +45,9 @@ class CartController extends Controller
 
     public function cartShowCheckout(){
         $cartProducts = Cart::Content();
-       
-         return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts]);
+        $countries = Country::orderBy('code')->get();
+        $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+        return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
      }
 
     public function cartShowCheckoutReview(){
@@ -85,8 +86,9 @@ class CartController extends Controller
 
     public function CheckoutAddressViewForm()
     {
-        $countries = Country::orderBy('code')->get();
         $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+        $countries = Country::orderBy('code')->get();
+
         if (!$address) {
             $address = new CustomersAddress();
             $address->billing_address1  = '';

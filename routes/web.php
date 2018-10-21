@@ -156,16 +156,12 @@ Route::group(['middleware' => 'auth' ], function() {
     
 
     // S H O P - C H E C K O U T
-    Route::get('/shop-checkout', function () {
-        return view('user.templates.shop-checkout');
-    });
+
 
     Route::get('/shop-checkout','CartController@cartShowCheckout');
     // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
-    Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
+    //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
 
-    Route::post('/shop-checkout', 'CheckoutDetailsController@billingInfo'); // SURE?
-    Route::post('/shop-checkout', 'CheckoutDetailsController@shipInfo');    // SURE?
 
     // S H O P - C H E C K O U T P A Y M E N T
     Route::get('/shop-checkoutPayment', function () {

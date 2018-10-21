@@ -92,7 +92,7 @@
                   <tr>
                     <td class="product">
                       <a href="/shop-productDetails/{{$cartProduct->product_id}}">
-                         {{$cartProduct->product_name}}
+                         {{$cartProduct->name}}
                       </a> 
                       <small>
                         {{$cartProduct->desc}}

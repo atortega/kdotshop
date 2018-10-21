@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use App\CustomUser;
+use App\Models\CustomersAddress;
 
 class LoginController extends Controller
 {
@@ -68,6 +69,14 @@ class LoginController extends Controller
         $existingUser = CustomUser::where('email', $user->email)->first();
         if($existingUser){
             // log them in
+
+            $address = CustomersAddress::where('customer_id', $existingUser->customer_id)->first();
+            if (!$address) {
+                $address = CustomersAddress::create([
+                    'customer_id' => $existingUser->customer_id,
+                    'shipping_same_as_billing_address' => 0
+                ]);
+            }
             auth()->login($existingUser, true);
         } else {
             // create a new user
@@ -91,6 +100,12 @@ class LoginController extends Controller
                 $newUser->avatar_original = $user->avatar_original;
             }
             $newUser->save();
+
+            $address = CustomersAddress::create([
+                'customer_id' => $newUser->customer_id,
+                'shipping_same_as_billing_address' => 0
+            ]);
+
             auth()->login($newUser, true);
         }
         return redirect()->to('/');

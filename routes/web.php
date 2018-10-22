@@ -283,3 +283,13 @@ Route::group(['middleware' => 'auth' ], function() {
     });
 });
 
+            //P A G E   P R O F I L E
+            Route::get('/admin/profile', function () {
+                return view('admin.templates.page-profile');
+            });
+            Route::get('/admin/edit', function () {
+                return view('admin.templates.page-editProfile');
+            });
+            Route::get('/admin/password', function () {
+                return view('admin.templates.page-editPassword');
+            });

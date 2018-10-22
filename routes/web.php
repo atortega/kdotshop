@@ -156,12 +156,12 @@ Route::group(['middleware' => 'auth' ], function() {
     
 
     // S H O P - C H E C K O U T
-    Route::get('/shop-checkout', function () {
-        return view('user.templates.shop-checkout');
-    });
+
+
     Route::get('/shop-checkout','CartController@cartShowCheckout');
-    Route::post('/shop-checkout', 'CheckoutDetailsController@billingInfo'); // SURE?
-    Route::post('/shop-checkout', 'CheckoutDetailsController@shipInfo');    // SURE?
+    // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
+    //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
+
 
     // S H O P - C H E C K O U T P A Y M E N T
     Route::get('/shop-checkoutPayment', function () {
@@ -173,7 +173,7 @@ Route::group(['middleware' => 'auth' ], function() {
         return view('user.templates.shop-checkoutReview');
     });
     Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
-    // Route::get('/shop-checkoutReview', 'CartController@CheckoutAddressViewForm');
+    // Route::get('/shop-checkoutReview', 'CartController@CheckoutBillingAddress');
 
 
     // S H O P - C H E C K O U T C O M P L E T E D

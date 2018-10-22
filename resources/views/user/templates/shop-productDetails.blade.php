@@ -104,7 +104,7 @@
                         <form class="clearfix row grid-space-10">
                             <div class="form-group col-lg-4">
                               <label>Quantity</label>
-                              <input type="number" class="form-control" value="1" min="1" max="100">
+                              <input type="number" class="form-control" id="quantity" value="1" min="1" max="100">
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Color</label>
@@ -130,12 +130,12 @@
                          {!! Form::open(['url'=>'/cart-add', 'method'=>'POST']) !!}
 
                                     <input type="hidden" name="product_id" value="{{ $getSkuQuery->product_id }}">
-                                    <input type="hidden" name="qty" value="1">
-                                    <button type="submit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
+                                    <input type="hidden" name="qty" id="qty" value="1">
+                                    <button type="submit" id="frmSubmit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
                           {!! Form::close()!!}
                       </div>
                     </div>
-                  
+
                   
                 </div>
               </div>
@@ -160,5 +160,13 @@
     <!-- JavaScript files placed at the end of the document so the pages load faster -->
     <!-- ================================================== -->
       @include('user.templates.layouts.footer')
+      <script>
+          $(function() {
+              $("#frmSubmit").click(function() {
+                  $("#qty").val($("#quantity").val());
+              });
+          });
+      </script>
   </body>
+
 </html>

@@ -148,7 +148,7 @@
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td class="information"></td>
+                    <td class="information">{{ $user->billing_address1 }} {{ $user->billing_barangay }}, {{ $user->billing_city }}  {{ $user->billing_province }} ,{{ $user->billing_zipcode }} {{ $user->billing_country}} </td>
                   </tr>
                   
                 </tbody>

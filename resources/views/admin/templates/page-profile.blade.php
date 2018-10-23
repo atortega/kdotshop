@@ -82,9 +82,11 @@
                                     </div>
                                 </div>
                             </div>
+                       
                             <!-- 1st Column end -->
 
                             <!---2nd Column start --->
+
                             <div class="col">
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-6">

@@ -149,6 +149,9 @@ Route::group(['middleware' => 'auth' ], function() {
 
     Route::get('/updateProfile', 'CustomersController@updateProfileForm');
     Route::post('/saveProfile', 'CustomersController@saveProfile');
+    Route::post('/saveNewAvatar', 'CustomersController@saveNewAvatar');
+    Route::get('/removeAvatar', 'CustomersController@removeAvatar');
+    Route::get('/account', 'CustomersController@accountAvatarCheckDB');
     Route::post('/change-password', 'CustomersController@changePassword');
     Route::post('/change-password', 'CustomersController@changePassword');
     Route::post('/addresses/add', 'CustomersController@insertAddress');

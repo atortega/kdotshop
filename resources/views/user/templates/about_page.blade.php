@@ -137,7 +137,11 @@
                     <small>Developer</small>
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
-                      <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
+                      <li class="skype">
+                        <a href="skype:joshua_ligad?userinfo">
+                          <i class="fa fa-skype"></i>
+                        </a>
+                      </li>
                       <li class="facebook">
                         <a href="{{ url('https://fb.com/joshikawa') }}" target="_blank">
                           <i class="fa fa-facebook"></i>
@@ -165,7 +169,11 @@
                     <small>Developer</small>
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
-                      <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
+                      <li class="skype">
+                        <a href="skype:ortegacherie19?userinfo">
+                          <i class="fa fa-skype"></i>
+                        </a>
+                      </li>
                       <li class="facebook">
                         <a href="{{ url('https://fb.com/cheriemae.ortega') }}" target="_blank">
                           <i class="fa fa-facebook"></i>
@@ -193,7 +201,11 @@
                     <small>Developer</small>
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
-                      <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
+                      <li class="skype">
+                        <a href="skype:elijahpilones15?userinfo">
+                          <i class="fa fa-skype"></i>
+                        </a>
+                      </li>
                       <li class="facebook">
                         <a href="{{ url('https://fb.com/elijahJek2') }}" target="_blank">
                           <i class="fa fa-facebook"></i>
@@ -221,7 +233,11 @@
                     <small>Developer</small>
                     <div class="separator mt-10"></div>
                     <ul class="social-links circle colored margin-clear">
-                      <li class="skype"><a href="#"><i class="fa fa-skype"></i></a></li>
+                      <li class="skype">
+                        <a href="skype:fbbf85624d790400?userinfo">
+                          <i class="fa fa-skype"></i>
+                        </a>
+                      </li>
                       <li class="facebook">
                         <a href="{{ url('https://fb.com/gesshchamix') }}" target="_blank">
                           <i class="fa fa-facebook"></i>

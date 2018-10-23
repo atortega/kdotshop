@@ -248,6 +248,11 @@
 			window.location.href = '/shop-cart';
 		});
 
+		//triggers remove avatar icon, then redirects back with message
+		$("#removeAvatarBtn").click(function(){
+			window.location.href = '/removeAvatar';
+		});		
+
 		//tester for <input id="qty"> and <p id="qty_display"/>
 		$("#qty").keyup(function() {
 			var value = $(this).val();
@@ -309,6 +314,58 @@
 		$("#phonenumber").keypress(function() {
 			$("#vCode").removeAttr('disabled');
 		});
+
+		/*———————————————————————————————————————————————————————*/
+		// [1] Preview image before it is uploaded
+		$(document).on('change', '.btn-file :file', function() {
+			var input = $(this),
+			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+			input.trigger('fileselect', [label]);
+		});
+
+		// [2] Change input value on fileselect
+		$('.btn-file :file').on('fileselect', function(event, label) {
+		    
+		    var input = $(this).parents('.input-group').find(':text'),
+		        log = label;
+		    
+		    if( input.length ) {
+		        input.val(log);
+		    } else {
+		        if( log ) alert(log);
+		    }
+	    
+		});
+
+		// [3] Change img onload
+		function readURL(input) {
+		    if (input.files && input.files[0]) {
+		        var reader = new FileReader();
+		        
+		        reader.onload = function (e) {
+		            $('#img-upload').attr('src', e.target.result);
+		        }
+		        
+		        reader.readAsDataURL(input.files[0]);
+		    }
+		}
+
+		// [4] Read file type input on change
+		$("#imgInp").change(function(){
+		    readURL(this);
+		});
+
+		// [5] By default, disables upload image button when input is empty
+	    $('.uploadBtn').attr('disabled',true);
+        $('input:file').change(function(){
+            if ($(this).val()){
+            	// Upload Image Button is enabled, while Remove Avatar Button
+            	// is disabled when a file is chosen to be uploaded
+                $('.uploadBtn').attr('disabled',false);
+                $('#removeAvatarBtn').prop('disabled',true);
+            } 
+		});
+		/*———————————————————————————————————————————————————————*/
 
 	});
 	</script>

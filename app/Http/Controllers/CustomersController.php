@@ -1,13 +1,16 @@
 <?php
-
 namespace App\Http\Controllers;
-
-use Datatables;
-
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use File;
+use Image;
+use Datatables;
+use App\Http\Controllers\Controller;
 use App\Models\Customers;
 use App\Models\Country;
 use App\Models\CustomersAddress;
@@ -123,7 +126,7 @@ class CustomersController extends Controller
     {
         $request->validate([
             'email'             => 'required|email|unique:customer,email',
-            'phone_number'      => 'required',
+            'phone_number'      => 'required|min:11|numeric',
             'password'          => 'required',
             'confirm_password'  => 'required|same:password'
         ]);
@@ -224,11 +227,10 @@ class CustomersController extends Controller
     public function saveProfile(Request $request)
     {
         $request->validate([
-            'phone_number'      => 'required',
             'first_name'        => 'required',
             'last_name'         => 'required',
             'gender'            => 'required',
-            'phone_number'      => 'required',
+            'phone_number'      => 'required|min:11|numeric',
             'birthdate'         => 'date'
         ]);
 
@@ -246,6 +248,67 @@ class CustomersController extends Controller
         $customer->save();
 
         return redirect('/account');
+    }
+
+    // Saves a new avatar
+    public function saveNewAvatar(Request $request)
+    {
+        $request->validate([
+            'imgInp'  =>  'required'
+        ]);
+
+        // $filename = $request->imgInp->getClientOriginalName();
+
+        $path = Storage::putFile('useravatar', $request->imgInp, 'public');
+        // $path = Storage::putFile('avatars', $request->file('avatar'), 'public');
+
+        // $filecheck = 'storage'.'/'.$request->checkFilenameOnDB;
+        $filecheck = Auth::user()->avatar_original;
+
+        //Checks if file exists
+        if(Storage::exists($filecheck))
+        {
+            //If file is found, deletes file
+            Storage::delete($filecheck);
+        }
+
+        //update filename to database
+        $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
+        $customer->avatar = NULL;
+        $customer->avatar_original = $path;
+        $customer->save();
+
+        // Storage::disk('public')->move('uploads/'.$filename, $file);
+
+        return redirect()->back()->with('message', 'Your avatar has been updated.');
+    }
+
+    // Deletes existing avatar
+    public function removeAvatar(Request $request)
+    {
+        $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
+        $customer->avatar = NULL;
+        $customer->avatar_original = NULL;
+        $customer->save();
+
+        $filecheck = Auth::user()->avatar_original;
+
+        //Checks if file exists
+        if(Storage::exists($filecheck))
+        {
+            //If file is found, deletes file
+            Storage::delete($filecheck);
+        }
+
+        return redirect()->back()->with('removed', 'Your avatar has been removed.');
+    }
+
+    //Checks if avatar exists in DB — page-account
+    public function accountAvatarCheckDB()
+    {
+        $checkAvatar = Customers::where('customer_id', '=', Auth::user()->customer_id)->first();
+
+        return view('user.templates.page-account', compact(['checkAvatar']));
     }
 
     /*
@@ -276,7 +339,10 @@ class CustomersController extends Controller
     public function updateProfileForm()
     {
         $birthdate = date('m/d/Y', strtotime(Auth::user()->birthdate));
-        return view('user.templates.editprofile', ["birthdate" => $birthdate]);
+
+        $result = Customers::where('customer_id', '=', Auth::user()->customer_id)->first();
+
+        return View::make('user.templates.editprofile', compact(['birthdate', 'result']));
     }
 
     public function AddressViewForm()

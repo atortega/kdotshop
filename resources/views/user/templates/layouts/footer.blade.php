@@ -248,11 +248,6 @@
 			window.location.href = '/shop-cart';
 		});
 
-		//triggers remove avatar icon, then redirects back with message
-		$("#removeAvatarBtn").click(function(){
-			window.location.href = '/removeAvatar';
-		});		
-
 		//tester for <input id="qty"> and <p id="qty_display"/>
 		$("#qty").keyup(function() {
 			var value = $(this).val();
@@ -359,10 +354,10 @@
 	    $('.uploadBtn').attr('disabled',true);
         $('input:file').change(function(){
             if ($(this).val()){
-            	// Upload Image Button is enabled, while Remove Avatar Button
-            	// is disabled when a file is chosen to be uploaded
+            	// Upload Image Button is enabled, while <a>Remove Avatar</a>
+            	// is hidden when a certain file is chosen to be uploaded
                 $('.uploadBtn').attr('disabled',false);
-                $('#removeAvatarBtn').prop('disabled',true);
+                $('#removeAvatarBtn').hide();
             } 
 		});
 		/*———————————————————————————————————————————————————————*/

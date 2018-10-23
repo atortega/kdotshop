@@ -162,11 +162,11 @@
 
                                             <div class="card-footer border-clear">
                                                 @if(Auth::user()->avatar_original != NULL)
-                                                    <button id="removeAvatarBtn" 
+                                                    <a href="/removeAvatar" id="removeAvatarBtn" 
                                                         class="btn btn-animated btn-danger btn-sm pull-right">
                                                         Remove Avatar
                                                         <i class="fa fa-remove"></i>
-                                                    </button>
+                                                    </a>
                                                 @endif
                                                 <button type="submit" class="btn btn-animated btn-default btn-sm uploadBtn">
                                                     Upload Image

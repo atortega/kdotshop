@@ -136,8 +136,7 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-12">
                                         <h5>Zipcode</h5>
-                                      <input class="form-control" id="billingPostalCode" 
-                                                    type="text" placeholder="Postal Code" required autofocus>
+                                      <input id="billing_zipcode" type="text" class="form-control" name="billing_zipcode" value="{{ $user->billing_zipcode }}" required autofocus>
                                     </div>
                                 </div>
                             </div>

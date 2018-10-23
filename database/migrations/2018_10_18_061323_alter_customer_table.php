@@ -14,12 +14,12 @@ class AlterCustomerTable extends Migration
     public function up()
     {
         Schema::table('customer', function (Blueprint $table) {
-            $table->string('provider', '50')->after('password')->nullable();
-            $table->string('provider_id', '100')->after('password')->nullable();
-            $table->string('avatar')->after('password')->nullable();
-            $table->string('avatar_original')->after('password')->nullable();
-            $table->string('password')->nullable()->change();
-        });
+        $table->string('provider', '50')->after('password')->nullable();
+        $table->string('provider_id', '100')->after('password')->nullable();
+        $table->string('avatar')->after('password')->nullable();
+        $table->string('avatar_original')->after('password')->nullable();
+        $table->string('password')->nullable()->change();
+    });
     }
 
     /**

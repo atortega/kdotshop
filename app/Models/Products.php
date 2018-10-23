@@ -10,7 +10,7 @@ class Products extends Model
 
     protected $primaryKey = 'product_id';
 
-    public $timestamps= false;
+    //public $timestamps= false;
 
     protected $fillable=[
     	'sub_category_id',

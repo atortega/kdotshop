@@ -44,7 +44,7 @@ class CustomersController extends Controller
             'first_name'        => 'required|max:30',
             'last_name'         => 'required|max:30',
             'middle_name'       => 'required',
-            'birthdate'         => 'required',
+            'birthdate'         => '',
             'gender'            => '',
             'address'           => 'required|max:100',
             'phone_number'      => 'required',

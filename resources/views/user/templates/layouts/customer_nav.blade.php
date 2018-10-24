@@ -98,6 +98,14 @@
 											<i class="fa fa-user pr-2"></i>
 											<span class="pl-5px">My Account</span>
 										</a>
+										@if(Auth::user()->type=='admin')
+										
+											<a href="/admin" class="dropdown-item">
+												<i class="fa fa-key pr-2"></i>
+												<span class="pl-5px">Admin</span>
+											</a>
+									
+										@endif
 										<div class="dropdown-divider"></div>
 										<a href="/logout" class="dropdown-item">
 											<i class="fa fa-sign-out pr-2"></i>

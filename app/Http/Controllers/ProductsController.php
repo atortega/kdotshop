@@ -124,7 +124,7 @@ class ProductsController extends Controller
             'price'         => 'numeric|min:1',
 
         ]);
-        $path = Storage::putFile('templates/images', $request->product_image, 'public');
+        $path = Storage::putFile('products/images', $request->product_image, 'public');
         $path_array = explode('/', $path);
         $file = $path_array[count($path_array)-1];
         /*

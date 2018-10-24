@@ -67,7 +67,11 @@
                                 { data: 'product_desc', name: 'product_desc' },
                                 { data: 'product_image', 
                                     "render": function(data, type, row) {
-                                        return '<img src="/storage/'+data+'" class="img-rounded img-responsive object-fit_fill imgZoomModal imgThumb" style="border:0px;" width="75" id="image-'+product_id+'" imgid="'+product_id+'"" alt="'+product_name+'"/>';
+                                        if (data) {
+                                            return '<img src="/storage/' + data + '" class="img-rounded img-responsive object-fit_fill imgZoomModal imgThumb" style="border:0px;" width="75" id="image-' + product_id + '" imgid="' + product_id + '"" alt="' + product_name + '"/>';
+                                        } else {
+                                            return '';
+                                        }
                                     }, orderable: false
                                 },
                                 { data: 'actions', name: 'actions', orderable: false },
@@ -102,12 +106,19 @@
 
                         $('#table').on('click', '.product-edit-btn', function(){
                             var product_id = $(this).attr('sid');
+                            console.log('id: '+product_id);
                             $.get( "/products/get/"+product_id, function( data ) {
+                                console.log(data);
+                                console.log('id'+product_id);
                                 $("#product_id").val(product_id);
-                                $("#category_id").val(data.category_id);
-                                $("#sub_category_id").val(data.sub_category_id);
-                                $("#product_name").val(data.product_name);
-                                $("#product_desc").val(data.product_desc);
+                                $("#category_id").val(data[0].category_id);
+                                $("#sub_category_id").val(data[0].sub_category_id);
+                                $("#category_name").val(data[0].category_name);
+                                $("#sub_category_name").val(data[0].sub_category_name);
+                                $("#product_name").val(data[0].product_name);
+                                $("#product_desc").val(data[0].product_desc);
+                                $("#quantity").val(data[0].number_of_items);
+                                $("#price").val(data[0].unit_price);
                             });
 
                             $('#myModal').modal('show');
@@ -143,21 +154,47 @@
                         });
 
                         $('.save-changes').click(function() {
+                            var form = $(this).closest('form');
+                            var formData = new FormData();
+                            formData.append('product_image', $('#product_image').prop('files')[0]);
+                            formData.append('product_id', $("input[name='product_id']").val());
+                            formData.append('category_id', $("input[name='category_id']").val());
+                            formData.append('sub_category_id', $("input[name='sub_category_id']").val());
+                            formData.append('category_name', $("input[name='category_name']").val());
+                            formData.append('sub_category_name', $("input[name='sub_category_name']").val());
+                            formData.append('product_name', $("input[name='product_name']").val());
+                            formData.append('price', $("input[name='price']").val());
+                            formData.append('quantity', $("input[name='quantity']").val());
+                            formData.append('size', $("#size").val());
+                            formData.append('color', $("#color").val());
+                            formData.append('product_desc', $("input[name='product_desc']").val());
+                            formData.append('_token', $("input[name='_token']").val());
                             $.ajax({
-                                assync: true,
+                                async: true,
                                 type: "POST",
                                 dataType: 'json',
+                                processData: false,
+                                contentType: false,
+
+                                /*
                                 data: { product_id: $("#product_id").val(),
-                                        category_id: $("#category_id").val(),
-                                        sub_category_id: $("#sub_category_id").val(),
-                                        product_name: $("#product_name").val(),
-                                        product_desc: $("#product_desc").val(),
-                                        product_image: $("#product_image").val(),
-                                        _token: $('meta[name="csrf-token"]').attr('content')},
+                                    category_id: $("#category_id").val(),
+                                    sub_category_id: $("#sub_category_id").val(),
+                                    category_name: $("#category_name").val(),
+                                    sub_category_name: $("#sub_category_name").val(),
+                                    product_name: $("#product_name").val(),
+                                    price: $("#price").val(),
+                                    size: $("#size").val(),
+                                    color: $("#color").val(),
+                                    product_desc: $("#product_desc").val(),
+                                    product_image: $("#product_image").val(),
+                                    _token: $('meta[name="csrf-token"]').attr('content')},
+                                    */
+                                data: formData,
                                 cache: true,
                                 url: '/admin/products/edit',
-                                success: function(data){
-                                    console.log(data);
+                                success: function(data2){
+                                    console.log(data2);
                                     datatable.draw('page');
                                     $('#myModal').modal('hide');
                                 },
@@ -241,33 +278,75 @@
                     <h4 class="modal-title">Product - Update</h4>
                 </div>
                 <div class="modal-body">
-                    <div id="form-errors"></div>
-                    <div class="form-group" hidden>
-                        <label for="product_id">Product ID</label>
-                        <input type="text" class="form-control" id="product_id"
-                            name="product_id" placeholder="" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="category_id">Category ID</label>
-                        <input type="text" class="form-control" id="category_id"
-                            name="category_id" placeholder="Enter Category Name" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="sub_category_id">Sub Category ID</label>
-                        <input type="text" class="form-control" id="sub_category_id"
-                            name="sub_category_id" placeholder="" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="product_name">Product Name</label>
-                        <input type="text" class="form-control" id="product_name"
-                            name="product_name" placeholder="Enter Product Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="product_desc">Description</label>
-                        <input type="text" class="form-control" id="product_desc"
-                            name="product_desc" placeholder="Enter Product Description">
-                    </div>
+                    <form name="updateForm" id="updateForm" >
+                        {{ csrf_field() }}
+                        <input type="hidden" name="product_id" id="product_id">
+                        <div id="form-errors"></div>
+                        <div class="form-group" hidden>
+                            <label for="product_id">Product ID</label>
+                            <input type="text" class="form-control" id="product_id"
+                                name="product_id" placeholder="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id">Category ID</label>
+                            <input type="hidden" class="form-control" id="category_id" name="category_id">
+                            <input type="text" class="form-control" id="category_name"
+                                   name="category_name" placeholder="Enter Category Name" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="sub_category_id">Sub Category ID</label>
+                            <input type="hidden" class="form-control" id="sub_category_id" name="sub_category_id">
+                            <input type="text" class="form-control" id="sub_category_name"
+                                   name="sub_category_name" placeholder="" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_name">Product Name</label>
+                            <input type="text" class="form-control" id="product_name"
+                                name="product_name" placeholder="Enter Product Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_desc">Description</label>
+                            <input type="text" class="form-control" id="product_desc"
+                                name="product_desc" placeholder="Enter Product Description">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Color</label>
+                            <select class="form-control" id="color" name="color">
+                                <option value="0">Select Color</option>
+                                @foreach($colors as $color)
+                                    <option value="{{$color->color_id}}">{{$color->color}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Size</label>
+                            <select class="form-control" id="size" name="size">
+                                <option value="0">Select Size</option>
+                                @foreach($sizes as $size)
+                                    <option value="{{$size->size_id}}">{{$size->description}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product_name">Quantity</label>
+                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter the number of items" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price">Unit Price</label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="Enter the unit price per item" value="">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="product_image">Product Image</label>
+                            <input type="file" id="product_image" name="product_image" placeholder="Enter Product Image" required='require' value="">
+                        </div>
+                    </form>
                 </div>
+
                 <div class="modal-footer">
                     <!-- <input type="hidden" name="product_id" id="product_id"> -->
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -67,7 +67,11 @@
                                 { data: 'product_desc', name: 'product_desc' },
                                 { data: 'product_image', 
                                     "render": function(data, type, row) {
-                                        return '<img src="/storage/'+data+'" class="img-rounded img-responsive object-fit_fill imgZoomModal imgThumb" style="border:0px;" width="75" id="image-'+product_id+'" imgid="'+product_id+'"" alt="'+product_name+'"/>';
+                                        if (data) {
+                                            return '<img src="/storage/' + data + '" class="img-rounded img-responsive object-fit_fill imgZoomModal imgThumb" style="border:0px;" width="75" id="image-' + product_id + '" imgid="' + product_id + '"" alt="' + product_name + '"/>';
+                                        } else {
+                                            return '';
+                                        }
                                     }, orderable: false
                                 },
                                 { data: 'actions', name: 'actions', orderable: false },
@@ -150,11 +154,27 @@
                         });
 
                         $('.save-changes').click(function() {
+                            var form = $(this).closest('form');
+                            var formData = new FormData();
+                            formData.append('product_image', $('#product_image').prop('files')[0]);
+                            formData.append('product_id', $("input[name='product_id']").val());
+                            formData.append('category_id', $("input[name='category_id']").val());
+                            formData.append('sub_category_id', $("input[name='sub_category_id']").val());
+                            formData.append('category_name', $("input[name='category_name']").val());
+                            formData.append('sub_category_name', $("input[name='sub_category_name']").val());
+                            formData.append('product_name', $("input[name='product_name']").val());
+                            formData.append('price', $("input[name='price']").val());
+                            formData.append('quantity', $("input[name='quantity']").val());
+                            formData.append('size', $("#size").val());
+                            formData.append('color', $("#color").val());
+                            formData.append('product_desc', $("input[name='product_desc']").val());
+                            formData.append('_token', $("input[name='_token']").val());
                             $.ajax({
-                                assync: true,
+                                async: true,
                                 type: "POST",
                                 dataType: 'json',
-
+                                processData: false,
+                                contentType: false,
 
                                 /*
                                 data: { product_id: $("#product_id").val(),
@@ -170,7 +190,7 @@
                                     product_image: $("#product_image").val(),
                                     _token: $('meta[name="csrf-token"]').attr('content')},
                                     */
-                                data: $("#updateForm").serialize(),
+                                data: formData,
                                 cache: true,
                                 url: '/admin/products/edit',
                                 success: function(data2){
@@ -322,7 +342,7 @@
 
                         <div class="form-group">
                             <label for="product_image">Product Image</label>
-                            <input type="file" name="product_image" placeholder="Enter Product Image" required='require' value="">
+                            <input type="file" id="product_image" name="product_image" placeholder="Enter Product Image" required='require' value="">
                         </div>
                     </form>
                 </div>

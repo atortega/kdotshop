@@ -170,10 +170,10 @@ class ProductsController extends Controller
 
         ]);
 
-        //$path = Storage::putFile('templates/images', $request->product_image, 'public');
-        //$path_array = explode('/', $path);
+        $path = Storage::putFile('products/images', $request->product_image, 'public');
+        $path_array = explode('/', $path);
 
-        $path = '';
+        //$path = '';
 
         $product = Products::where('product_id', $request->product_id)->first();
 

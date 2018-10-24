@@ -5,6 +5,31 @@
 
 @include('user.templates.layouts.header')
 
+<style>
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+    }
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+    #img-upload{
+        width: 100%;
+    }
+</style>
 
 <title>KDot | My Account </title>
 
@@ -72,7 +97,10 @@
                     <div class="main col-lg-8 order-lg-2 ml-xl-auto">
 
                         @if ($errors->any())
-                            <div class="alert alert-danger">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
@@ -81,13 +109,81 @@
                             </div>
                         @endif
                         @if(session()->has('message'))
-                            <div class="alert alert-success">
-                                {{ session()->get('message') }}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong>{{ session()->get('message') }}</strong>
+                            </div>
+                        @elseif(session()->has('removed'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <strong>{{ session()->get('removed') }}</strong>
                             </div>
                         @endif
+
+                        <form method="POST" action="/saveNewAvatar" role="form"
+                            runat="server" enctype="multipart/form-data">
+                            @csrf
+
+                            <div class="row card-footer border-clear">
+                                <div class="col-md-6" style="margin: auto;">
+                                    <div class="form-group row mb-0 clearfix">
+                                        <div class="col-md-12">
+                                            <h6 for="user_avatar">Change Avatar</h6>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-default btn-file">
+                                                        Browse… <input type="file" id="imgInp" name="imgInp">
+                                                    </span>
+                                                </span>
+                                                <input type="text" class="form-control" id="readOnlyInp" 
+                                                    style="margin-top: 10px; height: 36px;" Readonly>
+                                            </div>
+
+                                            @if(Auth::user()->avatar != NULL &&
+                                                Auth::user()->avatar_original != NULL &&
+                                                Auth::user()->provider_id != NULL &&
+                                                Auth::user()->provider != NULL)
+                                                <img src='{{ Auth::user()->avatar_original }}'
+                                                    id='img-upload'/>
+                                            @elseif(Auth::user()->avatar == NULL &&
+                                                    Auth::user()->avatar_original != NULL)
+                                                <img
+                                                    src='{{ asset("storage/$result->avatar_original") }}'
+                                                    id='img-upload'/>
+                                            @elseif(Auth::user()->avatar == NULL &&
+                                                    Auth::user()->avatar_original == NULL)
+                                                <img src='{{ asset("image/templates/default-avatar.jpg") }}'
+                                                    id='img-upload'/>    
+                                            @endif
+
+                                            <div class="card-footer border-clear">
+                                                @if(Auth::user()->avatar_original != NULL)
+                                                    <a href="/removeAvatar" id="removeAvatarBtn" 
+                                                        class="btn btn-animated btn-danger btn-sm pull-right">
+                                                        Remove Avatar
+                                                        <i class="fa fa-remove"></i>
+                                                    </a>
+                                                @endif
+                                                <button type="submit" class="btn btn-animated btn-default btn-sm uploadBtn">
+                                                    Upload Image
+                                                    <i class="fa fa-upload"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
                         <form method="POST" action="/saveProfile">
                             @csrf
+
                             <div class="card-header row border-clear">
+                                <!-- 1st Column start -->
                                 <div class="col">
                                     <div class="form-group has-feedback row">
                                         <div class="col-md-12">

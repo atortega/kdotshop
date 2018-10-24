@@ -72,32 +72,46 @@
                     <form method="POST" action="">
                         @csrf
 
+                        <!-- Avatar section start -->
+                        <div class="col-md-4 form-group row">
+                            <div class="overlay-container">
+
+                            @if(Auth::user()->avatar != NULL &&
+                                Auth::user()->avatar_original != NULL &&
+                                Auth::user()->provider_id != NULL &&
+                                Auth::user()->provider != NULL)
+                                <img src='{{ Auth::user()->avatar_original }}'
+                                    alt="" style="min-width: 203.33px;">
+                                 <a href='{{ Auth::user()->avatar_original }}'
+                                    class="overlay-link popup-img-single">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            @elseif(Auth::user()->avatar == NULL &&
+                                    Auth::user()->avatar_original != NULL)
+                                <img src='{{ asset("storage/$checkAvatar->avatar_original") }}' 
+                                    alt="" style="min-width: 203.33px;">
+                                <a href='{{ asset("storage/$checkAvatar->avatar_original") }}'
+                                    class="overlay-link popup-img-single">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            @elseif(Auth::user()->avatar == NULL &&
+                                    Auth::user()->avatar_original == NULL)
+                                <img src='{{ asset("image/templates/default-avatar.jpg") }}' 
+                                    alt="" style="min-width: 203.33px;">
+                                <a href='{{ asset("image/templates/default-avatar.jpg") }}'
+                                    class="overlay-link popup-img-single">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            @endif
+                            
+                            </div>
+                        </div>
+                        <!-- Avatar section end -->
+
                         <div class="row">
 
                             <!-- 1st Column start -->
                             <div class="col">
-                                <div class="col-md-8 form-group has-feedback row">
-                                    <div class="overlay-container" style="min-height: 203.33px;">
-                                        <img src="
-                                                @if(Auth::user()->avatar_original)
-                                                    {{ Auth::user()->avatar_original }}
-                                                @else
-                                                    {{ asset('image/templates/gym-team-1.jpg') }}
-                                                @endif
-                                                " alt="">
-                                        <a href="
-                                                @if(Auth::user()->avatar_original)
-                                                    {{ Auth::user()->avatar_original }}
-                                                @else
-                                                    {{ asset('image/templates/gym-team-1.jpg') }}
-                                                @endif
-                                            "
-                                            class="overlay-link popup-img-single">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>First Name</h5>
@@ -118,18 +132,18 @@
                                         <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ Auth::user()->last_name }}"disabled>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- 1st Column end -->
 
-                            <!---2nd Column start --->
-                            <div class="col">
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Birthdate</h5>
                                         <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ Auth::user()->birthdate }}" disabled>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- 1st Column end -->
 
+                            <!---2nd Column start --->
+                            <div class="col">
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-8">
                                         <h5>Gender</h5>

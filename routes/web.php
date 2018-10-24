@@ -149,6 +149,9 @@ Route::group(['middleware' => 'auth' ], function() {
 
     Route::get('/updateProfile', 'CustomersController@updateProfileForm');
     Route::post('/saveProfile', 'CustomersController@saveProfile');
+    Route::post('/saveNewAvatar', 'CustomersController@saveNewAvatar');
+    Route::get('/removeAvatar', 'CustomersController@removeAvatar');
+    Route::get('/account', 'CustomersController@accountAvatarCheckDB');
     Route::post('/change-password', 'CustomersController@changePassword');
     Route::post('/change-password', 'CustomersController@changePassword');
     Route::post('/addresses/add', 'CustomersController@insertAddress');
@@ -283,3 +286,15 @@ Route::group(['middleware' => 'auth' ], function() {
     });
 });
 
+            //P A G E    P R O F I L E
+            Route::get('/admin/profile', function () {
+                return view('admin.templates.page-profile');
+            });
+            Route::get('/admin/edit', function () {
+                return view('admin.templates.page-editProfile');
+            });
+            Route::get('/admin/password', function () {
+                return view('admin.templates.page-editPassword');
+            });
+
+            

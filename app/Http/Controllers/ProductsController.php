@@ -169,10 +169,10 @@ class ProductsController extends Controller
             'price'         => 'numeric|min:1',
 
         ]);
-
-        $path = Storage::putFile('products/images', $request->product_image, 'public');
-        $path_array = explode('/', $path);
-
+        if ($request->hasfile('product_image')) {
+            $path = Storage::putFile('products/images', $request->product_image, 'public');
+            $path_array = explode('/', $path);
+        }
         //$path = '';
 
         $product = Products::where('product_id', $request->product_id)->first();
@@ -181,11 +181,11 @@ class ProductsController extends Controller
         $product->sub_category_id   = $request->sub_category_id;
         $product->product_name      = $request->product_name;
         $product->product_desc      = $request->product_desc;
-        //$product->originalfilename  = addslashes($request->product_image->getClientOriginalName());
-        //$product->filesize          = $request->product_image->getClientSize();
-        $product->originalfilename  = '';
-        $product->filesize          = '0';
-        $product->product_image     = $path;
+        if ($request->hasfile('product_image')) {
+            $product->originalfilename = addslashes($request->product_image->getClientOriginalName());
+            $product->filesize = $request->product_image->getClientSize();
+            $product->product_image     = $path;
+        }
         $product->save();
 
         //save data to SKU table

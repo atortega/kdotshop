@@ -91,7 +91,7 @@ Route::get('/product', function () {
 Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/product', 'ProductsController@paginateProducts');
 Route::get('/products/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
-Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
+Route::get('/shop-productDetails/{id}', 'ProductsController@getProductDetailsById');
 
 // A B O U T - P A G E
 Route::get('/about-us', function () {

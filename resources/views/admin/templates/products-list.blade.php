@@ -110,6 +110,12 @@
                             $.get( "/products/get/"+product_id, function( data ) {
                                 console.log(data);
                                 console.log('id'+product_id);
+                                console.log(data[0].product_image);
+                                if (data[0].product_image != null) {
+                                    $('#image-preview').html('<img id="theImg" src="/storage/'+data[0].product_image+'" width="150"/>');
+                                } else {
+                                    $('#image-preview').html('');
+                                }
                                 $("#product_id").val(product_id);
                                 $("#category_id").val(data[0].category_id);
                                 $("#sub_category_id").val(data[0].sub_category_id);
@@ -339,6 +345,8 @@
                             <label for="price">Unit Price</label>
                             <input type="text" class="form-control" id="price" name="price" placeholder="Enter the unit price per item" value="">
                         </div>
+
+                        <div class="form-group" id="image-preview"></div>
 
                         <div class="form-group">
                             <label for="product_image">Product Image</label>

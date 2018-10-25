@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="container">
+                <div class="row">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>

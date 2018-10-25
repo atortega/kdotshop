@@ -280,6 +280,7 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/sub-categories/index', 'SubCategoriesController@index');
             Route::post('/sub-categories/create/save', 'SubCategoriesController@addNew');
             Route::post('/sub-categories/edit', 'SubCategoriesController@editProductSubCategory');
+            Route::get('/sub-categories/get/{cat}', 'SubCategoriesController@getSubCategoryByCategoryId');
             Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
             Route::get('/sub-categories', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
         });

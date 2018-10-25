@@ -28,8 +28,8 @@ class ProductsController extends Controller
         $sizes = Sizes::orderBy('size')->get();
 
         $products = DB::table('products')
-            ->leftJoin('categories', 'products.product_id', '=', 'categories.category_id')
-            ->leftJoin('sub_categories', 'products.product_id', '=', 'sub_categories.sub_category_id')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.category_id')
+            ->leftJoin('sub_categories', 'products.sub_category_id', '=', 'sub_categories.sub_category_id')
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name')
             ->get();
         $datatables = Datatables::of($products)

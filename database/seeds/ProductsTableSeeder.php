@@ -20,11 +20,17 @@ class ProductsTableSeeder extends Seeder
             $results = $reader->all();
             foreach($results as $row) {
                 Products::updateOrCreate([
-                    'category_id' => $row->categories,
-                    'sub_category_id' => $row->subcategories,
-                    'product_name' => $row->productname
+                    'product_id' => $row->product_id
                 ], [
-                    'product_desc' => $row->productdescription
+                    'category_id' => $row->category_id,
+                    'sub_category_id' => $row->subcategory_id,
+                    'product_image' => $row->image,
+                    'originalfilename' => $row->originalfilename,
+                    'filesize' => $row->filesize,
+                    'product_name' => $row->product_name,
+                    'product_desc' => $row->product_desc,
+                    //'created_at'    => $row->created_at,
+                    //'updated_at'    => $row->updated_at
                 ]);
             }
         });

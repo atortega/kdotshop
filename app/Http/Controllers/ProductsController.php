@@ -59,8 +59,8 @@ class ProductsController extends Controller
 
 
         $product = DB::table('products')
-            ->leftJoin('categories', 'products.product_id', '=', 'categories.category_id')
-            ->leftJoin('sub_categories', 'products.product_id', '=', 'sub_categories.sub_category_id')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.category_id')
+            ->leftJoin('sub_categories', 'products.sub_category_id', '=', 'sub_categories.sub_category_id')
             ->leftJoin('sku', 'products.product_id', '=', 'sku.product_id')
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.color_id', 'sku.size_id', 'sku.number_of_items', 'sku.unit_price')
             ->where('products.product_id', $id)

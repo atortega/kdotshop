@@ -238,9 +238,6 @@
 											<div class="col-lg-9">
 
 												<input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}">
-
-												<input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}" >
-
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -252,9 +249,7 @@
 											<div class="col-lg-9">
 												<input class="form-control" id="billingPostalCode" 
 
-													type="text" value="{{ $user->billing_zipcode }}">
-
-													
+													type="text" value="{{ $user->billing_zipcode }}">		
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -370,9 +365,6 @@
 
 												<input class="form-control" id="shipping_address1"
 													type="text" name="shipping_address1" value="{{ $user->shipping_address1 }}">
-
-												<input class="form-control" id="shippingAddress" name="shipping_address1"
-													type="text" placeholder ="Address " value="{{ $user->shipping_address1">
 											</div>
 										</div>
 
@@ -386,10 +378,6 @@
 
 												<input class="form-control" id="shipping_barangay"
 													type="text" name="shipping_barangay" value="{{ $user->shipping_barangay }}">
-
-												<input class="form-control" id="shipping_barangay" name="shipping_barangay"
-													type="text" placeholder ="Address "  value="{{ $user->shipping_barangay }}">
-
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -401,10 +389,6 @@
 											<div class="col-lg-9">
 
 												<input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}">
-
-												<input class="form-control" id="shipping_city" name="shipping_city"
-													type="text" placeholder ="City "  value="{{ $user->shipping_city }}">
-
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -416,10 +400,6 @@
 											<div class="col-lg-9">
 
 												<input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}">
-
-												<input class="form-control" id="shipping_province" name="shipping_province"
-													type="text" placeholder="City" value="{{ $user->shipping_province }}">
-
 											</div>
 										</div>
 										<div class="form-group row">
@@ -432,10 +412,6 @@
 
 												<input class="form-control" id="shipping_zipcode" 
 													type="text" value="{{ $user->shipping_zipcode }}">
-
-												<input class="form-control" id="shipping_zipcode"
-													type="text" placeholder="Postal Code" value="{{ $user->shipping_zipcode }}">
-
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -450,13 +426,6 @@
                                                 		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
                                             		@endforeach
                                         		</select>
-
-												<select class="form-control" id="shipping_country" name="shipping_country">
-													@foreach($countries as $country)
-														<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
-													@endforeach
-												</select>
-
 											</div>
 										</div>	
 										</div>

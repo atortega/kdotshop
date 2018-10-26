@@ -52,7 +52,7 @@ class CartController extends Controller
 
     public function cartShowCheckoutReview(){
         $cartProducts = Cart::Content();
-         $countries = Country::orderBy('code')->get();
+        $countries = Country::orderBy('code')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
         return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
         

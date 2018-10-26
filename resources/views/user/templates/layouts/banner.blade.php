@@ -95,7 +95,7 @@
                     data-transform_in="y:[-100%];sX:1;sY:1;o:0;s:1100;e:Power4.easeInOut;"
                     data-transform_out="y:0;s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[-100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="logo-font">The <span class="text-default">Project</span></span> <br> Powerful Bootstrap Template
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="logo-font">KDot <span class="text-default">Shop</span></span> <br> <!-- Powerful Bootstrap Template -->
                   </div>
 
                   <!-- LAYER NR. 5 -->
@@ -158,7 +158,7 @@
                     data-transform_in="y:[-50%];sX:1;sY:1;o:0;s:1100;e:Power4.easeInOut;"
                     data-transform_out="y:0;s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[-50%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Nesciunt, maiores, aliquid. Repellat eum numquam aliquid culpa offici, <br> tenetur fugiat dolorum sapiente eligendi...
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br> Nesciunt, maiores, aliquid. Repellat eum numquam aliquid culpa offici, <br> tenetur fugiat dolorum sapiente eligendi... -->
                   </div>
 
                   <!-- LAYER NR. 10 -->
@@ -211,7 +211,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:1100;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="logo-font">The Project</span> <br> Premium HTML5 Bootstrap Theme
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="logo-font"><!-- KDot Shop --></span> <br>
                   </div>
 
                   <!-- LAYER NR. 2 -->
@@ -225,7 +225,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:900;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="icon default-bg circle small hidden-xs"><i class="fa fa-laptop"></i></span> 100% Responsive
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class=""><i class=""></i></span> <!-- 100% Responsive -->
                   </div>
 
                   <!-- LAYER NR. 3 -->
@@ -239,7 +239,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:900;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="icon default-bg circle small hidden-xs"><i class="fa fa-check"></i></span> Bootstrap Based
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class=""><i class=""></i></span> <!-- Bootstrap Based -->
                   </div>
 
                   <!-- LAYER NR. 4 -->
@@ -253,7 +253,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:900;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="icon default-bg circle small hidden-xs"><i class="fa fa-gift"></i></span> Packed Full of Features
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="><i class=""></i></span><!--  Packed Full of Features -->
                   </div>
 
                   <!-- LAYER NR. 5 -->
@@ -267,7 +267,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:900;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class="icon default-bg circle small hidden-xs"><i class="fa fa-hourglass-half"></i></span> Very Elegant Design
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><span class=""><i class=""></i></span> <!-- Very Elegant Design -->
                   </div>
 
                   <!-- LAYER NR. 6 -->
@@ -281,7 +281,7 @@
                     data-transform_in="y:[100%];sX:1;sY:1;o:0;s:900;e:Power4.easeInOut;"
                     data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;"
                     data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><a href="#" class="btn btn-default btn-lg btn-animated">Purchase <i class="fa fa-cart-arrow-down"></i></a>
+                    data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"><a href="#" class=""> <i class=""></i></a>
                   </div>
                 </li>
                 <!-- slide 2 end -->

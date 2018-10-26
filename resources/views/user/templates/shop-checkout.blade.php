@@ -365,6 +365,11 @@
 
 												<input class="form-control" id="shipping_address1"
 													type="text" name="shipping_address1" value="{{ $user->shipping_address1 }}">
+
+
+												<input class="form-control" id="shippingAddress" name="shipping_address1"
+													type="text" placeholder ="Address " value="{{ $user->shipping_address1 }}">
+
 											</div>
 										</div>
 

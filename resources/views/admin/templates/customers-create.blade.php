@@ -44,12 +44,20 @@
                     <form role="form" method="post" action="/admin/customers/create/save">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" value="{{ old('name') }}">
+                            <label for="name">Customer ID</label>
+                            <input type="number" class="form-control" id="id" name="id" placeholder="" value="{{ old('id') }}">
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" value="{{ old('address') }}">
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control" id="fname" name="first_name" placeholder="Enter First Name" value="{{ old('first_name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="last_name" placeholder="Enter Last Name" value="{{ old('last_name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Middle Name</label>
+                            <input type="text" class="form-control" id="mname" name="middle_name" placeholder="Enter Middle Name" value="{{ old('middle_name') }}">
                         </div>
 
                         <div class="form-group">

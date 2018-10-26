@@ -196,6 +196,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="/admin/profile"><i class="fa fa-user fa-fw"></i> My Account</a>
                         </li>
+                        <li><a href="/"><i class="fa fa-user fa-fw"></i> Kdot</a
                         <li class="divider"></li>
                         <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>

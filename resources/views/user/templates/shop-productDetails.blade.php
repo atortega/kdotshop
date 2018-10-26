@@ -83,7 +83,7 @@
                       <div class="tab-pane active" id="pill-1">
                           <div class="slick-carousel content-slider-with-large-controls">
                             <div class="overlay-container overlay-visible">
-                              <img src='{{ URL::asset("storage/$getProductQuery->product_image") }}' alt="">
+                              <img src="{{ asset("storage/$getProductQuery->product_image") }}" onerror="this.onerror=null;this.src='/storage/products/default-product-image.jpg'" />
                               <a href='{{ URL::asset("storage/$getProductQuery->product_image") }}'
                                 class="slick-carousel--popup-img overlay-link"
                                 title="{{ $getProductQuery->product_name }}">

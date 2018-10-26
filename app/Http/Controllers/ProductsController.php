@@ -22,9 +22,14 @@ class ProductsController extends Controller
     {
         //$products = Datatables::of(Products::query())->make(true);
         //$products = Datatables::of(Products::get_products())->make(true);
+        $categories = Categories::orderBy('category_name')->get();
+        $sub_categories = Sub_categories::orderBy('sub_category_name')->get();
+        $colors = Colors::orderBy('color')->get();
+        $sizes = Sizes::orderBy('size')->get();
+
         $products = DB::table('products')
-            ->leftJoin('categories', 'products.product_id', '=', 'categories.category_id')
-            ->leftJoin('sub_categories', 'products.product_id', '=', 'sub_categories.sub_category_id')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.category_id')
+            ->leftJoin('sub_categories', 'products.sub_category_id', '=', 'sub_categories.sub_category_id')
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name')
             ->get();
         $datatables = Datatables::of($products)
@@ -39,13 +44,28 @@ class ProductsController extends Controller
                     ";
             })
             ->escapeColumns('actions')
+            ->with([
+                'categories' => $categories,
+                'sub_categories' => $sub_categories,
+                'colors' => $colors,
+                'sizes' => $sizes
+            ])
             ->make(true);
         return ($datatables);
     }
     public function getProductById($id)
     {
-        $product = Products::where('product_id', $id)->first();
-        
+        //$product = Products::where('product_id', $id)->first();
+
+
+        $product = DB::table('products')
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.category_id')
+            ->leftJoin('sub_categories', 'products.sub_category_id', '=', 'sub_categories.sub_category_id')
+            ->leftJoin('sku', 'products.product_id', '=', 'sku.product_id')
+            ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.color_id', 'sku.size_id', 'sku.number_of_items', 'sku.unit_price')
+            ->where('products.product_id', $id)
+            ->get();
+
         return $product;
         
     }
@@ -68,6 +88,25 @@ class ProductsController extends Controller
         ];
         return view('admin.templates.products-create', $data);
     }
+
+    /*
+     * List Products
+     */
+    public function listProducts()
+    {
+        $categories = Categories::orderBy('category_name')->get();
+        $sub_categories = Sub_categories::orderBy('sub_category_name')->get();
+        $colors = Colors::orderBy('color')->get();
+        $sizes = Sizes::orderBy('size')->get();
+        $data = [
+            'categories' => $categories,
+            'sub_categories' => $sub_categories,
+            'colors' => $colors,
+            'sizes' => $sizes
+        ];
+        return view('admin.templates.products-list', $data);
+    }
+
     /*
      * Insert new Product from form
      *
@@ -82,9 +121,10 @@ class ProductsController extends Controller
             'category'      => 'required',
             'product_name'  => 'required|max:100',
             'quantity'      => 'numeric|min:1',
-            'price'         => 'numeric|min:1'
+            'price'         => 'numeric|min:1',
+
         ]);
-        $path = Storage::putFile('templates/images', $request->product_image, 'public');
+        $path = Storage::putFile('products/images', $request->product_image, 'public');
         $path_array = explode('/', $path);
         $file = $path_array[count($path_array)-1];
         /*
@@ -101,6 +141,7 @@ class ProductsController extends Controller
         $product->filesize          = $request->product_image->getClientSize();
         $product->product_image     = $path;
         $product->save();
+
         //save data to SKU table
         $padded_id = str_pad($product->product_id, 10, '0', STR_PAD_LEFT);
         $product_sku = $request->category . $request->sub_category . $request->color . $request->size . $padded_id;
@@ -114,32 +155,65 @@ class ProductsController extends Controller
         $sku->save();
         return redirect()->back()->with('message', 'New product has been added.');
     }
+
+    /*
+     * update Products
+     */
+    public function updateProduct(Request $request)
+    {
+        $request->validate([
+            'product_id'    => 'required|numeric|min:1',
+            'category_id'      => 'required',
+            'product_name'  => 'required|max:100',
+            'quantity'      => 'numeric|min:1',
+            'price'         => 'numeric|min:1',
+
+        ]);
+        if ($request->hasfile('product_image')) {
+            $path = Storage::putFile('products/images', $request->product_image, 'public');
+            $path_array = explode('/', $path);
+        }
+        //$path = '';
+
+        $product = Products::where('product_id', $request->product_id)->first();
+
+        $product->category_id       = $request->category_id;
+        $product->sub_category_id   = $request->sub_category_id;
+        $product->product_name      = $request->product_name;
+        $product->product_desc      = $request->product_desc;
+        if ($request->hasfile('product_image')) {
+            $product->originalfilename = addslashes($request->product_image->getClientOriginalName());
+            $product->filesize = $request->product_image->getClientSize();
+            $product->product_image     = $path;
+        }
+        $product->save();
+
+        //save data to SKU table
+        $sku = Sku::where('product_id', $request->product_id)->first();
+        if (!$sku) {
+            $sku = new Sku();
+        }
+        $padded_id = str_pad($request->product_id, 10, '0', STR_PAD_LEFT);
+        $product_sku = $request->category_id . $request->sub_category_id . $request->color . $request->size . $padded_id;
+        $sku->sku               = $product_sku;
+        $sku->product_id        = $request->product_id;
+        $sku->color_id          = $request->color;
+        $sku->size_id           = $request->size;
+        $sku->number_of_items   = $request->quantity;
+        $sku->unit_price        = $request->price;
+        $sku->save();
+
+        return array('error' => false, "message"  => "Product successfully updated!");
+    }
+    
     public function getProductDetailsById($id = null)
     {
-        // $getQuery = Products::find($id);
-        // $getQuery = DB::table('products')->where('product_id', $id)->get();
-        // return View::make('user.templates.shop-productDetails',  compact(['getQuery']));
-        // $students = Students::join('sexes', 'sexes.id', '=', 'students.sex.id')
-        //              ->selectRaw('sexes.sex,
-        //                          students.first_name,
-        //                          students.last_name,
-        //                          CONCAT(students.first_name,"", students.last_name) AS full_name,
-        //                          students.id
-        //                  '),
-        //              ->get();
+
         $getProductQuery = DB::table('products')->where('product_id', '=' , $id)->first();
         $getSkuQuery = DB::table('sku')->where('product_id', '=' , $id)->first();
         $getColorQuery = DB::table('colors')->get();
         $getSizeQuery = DB::table('sizes')->get();
-        // $getQuery = Products::join('categories', 'categories.category_id', '=', 'products.category_id')
-        //             ->selectRaw('
-        //                         categories.category_name,
-        //                         products.product_id,
-        //                         products.product_name,
-        //                         products.product_desc,
-        //                         products.product_image
-        //                         ')
-        //             ->get();
+
         return View::make('user.templates.shop-productDetails', compact([
                                                                         'getProductQuery',
                                                                         'getSkuQuery',

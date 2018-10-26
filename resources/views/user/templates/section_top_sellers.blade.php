@@ -14,7 +14,7 @@
                                 <div class="row grid-space-0">
                                     <div class="col-md-6 col-lg-4 col-xl-3">
                                         <div class="overlay-container">
-                                            <img src='{{ asset("storage/$top_seller->product_image") }}' alt="">
+                                            <img src="{{ asset("storage/$top_seller->product_image") }}" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'" />
                                             <a class="overlay-link popup-img-single" href="/storage/{{ $top_seller->product_image }}"><i class="fa fa-search-plus"></i></a>
                                             <!--<span class="badge">30% OFF</span>-->
                                         </div>

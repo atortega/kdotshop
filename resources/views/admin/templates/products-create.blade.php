@@ -26,7 +26,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="container">
+                <div class="row">
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -55,6 +55,7 @@
                         <div class="form-group">
                             <label for="category">Sub Category</label>
                             <select class="form-control" id="sub_category" name="sub_category">
+                                <option value="0">Select...</option>
                                 @foreach($sub_categories as $sub_category)
                                     <option value="{{$sub_category->sub_category_id}}">{{$sub_category->sub_category_name}}</option>
                                 @endforeach
@@ -135,10 +136,10 @@
     <script>
         $('#category').on('change', function(e) {
             $('#sub_category').empty();
+            $('#sub_category').append('<option value="0">No Sub Category</option>')
             $.ajax({
                 url: '/admin/sub-categories/get/' + e.target.value,
                 success: data => {
-                    $('#sub_category').append('<option value="0">No Sub Category</option>')
                     $.each(data, function(index,subCatObj) {
                         $('#sub_category').append('<option value="'+ subCatObj.sub_category_id +'">'+subCatObj.sub_category_name+'</option>')
                     })

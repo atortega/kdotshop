@@ -15,21 +15,21 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="listing-item white-bg bordered mb-20">
                             <div class="overlay-container">
-                                <img src='{{ asset("storage/$product->product_image") }}' alt="">
+                                <img src="{{ asset("storage/$product->product_image") }}" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'" />
                                 <a class="overlay-link popup-img-single" 
-                                    href='{{ asset("storage/$product->product_image") }}'>
+                                    href='{{ asset("storage/$product->product_image") }}' onerror="this.onerror=null;this.href='storage/products/default-product-image.jpg'" />
                                         <i class="fa fa-search-plus"></i>
                                 </a>
                                 <!--<span class="badge">30% OFF</span>-->
                                 <div class="overlay-to-top links">
                                     <span class="small">
-                                        <a href="/shop-productDetails" class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
+                                        <a href="{{ url('/shop-productDetails/' . $product->product_id) }}" class="btn-sm-link"><i class="fa fa-link pr-1"></i>View Details</a>
                                     </span>
                                 </div>
                             </div>
                             <div class="body">
                                 <h3>
-                                    <a href="{{ url('/shop-productDetails/' .$product->product_id) }}">
+                                    <a href="{{ url('/shop-productDetails/' . $product->product_id) }}">
                                         {{ $product->product_name }}
                                     </a>
                                 </h3>

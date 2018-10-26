@@ -91,7 +91,7 @@ Route::get('/product', function () {
 Route::get('/products/get/{id}', 'ProductsController@getProductById');
 Route::get('/product', 'ProductsController@paginateProducts');
 Route::get('/products/sub-categories/get/{category_id}', 'ProductsController@getProducSubCategoriesByCategoryId');
-Route::get('/shop-productDetails/{id?}', 'ProductsController@getProductDetailsById');
+Route::get('/shop-productDetails/{id}', 'ProductsController@getProductDetailsById');
 
 // A B O U T - P A G E
 Route::get('/about-us', function () {
@@ -215,9 +215,9 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/products/index', 'ProductsController@index');
             Route::get('/products/create', 'ProductsController@createProduct');
             Route::post('/products/create/save', 'ProductsController@addNewProduct');
-            Route::get('/products', function () {
-                return view('admin.templates.products-list');
-            });
+            Route::post('/products/edit', 'ProductsController@updateProduct');
+            Route::get('/products', 'ProductsController@listProducts');
+
 
 
             //Orders
@@ -284,6 +284,7 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/sub-categories/index', 'SubCategoriesController@index');
             Route::post('/sub-categories/create/save', 'SubCategoriesController@addNew');
             Route::post('/sub-categories/edit', 'SubCategoriesController@editProductSubCategory');
+            Route::get('/sub-categories/get/{cat}', 'SubCategoriesController@getSubCategoryByCategoryId');
             Route::post('/sub-categories/delete', 'SubCategoriesController@deleteProductSubCategory');
             Route::get('/sub-categories', 'SubCategoriesController@getProductSubCategoriesByCategoryId');
         });
@@ -300,5 +301,8 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/admin/password', function () {
                 return view('admin.templates.page-editPassword');
             });
+
+           
+
 
             

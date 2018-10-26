@@ -32,7 +32,10 @@
                     <table class="table table-bordered table-hover" id="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>First Name</th>
+                                <th>Last Name Name</th>
+                                <th>Middle Name</th>
+                                <th>Gender</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
                                  <th>Actions</th>
@@ -178,12 +181,20 @@
                 <div class="modal-body">
                     <div id="form-errors"></div>
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" >
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" >
                     </div>
                     <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                        <label for="lname">LastName</label>
+                        <input type="text" class="form-control" id=last_name" name="last_name" placeholder="Enter Last Name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="mname">Middle Name</label>
+                        <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter Gender" >
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>

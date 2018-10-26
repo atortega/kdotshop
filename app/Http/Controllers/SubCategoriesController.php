@@ -128,4 +128,10 @@ class SubCategoriesController extends Controller
 
         return array('error' => false, "message"  => "Product sub category successfully deleted!");
     }
+
+    public function getSubCategoryByCategoryId($cat)
+    {
+        $subcategory = SubCategories::where('category_id', $cat)->get();
+        return $subcategory;
+    }
 }

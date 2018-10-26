@@ -86,6 +86,7 @@
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
+                    <th>Image</th>
                     <th>Product</th>
                     <th>Price</th>
                     <!-- <th>Tax</th> -->
@@ -99,6 +100,10 @@
                  
                   @foreach($cartProducts as $cartProduct)   
                   <tr class="remove-data">
+
+                    <td class="image">
+                     <img src='{{ asset("storage/$cartProduct->product_image") }}' />
+                    </td>
 
                     <td class="product">
                       <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>

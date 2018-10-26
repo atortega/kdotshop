@@ -234,8 +234,8 @@ class ProductsController extends Controller
             ->leftJoin('colors', 'colors.color_id', '=', 'sku.color_id')
             ->leftJoin('sizes', 'sizes.size_id', '=', 'sku.size_id')
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.*', 'colors.*', 'sizes.*')
-            ->orderBy('products.product_id', 'desc')
-            ->paginate(4);
+            ->orderBy('products.product_name', 'asc')
+            ->paginate(8);
         // print_r($result);
         $sortByCategoryResult = DB::table('categories')
             ->orderBy('categories.category_id', 'asc')

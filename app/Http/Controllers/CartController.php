@@ -18,11 +18,9 @@ class CartController extends Controller
 {
     public function addToCart(Request $request){
         
-        $product_id = $request->product_id;
-
-        $productById = Products::where('product_id', $product_id)->first();
-
-        $skuById = Sku::where('product_id', $product_id)->first();
+        $product_id     = $request->product_id;
+        $productById    = Products::where('product_id', $product_id)->first();
+        $skuById        = Sku::where('product_id', $product_id)->first();
         
         // $cart = Session::get('cart');
         Cart::add([
@@ -40,7 +38,7 @@ class CartController extends Controller
 
     public function cartShow(){
         $cartProducts = Cart::Content();
-       
+        
         return view('user.templates.shop-cart',['cartProducts'=>$cartProducts]);
     }
 

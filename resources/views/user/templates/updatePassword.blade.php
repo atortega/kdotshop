@@ -44,7 +44,7 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">Page Account</a></li>
+                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">My Account</a></li>
                      <li class="breadcrumb-item active">Change Password</li>
                 </ol>
             </div>
@@ -69,10 +69,9 @@
                 
                 <!-- main start -->
                 <!-- ================ -->
-                <div class="row">
-                                <div class="col-lg-12">
-                                    <h1 class="page-header">My Profile</h1>
+            
                 <div class="main col-lg-8 order-lg-2 ml-xl-auto">
+
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -90,7 +89,12 @@
                     <form method="POST" action="/change-password">
                         @csrf
                         <div class="row">
+
                             <div class="card-header col-md-8">
+                                <h2 class="clearfix" align="center" style="color: gray">Change Password</h2>
+
+                                <div class="separator"></div>
+
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-12">
                                         <h5>Enter Current Password</h5>

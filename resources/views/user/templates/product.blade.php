@@ -362,7 +362,8 @@
 										<div class="listing-item white-bg bordered mb-20">
 											<div class="overlay-container">
 												
-												<img src='{{ asset("storage/$row->product_image") }}' alt="">
+												<img src='{{ asset("storage/$row->product_image") }}' 
+													alt="" style="margin: auto; max-height: 268.5px;">
 												<a class="overlay-link popup-img-single"
 													href='{{ asset("storage/$row->product_image") }}'>
 													<i class="fa fa-search-plus"></i>

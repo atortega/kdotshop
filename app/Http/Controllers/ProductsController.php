@@ -225,28 +225,68 @@ class ProductsController extends Controller
     {
         return SubCategories::where('category_id', $category_id)->get();
     }
-   public function paginateProducts()
+
+    public function paginateProducts(Request $request)
     {
-        $result = DB::table('products')
+        $sortorder = 'ASC'; // default sort order
+        $sortby = 'products.created_at'; // default sorting
+        $category = '1';  //set default category
+        $sub_category = '1'; //sets default sub category
+        if ($request->has('sortby')) {
+            if ($request['sortby'] == 'price') {
+                $sortby = 'sku.unit_price';
+            } else {
+                $sortby = 'products.created_at';
+            }
+        }
+        if ($request->has('sortorder')) {
+            if ($request['sortorder'] == 'asc') {
+                $sortorder = 'ASC';
+            } else {
+                $sortorder = 'DESC';
+            }
+        }
+
+        $query = DB::table('products')
             ->leftJoin('categories', 'products.product_id', '=', 'categories.category_id')
             ->leftJoin('sub_categories', 'products.product_id', '=', 'sub_categories.sub_category_id')
             ->leftJoin('sku', 'sku.product_id', '=', 'products.product_id')
             ->leftJoin('colors', 'colors.color_id', '=', 'sku.color_id')
             ->leftJoin('sizes', 'sizes.size_id', '=', 'sku.size_id')
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.*', 'colors.*', 'sizes.*')
-            ->orderBy('products.product_name', 'asc')
-            ->paginate(8);
-        // print_r($result);
+            ->orderBy($sortby, $sortorder);
+
+        if ($request->has('category') && $request['category'] > 0) {
+            $query->where('products.category_id', $request['category']);
+        }
+        if ($request->has('sub_category') && $request['sub_category'] > 0) {
+            $query->where('products.sub_category_id', $request['sub_category']);
+        }
+
+        $result = $query->paginate(20);
+
+
         $sortByCategoryResult = DB::table('categories')
             ->orderBy('categories.category_id', 'asc')
             ->get();
         $sortBySubCategoryResult = DB::table('sub_categories')
             ->orderBy('sub_categories.sub_category_id', 'asc')
             ->get();
-        return view('user.templates.product', compact([
-                    'result',
-                    'sortByCategoryResult',
-                    'sortBySubCategoryResult'
-                ]));
+
+        $sortData = [
+            'sortby' => $request->has('sortby') ? $request['sortby'] : 'date',
+            'sortorder' => $request->has('sortorder') ? $request['sortorder'] : 'desc',
+            'category' => $request->has('category') ? $request['category'] : '',
+            'sub_category' => $request->has('sub_category') ? $request['sub_category'] : ''
+        ];
+        return view('user.templates.product', [
+                    'result' => $result,
+                    'sortByCategoryResult' => $sortByCategoryResult,
+                    'sortBySubCategoryResult' => $sortBySubCategoryResult,
+                    'sortby' => $request->has('sortby') ? $request['sortby'] : 'date',
+                    'sortorder' => $request->has('sortorder') ? $request['sortorder'] : 'desc',
+                    'category' => $request->has('category') ? $request['category'] : '',
+                    'sub_category' => $request->has('sub_category') ? $request['sub_category'] : ''
+                ]);
     }
 }

@@ -48,22 +48,21 @@
 			<div class="container-fluid">
 				<!-- filters start -->
 				<div class="sorting-filters text-center mb-20 d-flex justify-content-center">
-					<form class="form-inline">
+					<form class="form-inline" method="get">
 						{{ csrf_field() }}
 						<div class="form-group">
 							<label>Sort by</label>
-							<select class="form-control">
-								<option selected="selected">Date</option>
-								<option>Price</option>
-								<!-- <option>Model</option> -->
+							<select class="form-control" name="sortby">
+								<option value="date" {{ ( 'date' == $sortby) ? 'selected' : '' }} >Date</option>
+								<option value="price" {{ ( 'price' == $sortby) ? 'selected' : '' }} >Price</option>
 							</select>
 						</div>
 
 						<div class="form-group ml-1">
 							<label>Order</label>
-							<select class="form-control">
-								<option selected="selected">Acs</option>
-								<option>Desc</option>
+							<select class="form-control" name="sortorder">
+								<option value="asc" {{ ( 'asc' == $sortorder) ? 'selected' : '' }} >ASC</option>
+								<option value="desc" {{ ( 'desc' == $sortorder) ? 'selected' : '' }} >DESC</option>
 							</select>
 						</div>
 						<!--
@@ -83,7 +82,7 @@
 							<select class="form-control" id="category" name="category">
 								<option selected="selected">-- Select --</option>
 								@foreach($sortByCategoryResult as $row)
-								<option value="{{$row->category_id}}">{{ $row->category_name }}</option>
+								<option value="{{$row->category_id}}" {{ ( $row->category_id == $category) ? 'selected' : '' }} >{{ $row->category_name }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -93,7 +92,7 @@
 							<select class="form-control" id="sub_category" name="sub_category">
 								<option selected="selected">-- Select --</option>
 								@foreach($sortBySubCategoryResult as $row)
-								<option value="{{$row->sub_category_id}}">
+								<option value="{{$row->sub_category_id}}" {{ ( $row->sub_category_id == $sub_category) ? 'selected' : '' }} >
 									{{ $row->sub_category_name }}
 								</option>
 								@endforeach
@@ -101,7 +100,7 @@
 						</div>
 
 						<div class="form-group ml-1">
-							<a href="#" class="btn btn-default">Submit</a>
+							<button type="submit" class="btn btn-default">Submit</button>
 						</div>
 					</form>
 				</div>
@@ -363,7 +362,7 @@
 											<div class="overlay-container">
 												
 												<img src='{{ asset("storage/$row->product_image") }}' 
-													alt="" style="margin: auto; max-height: 268.5px;">
+													alt="" style="margin: auto; max-height: 268.5px;" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'" >
 												<a class="overlay-link popup-img-single"
 													href='{{ asset("storage/$row->product_image") }}'>
 													<i class="fa fa-search-plus"></i>
@@ -883,66 +882,78 @@
 						<nav aria-label="Page navigation">
 
 							<ul class="pagination justify-content-center">
-								{!! $result->render() !!}
+							{{-- {!! $result->render() !!} --}}
+
+   							{{ $result->appends(['sortby' => $sortby, 'sortorder' => $sortorder, 'category' => $category, 'sub_category' => $sub_category])->links() }}
+
 <!-- 								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Previous">
-										<i aria-hidden="true" class="fa fa-angle-left"></i>
-										<span class="sr-only">Previous</span>
-									</a>
-								</li>
-								
-								<li class="page-item active"><a class="page-link" href="#">1</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#">5</a></li>
-								
-								<li class="page-item">
-									<a class="page-link" href="#" aria-label="Next">
-										<i aria-hidden="true" class="fa fa-angle-right"></i>
-										<span class="sr-only">Next</span>
-									</a>
-								</li> -->
-							</ul>
-						</nav>
-						<!-- pagination end -->
+   <a class="page-link" href="#" aria-label="Previous">
+       <i aria-hidden="true" class="fa fa-angle-left"></i>
+       <span class="sr-only">Previous</span>
+   </a>
+</li>
 
-					</div>
-					<!-- main end -->
+<li class="page-item active"><a class="page-link" href="#">1</a></li>
+<li class="page-item"><a class="page-link" href="#">2</a></li>
+<li class="page-item"><a class="page-link" href="#">3</a></li>
+<li class="page-item"><a class="page-link" href="#">4</a></li>
+<li class="page-item"><a class="page-link" href="#">5</a></li>
 
-				</div>
-			</div>
-		</section>
-		<!-- main-container end -->
+<li class="page-item">
+   <a class="page-link" href="#" aria-label="Next">
+       <i aria-hidden="true" class="fa fa-angle-right"></i>
+       <span class="sr-only">Next</span>
+   </a>
+</li> -->
+</ul>
+</nav>
+<!-- pagination end -->
 
-		<!-- section start -->
-		<!-- ================ -->
+</div>
+<!-- main end -->
 
-	</div>
-	<!-- page-wrapper end -->
+</div>
+</div>
+</section>
+<!-- main-container end -->
 
-		<!-- JavaScript files placed at the end of the document so the pages load faster -->
-		<!-- ================================================== -->
-		<!-- Jquery and Bootstap core js files -->
-		@include('user.templates.layouts.footer')
+<!-- section start -->
+<!-- ================ -->
 
-		<script>
-			$('#sub_category').empty().append('<option value="0">-- Select --</option>');
-			$('#category').on('change', function(e) {
-				$('#sub_category').empty();
-				$.ajax({
-					url: '/products/sub-categories/get/' + e.target.value,
-					success: data => {
-						$('#sub_category').append('<option value="0">-- Select --</option>')
-						$.each(data, function(index,subCatObj) {
-							$('#sub_category').append(
-							'<option value="'+ subCatObj.sub_category_id +'">'+subCatObj.sub_category_name+'</option>'
-							)
-						})
-					}
+</div>
+<!-- page-wrapper end -->
+
+<!-- JavaScript files placed at the end of the document so the pages load faster -->
+<!-- ================================================== -->
+<!-- Jquery and Bootstap core js files -->
+@include('user.templates.layouts.footer')
+
+<script>
+	var sub_category = {{ $sub_category }}
+	$('#sub_category').empty().append('<option value="0">-- Select --</option>');
+	$('#category').on('change', function(e) {
+		$('#sub_category').empty();
+		$.ajax({
+			url: '/products/sub-categories/get/' + e.target.value,
+			success: data => {
+				$('#sub_category').append('<option value="0">-- Select --</option>')
+				$.each(data, function(index,subCatObj) {
+                    console.log(subCatObj.sub_category_id + ' : ' + sub_category);
+                    if (subCatObj.sub_category_id == sub_category) {
+                        $('#sub_category').append(
+                            '<option value="' + subCatObj.sub_category_id + '" selected="selected" >' + subCatObj.sub_category_name + '</option>'
+                        )
+					} else {
+                        $('#sub_category').append(
+                            '<option value="' + subCatObj.sub_category_id + '">' + subCatObj.sub_category_name + '</option>'
+                        )
+                    }
 				})
-			});
-		</script>
+			}
+		})
+	});
+    $("#category").change();
+</script>
 
-	</body>
+</body>
 </html>

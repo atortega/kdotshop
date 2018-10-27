@@ -50,7 +50,16 @@
 				<div class="sorting-filters text-center mb-20 d-flex justify-content-center">
 					<form class="form-inline" method="get">
 						{{ csrf_field() }}
-						<div class="form-group">
+						<div class="form-group ml-1">
+							<label>Show</label>
+							<select class="form-control" name="perpage">
+								@foreach($perpage_array as $row)
+									<option value="{{$row}}" {{ ( $row == $perpage) ? 'selected' : '' }} >{{ $row }}</option>
+								@endforeach
+							</select>
+						</div>
+
+						<div class="form-group ml-1">
 							<label>Sort by</label>
 							<select class="form-control" name="sortby">
 								<option value="date" {{ ( 'date' == $sortby) ? 'selected' : '' }} >Date</option>
@@ -884,7 +893,7 @@
 							<ul class="pagination justify-content-center">
 							{{-- {!! $result->render() !!} --}}
 
-   							{{ $result->appends(['sortby' => $sortby, 'sortorder' => $sortorder, 'category' => $category, 'sub_category' => $sub_category])->links() }}
+   							{{ $result->appends(['sortby' => $sortby, 'sortorder' => $sortorder, 'category' => $category, 'sub_category' => $sub_category, 'perpage' => $perpage])->links() }}
 
 <!-- 								<li class="page-item">
    <a class="page-link" href="#" aria-label="Previous">

@@ -228,10 +228,10 @@ class ProductsController extends Controller
 
     public function paginateProducts(Request $request)
     {
-        $sortorder = 'ASC'; // default sort order
-        $sortby = 'products.created_at'; // default sorting
-        $category = '1';  //set default category
-        $sub_category = '1'; //sets default sub category
+        $sortorder  = 'ASC'; // default sort order
+        $sortby     = 'products.created_at'; // default sorting
+        $perpage    = $request->has('perpage') ? $request['perpage'] : 10;
+
         if ($request->has('sortby')) {
             if ($request['sortby'] == 'price') {
                 $sortby = 'sku.unit_price';
@@ -263,7 +263,7 @@ class ProductsController extends Controller
             $query->where('products.sub_category_id', $request['sub_category']);
         }
 
-        $result = $query->paginate(20);
+        $result = $query->paginate($perpage);
 
 
         $sortByCategoryResult = DB::table('categories')
@@ -273,20 +273,19 @@ class ProductsController extends Controller
             ->orderBy('sub_categories.sub_category_id', 'asc')
             ->get();
 
-        $sortData = [
-            'sortby' => $request->has('sortby') ? $request['sortby'] : 'date',
-            'sortorder' => $request->has('sortorder') ? $request['sortorder'] : 'desc',
-            'category' => $request->has('category') ? $request['category'] : '',
-            'sub_category' => $request->has('sub_category') ? $request['sub_category'] : ''
-        ];
+        $perpage_array = [10, 25, 50, 100];
+
+
         return view('user.templates.product', [
-                    'result' => $result,
-                    'sortByCategoryResult' => $sortByCategoryResult,
-                    'sortBySubCategoryResult' => $sortBySubCategoryResult,
-                    'sortby' => $request->has('sortby') ? $request['sortby'] : 'date',
-                    'sortorder' => $request->has('sortorder') ? $request['sortorder'] : 'desc',
-                    'category' => $request->has('category') ? $request['category'] : '',
-                    'sub_category' => $request->has('sub_category') ? $request['sub_category'] : ''
+                    'result'                    => $result,
+                    'sortByCategoryResult'      => $sortByCategoryResult,
+                    'sortBySubCategoryResult'   => $sortBySubCategoryResult,
+                    'sortby'                    => $request->has('sortby') ? $request['sortby'] : 'date',
+                    'sortorder'                 => $request->has('sortorder') ? $request['sortorder'] : 'desc',
+                    'category'                  => $request->has('category') ? $request['category'] : '',
+                    'sub_category'              => $request->has('sub_category') ? $request['sub_category'] : '',
+                    'perpage_array'             => $perpage_array,
+                    'perpage'                   => $perpage
                 ]);
     }
 }

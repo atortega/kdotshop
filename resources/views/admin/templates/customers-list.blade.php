@@ -33,8 +33,8 @@
                         <thead>
                             <tr>
                                 <th>First Name</th>
-                                <th>Last Name Name</th>
                                 <th>Middle Name</th>
+                                <th>Last Name </th>
                                 <th>Gender</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
@@ -52,7 +52,10 @@
                             serverSide: true,
                             ajax: '{{ url('admin/customers/index') }}',
                             columns: [
-                                { data: 'name', name: 'name' },
+                                { data: 'first_name', name: 'first_name' },
+                                { data: 'middle_name', name: 'middle_name' },
+                                { data: 'last_name', name: 'last_name' },
+                                { data: 'gender', name: 'gender' },
                                 { data: 'email', name: 'email' },
                                 { data: 'phone_number', name: 'phone_number' },
                                 { data: 'actions', name: 'actions', orderable: false },
@@ -75,8 +78,10 @@
                             var customer_id = $(this).attr('sid');
                             $.get( "/customers/get/"+customer_id, function( data ) {
                                 $("#customer_id").val(customer_id);
-                                $("#name").val(data.name);
-                                $("#address").val(data.address);
+                                $("#first_name").val(data.first_name);
+                                $("#middle_name").val(data.middle_name);
+                                $("#last_name").val(data.last_name);
+                                $("#gender").val(data.gender);
                                 $("#email").val(data.email);
                                 $("#phone_number").val(data.phone_number);
                             });
@@ -117,8 +122,10 @@
                                 type: "POST",
                                 dataType: 'json',
                                 data: { customer_id: $("#customer_id").val(), 
-                                        name: $('#name').val(), 
-                                        address: $("#address").val(),
+                                        first_name: $('#first_name').val(), 
+                                        middle_name: $('#middle_name').val(), 
+                                        last_name: $('#last_name').val(), 
+                                        gender: $("#gender").val(),
                                         email: $("#email").val(),
                                         phone_number: $("#phone_number").val(),
                                         _token: $('meta[name="csrf-token"]').attr('content')    },
@@ -185,12 +192,12 @@
                         <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter First Name" >
                     </div>
                     <div class="form-group">
-                        <label for="lname">LastName</label>
-                        <input type="text" class="form-control" id=last_name" name="last_name" placeholder="Enter Last Name" >
-                    </div>
-                    <div class="form-group">
                         <label for="mname">Middle Name</label>
                         <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Enter Middle Name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter Last Name" >
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>

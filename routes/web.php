@@ -146,6 +146,10 @@ Route::group(['middleware' => 'auth' ], function() {
     Route::get('/updatePassword', function () {
         return view('user.templates.updatePassword');
     });
+    Route::get('/payment-receipt', function () {
+        return view('user.templates.payment-receipt');
+    });
+
 
     Route::get('/updateProfile', 'CustomersController@updateProfileForm');
     Route::post('/saveProfile', 'CustomersController@saveProfile');

@@ -61,11 +61,11 @@
                     <div class="row">
                       <div class="col-lg-8">
                         <h1 class="title">Don't Miss Our Products</h1>
-                        <p>Help boose your confidence by using Kdot’s Clothing and Accessories. Shop Now and Don’t miss our hottest item!!</p>
+                        <p>Help boost your confidence with Kdot’s Clothing and Accessories. Shop Now and Don’t miss our hottest items!</p>
                       </div>
                       <div class="col-lg-4">
                         <br>
-                        <p><a href="#" class="btn btn-lg btn-gray-transparent btn-animated">Shop Now<i class="fa fa-arrow-right pl-20"></i></a></p>
+                        <p><a href="/product" class="btn btn-lg btn-gray-transparent btn-animated">Shop Now<i class="fa fa-arrow-right pl-20"></i></a></p>
                       </div>
                     </div>
                   </div>

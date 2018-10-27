@@ -69,8 +69,7 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">My Account</a></li>
-                    <li class="breadcrumb-item active">Edit Profile</li>
+                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">Payment Receipt</a></li>
                 </ol>
             </div>
         </div>
@@ -88,7 +87,7 @@
                     <!-- page-title end -->
 
                     <div class="col-3">
-                        @include('user.templates.layouts.page-profile-sidebar')
+                        @include('user.templates.layouts.page-purchase-sidebar')
 
                     </div>
 
@@ -132,7 +131,7 @@
                                 <div class="col-md-6" style="margin: auto;">
                                     <div class="form-group row mb-0 clearfix">
                                         <div class="col-md-12">
-                                            <h6 for="user_avatar">Change Avatar</h6>
+                                            <h6 for="user_avatar">Upload Receipt</h6>
                                             <div class="input-group">
                                                 <span class="input-group-btn">
                                                     <span class="btn btn-default btn-file">
@@ -161,13 +160,13 @@
                                             @endif
 
                                             <div class="card-footer border-clear">
-                                                @if(Auth::user()->avatar_original != NULL)
+                                               <!--  @if(Auth::user()->avatar_original != NULL)
                                                     <a href="/removeAvatar" id="removeAvatarBtn" 
                                                         class="btn btn-animated btn-danger btn-sm pull-right">
                                                         Remove Avatar
                                                         <i class="fa fa-remove"></i>
                                                     </a>
-                                                @endif
+                                                @endif -->
                                                 <button type="submit" class="btn btn-animated btn-default btn-sm uploadBtn">
                                                     Upload Image
                                                     <i class="fa fa-upload"></i>
@@ -175,76 +174,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
-
-                        <form method="POST" action="/saveProfile">
-                            @csrf
-
-                            <div class="card-header row border-clear">
-                                <!-- 1st Column start -->
-                                <div class="col">
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>First Name</h5>
-                                            <input id="fname" type="text" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" name="first_name" value="{{ old('first_name')== '' ? Auth::user()->first_name : old('first_name') }}" required autofocus>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>Last Name</h5>
-                                             <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name')== '' ? Auth::user()->last_name : old('last_name') }}" required autofocus>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>Birthdate</h5>
-                                            <input id="birthdate" type="text" class="form-control{{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" value="{{ old('birthdate')== '' ? $birthdate : old('birthdate') }}" required autofocus>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 1st Column end -->
-
-                                <!---2nd Column --->
-                                <div class="col">
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>Middle Name</h5>
-                                            <input id="mname" type="text" class="form-control{{ $errors->has('middle_name') ? ' is-invalid' : '' }}" name="middle_name" value="{{ old('middle_name')== '' ? Auth::user()->middle_name : old('middle_name') }}" required autofocus>
-                                        </div>
-                                    </div>
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>Gender</h5>
-                                            <!--<input id="gender" type="text" class="form-control{{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender" value="{{ old('gender')== '' ? Auth::user()->gender : old('gender') }}" required autofocus>-->
-                                            <select class="form-control" id="gender" name="gender">
-                                                <option value="M" {{ Auth::user()->gender == 'M' ? " selected " : "" }}>Male</option>
-                                                <option value="F" {{ Auth::user()->gender == 'F' ? " selected " : "" }}>Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group has-feedback row">
-                                        <div class="col-md-12">
-                                            <h5>Phone Number</h5>
-                                            <input id="phonenumber" type="text" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number')== '' ? Auth::user()->phone_number : old('phone_number') }}" required autofocus>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 2nd Column end -->
-                            </div>
-
-                            <div class="clearfix"></div>
-
-                            <div class="form-group row mb-0 clearfix">
-                                <div class="card-footer col-md-12 text-center">
-                                    <button type="submit" class="btn btn-animated btn-default btn-md">
-                                         {{ __('Save Changes') }}
-                                         <i class="fa fa-save"></i>
-                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -269,4 +198,3 @@
 
 </body>
 </html>
-

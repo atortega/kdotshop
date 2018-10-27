@@ -36,6 +36,8 @@
                       <li class="nav-item"><a class="nav-link" href="/updateProfile">Edit Profile</a></li>
                       <li class="nav-item"><a class="nav-link" href="/updatePassword">Change Password</a></li>
                       <li class="nav-item"><a class="nav-link" href="/addresses">Addresses</a></li>
+                      
+
                     </ul>
                   </nav>
                   <h3 class="title">My Purchase</h3>

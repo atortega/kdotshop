@@ -15,7 +15,10 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="listing-item white-bg bordered mb-20">
                             <div class="overlay-container">
-                                <img src="{{ asset("storage/$product->product_image") }}" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'" />
+                                <img src='{{ asset("storage/$product->product_image") }}' 
+                                    style="margin: auto; max-height: 268.5px;"
+                                    onerror="this.onerror=null;
+                                    this.src='storage/products/default-product-image.jpg'"/>
                                 <a class="overlay-link popup-img-single" 
                                     href='{{ asset("storage/$product->product_image") }}' onerror="this.onerror=null;this.href='storage/products/default-product-image.jpg'" />
                                         <i class="fa fa-search-plus"></i>

@@ -101,12 +101,20 @@
                   <tr class="remove-data">
 
                     <td class="product">
-                      <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
-                        {{$cartProduct->name}}
-                      </a>
-                      <small>
-                        {{$cartProduct->desc}}
-                      </small>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <img src="{{ asset('storage/'.$cartProduct->image) }}" 
+                            style="margin: auto; max-height: 100% ;"/>
+                        </div>
+                        <div class="col-md-9" style="vertical-align: middle; margin: auto 0 auto 0;">
+                          <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
+                            {{$cartProduct->name}}
+                          </a>
+                          <small>
+                            {{$cartProduct->desc}}
+                          </small>
+                        </div>
+                      </div>
                     </td>
 
                     <td class="price">

@@ -18,15 +18,14 @@ class CartController extends Controller
 {
     public function addToCart(Request $request){
         
-        $product_id = $request->product_id;
-
-        $productById = Products::where('product_id', $product_id)->first();
-
-        $skuById = Sku::where('product_id', $product_id)->first();
+        $product_id     = $request->product_id;
+        $productById    = Products::where('product_id', $product_id)->first();
+        $skuById        = Sku::where('product_id', $product_id)->first();
         
         // $cart = Session::get('cart');
         Cart::add([
             'id'    =>  $product_id,
+            'image' =>  $productById->product_image,
             'name'  =>  $productById->product_name,
             'desc'  =>  $productById->product_desc,
             'price' =>  $skuById->unit_price,
@@ -39,7 +38,7 @@ class CartController extends Controller
 
     public function cartShow(){
         $cartProducts = Cart::Content();
-       
+        
         return view('user.templates.shop-cart',['cartProducts'=>$cartProducts]);
     }
 
@@ -52,7 +51,7 @@ class CartController extends Controller
 
     public function cartShowCheckoutReview(){
         $cartProducts = Cart::Content();
-         $countries = Country::orderBy('code')->get();
+        $countries = Country::orderBy('code')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
         return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
         

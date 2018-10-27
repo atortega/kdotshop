@@ -30,10 +30,12 @@
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                <th>Payment Date</th>
-                                <th>Amount</th>
-                                <th>Code</th>
                                 <th>Order Number</th>
+                                <th>Payment Date</th>
+                                <th>Customer's Info</th>
+                                <th>Payment Method</th>
+                                <th>Reference Number</th>
+                                <th>Total Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -46,10 +48,12 @@
                             serverSide: true,
                             ajax: '{{ url('admin/payments/index') }}',
                             columns: [
-                                { data: 'paymentDate', name: 'paymentDate' },
-                                { data: 'amount', name: 'amount' },
-                                { data: 'code', name: 'code' },
                                 { data: 'orderNumber', name: 'orderNumber' },
+                                { data: 'paymentDate', name: 'paymentDate' },
+                                { data: 'customersInfo', name: 'customersInfo' },
+                                { data: 'paymentMethod', name: 'paymentMethod' },
+                                { data: 'referenceNumber', name: 'referenceNumber' },
+                                { data: 'totalAmount', name: 'totalAmount' },
                                 { data: 'actions', name: 'actions' },
                             ]
                         });

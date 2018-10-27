@@ -44,7 +44,7 @@
                     <li class="breadcrumb-item">
                         <i class="fa fa-home pr-2"></i><a class="link-dark" href="/">Home</a>
                     </li>
-                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">Page Account</a></li>
+                    <li class="breadcrumb-item active"><a class="link-dark" href="/account">My Account</a></li>
                     <li class="breadcrumb-item active">Addresses</li>
                 </ol>
             </div>

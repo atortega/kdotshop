@@ -1,76 +1,76 @@
-Categories,SubCategories,ProductName,ProductDescription
-1,1,Sexy bodycon dress,A black upper tight bodycondress that will boose your body confidence.
-1,1,Fitting Dress,Sleeveless gray upper tight bodycon dress 
-1,1,Stripe Dress,"Stripe white and black bodycon dress, mid thigh."
-1,1,Cola Dress,"Dirty white bodycon dress, knee length."
-1,1,Casual Bodycon dress,"A flora bodycon dress, sleeveless type, upper thigh "
-1,1,Classy Dress,Off shoulder knee length floral bodycon dress.
-1,1,Tip top dress,Simple white bodycon dress with center slit knee legth.
-1,2,Celebrity Dress,Black maxi-dress that covers your whole body with side slit
-1,2,Formal Floral,"white floral longsleeve maxi-dress, knee length"
-1,2,Witty dress," Floral maxi-dress, knee length."
-1,2,Floral dress 1,Floral Max-dress that covers your whole body.
-1,2,Floral Dress 2,"Off shoulder foral maxi-dress,mid thigh length"
-1,2,Floral Dress 3,"Off shoulder pink foral maxi-dress,mid thigh length"
-1,2,Floral Dress 4,Off shoulder sky floral blue kne length maxi dress.
-1,2,Floral Casual Dress,A pink upper thigh abstract floral dress
-1,2,Local Dress,Offshoulder mid thigh blue floral dress
-1,2,Ruby Dress,Off shoulder maxi-dress that covers your whole body with upper thight slit length
-1,2,Summer dress,Classy Abstract Floral Maxi Dress that covers your whole body
-1,2,Elegant Dress,Offshoulder Korean elegant Maxi-dress
-1,2,korean Dress,"Korean floral dress, mid thigh length"
-1,2,Casual Dress,US classy abstract style Maxi Dress
-1,2,Slit Dress, US Floral maxi Dress that covers your whole body with upper thight slit length
-1,3,mid length,An off shoulder polo dress korean style
-1,3,Mickey,Knee length Korean Mickey polo Dress
-1,3,Formal ,Longsleeve polo dress with colar
-1,4,Floral Choker ,White Floral Choker Plus Size Tops
-1,4,Rated 1 dress,"Black knee length, Plus Size dress "
-1,4,Floral,Knee legth Blue Plus Size Floral Dress
-1,5,Formal Attire,? upper knee length denim dress
-1,5,Vaca Attire,Denim upper thigh length denim dress with black colar style
-1,5,Whole Dress,Simple Denim upper thigh dress
-2,6,Korean Type,A korean casual set with flower attached
-2,6,Casual Terno Set 1,Casual terno set with white sandal and pair of earnings
-2,6,Casual Terno Set 2,Off shoulder stripe with brown pants casual terno
-2,6,Terno 1,White sleeveles paired with blue floral lower pants
-2,6,Terno 2,Plain White off shoulder paired with Abstract Skirt
-2,6,Terno 3,Casual terno with paired shirt and long abstract skirt
-2,7,Pants and Sweater Terno,Classy terno pants paired with White Sweater
-2,7,Classy terno set,Stripe white and black crop top paired with blue lower pants
-2,7,Set 1,Classy terno set 
-2,7,Set 2,A plain black shirt with a classy terno set
-2,7,Summer terno,Simple Classy terno set: Black shirt and blue thight pants
-2,8,Formal Terno,White Longsleeve with floral knee length blue skirt
-3,9,Off Shoulder Plus,Black off-shoulder plus size tops
-3,9,Tops 1,Dirty green offfshoulder plus size tops
-3,9,Tops 2,Black floral off shoulder plus size tops
-3,10,Bad Girl hoodie,Brown Crop top hoodie jacket
-4,11,Casual Denim,Simple denim jumpsuit
-4,12,Korean Jumpsuit,A sleeveless black jumpsuit 
-5,13,Casual Denim,Casual Denim jumpshort mis thight length
-5,13,Sexy denim,Sleeveless upper tight length denim jumpshort
-5,13,Denim Jumpshort,Simple Denim Jumpshort
-5,14,Plus Size Jumpshort,"Offshoulder bue plus size jumpshort, upper thigh length"
-5,14,Plus Size Jumpshort 2,"Offshoulder black plus size jumpshort, upper thigh length"
-6,15,Jordan Caps,Jordan black caps
-6,15,Cleveland Hat,Cleveland gray cap
-6,15,Bull Cap,Bulls Black cap
-6,15,Nike Hats,Nike Baseball Cap
-6,15,Baseball Cap,Plain baseball cap
-6,16,Moon Neclace,Pendant Moon necklace
-6,17,Tassel 1,"Black tassel earings, gold style"
-6,17,Tassel 2,Red tassel earings
-6,18,Sunnie,Sunnies cuttie sunglasses
-6,19,Backpack 1,Black floral girly backpack
-6,19,Backpack 2,White floral girly backpack
-6,19,Bag 1,Black Nike backpack style
-6,19,Bag 2,Black with semi white nike backpack style
-6,19,Sling Bag,Green sling bag for girls
-6,19,Sling Bag 1,Pink Sling bag for girls
-6,19,Sling Bag 2,Dirty gray sling bag 
-6,20,Couple Watch 1,Silver Watch for Couple
-6,20,Couple Watch 2,Gold Watch for Couple
-6,20,Watch 1,Black Uni Plastic Watch 
-6,20,Watch 2,Black Watch
-6,20,Watch 3,Golden Black Watch
+product_id,category_id,subcategory_id,thumb,image,originalfilename,filesize,product_name,product_desc,created_at,updated_at
+1,1,1,NULL,products/images/8ld0e9GwSRcsAjRcg7aE9K0WSgcVAcySTjL0tQj1.jpeg,1.jpg,89358,Sexy bodycon dress,A black upper tight bodycondress that will boose your body confidence.,2018-10-23 14:39:12,2018-10-25 12:51:14
+2,1,1,NULL,products/images/jiX9ZWyHvBkqUw8w5HwNshbhDlecH1HkAYxwDeVv.jpeg,,0,Fitting Dress,Sleeveless gray upper tight bodycon dress,2018-10-23 14:39:12,2018-10-24 20:50:25
+3,1,1,NULL,products/images/MuD2iWAd2mWP63J000rNKOidfAko2ur0fx2cCmrL.jpeg,3.jpg,107825,Stripe Dress,Stripe white and black bodycon dress, mid thigh.,2018-10-23 14:39:12,2018-10-25 11:40:09
+4,1,1,NULL,products/images/QKWgReiBrpQvoRGpdvv9P86RUpswUdmmMRtjkXgg.jpeg,4.jpg,61611,Cola Dress,Dirty white bodycon dress, knee length.,2018-10-23 14:39:12,2018-10-25 11:40:25
+5,1,1,NULL,products/images/21iStL3mD2XkQmBQrqkA4xNfA4aHOhS8odj793ZQ.jpeg,5.jpg,168561,Casual Bodycon dress,A flora bodycon dress, sleeveless type, upper thigh,2018-10-23 14:39:12,2018-10-25 11:40:43
+6,1,1,NULL,products/images/XbZXFX2YbK06zpPamljZiZq1b7nNWSsnv82lALnC.jpeg,6.jpg,58090,Classy Dress,Off shoulder knee length floral bodycon dress.,2018-10-23 14:39:12,2018-10-25 11:40:58
+7,1,1,NULL,products/images/rgIEblaVTNnqPt9T04B1H3YX6FIQaeP4Iqq6pA0e.jpeg,7.jpg,21868,Tip top dress,Simple white bodycon dress with center slit knee legth.,2018-10-23 14:39:12,2018-10-25 11:41:24
+8,1,2,NULL,products/images/X7yT01IbcMYZhVKwvDxA6oqOQUiwgHg9ZUoDpoyN.jpeg,1.jpg,99629,Celebrity Dress,Black maxi-dress that covers your whole body with side slit,2018-10-23 14:39:12,2018-10-25 11:49:33
+9,1,2,NULL,products/images/esYqkc9XvPnSYVuzH1y0u6N35TfEevUMtFiDuUt4.jpeg,2.jpg,189895,Formal Floral,white floral longsleeve maxi-dress, knee length,2018-10-23 14:39:12,2018-10-25 11:52:51
+10,1,2,NULL,products/images/8ts8nLVz5HZkE4QHI6XKd3xXZ3Efox8rhivRnJjh.jpeg,3.jpg,660840,Witty dress,Floral maxi-dress, knee length.,2018-10-23 14:39:12,2018-10-25 11:53:06
+11,1,2,NULL,products/images/CCUhPLK7tCSA6X0ZeLQgzljP62safjYkV5NWa0DW.jpeg,4.jpg,673725,Floral dress 1,Floral Max-dress that covers your whole body.,2018-10-23 14:39:12,2018-10-25 11:53:37
+12,1,2,NULL,products/images/FR8dE5vnvKYHzqd4HnNAMp4U0k4W18N3dE874ccs.jpeg,5.jpg,139580,Floral Dress 2,Off shoulder foral maxi-dress,mid thigh length,2018-10-23 14:39:12,2018-10-25 11:53:58
+13,1,2,NULL,products/images/NTQIITVt6l5S7nX6INzplUm6uYy2h01FjXZwhIbM.jpeg,6.jpg,141312,Floral Dress 3,Off shoulder pink foral maxi-dress,mid thigh length,2018-10-23 14:39:12,2018-10-25 11:54:20
+14,1,2,NULL,products/images/ZPXyxZd0PRiSSAg7FTl6kXIofbv6FfFH3S3FCmG6.jpeg,7.jpg,123298,Floral Dress 4,Off shoulder sky floral blue kne length maxi dress.,2018-10-23 14:39:12,2018-10-25 11:54:36
+15,1,2,NULL,products/images/4Wpqszy3R1O3eMAKGXYpeIJPXP5sBNPJVp1tYGMx.jpeg,8.jpg,177488,Floral Casual Dress,A pink upper thigh abstract floral dress,2018-10-23 14:39:13,2018-10-25 11:55:00
+16,1,2,NULL,products/images/zkpFyQv18TwMYGYWFkT0SrJcLdDk36PKXHnpYWnj.jpeg,9.jpg,166194,Local Dress,Offshoulder mid thigh blue floral dress,2018-10-23 14:39:13,2018-10-25 11:57:27
+17,1,2,NULL,products/images/PSMqaIhWe7l407ZquuB5OiCiLrSYxtYLKwpXciiA.jpeg,10.jpg,643890,Ruby Dress,Off shoulder maxi-dress that covers your whole body with upper thight slit length,2018-10-23 14:39:13,2018-10-25 11:57:44
+18,1,2,NULL,products/images/9sLnmV8uth4WnsrBjjhcD7lxHhndmDpun81EBQEH.jpeg,11.jpg,65843,Summer dress,Classy Abstract California Floral Maxi Dress that covers your whole body,2018-10-23 14:39:13,2018-10-25 13:51:57
+19,1,2,NULL,products/images/Kfn7TSaNmODLMuK88KrRk8tpFO3M9b6XfR97ztzc.jpeg,12.jpg,160276,Elegant Dress,Offshoulder Korean elegant Maxi-dress,2018-10-23 14:39:13,2018-10-25 11:58:22
+20,1,2,NULL,products/images/1vnVCnL9DdPWNPf82WH51LYIQLf6faKlUbXnZv6X.jpeg,13.jpg,43974,korean Dress,Korean floral dress, mid thigh length,2018-10-23 14:39:13,2018-10-25 11:58:43
+21,1,2,NULL,products/images/MsEq9NWoKjOxbdY6zz931XmWaKqinJHedIEjVAIY.jpeg,14.jpg,33455,Casual Dress,US classy abstract style Maxi Dress,2018-10-23 14:39:13,2018-10-25 11:59:05
+22,1,2,NULL,products/images/U9e5ctnZ8HgNbQ1KuGthJc5fS0lIgoMjvQfBH3u7.jpeg,15.jpg,25775,Slit Dress,US Floral maxi Dress that covers your whole body with upper thight slit length,2018-10-23 14:39:13,2018-10-25 11:59:19
+23,1,3,NULL,products/images/fef1v2LPO3v9V0dWzd7ASSE8y74ntLAqMLx5hsUS.jpeg,2in1 Set (Dress+Blazer).jpg,64281,mid length,An off shoulder polo dress korean style,2018-10-23 14:39:13,2018-10-25 11:59:58
+24,1,3,NULL,products/images/yRMKjSMsGSpve5BxLHHq3dHuS677fCZmifP5etin.jpeg,Korean Mickey Polo Dress.jpg,88557,Mickey,Knee length Korean Mickey polo Dress,2018-10-23 14:39:13,2018-10-25 12:00:11
+25,1,3,NULL,products/images/ombq2yzYtWuslBjGUGbWgKeFKPxqhY0x2MbCwbNh.jpeg,polo dress.jpg,627557,Formal,Longsleeve polo dress with colar,2018-10-23 14:39:13,2018-10-25 12:00:29
+26,1,4,NULL,products/images/E1zFbmZX0I4TFU30VkvWi3bXHierlHkSiImHl0mz.jpeg,Floral Chokder Plus Size Tops.jpg,90550,Floral Choker,White Floral Choker Plus Size Tops,2018-10-23 14:39:13,2018-10-25 12:06:54
+27,1,4,NULL,products/images/Eyw1Br8CAjixhZrK61SlwXHvDAqOZfyloeTUfOhI.jpeg,Plus Size Dress.jpg,45949,Rated 1 dress,Black knee length, Plus Size dress,2018-10-23 14:39:13,2018-10-25 12:07:10
+28,1,4,NULL,products/images/Hk78BrdxFoVcm2MC3T8eRSb1nokgFC9TPo8J6mvb.jpeg,Plus Size Floral Dress.jpg,34857,Floral,Knee legth Blue Plus Size Floral Dress,2018-10-23 14:39:13,2018-10-25 12:07:23
+29,1,5,NULL,products/images/GhYLK5sHO95hss8mA2GDcft0Oh4xMd0syeHO2w3e.jpeg,1.jpg,80774,Formal Attire,upper knee length denim dress,2018-10-23 14:39:13,2018-10-25 13:54:54
+30,1,5,NULL,products/images/53txkyaF59gslijbVlJ49aKO6Sp8mi0cFxgAyoz1.jpeg,2.jpg,76861,Vaca Attire,Denim upper thigh length denim dress with black colar style,2018-10-23 14:39:13,2018-10-25 12:08:29
+31,1,5,NULL,products/images/9b06OBQEaNoDgAunnMXCbuUViZcdo9ORj8n7Zp6V.jpeg,3.jpg,75956,Whole Dress,Simple Denim upper thigh dress,2018-10-23 14:39:13,2018-10-25 12:09:29
+32,2,6,NULL,products/images/jWQSRql4m8TaXhaWrs0qW8t5LvHlfc9yfvuNhnNm.jpeg,casual terno set.jpg,85343,Korean Type,A korean casual set with flower attached,2018-10-23 14:39:13,2018-10-25 12:12:04
+33,2,6,NULL,products/images/PKCu2GutBFJ8jJ8eJPm8Sf6piYPc8hEjdLXplzfe.jpeg,Casual Terno Set1.jpg,74240,Casual Terno Set 1,Casual terno set with white sandal and pair of earnings,2018-10-23 14:39:13,2018-10-25 12:12:21
+34,2,6,NULL,products/images/4bloW8sFuMfmn2WdCm7XisYD3xXDCYAa2jr7olsR.jpeg,casual terno.jpg,95560,Casual Terno Set 2,Off shoulder stripe with brown pants casual terno,2018-10-23 14:39:13,2018-10-25 12:12:33
+35,2,6,NULL,products/images/Pt0qehz8Ro9U0DxxVKZBFxnJB0s793XVntG6eyOB.jpeg,Casual Terno3.jpg,66126,Terno 1,White sleeveles paired with blue floral lower pants,2018-10-23 14:39:13,2018-10-25 12:12:53
+36,2,6,NULL,products/images/mQ0fsxqnQ7BoHVAI3cKJKT0RM0gsVf2zJk42jOdG.jpeg,Casual Terno4.jpg,109152,Terno 2,Plain White off shoulder paired with Abstract Skirt,2018-10-23 14:39:13,2018-10-25 12:13:20
+37,2,6,NULL,products/images/2rcroH2YYGHaUYi2i48yFmjgdZDmVxQfUItU9prf.jpeg,Casual Terno5.jpg,109935,Terno 3,Casual terno with paired shirt and long abstract skirt,2018-10-23 14:39:14,2018-10-25 12:13:35
+38,2,7,NULL,products/images/VeoB08UkhuUU7DKBGq8lq7MZN6254DQNzp5gm0K3.jpeg,Classy Terno Pants+Sweater.jpg,101095,Pants and Sweater Terno,Classy terno pants paired with White Sweater,2018-10-23 14:39:14,2018-10-25 12:14:02
+39,2,7,NULL,products/images/oVdHEWSSIntSd3I5e8sft7DpVLjIlIHl0nUqkCyP.jpeg,classy terno set.jpg,698131,Classy terno set,Stripe white and black crop top paired with blue lower pants,2018-10-23 14:39:14,2018-10-25 12:14:29
+40,2,7,NULL,products/images/I3vfvRTamODrYJOxP4YyxTqCI2h5hqikEuuEq5kf.jpeg,classy terno set1.jpg,64640,Set 1,Classy terno set,2018-10-23 14:39:14,2018-10-25 12:14:46
+41,2,7,NULL,products/images/M9VFilUcguI8uBR3wA6HZrVjWThT5Olf5TkG4cU5.jpeg,classy terno set2.jpg,62476,Set 2,A plain black shirt with a classy terno set,2018-10-23 14:39:14,2018-10-25 12:16:20
+42,2,7,NULL,products/images/wvFdtJ0C8brxpCcHQ1k4yIoNLx3XZhxfBO4HMFq9.jpeg,Classy Terno Set3.jpg,66000,Summer terno,Simple Classy terno set: Black shirt and blue thight pants,2018-10-23 14:39:14,2018-10-25 12:16:36
+43,2,8,NULL,products/images/0zMHgZ4j1edNMD9By2cONLPT9iOOQDw7JVu28lLz.jpeg,Plus Size Terno.jpg,38992,Formal Terno,White Longsleeve with floral knee length blue skirt,2018-10-23 14:39:14,2018-10-25 12:17:04
+44,3,9,NULL,products/images/znolFGZYDUk3ky48xoe0at6f4wvcnt7cyd7ATtpe.jpeg,Off Shoulder Plus Size Tops.jpg,12405,Off Shoulder Plus,Black off-shoulder plus size tops,2018-10-23 14:39:14,2018-10-25 12:49:36
+45,3,9,NULL,products/images/K2vZ9IIZxTvo63zIGm8tJb4fnMxqDJ1pl23yWmjW.jpeg,Off Shoulder Plus Size Tops1.jpg,64915,Tops 1,Dirty green offfshoulder plus size tops,2018-10-23 14:39:14,2018-10-25 12:48:51
+46,3,9,NULL,products/images/iWK82uTR8ojdSEgPRd8KemuVDezKvHrSLjHiJhNt.jpeg,Off Shoulder Plus Size Tops2.jpg,82549,Tops 2,Black floral off shoulder plus size tops,2018-10-23 14:39:14,2018-10-25 12:49:19
+47,3,10,NULL,products/images/U1zCXubKfTfIkSeprttzNPCGcRvY21lkSXm2tW1l.jpeg,Bad Girl Hoodie Jacket.jpg,57966,Bad Girl hoodie,Brown Crop top hoodie jacket,2018-10-23 14:39:14,2018-10-25 12:18:21
+48,4,11,NULL,products/images/koFTanA8jGvxW6X6FDSNmof4L910lxzRbo55e45Q.jpeg,Denim Jumpsuit.jpg,77899,Casual Denim,Simple denim jumpsuit,2018-10-23 14:39:14,2018-10-25 12:18:52
+49,4,12,NULL,products/images/xcdNqFBUqi7dIrZ12JDhlHeDly5P3PQEla4IOwLp.jpeg,Classy Korean Jumpsuit1.jpg,115113,Korean Jumpsuit,A sleeveless black jumpsuit,2018-10-23 14:39:14,2018-10-25 12:19:49
+50,5,13,NULL,products/images/PR8d7OUHTSDRrbhew1MNjMt2nBLIAtyqcxZrv9dm.jpeg,casual denim jumpshort.jpg,671063,Casual Denim,Casual Denim jumpshort mis thight length,2018-10-23 14:39:14,2018-10-25 12:20:12
+51,5,13,NULL,products/images/eyrFSvPBFXKXnaIXFlG6yB34GS1koAcYn3lSRaub.jpeg,Denim Jumpshorts.jpg,57983,Sexy denim,Sleeveless upper tight length denim jumpshort,2018-10-23 14:39:14,2018-10-25 12:30:55
+52,5,13,NULL,products/images/tAGUouYBGZylaFE05TNFmXW37OurPU5ZqsHv8R2g.jpeg,Denim Jumpshorts1.jpg,59690,Denim Jumpshort,Simple Denim Jumpshort,2018-10-23 14:39:14,2018-10-25 12:31:06
+53,5,14,NULL,products/images/KET2caWMQMRg9gyD8zVaHgs2uw2xgog5qxlLyGFR.jpeg,Plus Size Jumpshorts.jpg,15502,Plus Size Jumpshort,Offshoulder bue plus size jumpshort, upper thigh length,2018-10-23 14:39:14,2018-10-25 12:32:02
+54,5,14,NULL,products/images/s3rIiuzBrwePx8s9Z4H5vheExfr5idLZMuJT7557.jpeg,Plus Size Jumpshorts1.jpg,28330,Plus Size Jumpshort 2,Offshoulder black plus size jumpshort, upper thigh length,2018-10-23 14:39:14,2018-10-25 12:31:39
+55,6,15,NULL,products/images/UuX2NyMxMsKgNyYpAQ63qCjl5xCcUdiIH8tKEzqJ.jpeg,cap1.jpg,62313,Jordan Caps,Jordan black caps,2018-10-23 14:39:14,2018-10-25 12:32:37
+56,6,15,NULL,products/images/qSVjPjm9l2uXpdJNP8bn9b59DZlec1huGHyk8QRN.jpeg,cap2.jpg,107343,Cleveland Hat,Cleveland gray cap,2018-10-23 14:39:14,2018-10-25 12:32:53
+57,6,15,NULL,products/images/TGhqp4BPTD4YVhFfpNyFaFIoqdC19DAXzoc550KX.jpeg,cap3.jpg,117621,Bull Cap,Bulls Black cap,2018-10-23 14:39:14,2018-10-25 12:33:05
+58,6,15,NULL,products/images/58vqDvN87baPbuwic8xQS3AOPTn28ii1XMNekpSf.jpeg,Nike Baseball Cap.jpg,58519,Nike Hats,Nike Baseball Cap,2018-10-23 14:39:15,2018-10-25 12:33:18
+59,6,15,NULL,products/images/ddjNtfdxsB42lTyaNMPkHjAAeIDDyousCykrgiJv.jpeg,plain baseball cap1.jpg,119214,Baseball Cap,Plain baseball cap,2018-10-23 14:39:15,2018-10-25 12:33:31
+60,6,16,NULL,products/images/97WYmvxV0tJ0efNoO2ZZ0R08W5dKt3464IOnShiM.jpeg,moon necklace2.jpg,105689,Moon Neclace,Pendant Moon necklace,2018-10-23 14:39:15,2018-10-25 12:34:03
+61,6,17,NULL,products/images/O7tisa4eeFbIkqIeDRBAE5cmg4cR7CNcQMxrTpUI.jpeg,tassel earrings1.jpg,79002,Tassel 1,Black tassel earings, gold style,2018-10-23 14:39:15,2018-10-25 12:35:27
+62,6,17,NULL,products/images/HUdYfV9iDQTX8aPJa1fVIphHqxSBIvQZOXdLufzP.jpeg,tassel earrings2.jpg,102764,Tassel 2,Red tassel earings,2018-10-23 14:39:15,2018-10-25 12:35:54
+63,6,18,NULL,products/images/SuFW9mdFB6cpwdb7nySFQq6vn7UDKC1pfVXoEfep.jpeg,sunnies.jpg,103595,Sunnie,Sunnies cuttie sunglasses,2018-10-23 14:39:15,2018-10-25 12:36:43
+64,6,19,NULL,products/images/Wq375uRVV8rfehOFd8WG1yJuRc9xkg3SVGnMc6tv.jpeg,backpack1.jpg,59842,Backpack 1,Black floral girly backpack,2018-10-23 14:39:15,2018-10-25 12:38:08
+65,6,19,NULL,products/images/480VbApgk9wOaXUnGx6mURyBcpQdXzilLEt2cQo6.jpeg,backpack2.jpg,54545,Backpack 2,White floral girly backpack,2018-10-23 14:39:15,2018-10-25 12:38:32
+66,6,19,NULL,products/images/mxusAGlddrUXawYEjM0PNSd4DeuYQfPFdR2hAeAJ.jpeg,backpack3.jpg,61234,Bag 1,Black Nike backpack style,2018-10-23 14:39:15,2018-10-25 12:39:35
+67,6,19,NULL,products/images/t5itPJ7HtUki8OJk21M3haHO4Wp9Wm50stBN4W5w.jpeg,backpack4.jpg,63443,Bag 2,Black with semi white nike backpack style,2018-10-23 14:39:15,2018-10-25 12:39:19
+68,6,19,NULL,products/images/dbBSaLlzkUIf6lXUawMMGXCgnlsjhd7lvQ7JbfL1.jpeg,sling bag1.jpg,66673,Sling Bag,Green sling bag for girls,2018-10-23 14:39:15,2018-10-25 12:39:48
+69,6,19,NULL,products/images/zrQ8eckiQX32wcRhrzdOWHMwkA0j1MTz5UiDisXR.jpeg,sling bag2.jpg,51635,Sling Bag 1,Pink Sling bag for girls,2018-10-23 14:39:15,2018-10-25 12:40:34
+70,6,19,NULL,products/images/UWS3HkyakUaT46p1ZAko9jSEoPmU9Na9Fbv7qfEl.jpeg,sling bag3.jpg,67268,Sling Bag 2,Dirty gray sling bag,2018-10-23 14:39:15,2018-10-25 12:40:53
+71,6,20,NULL,products/images/rM7K7HJA1jQOkRuYvfUxBR00POefVIeyj5iWMvSC.jpeg,couple watch1.jpg,101816,Couple Watch 1,Silver Watch for Couple,2018-10-23 14:39:15,2018-10-25 12:41:28
+72,6,20,NULL,products/images/w1y5dGagQn2OcFw5vf3ylW4pN03r2vVPUFkPpNiF.jpeg,couple watch2.jpg,110324,Couple Watch 2,Gold Watch for Couple,2018-10-23 14:39:15,2018-10-25 12:41:48
+73,6,20,NULL,products/images/fNWOOyuVQ9RUXq5lp2ZR9xn0xKKyHRdN391q02fd.jpeg,watch1.jpg,59799,Watch 1,Black Uni Plastic Watch,2018-10-23 14:39:15,2018-10-25 12:42:51
+74,6,20,NULL,products/images/BlseOYo2rtT6gUWhJQfVG84kd1TYWWYL7FxXWLuf.jpeg,watch2.jpg,67975,Watch 2,Black Watch,2018-10-23 14:39:15,2018-10-25 12:42:41
+75,6,20,NULL,products/images/fQdmAWP3QMSYld9Go9GiYgigrmQ0PvmXeLJIeiAb.jpeg,watch4.jpg,92538,Watch 3,Golden Black Watch,2018-10-23 14:39:15,2018-10-25 12:43:14

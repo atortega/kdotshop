@@ -17,11 +17,20 @@ class Orders extends Model
 		'sku',
 		'delivery_method_id',
 		'order_date',
-		'date_updated',
 		'quantity',
 		'unit_price',
 		'total_amount',
-		'status',
-		
 	];
+
+	public function get_orders()
+	{
+		$orders = DB::table($this->table)
+			->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
+			->leftjoin('sku', 'orders.sku', '=', 'sku.id')
+			->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
+			->select('orders.*', 'customer.first_name', 'sku.*', 'delivery_methods.delivery_method_name')
+			->get();
+
+		return $orders;
+	}
 }

@@ -10,17 +10,16 @@ use App\Models\Orders;
 class OrdersController extends Controller
 {
     public function index()
-	{
-		$orders = Datatables::of(Orders::query())
+    {
+        $orders = Datatables::of(Orders::query())
             ->addColumn('actions', function ($data) {
                 return "
-                	<button class='btn btn-xs btn-primary size-edit-btn' sid='$data->color_id'>Edit</button>
-                    <button class='btn btn-xs btn-danger size-delete-btn' sid='$data->color_id' sname='$data->color'>Delete</button>
-                	";
+                    <button class='btn btn-xs btn-primary size-edit-btn' sid='$data->color_id'>View Detail</button>
+                    ";
             })
             ->escapeColumns('actions')
             ->make(true);
-		
-		return ($orders);
-	}
+        
+        return ($orders);
+    }
 }

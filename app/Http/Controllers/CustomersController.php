@@ -105,17 +105,22 @@ class CustomersController extends Controller
     public function editCustomer(Request $request)
     {
         $request->validate([
-            'name'              => 'required|max:30',
-            'address'           => 'required|max:100',
-            'phone_number'      => 'required',
+            'first_name'        => 'required|max:30',
+            'middle_name'       => 'required|max:30',
+            'last_name'         => 'required|max:30',
+            'gender'            => 'required|max:300',
             'email'             => 'required',
+            'phone_number'      => 'required',
+            
         ]);
 
         $customer = Customers::where('customer_id', $request['customer_id'])->first();
-        $customer->name         = $request['name'];
-        $customer->address      = $request['address'];
-        $customer->email        = $request['email'];
-        $customer->phone_number = $request['phone_number'];
+        $customer->first_name       = $request['first_name'];
+        $customer->middle_name      = $request['middle_name'];
+        $customer->last_name        = $request['last_name'];
+        $customer->gender           =$request['gender'];
+        $customer->email            = $request['email'];
+        $customer->phone_number     = $request['phone_number'];
 
         $customer->save();
 

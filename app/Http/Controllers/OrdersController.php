@@ -29,8 +29,8 @@ class OrdersController extends Controller
         $delivery_methods = Delivery_methods::orderBy('delivery_method_name')->get();
 
         $orders = DB::table('orders')
-            ->leftjoin('customer', 'orders.customer.customer_id', '=', 'customer.customer_id')
-            ->leftjoin('delivery_methods', 'orders.delivery_methods_id', '=', 'delivery_methods.delivery_methods_id')
+            ->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
+            ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
             ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name')
             ->get();
 

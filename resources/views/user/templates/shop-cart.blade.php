@@ -88,7 +88,8 @@
                   <tr>
                     <th>Product</th>
                     <th>Price</th>
-                    <!-- <th>Tax</th> -->
+                    <th>Color</th>
+                    <th>Size</th>
                     <th>Quantity</th>
                     <th style="text-align: center">Action</th>
                     <th class="amount">Subtotal</th>
@@ -103,15 +104,15 @@
                     <td class="product">
                       <div class="row">
                         <div class="col-md-3">
-                          <img src="{{ asset('storage/'.$cartProduct->image) }}" 
-                            style="margin: auto; max-height: 100% ;"/>
+                          <img src="{{ asset('storage/'.$cartProduct->options->image) }}"
+                            style="margin: auto; max-height: 100% ;" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'" />
                         </div>
                         <div class="col-md-9" style="vertical-align: middle; margin: auto 0 auto 0;">
                           <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
                             {{$cartProduct->name}}
                           </a>
                           <small>
-                            {{$cartProduct->desc}}
+                            {{$cartProduct->desc}}<br>
                           </small>
                         </div>
                       </div>
@@ -120,10 +121,14 @@
                     <td class="price">
                       ₱ {{$cartProduct->price}}
                     </td>
-                    
-                    <!-- <td class="tax">
-                      Cart : : tax()
-                    </td> -->
+
+                    <td class="color">
+                       {{$cartProduct->options->color}}
+                    </td>
+
+                    <td class="size">
+                       {{$cartProduct->options->size}}
+                    </td>
 
                     <td class="quantity">
                       <div class="form-group">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Colors;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
@@ -11,25 +12,36 @@ use App\Models\Sku;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Customers;
 use App\Models\Country;
+use App\Models\Sizes;
 use App\Models\CustomersAddress;
 // use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class CartController extends Controller
 {
-    public function addToCart(Request $request){
-        
+    public function addToCart(Request $request)
+    {
+
         $product_id     = $request->product_id;
         $productById    = Products::where('product_id', $product_id)->first();
         $skuById        = Sku::where('product_id', $product_id)->first();
-        
-        // $cart = Session::get('cart');
+        $color          = Colors::where('color_id', $request->color)->first();
+        $size           = Sizes::where('size_id', $request->size)->first();
+
         Cart::add([
-            'id'    =>  $product_id,
-            'image' =>  $productById->product_image,
-            'name'  =>  $productById->product_name,
-            'desc'  =>  $productById->product_desc,
-            'price' =>  $skuById->unit_price,
-            'qty'   =>  $request->qty
+            'id'        =>  $product_id,
+            'name'      =>  $productById->product_name,
+            'qty'       =>  $request->qty,
+            'price'     =>  $skuById->unit_price,
+            'options'   => [
+                'desc'      =>  $productById->product_desc,
+                'image'     =>  $productById->product_image,
+                'color_id'  =>  $request->color,
+                'size_id'   =>  $request->size,
+                'color'     =>  $color->color,
+                'size'      =>  $size->size
+            ]
+
+
         ]);
         // Session::put('cart', $cart);
 

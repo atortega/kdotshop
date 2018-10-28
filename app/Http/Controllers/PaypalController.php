@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -21,7 +22,7 @@ use Redirect;
 use Session;
 use URL;
 
-class PaymentController extends Controller
+class PaypalController extends Controller
 {
 	private $_api_context;
 
@@ -37,26 +38,52 @@ class PaymentController extends Controller
 
 	}
 
-	public function index()
-	{
-		return view('customer.paypal.paywithpaypal');
-	}
+	// public function index()
+	// {
+	// 	return view('customer.paypal.paywithpaypal');
+	// }
 
-	public function payWithpaypal(Request $request)
+	public function payWithPaypal()
 	{
+		// API
+		// Documentation: http://paypal.github.io/PayPal-PHP-SDK/sample/doc/payments/CreatePaymentUsingPayPal.html
+
 		$payer = new Payer();
 		$payer->setPaymentMethod('paypal');
 
-		$item_1 = new Item();
+		// trying to set an array of data, in which items are found in Cart...
+		$data = [];
+		$data['items'] = [];
 
-		$item_1->setName('Item 1') /** item name **/
+		// supposedly, this is to fetch data from Cart::content
+		foreach(Cart::content() as $cart){
+
+			// $itemDetail=[
+			// 	'name' => $cart->name,
+			// 	'price' => $cart->price,
+			// 	'qty' => $cart->qty
+			// ];
+
+			$data = new Item();
+
+			$data->setName($cart->name) /** item name **/
 			->setCurrency('PHP')
-			->setQuantity(1)
+			->setQuantity($cart->qty)
 			// ->setSku("123123") Similar to `item_number` in Classic API
-			->setPrice($request->get('amount')); /** unit price **/
+			->setPrice($cart->price); /** unit price **/
+
+			// $data['items'][]=$itemDetail;
+		}
+
+		// $data['invoice_id'] = uniqid();
+		// $data['invoice_description'] = "test invoice";
+		// $data['return_url'] = route('payment.store');
+		// $data['cancel_url'] = url('/test');
+		// $data['total'] = Cart::total();
+
 
 		$item_list = new ItemList();
-		$item_list->setItems(array($item_1));
+		$item_list->setItems(array($data));
 
 		$details = new Details();
 		// $details->setShipping(1.2)
@@ -65,19 +92,19 @@ class PaymentController extends Controller
 
 		$amount = new Amount();
 		$amount->setCurrency("PHP")
-			->setTotal($request->get('amount'));
+			->setTotal(Cart::total());
 			// ->setDetails($details);
 
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
-			->setItemList($item_list)
+			->setItemList($data)
 			->setDescription("Your transaction description")
 			->setInvoiceNumber(uniqid());
 
 		// $baseUrl = getBaseUrl();
 		$redirect_urls = new RedirectUrls();
-		$redirect_urls->setReturnUrl(URL::to('customer/paypal/status')) /** Specify return URL **/
-			->setCancelUrl(URL::to('customer/paypal'));
+		$redirect_urls->setReturnUrl(URL::to('/paypal/status')) /** Specify return URL **/
+			->setCancelUrl(URL::to('/'));
 
 		$payment = new Payment();
 		$payment->setIntent('Sale')
@@ -85,6 +112,7 @@ class PaymentController extends Controller
 			->setRedirectUrls($redirect_urls)
 			->setTransactions(array($transaction));
 			/** dd($payment->create($this->_api_context));exit; **/
+
 		try {
 
 		    $payment->create($this->_api_context);
@@ -93,11 +121,11 @@ class PaymentController extends Controller
 
 			if(\Config::get('app.debug')){
 				\Session::put('error', 'Connection timeout');
-				return Redirect::to('/');
+				return Redirect::to('/shop-checkoutPayment');
 			}else{
 
 				\Session::put('error', 'Some error have occured, sorry for the inconvenience');
-				return Redirect::to('/');
+				return Redirect::to('/shop-checkoutPayment');
 			}
 		}
 
@@ -117,7 +145,7 @@ class PaymentController extends Controller
 		}
 
 		\Session::put('error', 'Unknown error occured');
-		return Redirect::to('/');
+		return Redirect::to('/shop-checkoutPayment');
 	}
 
 	public function getPaymentStatus(Request $request)
@@ -130,7 +158,7 @@ class PaymentController extends Controller
 
 		if(empty(Input::get('PayerID')) || empty(Input::get('token'))) {
 			\Session::put('error', 'Payment failed');
-			return Redirect::to('/');
+			return Redirect::to('/shop-checkoutPayment');
 		}
 
 		$payment = Payment::get($payment_id, $this->_api_context);
@@ -142,10 +170,10 @@ class PaymentController extends Controller
 
 		if($result->getState() == 'approved') {
 			\Session::put('success', 'Payment success');
-			return Redirect::to('/');
+			return Redirect::to('/shop-checkoutPayment');
 		}
 
 		\Session::put('error', 'Payment failed');
-		return Redirect::to('/');
+		return Redirect::to('/shop-checkoutPayment');
 	}
 }

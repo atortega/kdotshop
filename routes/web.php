@@ -175,6 +175,16 @@ Route::group(['middleware' => 'auth' ], function() {
         return view('user.templates.shop-checkoutPayment');
     });
 
+    Route::get('/paypal', function (){
+        return view('user.templates.paypal.paywithpaypal');
+    });
+
+    // route for processing payment
+    Route::get('/pay-with-paypal', 'PaypalController@payWithPaypal');
+
+    // route for check status of the payment
+    Route::get('/paypal/status', 'PaypalController@getPaymentStatus');
+
     // S H O P - C H E C K O U T R E V I E W
     Route::get('/shop-checkoutReview', function () {
         return view('user.templates.shop-checkoutReview');

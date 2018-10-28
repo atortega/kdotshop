@@ -259,7 +259,7 @@
 
 						<fieldset>
 							<legend>Shipping information</legend>
-							<form class="form-horizontal">
+							<!-- <form class="form-horizontal"> -->
 								<div id="shipping-information" class="space-bottom">
 									<div class="row">
 										<div class="col-xl-3">
@@ -358,13 +358,13 @@
 									
 								<div class="checkbox padding-top-clear form-check">
 									<input class="form-check-input" type="checkbox" id="shipping-info-check" checked>
-									<div class="form-check">
+									<div class="form-check" for="shipping-info-check">
 										<label class="form-check-label">
 											My Shipping information is the same as my Billing information.
 										</label>
 									</div>
 								</div>
-							</form>
+						<!-- 	</form> -->
 						</fieldset>
 
 						<div class="text-right">  

@@ -163,19 +163,19 @@
                 <tbody>
                   <tr>
                     <td>Full Name</td>
-                    <td class="information">John Doe </td>
+                    <td class="information">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  </td>
                   </tr>
                   <tr>
                     <td>Email</td>
-                    <td class="information">youremail@domain.com </td>
+                    <td class="information">{{ Auth::user()->email }} </td>
                   </tr>
                   <tr>
-                    <td>Telephone</td>
-                    <td class="information">+00 123 123 1234</td>
+                    <td>Contact Number</td>
+                    <td class="information">{{ Auth::user()->phone_number }}</td>
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td class="information">One infinity loop, 54100, United States</td>
+                    <td class="information">{{ $user->shipping_address1 }} {{ $user->shipping_barangay }}, {{ $user->shipping_city }}  {{ $user->shipping_province }} ,{{ $user->shipping_zipcode }} {{ $user->shipping_country}}</td>
                   </tr>
                 </tbody>
               </table>

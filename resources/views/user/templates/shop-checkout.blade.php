@@ -70,6 +70,8 @@
 								<tr>
 									<th>Product </th>
 									<th>Price </th>
+									<th>Color</th>
+									<th>Size</th>
 									<th>Quantity</th>
 									<th class="amount">Total </th>
 								</tr>
@@ -81,22 +83,34 @@
 									<td class="product">
 										<div class="row">
 											<div class="col-md-3">
-												<img src="{{ asset('storage/'.$cartProduct->image) }}" 
-												style="margin: auto; max-height: 100% ;"/>
+												<img src="{{ asset('storage/'.$cartProduct->options->image) }}"
+													style="margin: auto; max-height: 100% ;"
+													onerror="this.onerror=null;
+													this.src='storage/products/default-product-image.jpg'" />
 											</div>
 											<div class="col-md-9" style="vertical-align: middle; margin: auto 0 auto 0;">
 												<a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
 													{{$cartProduct->name}}
 												</a>
 												<small>
-													{{$cartProduct->desc}}
+													{{$cartProduct->options->desc}}
 												</small>
 											</div>
 										</div>
 									</td>
-									<td class="price">
+
+									<td class="price" style="width: 10px !important;">
 										₱ {{$cartProduct->price}} 
 									</td>
+
+				                    <td class="color" style="width: 10px !important;">
+				                       {{$cartProduct->options->color}}
+				                    </td>
+
+				                    <td class="size" style="width: 10px !important;">
+				                       {{$cartProduct->options->size}}
+				                    </td>
+
 									<td class="quantity">
 										<div class="form-group">
 											<input class="form-control" value="{{$cartProduct->qty}}" 
@@ -125,7 +139,7 @@
 								</tr> -->
 
 								<tr>
-									<td class="total-quantity" colspan="3">
+									<td class="total-quantity" colspan="5">
 										Total {{Cart::count()}} Items
 									</td>
 									<td class="total-amount">

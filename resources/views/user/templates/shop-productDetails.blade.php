@@ -108,7 +108,7 @@
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Color</label>
-                              <select class="form-control">
+                              <select class="form-control" id="color">
                                 @foreach($getColorQuery as $colors)
                                   <option value="{{$colors->color_id}}">{{$colors->color}}</option>
                                 @endforeach
@@ -116,7 +116,7 @@
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Size</label>
-                              <select class="form-control">
+                              <select class="form-control" id="size">
                                 @foreach($getSizeQuery as $sizes)
                                   <option value="{{$sizes->size_id}}">{{$sizes->size}}</option>
                                 @endforeach
@@ -131,6 +131,8 @@
 
                                     <input type="hidden" name="product_id" value="{{ $getSkuQuery->product_id }}">
                                     <input type="hidden" name="qty" id="qty" value="1">
+                                    <input type="hidden" name="color" id="color_id" value="">
+                                    <input type="hidden" name="size" id="size_id" value="">
                                     <button type="submit" id="frmSubmit" class="pull-right margin-clear btn btn-sm btn-default-transparent btn-animated">Add To Cart<i class="fa fa-shopping-cart"></i></button>
                           {!! Form::close()!!}
                       </div>
@@ -164,6 +166,8 @@
           $(function() {
               $("#frmSubmit").click(function() {
                   $("#qty").val($("#quantity").val());
+                  $("#color_id").val($("#color").val());
+                  $("#size_id").val($("#size").val());
               });
           });
       </script>

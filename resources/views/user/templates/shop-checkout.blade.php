@@ -70,6 +70,8 @@
 								<tr>
 									<th>Product </th>
 									<th>Price </th>
+									<th>Color</th>
+									<th>Size</th>
 									<th>Quantity</th>
 									<th class="amount">Total </th>
 								</tr>
@@ -81,22 +83,34 @@
 									<td class="product">
 										<div class="row">
 											<div class="col-md-3">
-												<img src="{{ asset('storage/'.$cartProduct->image) }}" 
-												style="margin: auto; max-height: 100% ;"/>
+												<img src="{{ asset('storage/'.$cartProduct->options->image) }}"
+													style="margin: auto; max-height: 100% ;"
+													onerror="this.onerror=null;
+													this.src='storage/products/default-product-image.jpg'" />
 											</div>
 											<div class="col-md-9" style="vertical-align: middle; margin: auto 0 auto 0;">
 												<a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
 													{{$cartProduct->name}}
 												</a>
 												<small>
-													{{$cartProduct->desc}}
+													{{$cartProduct->options->desc}}
 												</small>
 											</div>
 										</div>
 									</td>
-									<td class="price">
+
+									<td class="price" style="width: 10px !important;">
 										₱ {{$cartProduct->price}} 
 									</td>
+
+				                    <td class="color" style="width: 10px !important;">
+				                       {{$cartProduct->options->color}}
+				                    </td>
+
+				                    <td class="size" style="width: 10px !important;">
+				                       {{$cartProduct->options->size}}
+				                    </td>
+
 									<td class="quantity">
 										<div class="form-group">
 											<input class="form-control" value="{{$cartProduct->qty}}" 
@@ -125,7 +139,7 @@
 								</tr> -->
 
 								<tr>
-									<td class="total-quantity" colspan="3">
+									<td class="total-quantity" colspan="5">
 										Total {{Cart::count()}} Items
 									</td>
 									<td class="total-amount">
@@ -142,65 +156,7 @@
 							<form class="form-horizontal">
 								<div class="row">
 									<div class="col-xl-3">
-										<h3 class="title">Personal Information</h3>
-									</div>
-
-									<div class="col-xl-8 ml-xl-auto">
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingFirstName">
-												First Name
-											<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
-													type="text" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingLastName">
-												Last Name
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
-													type="text" name="last_name" value="{{ Auth::user()->last_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingTel">
-												Contact Number
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-													type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingemail" >
-												E-mail
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
-													type="text" name="phone_number" value="{{ Auth::user()->email }}" disabled>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="space"></div>
-
-								<div class="row">
-									<div class="col-xl-3">
-										<h3 class="title mt-5 mt-lg-0">Your Address</h3>
+										<h3 class="title">Your Address</h3>
 									</div>
 
 									<div class="col-xl-8 ml-xl-auto">
@@ -215,6 +171,7 @@
 													type="text" name="billing_address1" value="{{ $user->billing_address1 }}">
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="billingAddress">
@@ -226,6 +183,7 @@
 													type="text" name="billing_barangay" value="{{ $user->billing_barangay }}">
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="billingAddress">
@@ -248,6 +206,7 @@
 												<input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}">
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="billingPostalCode">
@@ -260,6 +219,7 @@
 													type="text" value="{{ $user->billing_zipcode }}">		
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label">
 												Country
@@ -272,9 +232,11 @@
                                             		@endforeach
                                         		</select>
 											</div>
-										</div>	
+										</div>
 									</div>
 								</div>
+
+								<div class="space"></div>
 
 								<div class="space"></div>
 
@@ -301,69 +263,11 @@
 								<div id="shipping-information" class="space-bottom">
 									<div class="row">
 										<div class="col-xl-3">
-											<h3 class="title mt-5 mt-lg-0">Personal Information</h3>
+											<h3 class="title mt-5 mt-lg-0">Your Address</h3>
 										</div>
 										
 										<div class="col-xl-8 ml-xl-auto">
 											<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingFirstName">
-												First Name
-											<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
-													type="text" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingLastName">
-												Last Name
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
-													type="text" name="last_name" value="{{ Auth::user()->last_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingTel">
-												Contact Number
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-													type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingemail" >
-												E-mail
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
-													type="text" name="phone_number" value="{{ Auth::user()->email }}" disabled>
-											</div>
-										</div>
-										</div>
-									</div>
-									
-									<div class="space"></div>
-
-									<div class="row">
-										<div class="col-xl-3">
-											<h3 class="title mt-5 mt-lg-0">Your Address</h3>
-										</div>
-
-										<div class="col-xl-8 ml-xl-auto">
-										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="shippingAddress">
 												House No., Street
@@ -373,11 +277,6 @@
 
 												<input class="form-control" id="shipping_address1"
 													type="text" name="shipping_address1" value="{{ $user->shipping_address1 }}">
-
-
-												<input class="form-control" id="shippingAddress" name="shipping_address1"
-													type="text" placeholder ="Address " value="{{ $user->shipping_address1 }}">
-
 											</div>
 										</div>
 
@@ -393,6 +292,7 @@
 													type="text" name="shipping_barangay" value="{{ $user->shipping_barangay }}">
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="shipping_city">
@@ -404,6 +304,7 @@
 												<input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}">
 											</div>
 										</div>
+
 										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="shipping_province">
@@ -415,7 +316,7 @@
 												<input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}">
 											</div>
 										</div>
-										<div class="form-group row">
+										<div class="form-group has-feedback row">
 											<label class="col-lg-3 control-label text-lg-right col-form-label"
 												for="shipping_zipcode">
 												Zip Code
@@ -440,7 +341,17 @@
                                             		@endforeach
                                         		</select>
 											</div>
-										</div>	
+										</div>
+										</div>
+									</div>
+									
+									<div class="space"></div>
+
+									<div class="row">
+										
+
+										<div class="col-xl-8 ml-xl-auto">	
+										
 										</div>
 									</div>
 								</div>

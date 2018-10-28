@@ -40,7 +40,7 @@
                             <tr>
                                 <th>Order Number</th>
                                 <th>Order Date</th>
-                                <th>Customer</th>
+                                <th>Customer Name</th>
                                 <th>Delivery Method</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -57,8 +57,8 @@
                             columns: [
                                 { data: 'order_id', name: 'order_id' },
                                 { data: 'order_date', name: 'order_date' },
-                                { data: 'customer_id', name: 'customer_id' },
-                                { data: 'delivery_method_id', name: 'delivery_method_id' },
+                                { data: 'first_name', name: 'first_name' },
+                                { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'status', name: 'status' },
                                 { data: 'actions', name: 'actions', orderable: false },
                             ],

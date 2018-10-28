@@ -44,10 +44,6 @@
                     <form role="form" method="post" action="/admin/customers/create/save">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name">Customer ID</label>
-                            <input type="number" class="form-control" id="id" name="id" placeholder="" value="{{ old('id') }}">
-                        </div>
-                        <div class="form-group">
                             <label for="name">First Name</label>
                             <input type="text" class="form-control" id="fname" name="first_name" placeholder="Enter First Name" value="{{ old('first_name') }}">
                         </div>
@@ -58,6 +54,10 @@
                         <div class="form-group">
                             <label for="name">Middle Name</label>
                             <input type="text" class="form-control" id="mname" name="middle_name" placeholder="Enter Middle Name" value="{{ old('middle_name') }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Gender</label>
+                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter Gender" value="{{ old('gender') }}">
                         </div>
 
                         <div class="form-group">

@@ -229,6 +229,10 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/products', 'ProductsController@listProducts');
 
 
+            //SKUs
+            Route::get('/sku', 'SkuController@listSKUs');
+            Route::get('/sku/index', 'SkuController@index');
+
 
             //Orders
             Route::get('/orders/index', 'OrdersController@index');

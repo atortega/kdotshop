@@ -22,6 +22,9 @@
             <a href="/admin/products"><i class="fa fa-edit fa-fw"></i> Products</a>
         </li>
         <li>
+            <a href="/admin/sku"><i class="fa fa-edit fa-fw"></i> SKUs</a>
+        </li>
+        <li>
             <a href="/admin/orders"><i class="fa fa-edit fa-fw"></i> Orders</a>
         </li>
         <li>

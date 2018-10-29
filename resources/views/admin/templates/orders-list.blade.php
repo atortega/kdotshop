@@ -60,7 +60,7 @@
                                 { data: 'first_name', name: 'first_name' },
                                 { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'status', name: 'status' },
-                                { data: 'actions', name: 'actions', orderable: false },
+                                { data: 'actions', name: 'actions', orderable: false }
                             ],
                             drawCallback: function( settings ) {
                                 if (settings.aoData.length > 0) {

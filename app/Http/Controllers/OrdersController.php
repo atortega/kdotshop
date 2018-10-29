@@ -43,7 +43,7 @@ class OrdersController extends Controller
                 ->escapeColumns('actions')
                 ->make(true);
 
-        return ($orders);
+        return ($datatables);
     }
 
     public function getOrdersById($id)

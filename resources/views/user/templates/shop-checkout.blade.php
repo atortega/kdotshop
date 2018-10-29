@@ -214,7 +214,7 @@
 												<strong class="text-default" style="font-size: 18px;"> *</strong>
 											</label>
 											<div class="col-lg-9">
-												<input class="form-control" id="billingPostalCode" 
+												<input class="form-control" id="billing_zipcode" name="billing_zipcode" 
 
 													type="text" value="{{ $user->billing_zipcode }}">		
 											</div>
@@ -228,7 +228,8 @@
 											<div class="col-lg-9">
 												<select class="form-control" id="billing_country" name="billing_country">
                                             		@foreach($countries as $country)
-                                                		<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}>{{$country->name}}</option>
+                                                		<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
+
                                             		@endforeach
                                         		</select>
 											</div>
@@ -276,7 +277,7 @@
 											<div class="col-lg-9">
 
 												<input class="form-control" id="shipping_address1"
-													type="text" name="shipping_address1" value="{{ $user->shipping_address1 }}">
+													type="text" name="shipping_address1" value="">
 											</div>
 										</div>
 
@@ -289,7 +290,7 @@
 											<div class="col-lg-9">
 
 												<input class="form-control" id="shipping_barangay"
-													type="text" name="shipping_barangay" value="{{ $user->shipping_barangay }}">
+													type="text" name="shipping_barangay" value="">
 											</div>
 										</div>
 
@@ -301,7 +302,7 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}">
+												<input id="shipping_city" type="text" class="form-control" name="shipping_city" value="">
 											</div>
 										</div>
 
@@ -313,7 +314,7 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input id="shipping_province" type="text" class="form-control" name="shipping_province" value="{{ $user->shipping_province }}">
+												<input id="shipping_province" type="text" class="form-control" name="shipping_province" value="">
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -324,8 +325,7 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input class="form-control" id="shipping_zipcode" 
-													type="text" value="{{ $user->shipping_zipcode }}">
+												<input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="">
 											</div>
 										</div>
 										<div class="form-group has-feedback row">
@@ -335,9 +335,10 @@
 											</label>
 											<div class="col-lg-9">
 
-												<select class="form-control" id="billing_country" name="shipping_country">
+												<select class="form-control" id="shipping_country" name="shipping_country">
                                             		@foreach($countries as $country)
-                                                		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}>{{$country->name}}</option>
+                                                		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}> {{$country->name}}</option>
+                                                		
                                             		@endforeach
                                         		</select>
 											</div>

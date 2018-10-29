@@ -156,7 +156,7 @@ class PaypalController extends Controller
 
 		if($result->getState() == 'approved') {
 			\Session::put('success', 'Payment success');
-			return Redirect::to('/shop-checkoutPayment');
+			return Redirect::to('/shop-checkoutReview');
 		}
 
 		\Session::put('error', 'Payment failed');

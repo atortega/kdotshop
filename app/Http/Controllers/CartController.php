@@ -54,12 +54,20 @@ class CartController extends Controller
         return view('user.templates.shop-cart',['cartProducts'=>$cartProducts]);
     }
 
-    public function cartShowCheckout(){
+    public function cartShowCheckout(Request $request){
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+
+        if($request->isMethod('post')){
+            $data = $request->all();
+            // 
+            if(empty($data['billing_address1']) || (empty($data['billing_barangay']) || (empty($data['billing_city']) || (empty($data['billing_province']) || (empty($data['billing_zipcode']) || (empty($data['billing_country']) || (empty($data['shipping_address1']) || (empty($data['shipping_barangay']) || (empty($data['shipping_city']) || (empty($data['shipping_province']) || (empty($data['shipping_zipcode']) || (empty($data['shipping_country'])){
+                    return redirect()->back()->with('flash_message_error','Please fill all fields  to Checkout');
+            }
+        }
         return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
-     }
+    }
 
     public function cartShowCheckoutReview(){
         $cartProducts = Cart::Content();

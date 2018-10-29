@@ -1346,9 +1346,9 @@
 
 		// Shipping Checkbox
 		//-----------------------------------------------
-		// if ($("#shipping-info-check").is(':checked')) {
-		// 	$("#shipping-information").hide();
-		// }
+		if ($("#shipping-info-check").is(':checked')) {
+			$("#shipping-information").show();
+		}
 		$("#shipping-info-check").change(function(){
 			if ($(this).is(':checked')) {
 				$("#shipping-information").slideToggle();

@@ -165,7 +165,7 @@ Route::group(['middleware' => 'auth' ], function() {
     // S H O P - C H E C K O U T
 
 
-    Route::get('/shop-checkout','CartController@cartShowCheckout');
+    Route::match(['get', 'post'],'shop-checkout','CartController@cartShowCheckout');
     // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
     //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
 

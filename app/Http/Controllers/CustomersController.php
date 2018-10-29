@@ -22,6 +22,7 @@ class CustomersController extends Controller
         $customers = Datatables::of(Customers::query())
             ->addColumn('actions', function ($data) {
                 return "
+                    <button class='btn btn-xs btn-primary customer-edit-btn' sid='$data->customer_id'>Edit</button>
                     <button class='btn btn-xs btn-danger customer-delete-btn' sid='$data->customer_id' sname='$data->name'>Delete</button>
                     ";
                 //return "Edit";
@@ -45,9 +46,10 @@ class CustomersController extends Controller
         $request->validate([
             'first_name'        => 'required|max:30',
             'last_name'         => 'required|max:30',
-            'middle_name'       => '',
+            'middle_name'       => 'required',
             'birthdate'         => '',
             'gender'            => '',
+            'address'           => 'required|max:100',
             'phone_number'      => 'required',
             'email'             => 'required|email|unique:customer,email',
             'password'          => 'required',
@@ -59,9 +61,9 @@ class CustomersController extends Controller
 
         $customer->first_name   = $request['first_name'];
         $customer->last_name    = $request['last_name'];
-        $customer->middle_name  =$request['middle_name'];
         $customer->birthdate    = $request['birthdate'];
         $customer->gender       = $request['gender'];
+        $customer->address      =  $request['address'];
         $customer->phone_number =  $request['phone_number'];
         $customer->email        =  $request['email'];
         $customer->password     =  md5($request['password']);

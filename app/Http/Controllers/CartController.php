@@ -55,17 +55,28 @@ class CartController extends Controller
     }
 
     public function cartShowCheckout(Request $request){
+        if($request->isMethod('post')) {
+            $request->validate([
+                'billing_address1' => 'required|max:100',
+                'billing_barangay' => 'required|max:100',
+                'billing_city' => 'required|max:100',
+                'billing_province' => 'required|max:100',
+                'billing_zipcode' => 'required|max:100',
+                'billing_country' => 'required|max:100',
+                'shipping_address1' => 'required|max:100',
+                'shipping_barangay' => 'required|max:100',
+                'shipping_city' => 'required|max:100',
+                'shipping_province' => 'required|max:100',
+                'shipping_zipcode' => 'required|max:100',
+                'shipping_country' => 'required|max:100',
+            ]);
+        }
+
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
 
-        if($request->isMethod('post')){
-            $data = $request->all();
-            // 
-            if(empty($data['billing_address1']) || (empty($data['billing_barangay']) || (empty($data['billing_city']) || (empty($data['billing_province']) || (empty($data['billing_zipcode']) || (empty($data['billing_country']) || (empty($data['shipping_address1']) || (empty($data['shipping_barangay']) || (empty($data['shipping_city']) || (empty($data['shipping_province']) || (empty($data['shipping_zipcode']) || (empty($data['shipping_country'])){
-                    return redirect()->back()->with('flash_message_error','Please fill all fields  to Checkout');
-            }
-        }
+
         return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
     }
 

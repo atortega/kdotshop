@@ -92,7 +92,7 @@ class PaypalController extends Controller
 
 		$amount = new Amount();
 		$amount->setCurrency("PHP")
-			->setTotal(Cart::total());
+			->setTotal((float) Cart::total());
 			// ->setDetails($details);
 
 		$transaction = new Transaction();

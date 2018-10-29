@@ -17,11 +17,9 @@ class Orders extends Model
 		'sku',
 		'delivery_method_id',
 		'order_date',
-		'date_updated',
 		'quantity',
 		'unit_price',
 		'total_amount',
-		'status',
-		
 	];
+
 }

@@ -8,6 +8,8 @@ class Delivery_methods extends Model
 {
     protected $table= 'delivery_methods';
 
+    protected $primaryKey = 'delivery_method_id';
+
     public $timestamp= false;
 
     protected $fillable=[

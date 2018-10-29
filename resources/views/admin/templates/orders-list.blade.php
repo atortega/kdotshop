@@ -3,6 +3,14 @@
 
 <head>
     @include('admin.templates.layout.header')
+     <style>
+        .imgThumb {
+            border-radius: 5px;
+            cursor: zoom-in;
+            transition: 0.3s;
+        }
+        .imgThumb:hover {opacity: 0.7;}
+    </style>
 </head>
 
 <body>
@@ -32,8 +40,10 @@
                             <tr>
                                 <th>Order Number</th>
                                 <th>Order Date</th>
+                                <th>Customer Name</th>
+                                <th>Delivery Method</th>
                                 <th>Status</th>
-                                <th>Method</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -43,12 +53,14 @@
                         var datatable = $('#table').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url('admin/orders/index') }}',
+                            ajax: '{{ url("admin/orders/index") }}',
                             columns: [
-                                { data: 'orderNumber', name: 'orderNumber' },
-                                { data: 'orderDate', name: 'orderDate' },
+                                { data: 'order_id', name: 'order_id' },
+                                { data: 'order_date', name: 'order_date' },
+                                { data: 'first_name', name: 'first_name' },
+                                { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'status', name: 'status' },
-                                { data: 'method', name: 'method' },
+                                { data: 'actions', name: 'actions', orderable: false }
                             ],
                             drawCallback: function( settings ) {
                                 if (settings.aoData.length > 0) {
@@ -64,62 +76,7 @@
                             }
                         });
 
-                        $('#table').on('click', '.color-edit-btn', function(){
-                            var size_id = $(this).attr('sid');
-                            $.get( "/colors/get/"+size_id, function( data ) {
-                                $("#description").val(data.description);
-                                $("#size").val(data.size);
-                                $("#size_id").val(size_id);
-                            });
-
-                            $('#myModal').modal('show');
-                        });
-
-                        $('#table').on('click', '.color-delete-btn', function(){
-                            var size_id = $(this).attr('sid');
-                            var size_name = $(this).attr('sname');
-                            bootbox.confirm({
-                                size: "small",
-                                message: "Are you sure to delete this color, "+color_name+"?",
-                                callback: function(result){
-                                    /* result is a boolean; true = OK, false = Cancel*/
-                                    if (result) {
-                                        $.ajax({
-                                            type: "POST",
-                                            data: {color_id: color_id, _token: $('meta[name="csrf-token"]').attr('content')},
-                                            cache: false,
-                                            url: '/admin/colors/delete',
-                                            success: function(data){
-                                                console.log(data);
-                                                datatable.draw('page');
-                                            },
-                                            error: function(){
-                                                // error handling
-                                            }
-                                        });
-                                    }
-                                }
-                            });
-                        });
-
-                        $('.save-changes').click(function() {
-                            $.ajax({
-                                type: "POST",
-                                //dataType: 'json',
-                                data: {description: $('#description').val(), color_id: $("#color_id").val(), _token: $('meta[name="csrf-token"]').attr('content')},
-                                cache: false,
-                                url: '/admin/colors/edit',
-                                success: function(data){
-                                    console.log(data);
-                                },
-                                error: function(){  // error handling
-
-                                }
-                            });
-                            //alert('Changes saved!');
-                            $('#myModal').modal('hide');
-                            datatable.draw('page');
-                        });
+              //cutted
 
                     });
 

@@ -1346,15 +1346,36 @@
 
 		// Shipping Checkbox
 		//-----------------------------------------------
-		if ($("#shipping-info-check").is(':checked')) {
-			$("#shipping-information").hide();
-		}
+		// if ($("#shipping-info-check").is(':checked')) {
+		// 	$("#shipping-information").hide();
+		// }
 		$("#shipping-info-check").change(function(){
 			if ($(this).is(':checked')) {
 				$("#shipping-information").slideToggle();
 			} else {
 				$("#shipping-information").slideToggle();
 			}
+		});
+
+
+		// Copy billing address to shipping address//
+		 $("#shipping-info-check").on('click', function(){
+		 	if(this.checked){
+				$("#shipping_address1").val($("#billing_address1").val());
+				$("#shipping_barangay").val($("#billing_barangay").val());
+				$("#shipping_city").val($("#billing_city").val());
+				$("#shipping_province").val($("#billing_province").val());
+				$("#shipping_zipcode").val($("#billing_zipcode").val());
+				$("#shipping_country").val($("#billing_country").val());
+			}else{
+				$("#shipping_address1").val('');
+				$("#shipping_barangay").val('');
+				$("#shipping_city").val('');
+				$("#shipping_province").val('');
+				$("#shipping_zipcode").val('');
+				$("#shipping_country").val('');
+			}
+			
 		});
 
 		// Full Width Image Overlay

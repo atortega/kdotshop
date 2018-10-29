@@ -58,42 +58,29 @@ class PaypalController extends Controller
 		// supposedly, this is to fetch data from Cart::content
 		foreach(Cart::content() as $cart){
 
-			// $itemDetail=[
-			// 	'name' => $cart->name,
-			// 	'price' => $cart->price,
-			// 	'qty' => $cart->qty
-			// ];
+			$item_detail = new Item();
 
-			$data = new Item();
-
-			$data->setName($cart->name) /** item name **/
+            $item_detail->setName($cart->name) /** item name **/
 			->setCurrency('PHP')
 			->setQuantity($cart->qty)
-			// ->setSku("123123") Similar to `item_number` in Classic API
+			//->setSku("123123") // Similar to `item_number` in Classic API
 			->setPrice($cart->price); /** unit price **/
 
-			// $data['items'][]=$itemDetail;
+			$data['items'][]=$item_detail;
 		}
-
-		// $data['invoice_id'] = uniqid();
-		// $data['invoice_description'] = "test invoice";
-		// $data['return_url'] = route('payment.store');
-		// $data['cancel_url'] = url('/test');
-		// $data['total'] = Cart::total();
-
 
 		$item_list = new ItemList();
 		$item_list->setItems(array($data));
 
 		$details = new Details();
 		// $details->setShipping(1.2)
-		// 	->setTax(1.3)
-		// 	->setSubtotal(17.50);
+		$details->setTax(0)
+		 	->setSubtotal((float) str_replace(",", "", Cart::total()));
 
 		$amount = new Amount();
 		$amount->setCurrency("PHP")
-			->setTotal((float) Cart::total());
-			// ->setDetails($details);
+			->setTotal((float) str_replace(",", "", Cart::total()))
+			->setDetails($details);
 
 		$transaction = new Transaction();
 		$transaction->setAmount($amount)
@@ -110,8 +97,7 @@ class PaypalController extends Controller
 		$payment->setIntent('Sale')
 			->setPayer($payer)
 			->setRedirectUrls($redirect_urls)
-			->setTransactions(array($transaction));
-			/** dd($payment->create($this->_api_context));exit; **/
+			->setTransactions([$transaction]);
 
 		try {
 

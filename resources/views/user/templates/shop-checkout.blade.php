@@ -133,9 +133,10 @@
 								@endforeach
 
 								<!-- <tr>                    
-								<td class="total-quantity" colspan="2">Discount Coupon</td>
-								<td class="price">TheProject25672</td>
-								<td class="amount">-20%</td>
+								<td class="shipping_fee" colspan="6">Shipping Fee</td>
+											₱ {{59.00}}
+																	
+
 								</tr> -->
 
 								<tr>

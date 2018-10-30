@@ -69,13 +69,29 @@ class CartController extends Controller
                 'shipping_province' => 'required|max:100',
                 'shipping_zipcode' => 'required|max:100',
                 'shipping_country' => 'required|max:100',
+
             ]);
+            // return redirect()->back()->with('flash_message_error', 'Please fill all fields');
         }
 
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
 
+        $customer_address->billing_address1     = $request['billing_address1'];
+        $customer_address->billing_barangay     = $request['billing_barangay'];
+        $customer_address->billing_city         = $request['billing_city'];
+        $customer_address->billing_province     = $request['billing_address1'];
+        $customer_address->billing_zipcode      = $request['billing_zipcode'];
+        $customer_address->billing_country      = $request['billing_country'];
+        $customer_address->shipping_address1    = $request['shipping_address1'];
+        $customer_address->shipping_barangay    = $request['shipping_barangay'];
+        $customer_address->shipping_city        = $request['shipping_city'];
+        $customer_address->shipping_province    = $request['shipping_province'];
+        $customer_address->shipping_zipcode     = $request['shipping_zipcode'];
+        $customer_address->shipping_country     = $request['shipping_country'];
+
+        $customer_address->save();
 
         return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
     }

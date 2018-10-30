@@ -182,20 +182,7 @@
                                 processData: false,
                                 contentType: false,
 
-                                /*
-                                data: { product_id: $("#product_id").val(),
-                                    category_id: $("#category_id").val(),
-                                    sub_category_id: $("#sub_category_id").val(),
-                                    category_name: $("#category_name").val(),
-                                    sub_category_name: $("#sub_category_name").val(),
-                                    product_name: $("#product_name").val(),
-                                    price: $("#price").val(),
-                                    size: $("#size").val(),
-                                    color: $("#color").val(),
-                                    product_desc: $("#product_desc").val(),
-                                    product_image: $("#product_image").val(),
-                                    _token: $('meta[name="csrf-token"]').attr('content')},
-                                    */
+
                                 data: formData,
                                 cache: true,
                                 url: '/admin/products/edit',

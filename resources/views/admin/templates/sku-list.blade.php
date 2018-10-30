@@ -111,22 +111,20 @@
                         $('#table').on('click', '.sku-edit-btn', function(){
                             var sku_id = $(this).attr('sid');
                             console.log('id: '+sku_id);
-                            $.get( "/sku/get/"+product_id, function( data ) {
+                            $.get( "/sku/get/"+sku_id, function( data ) {
                                 console.log(data);
                                 console.log('id'+sku_id);
                                 console.log(data[0].product_image);
-                                if (data[0].product_image != null) {
-                                    $('#image-preview').html('<img id="theImg" src="/storage/'+data[0].product_image+'" width="150"/>');
-                                } else {
-                                    $('#image-preview').html('');
-                                }
-                                $("#product_id").val(product_id);
+
+                                $("input[name='sku_id']").val(data[0].id);
+                                $("#product_id").val(data[0].product_id);
                                 $("#category_id").val(data[0].category_id);
                                 $("#sub_category_id").val(data[0].sub_category_id);
                                 $("#category_name").val(data[0].category_name);
                                 $("#sub_category_name").val(data[0].sub_category_name);
                                 $("#product_name").val(data[0].product_name);
-                                $("#product_desc").val(data[0].product_desc);
+                                $("#color").val(data[0].color_id);
+                                $("#size").val(data[0].size_id);
                                 $("#quantity").val(data[0].number_of_items);
                                 $("#price").val(data[0].unit_price);
                             });
@@ -166,18 +164,11 @@
                         $('.save-changes').click(function() {
                             var form = $(this).closest('form');
                             var formData = new FormData();
-                            formData.append('product_image', $('#product_image').prop('files')[0]);
-                            formData.append('product_id', $("input[name='product_id']").val());
-                            formData.append('category_id', $("input[name='category_id']").val());
-                            formData.append('sub_category_id', $("input[name='sub_category_id']").val());
-                            formData.append('category_name', $("input[name='category_name']").val());
-                            formData.append('sub_category_name', $("input[name='sub_category_name']").val());
-                            formData.append('product_name', $("input[name='product_name']").val());
+                            formData.append('sku_id', $("input[name='sku_id']").val());
                             formData.append('price', $("input[name='price']").val());
                             formData.append('quantity', $("input[name='quantity']").val());
                             formData.append('size', $("#size").val());
                             formData.append('color', $("#color").val());
-                            formData.append('product_desc', $("input[name='product_desc']").val());
                             formData.append('_token', $("input[name='_token']").val());
                             $.ajax({
                                 async: true,
@@ -186,23 +177,9 @@
                                 processData: false,
                                 contentType: false,
 
-                                /*
-                                data: { product_id: $("#product_id").val(),
-                                    category_id: $("#category_id").val(),
-                                    sub_category_id: $("#sub_category_id").val(),
-                                    category_name: $("#category_name").val(),
-                                    sub_category_name: $("#sub_category_name").val(),
-                                    product_name: $("#product_name").val(),
-                                    price: $("#price").val(),
-                                    size: $("#size").val(),
-                                    color: $("#color").val(),
-                                    product_desc: $("#product_desc").val(),
-                                    product_image: $("#product_image").val(),
-                                    _token: $('meta[name="csrf-token"]').attr('content')},
-                                    */
                                 data: formData,
                                 cache: true,
-                                url: '/admin/products/edit',
+                                url: '/admin/sku/edit',
                                 success: function(data2){
                                     console.log(data2);
                                     datatable.draw('page');
@@ -290,7 +267,7 @@
                 <div class="modal-body">
                     <form name="updateForm" id="updateForm" >
                         {{ csrf_field() }}
-                        <input type="hidden" name="product_id" id="product_id">
+                        <input type="hidden" name="sku_id" id=sku_id">
                         <div id="form-errors"></div>
                         <div class="form-group" hidden>
                             <label for="product_id">Product ID</label>
@@ -298,27 +275,24 @@
                                 name="product_id" placeholder="" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="category_id">Category ID</label>
+                            <label for="product_name">Product Name</label>
+                            <input type="text" class="form-control" id="product_name"
+                                   name="product_name" placeholder="Enter Product Name" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="category_id">Category</label>
                             <input type="hidden" class="form-control" id="category_id" name="category_id">
                             <input type="text" class="form-control" id="category_name"
                                    name="category_name" placeholder="Enter Category Name" disabled>
                         </div>
                         <div class="form-group">
-                            <label for="sub_category_id">Sub Category ID</label>
+                            <label for="sub_category_id">Sub Category</label>
                             <input type="hidden" class="form-control" id="sub_category_id" name="sub_category_id">
                             <input type="text" class="form-control" id="sub_category_name"
                                    name="sub_category_name" placeholder="" disabled>
                         </div>
-                        <div class="form-group">
-                            <label for="product_name">Product Name</label>
-                            <input type="text" class="form-control" id="product_name"
-                                name="product_name" placeholder="Enter Product Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="product_desc">Description</label>
-                            <input type="text" class="form-control" id="product_desc"
-                                name="product_desc" placeholder="Enter Product Description">
-                        </div>
+
+
 
                         <div class="form-group">
                             <label for="category">Color</label>
@@ -350,12 +324,7 @@
                             <input type="text" class="form-control" id="price" name="price" placeholder="Enter the unit price per item" value="">
                         </div>
 
-                        <div class="form-group" id="image-preview"></div>
 
-                        <div class="form-group">
-                            <label for="product_image">Product Image</label>
-                            <input type="file" id="product_image" name="product_image" placeholder="Enter Product Image" required='require' value="">
-                        </div>
                     </form>
                 </div>
 

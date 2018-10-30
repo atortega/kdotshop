@@ -12,6 +12,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
+
         $categories = Datatables::of(Categories::query())
             ->addColumn('actions', function ($data) {
                 return "
@@ -38,11 +39,13 @@ class CategoriesController extends Controller
         $request->validate([
             'category' => 'bail|required|unique:categories,category_name|max:30',
             'description' => 'required|max:100',
+            'category_image' => 'required',
         ]);
 
         $category = new Categories();
         $category->category_name = $request['category'];
         $category->category_desc = $request['description'];
+        $category->category_image = $request['category_image'];
         $category->save();
 
         return redirect()->back()->with('message', 'New product category has been added.');
@@ -64,10 +67,12 @@ class CategoriesController extends Controller
     {
         $request->validate([
             'description' => 'required|max:100',
+            'category_image' =>'required',
         ]);
 
         $category = Categories::where('category_id', $request['category_id'])->first();
         $category->category_desc = $request['description'];
+        $category->category_image = $request['category_image'];
 
         $category->save();
 

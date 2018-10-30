@@ -18,6 +18,8 @@ use App\Models\Customers;
 use App\Models\Country;
 use App\Models\CustomersAddress;
 use App\Models\Delivery_methods;
+use App\Models\Payments;
+use App\Models\Payment_methods;
 
 use App\Models\Orders;
 
@@ -28,16 +30,24 @@ class OrdersController extends Controller
         $customer = Customers::orderBy('first_name')->get();
         $delivery_methods = Delivery_methods::orderBy('delivery_method_name')->get();
 
+        /*$payment_methods = DB::table('payment_methods')
+            ->join('orders', 'order_id', '=', 'payments.payment_id')
+            ->join('payment_methods', 'payment_methods.payment_method_id', '=', 'orders.order_id')
+            ->select('payment_method_name')
+            ->get();*/
+
         $orders = DB::table('orders')
-            ->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
-            ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
-            ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name')
+            ->join('customer', 'orders.customer_id', '=', 'customer.customer_id')
+            ->join('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
+            ->join('orders', 'order_id', '=', 'payments.payment_id')
+            ->join('payment_methods', 'payment_methods.payment_method_id', '=', 'orders.order_id')
+            ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
             ->get();
 
         $datatables = Datatables::of($orders)
             ->addColumn('actions', function ($data) {
                     return "
-                        <button class='btn btn-xs btn-primary size-edit-btn' sid='$data->color_id'>View Details</button>
+                        <button class='btn btn-xs btn-primary size-edit-btn' sid='$data->order_id'>View Details</button>
                         ";
                 })
                 ->escapeColumns('actions')

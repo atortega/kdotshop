@@ -34,6 +34,7 @@
                             <tr>
                                 <th>Category</th>
                                 <th>Description</th>
+                                <th>Category Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -49,6 +50,7 @@
                             columns: [
                                 { data: 'category_name', name: 'category_name' },
                                 { data: 'category_desc', name: 'category_desc' },
+                                { data: 'category_image', name: 'category_image' },
                                 { data: 'actions', name: 'actions' },
                             ],
                             drawCallback: function( settings ) {
@@ -68,6 +70,7 @@
                         $('#table').on('click', '.category-edit-btn', function(){
                             var category_id = $(this).attr('sid');
                             $.get( "/categories/get/"+category_id, function( data ) {
+                                $("category_image").val(data.category_image);
                                 $("#description").val(data.category_desc);
                                 $("#category_name").val(data.category_name);
                                 $("#category_id").val(category_id);
@@ -104,6 +107,7 @@
                             });
                         });
 
+
                         $('.save-changes').click(function() {
                             console.log("Cat: " + $("#category_id").val());
                             $.ajax({
@@ -111,6 +115,7 @@
                                 dataType: 'json',
                                 data: { description: $('#description').val(),
                                         category_id: $("#category_id").val(),
+                                        category_image: $("#category_image").val(),
                                         _token: $('meta[name="csrf-token"]').attr('content')},
                                 cache: false,
                                 url: '/admin/categories/edit',
@@ -125,7 +130,6 @@
                             $('#myModal').modal('hide');
                             datatable.draw('page');
                         });
-
                     });
 
 
@@ -169,6 +173,10 @@
                     <div class="form-group">
                         <label for="description">Description</label>
                         <input type="text" class="form-control" id="description" name="description" placeholder="Category Description">
+                    </div>
+                    <div class="form-group">
+                        <label for="product_image">Category Image</label>
+                        <input type="file" id="category_image" name="category_image" placeholder="Enter Category Image" required='require' value="">
                     </div>
                 </div>
                 <div class="modal-footer">

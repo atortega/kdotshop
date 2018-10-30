@@ -52,6 +52,10 @@
                             <label for="description">Description</label>
                             <input type="text" class="form-control" id="description" name="description" placeholder="Category Description">
                         </div>
+                        <div class="form-group">
+                            <label for="description">Category Image</label>
+                            <input type="file" class="" id="category_image" name="category_image" placeholder="Category Image">
+                        </div>
                         
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

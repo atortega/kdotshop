@@ -42,7 +42,7 @@
                             {{ session()->get('message') }}
                         </div>
                     @endif
-                    <form role="form" method="post" action="/admin/categories/create/save">
+                    <form role="form" method="post" action="/admin/categories/create/save" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="category">Category</label>

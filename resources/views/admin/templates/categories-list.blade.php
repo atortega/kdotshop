@@ -50,7 +50,15 @@
                             columns: [
                                 { data: 'category_name', name: 'category_name' },
                                 { data: 'category_desc', name: 'category_desc' },
-                                { data: 'category_image', name: 'category_image' },
+                                { data: 'category_image',
+                                    "render": function(data, type, row) {
+                                        if (data) {
+                                            return '<img src="/storage/' + data + '" class="img-rounded img-responsive object-fit_fill imgZoomModal imgThumb" style="border:0px;" width="75" id="image-' + category_id + '" imgid="' + category_id + '"" alt="' + category_name + '"/>';
+                                        } else {
+                                            return '';
+                                        }
+                                    }, orderable: false
+                                },
                                 { data: 'actions', name: 'actions' },
                             ],
                             drawCallback: function( settings ) {
@@ -110,17 +118,23 @@
 
                         $('.save-changes').click(function() {
                             console.log("Cat: " + $("#category_id").val());
+                            var form = $(this).closest('form');
+                            var formData = new FormData();
+                            formData.append('category_image', $('#category_image').prop('files')[0]);
+                            formData.append('description', $('#description').val());
+                            formData.append('category_id', $('#category_id').val());
+                            formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
                             $.ajax({
                                 type: "POST",
                                 dataType: 'json',
-                                data: { description: $('#description').val(),
-                                        category_id: $("#category_id").val(),
-                                        category_image: $("#category_image").val(),
-                                        _token: $('meta[name="csrf-token"]').attr('content')},
+                                processData: false,
+                                contentType: false,
+                                data: formData,
                                 cache: false,
                                 url: '/admin/categories/edit',
                                 success: function(data){
                                     console.log(data);
+                                    datatable.draw('page');
                                 },
                                 error: function(e){  // error handling
                                     console.log(e);

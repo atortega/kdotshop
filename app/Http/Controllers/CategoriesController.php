@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
+use Image;
 use Datatables;
 
 use App\Models\Categories;
@@ -42,10 +43,14 @@ class CategoriesController extends Controller
             'category_image' => 'required',
         ]);
 
+        $path = '';
+        if ($request->hasfile('category_image')) {
+            $path = Storage::putFile('products/categories', $request->category_image, 'public');
+        }
         $category = new Categories();
         $category->category_name = $request['category'];
         $category->category_desc = $request['description'];
-        $category->category_image = $request['category_image'];
+        $category->category_image = $path;
         $category->save();
 
         return redirect()->back()->with('message', 'New product category has been added.');
@@ -66,13 +71,20 @@ class CategoriesController extends Controller
     public function editProductCategory(Request $request)
     {
         $request->validate([
-            'description' => 'required|max:100',
-            'category_image' =>'required',
+            'description' => 'required|max:200',
         ]);
+
+        if ($request->hasfile('category_image')) {
+            $path = Storage::putFile('products/categories', $request->category_image, 'public');
+        }
 
         $category = Categories::where('category_id', $request['category_id'])->first();
         $category->category_desc = $request['description'];
-        $category->category_image = $request['category_image'];
+
+        if ($request->hasfile('category_image')) {
+            $category->category_image = $path;
+        }
+
 
         $category->save();
 

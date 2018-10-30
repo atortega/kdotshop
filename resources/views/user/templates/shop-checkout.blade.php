@@ -151,6 +151,7 @@
 						</table>
 
 						<div class="space-bottom"></div>
+						<form class="form-horizontal" action="{{ url('/cartShowCheckout/submit')}}" method="post">{{ csrf_field()}}
 							@if(session()->has('flash_message_error'))
 				                <div class="alert alert-error alert-block" style="background-color:#f4d2d2">
 				                    <button type="button" class="close" data-dismiss="alert"></button>
@@ -160,7 +161,7 @@
 
 						<fieldset>
 							<legend>Billing information</legend>
-							<form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
+
 								<!-- <div class="row">
 									<div class="col-xl-3">
 										<h3 class="title">Personal Information</h3>
@@ -319,7 +320,7 @@
 										</div>
 									-->
 								</div>
-							</form>
+
 						</fieldset>
 
 						<fieldset>
@@ -493,11 +494,14 @@
 							<a href="/shop-cart" class="btn btn-group btn-default">
 								Go Back To Cart
 							</a>
+							<!--
 							<a href="/shop-checkoutPayment" class="btn btn-group btn-default">
 								Next Step
 							</a>
+							-->
+							<button type="submit" class="btn btn-group btn-default">Next Step</button>
 						</div>
-
+						</form>
 					</div>
 					<!-- main end -->
 				</div>

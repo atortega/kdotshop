@@ -14,7 +14,7 @@ class PlacesTableSeeder extends Seeder
     {
         $csv = database_path('seeds/csv/places.csv');
         $excel = App::make('excel');
-
+        Places::truncate();
         $data = $excel->load($csv, function($reader) {
             $results = $reader->all();
             foreach($results as $row) {

@@ -1,16 +1,16 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
+use Illuminate\Database\Eloquent\Model;
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+    protected $toTruncate = ['places'];
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        Model::unguard();
+        foreach($this->toTruncate as $places) {
+            DB::table($places)->truncate();
+        }
+        $this->call(PlacesTableSeeder::class);
+        Model::reguard();
     }
 }

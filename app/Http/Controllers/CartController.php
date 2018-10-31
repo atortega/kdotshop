@@ -15,7 +15,8 @@ use App\Models\Country;
 use App\Models\Sizes;
 use App\Models\CustomersAddress;
 use App\Models\Places;
-
+use App\Models\Cities;
+use App\Models\Provinces;
 // use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class CartController extends Controller
@@ -79,6 +80,8 @@ class CartController extends Controller
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
         $places = Places::orderBy('place')->get();
+        $cities = Cities::orderBy('cities')->get();
+        $provinces = provinces::orderBy('provinces')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
 
         $customer_address->billing_address1     = $request['billing_address1'];
@@ -96,15 +99,17 @@ class CartController extends Controller
 
         $customer_address->save();
 
-        return view('user.templates.shop-checkout',['places' =>$places,'cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
+        return view('user.templates.shop-checkout',['places' =>$places,'cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries,  'cities' => $cities , 'provinces' => $provinces]);
     }
 
     public function cartShowCheckoutReview(){
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
-        $places = Places::ordeBy('place')->get();
+        $places = Places::orderBy('place')->get();
+        $cities = Cities::orderBy('cities')->get();
+        $provinces = provinces::orderBy('provinces')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
-        return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries , 'places' =>$places]);
+        return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries , 'places' =>$places ,  'cities' => $cities , 'provinces' => $provinces]);
         
      }
 

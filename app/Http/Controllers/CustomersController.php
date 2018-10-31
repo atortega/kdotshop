@@ -15,6 +15,8 @@ use App\Models\Customers;
 use App\Models\Country;
 use App\Models\CustomersAddress;
 use App\Models\Places;
+use App\Models\Cities;
+use App\Models\Provinces;
 
 
 class CustomersController extends Controller
@@ -355,7 +357,10 @@ class CustomersController extends Controller
     public function AddressViewForm()
     {
         $countries = Country::orderBy('code')->get();
-        $places = Places::ordeBy('place')->get();
+        $cities = Cities::ordeBy('cities')->get();
+        $provinces = provinces::ordeBy('provinces')->get();
+
+
         $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
         if (!$address) {
             $address = new CustomersAddress();
@@ -372,7 +377,7 @@ class CustomersController extends Controller
             $address->shipping_zipcode  = '';
             $address->shipping_country  = '';
         }
-        return view('user.templates.addresses', ['places' =>$places, 'countries' => $countries, 'user' => $address ]);
+        return view('user.templates.addresses', ['places' =>$places, 'countries' => $countries, 'user' => $address , 'cities' => $cities , 'provinces' => $provinces]);
 
     }
     

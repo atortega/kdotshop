@@ -257,7 +257,15 @@
 												<strong class="text-default" style="font-size: 18px;"> *</strong>
 											</label>
 											<div class="col-lg-9">
-												<input id="billing_city" type="text" class="form-control" name="billing_city" value="{{ $user->billing_city }}">
+												<select class="form-control" id="billing_city" name="billing_city">
+                                            		@foreach($cities as $city)
+	                                                <option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
+
+
+
+                                            		@endforeach
+
+                                        		</select>
 											</div>
 										</div>
 
@@ -269,7 +277,15 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}">
+												<select class="form-control" id="billing_province" name="billing_province">
+                                            		@foreach($provinces as $province)
+	                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+
+
+
+                                            		@endforeach
+
+                                        		</select>
 											</div>
 										</div>
 
@@ -412,8 +428,15 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input class="form-control" id="shipping_barangay"
-													type="text" name="shipping_barangay" value="">
+												<select class="form-control" id="shipping_barangay" name="shipping_barangay">
+                                            		@foreach($places as $barangay)
+	                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+
+
+
+                                            		@endforeach
+
+                                        		</select>
 											</div>
 										</div>
 
@@ -425,7 +448,15 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input id="shipping_city" type="text" class="form-control" name="shipping_city" value="">
+												<select class="form-control" id="shipping_city" name="shipping_city">
+                                            		@foreach($cities as $city)
+	                                                <option value="{{$city->cities}}" {{ $city->cities == $user->shipping_city ? 'selected' : '' }}> {{$city->cities}}</option>
+
+
+
+                                            		@endforeach
+
+                                        		</select>
 											</div>
 										</div>
 
@@ -437,7 +468,15 @@
 											</label>
 											<div class="col-lg-9">
 
-												<input id="shipping_province" type="text" class="form-control" name="shipping_province" value="">
+												<select class="form-control" id="shipping_province" name="shipping_province">
+                                            		@foreach($provinces as $province)
+	                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+
+
+
+                                            		@endforeach
+
+                                        		</select>
 											</div>
 										</div>
 										<div class="form-group has-feedback row">

@@ -14,6 +14,8 @@ use App\Models\Customers;
 use App\Models\Country;
 use App\Models\Sizes;
 use App\Models\CustomersAddress;
+use App\Models\Places;
+
 // use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 class CartController extends Controller
@@ -76,6 +78,7 @@ class CartController extends Controller
 
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
+        $places = Places::orderBy('place')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
 
         $customer_address->billing_address1     = $request['billing_address1'];
@@ -93,14 +96,15 @@ class CartController extends Controller
 
         $customer_address->save();
 
-        return view('user.templates.shop-checkout',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
+        return view('user.templates.shop-checkout',['places' =>$places,'cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
     }
 
     public function cartShowCheckoutReview(){
         $cartProducts = Cart::Content();
         $countries = Country::orderBy('code')->get();
+        $places = Places::ordeBy('place')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
-        return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries]);
+        return view('user.templates.shop-checkoutReview',['cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries , 'places' =>$places]);
         
      }
 

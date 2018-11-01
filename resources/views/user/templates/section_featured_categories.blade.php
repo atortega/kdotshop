@@ -12,7 +12,7 @@
         <div class="listing-item pl-10 pr-10 mb-20">
             <div class="overlay-container bordered overlay-visible">
                 <img src="{{ URL::asset("storage/$category->category_image") }}" alt="">
-                <a class="overlay-link" href="#"></a>
+                <a class="overlay-link" href="{{ url('/product/' . $category->category_id) }}" value=""></a>
                 <div class="overlay-bottom">
                     <div class="text">
                         <h3 class="title">{{ $category->category_name }}</h3>

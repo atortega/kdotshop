@@ -25,6 +25,7 @@ Route::get('/customers/get/{id}', 'CustomersController@getCustomerById');
 Route::get('/categories/get/{id}', 'CategoriesController@getProductCategoryById');
 Route::get('/sub-categories/get/{id}', 'SubCategoriesController@getProductSubCategoryById');
 
+Route::get('/sku/get/{id}', 'SkuController@getSkuByID');
 
 // U S E R . A C C O U N T S
 Auth::routes();
@@ -232,7 +233,9 @@ Route::group(['middleware' => 'auth' ], function() {
             //SKUs
             Route::get('/sku', 'SkuController@listSKUs');
             Route::get('/sku/index', 'SkuController@index');
-
+            Route::post('/sku/edit', 'SkuController@editSKU');
+            Route::get('/sku/create', 'SkuController@createSkuForm');
+            Route::post('/sku/create/save', 'SkuController@addNewSKU');
 
             //Orders
             Route::get('/orders/index', 'OrdersController@index');

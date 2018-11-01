@@ -119,6 +119,10 @@
                     <td class="price">TheProject25672</td>
                     <td class="amount">-20%</td>
                   </tr> -->
+                <tr>                    
+                  <td class="shipping_fee" colspan="6">Shipping Fee</td>
+                     <!--  ₱ {{59.00}} -->
+                </tr>
                   <tr>
                     <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
                     

@@ -11,13 +11,13 @@
     @foreach ($categories as $category)
         <div class="listing-item pl-10 pr-10 mb-20">
             <div class="overlay-container bordered overlay-visible">
-<<<<<<< HEAD
+
                 <img src='{{ asset("storage/$category->category_image") }}'  alt="">
                 <a class="overlay-link" href="#"></a>
-=======
+
                 <img src="{{ URL::asset('image/templates/category-1.jpg') }}" alt="">
                 <a class="overlay-link" href='{{ asset("/product/$category->category_id") }}'><i class="fa fa-plus"></i></a>
->>>>>>> acf4be36e930671b99b0c91a8b3fd3d5b7190964
+
                 <div class="overlay-bottom">
                     <div class="text">
                         <h3 class="title">{{ $category->category_name }}</h3>

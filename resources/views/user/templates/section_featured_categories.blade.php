@@ -11,8 +11,8 @@
     @foreach ($categories as $category)
         <div class="listing-item pl-10 pr-10 mb-20">
             <div class="overlay-container bordered overlay-visible">
-                <img src="{{ URL::asset('image/templates/category-1.jpg') }}" alt="">
-                <a class="overlay-link" href="#"><i class="fa fa-plus"></i></a>
+                <img src='{{ asset("storage/$category->category_image") }}'  alt="">
+                <a class="overlay-link" href="#"></a>
                 <div class="overlay-bottom">
                     <div class="text">
                         <h3 class="title">{{ $category->category_name }}</h3>

@@ -39,7 +39,9 @@ class OrdersController extends Controller
         $orders = DB::table('orders')
             ->join('customer', 'orders.customer_id', '=', 'customer.customer_id')
             ->join('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
-            ->join('orders', 'order_id', '=', 'payments.payment_id')
+            ->join('orders', 'order_id.payment_id
+
+                ', '=', 'payments.payment_id')
             ->join('payment_methods', 'payment_methods.payment_method_id', '=', 'orders.order_id')
             ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
             ->get();

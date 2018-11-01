@@ -158,25 +158,65 @@
                             @endif
 
                         <fieldset>
-                            <legend>How do you want to get your Item?</legend>
-                            <form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
-
-                                <div class="checkbox padding-top-clear form-check">
-                                    <div class="form-check" for="shipping-info-check">
-                                        <form action="">
-										 	<input type="radio" name="delivery_method" value="delivery" id="delivery" checked> Delivery<br>
-											<input type="radio" name="delivery_method" value="pickup" id="pickup"> Pick-up<br>
-										</form>
-                                    </div>
-                                </div>
-                            </form>
-                        </fieldset>
-
-
-                        <fieldset id="fieldset">
                             <legend>Billing information</legend>
                             <form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
-  
+                                <!-- <div class="row">
+                                    <div class="col-xl-3">
+                                        <h3 class="title">Personal Information</h3>
+                                    </div>
+
+                                    <div class="col-xl-8 ml-xl-auto">
+                                        <div class="form-group has-feedback row">
+                                            <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                for="billingFirstName">
+                                                First Name
+                                            <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                            </label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
+                                                    type="text" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group has-feedback row">
+                                            <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                for="billingLastName">
+                                                Last Name
+                                                <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                            </label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
+                                                    type="text" name="last_name" value="{{ Auth::user()->last_name }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group has-feedback row">
+                                            <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                for="billingTel">
+                                                Contact Number
+                                                <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                            </label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
+                                                    type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group has-feedback row">
+                                            <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                for="billingemail" >
+                                                E-mail
+                                                <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                            </label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                                    type="text" name="email" value="{{ Auth::user()->email }}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="space"></div> -->
                                 <div class="row">
                                     <div class="col-xl-3">
                                         <h3 class="title">Your Address</h3>
@@ -265,16 +305,83 @@
                                 <div class="space"></div>
 
                                 <div class="row">
-
+                                    <!--
+                                        <div class="col-xl-3">
+                                            <h3 class="title mt-5 mt-lg-0">Additional Info</h3>
+                                        </div>
+                                        <div class="col-xl-8 ml-xl-auto">
+                                            <div class="form-group row">
+                                                <div class="col-12">
+                                                    <textarea class="form-control" rows="4"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    -->
                                 </div>
                             </form>
                         </fieldset>
 
-                        <fieldset id="pakpak">
+                        <fieldset>
                             <legend>Shipping information</legend>
                             <!-- <form class="form-horizontal"> -->
                                 <div id="shipping-information" class="space-bottom">
+                                    <!-- <div class="row">
+                                        <div class="col-xl-3">
+                                            <h3 class="title mt-5 mt-lg-0">Personal Information</h3>
+                                        </div>
+                                        
+                                        <div class="col-xl-8 ml-xl-auto">
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                    for="shippingFirstName" >
+                                                    First Name
+                                                    <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                                </label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" id="shippingFirstName"
+                                                        type="text" placeholder="First Name">
+                                                </div> 
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                    for="shippingLastName">
+                                                    Last Name
+                                                    <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                                </label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" id="shippingLastName"
+                                                        type="text" placeholder="Last Name">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                    for="shippingTel">
+                                                    Contact Number
+                                                    <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                                </label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" id="shippingTel"
+                                                        type="text" placeholder="Contact Number">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 control-label text-lg-right col-form-label"
+                                                    for="shippingemail">
+                                                    E-mail
+                                                    <strong class="text-default" style="font-size: 18px;"> *</strong>
+                                                </label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" id="shippingemail"
+                                                        type="email" placeholder="E-mail">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     
+                                    <div class="space"></div> -->
                                     <div class="row">
                                         <div class="col-xl-3">
                                             <h3 class="title mt-5 mt-lg-0">Your Address</h3>
@@ -408,39 +515,6 @@
     <!-- ================================================== -->
     <!-- Jquery and Bootstap core js files -->  
 
-<script>
-        $(function() {
-            $("#pickup").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#fieldset").hide();
-                } else {
-                    $("#fieldset").show();
-                }
-            });
-            $("#delivery").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#fieldset").show();
-                } else {
-                    $("#fieldset").hide();
-                }
-            });
-        });
-         $(function() {
-            $("#pickup").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#pakpak").hide();
-                } else {
-                    $("#pakpak").show();
-                }
-            });
-            $("#delivery").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#pakpak").show();
-                } else {
-                    $("#pakpak").hide();
-                }
-            });
-        });
-    </script>
+
 </body>
 </html>

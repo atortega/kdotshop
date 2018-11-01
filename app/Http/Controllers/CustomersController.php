@@ -22,7 +22,6 @@ class CustomersController extends Controller
         $customers = Datatables::of(Customers::query())
             ->addColumn('actions', function ($data) {
                 return "
-                    <button class='btn btn-xs btn-primary customer-edit-btn' sid='$data->customer_id'>Edit</button>
                     <button class='btn btn-xs btn-danger customer-delete-btn' sid='$data->customer_id' sname='$data->name'>Delete</button>
                     ";
                 //return "Edit";

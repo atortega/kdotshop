@@ -356,8 +356,9 @@ class CustomersController extends Controller
     public function AddressViewForm()
     {
         $countries = Country::orderBy('code')->get();
-        $cities = Cities::ordeBy('cities')->get();
-        $provinces = provinces::ordeBy('provinces')->get();
+        $places = Places::orderBy('place')->get();
+        $cities = Cities::orderBy('cities')->get();
+        $provinces = provinces::orderBy('provinces')->get();
 
 
         $address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();

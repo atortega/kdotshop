@@ -136,7 +136,7 @@
 						<!-- pills start -->
 						<!-- ================ -->
 						<!-- Nav tabs -->
-						<ul class="nav nav-pills" role="tablist">
+						<!-- <ul class="nav nav-pills" role="tablist">
 							<li class="nav-item">
 								<a class="nav-link active" href="#pill-1" role="tab" data-toggle="tab" title="Latest Arrivals">
 									<i class="fa fa-star"></i> Latest Arrivals
@@ -152,7 +152,7 @@
 									<i class=" fa fa-arrow-up"></i> Top Sellers
 								</a>
 							</li>
-						</ul>
+						</ul> -->
 						<!-- Tab panes -->
 						<div class="tab-content clear-style">
 							<div class="tab-pane active" id="pill-1">

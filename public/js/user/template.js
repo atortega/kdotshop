@@ -1378,6 +1378,41 @@
 			
 		});
 
+		 $(function() {
+            $("#pickup").click(function() {
+                if ($(this).prop('checked')) {
+                    $("#fieldset").hide();
+                } else {
+                    $("#fieldset").show();
+                }
+            });
+            $("#delivery").click(function() {
+                if ($(this).prop('checked')) {
+                    $("#fieldset").show();
+                } else {
+                    $("#fieldset").hide();
+                }
+            });
+        });
+         $(function() {
+            $("#pickup").click(function() {
+                if ($(this).prop('checked')) {
+                    $("#pakpak").hide();
+                } else {
+                    $("#pakpak").show();
+                }
+            });
+            $("#delivery").click(function() {
+                if ($(this).prop('checked')) {
+                    $("#pakpak").show();
+                } else {
+                    $("#pakpak").hide();
+                }
+            });
+        });
+
+		 
+
 		// Full Width Image Overlay
 		//-----------------------------------------------
 		if ($(".full-image-overlay").length>0) {

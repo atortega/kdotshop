@@ -81,7 +81,7 @@ class CartController extends Controller
         $countries = Country::orderBy('code')->get();
         $places = Places::orderBy('place')->get();
         $cities = Cities::orderBy('cities')->get();
-        $provinces = provinces::orderBy('provinces')->get();
+        $provinces = Provinces::orderBy('provinces')->get();
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
 
         $customer_address->billing_address1     = $request['billing_address1'];

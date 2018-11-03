@@ -1347,7 +1347,7 @@
 		// Shipping Checkbox
 		//-----------------------------------------------
 		if ($("#shipping-info-check").is(':checked')) {
-			$("#shipping-information").show();
+			$("#shipping-information").hide();
 		}
 		$("#shipping-info-check").change(function(){
 			if ($(this).is(':checked')) {
@@ -1359,7 +1359,7 @@
 
 
 		// Copy billing address to shipping address//
-		 $("#shipping-info-check").on('click', function(){
+		 $("#shipping-info-check").change(function(){
 		 	if(this.checked){
 				$("#shipping_address1").val($("#billing_address1").val());
 				$("#shipping_barangay").val($("#billing_barangay").val());
@@ -1378,40 +1378,25 @@
 			
 		});
 
-		 $(function() {
-            $("#pickup").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#fieldset").hide();
-                } else {
-                    $("#fieldset").show();
-                }
-            });
-            $("#delivery").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#fieldset").show();
-                } else {
-                    $("#fieldset").hide();
-                }
-            });
-        });
-         $(function() {
-            $("#pickup").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#pakpak").hide();
-                } else {
-                    $("#pakpak").show();
-                }
-            });
-            $("#delivery").click(function() {
-                if ($(this).prop('checked')) {
-                    $("#pakpak").show();
-                } else {
-                    $("#pakpak").hide();
-                }
-            });
-        });
-
-		 
+		$("#shop-checkout-pickup").hide();
+		$(function() {
+			$("#pickup").click(function() {
+				if ($(this).prop('checked')) {
+					$("#billing-info").show();
+					$("#shipping-info").hide();
+					$("#shop-checkout-delivery").hide();
+					$("#shop-checkout-pickup").show();
+				}
+			});
+			$("#delivery").click(function() {
+				if ($(this).prop('checked')) {
+					$("#billing-info").show();
+					$("#shipping-info").show();
+					$("#shop-checkout-delivery").show();
+					$("#shop-checkout-pickup").hide();
+				}
+			});
+		});
 
 		// Full Width Image Overlay
 		//-----------------------------------------------

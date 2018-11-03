@@ -173,8 +173,7 @@
                             </form>
                         </fieldset>
 
-
-                        <fieldset id="fieldset">
+                        <fieldset id="billing-info">
 							<legend>Billing information</legend>
 							<form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
 								<!-- <div class="row">
@@ -361,7 +360,7 @@
 							</form>
 						</fieldset>
 
-						<fieldset id="pakpak">
+						<fieldset id="shipping-info">
 							<legend>Shipping information</legend>
 							<!-- <form class="form-horizontal"> -->
 								<div id="shipping-information" class="space-bottom">
@@ -551,14 +550,27 @@
 						<!-- 	</form> -->
 						</fieldset>
 
-                        <div class="text-right">  
+						<!-- shop-checkout delivery start -->
+                        <div id="shop-checkout-delivery" class="text-right">  
                             <a href="/shop-cart" class="btn btn-group btn-default">
-                                Go Back To Cart
+								Go Back To Cart
                             </a>
                             <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-                                Next Step
+								Next Step (Deliver)
                             </a>
                         </div>
+                        <!-- shop-checkout delivery end -->
+
+                        <!-- shop-checkout pick-up start -->
+                        <div id="shop-checkout-pickup" class="text-right">  
+                            <a href="/shop-cart" class="btn btn-group btn-default">
+								Go Back To Cart
+                            </a>
+                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
+								Next Step (Pikcup)
+                            </a>
+                        </div>
+                        <!-- shop-checkout pick-up end -->
 
                     </div>
                     <!-- main end -->

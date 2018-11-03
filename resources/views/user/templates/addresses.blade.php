@@ -104,21 +104,45 @@
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-12">
                                         <h5>Barangay</h5>
-                                        <input id="billing_barangay" type="text" class="form-control" name="billing_barangay" value="{{ $user->billing_barangay }}" required autofocus>
+                                        <select class="form-control" id="billing_barangay" name="billing_barangay">
+                                            @foreach($places as $barangay)
+                                            <option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+
+
+
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-12">
                                         <h5>Municipality/City</h5>
-                                         <input id="billing_city" type="text" class="form-control" name="billing_city" value="{{ $user->billing_city }}" required autofocus>
+                                            <select class="form-control" id="billing_city" name="billing_city">
+                                                @foreach($cities as $city)
+                                                <option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
+
+
+
+                                                @endforeach
+
+                                            </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group has-feedback row">
                                     <div class="col-md-12">
                                         <h5>Province</h5>
-                                       <input id="billing_province" type="text" class="form-control" name="billing_province" value="{{ $user->billing_province }}" required autofocus>
+                                            <select class="form-control" id="billing_province" name="billing_province">
+                                                        @foreach($provinces as $province)
+                                                        <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+
+
+
+                                                        @endforeach
+
+                                            </select>
                                     </div>
                                 </div>
 

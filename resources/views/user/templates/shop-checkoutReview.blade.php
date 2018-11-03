@@ -187,7 +187,7 @@
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
-                    <th colspan="2">Payment </th>
+                    <th colspan="2">Payment Method </th>
                   </tr>
                 </thead>
                 <tbody>

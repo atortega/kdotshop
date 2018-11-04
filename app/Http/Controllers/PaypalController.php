@@ -182,7 +182,7 @@ class PaypalController extends Controller
 
             //insert data to payment table
             $payment = new Payments();
-            $payment->payment_method_id = 1;
+            $payment->payment_method_id = 2;
             $payment->order_id          = $order->order_id;
             $payment->amount            = str_replace(",", "", Cart::total());
             $payment->reference_code    = $result->getId();

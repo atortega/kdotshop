@@ -18,9 +18,9 @@
                                 <img src='{{ asset("storage/$product->product_image") }}' 
                                     style="margin: auto; max-height: 268.5px;"
                                     onerror="this.onerror=null;
-                                    this.src='storage/products/default-product-image.jpg'"/>
+                                    this.src='storage/products/default-product-image.jpg'" onerror="this.onerror=null;this.href='storage/products/default-product-image.jpg'"/>
                                 <a class="overlay-link popup-img-single" 
-                                    href='{{ asset("storage/$product->product_image") }}' onerror="this.onerror=null;this.href='storage/products/default-product-image.jpg'" />
+                                    href='{{ asset("storage/$product->product_image") }}'  />
                                         <i class="fa fa-search-plus"></i>
                                 </a>
                                 <!--<span class="badge">30% OFF</span>-->

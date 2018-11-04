@@ -157,26 +157,36 @@
                                     <strong>{{ session()->get('flash_message_error') }}</strong>   
                                 </div>
                             @endif
-
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if(session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session()->get('message') }}
+                                </div>
+                            @endif
+						<form class="form-horizontal" action="{{ url('/shop-checkout-submit')}}" method="post">{{ csrf_field()}}
                         <fieldset>
                             <legend>How do you want to get your Item?</legend>
-                            <form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
+
 
                                 <div class="checkbox padding-top-clear form-check">
                                     <div class="form-check" for="shipping-info-check">
-                                        <form action="">
-										 	<input type="radio" name="delivery_method" value="delivery" id="delivery" checked> Delivery<br>
-											<input type="radio" name="delivery_method" value="pickup" id="pickup"> Pick-up<br>
-										</form>
+										<input type="radio" name="delivery_method" value="1" id="delivery" checked> Delivery<br>
+										<input type="radio" name="delivery_method" value="2" id="pickup"> Pick-up<br>
                                     </div>
                                 </div>
-                            </form>
+
                         </fieldset>
 
-
-                        <fieldset id="fieldset">
+                        <fieldset id="billing-info">
 							<legend>Billing information</legend>
-							<form class="form-horizontal" action="{{ url('/cartShowCheckout')}}" method="post">{{ csrf_field()}}
 								<!-- <div class="row">
 									<div class="col-xl-3">
 										<h3 class="title">Personal Information</h3>
@@ -358,10 +368,9 @@
 										</div>
 									-->
 								</div>
-							</form>
 						</fieldset>
 
-						<fieldset id="pakpak">
+						<fieldset id="shipping-info">
 							<legend>Shipping information</legend>
 							<!-- <form class="form-horizontal"> -->
 								<div id="shipping-information" class="space-bottom">
@@ -541,7 +550,7 @@
 								</div>
 									
 								<div class="checkbox padding-top-clear form-check">
-									<input class="form-check-input" type="checkbox" id="shipping-info-check" checked>
+									<input class="form-check-input" type="checkbox" id="shipping-info-check" name="shipping_same_as_billing" value="1" checked>
 									<div class="form-check" for="shipping-info-check">
 										<label class="form-check-label">
 											My Shipping information is the same as my Billing information.
@@ -551,15 +560,34 @@
 						<!-- 	</form> -->
 						</fieldset>
 
-                        <div class="text-right">  
+						<!-- shop-checkout delivery start -->
+                        <div id="shop-checkout-delivery" class="text-right">  
                             <a href="/shop-cart" class="btn btn-group btn-default">
-                                Go Back To Cart
+								Go Back To Cart
                             </a>
+                            <!--
                             <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-                                Next Step
+								Next Step (Deliver)
                             </a>
+                            -->
+                            <button type="submit" class="btn btn-group btn-default">Next Step (Deliver)</button>
                         </div>
+                        <!-- shop-checkout delivery end -->
 
+                        <!-- shop-checkout pick-up start -->
+                        <div id="shop-checkout-pickup" class="text-right">  
+                            <a href="/shop-cart" class="btn btn-group btn-default">
+								Go Back To Cart
+                            </a>
+                            <!--
+                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
+								Next Step (Pikcup)
+                            </a>
+                            -->
+							<button type="submit" class="btn btn-group btn-default">Next Step (Pikcup)</button>
+                        </div>
+                        <!-- shop-checkout pick-up end -->
+						</form>
                     </div>
                     <!-- main end -->
                 </div>

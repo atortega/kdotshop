@@ -9,7 +9,9 @@ class Payments extends Model
      protected $table = 'payments';
 	
 	public $timestamps = false;
-	
+
+    protected $primaryKey = 'payment_id';
+
 	protected $fillable = [
 		'payment_method_id',
 		'order_id',

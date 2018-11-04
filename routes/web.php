@@ -167,6 +167,7 @@ Route::group(['middleware' => 'auth' ], function() {
 
 
     Route::get('/shop-checkout','CartController@cartShowCheckout');
+    Route::post('/shop-checkout-submit','CartController@cartCheckoutSubmit');
     // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
     //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
 

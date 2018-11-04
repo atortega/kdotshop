@@ -8,6 +8,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
+use Illuminate\Support\Facades\Auth;
 
 /** All PayPal Details class **/
 use PayPal\Api\ItemList;
@@ -21,6 +22,10 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use Session;
 use URL;
+
+use App\Models\Orders;
+use App\Models\Payments;
+use App\Models\Invoices;
 
 class PaypalController extends Controller
 {
@@ -155,8 +160,47 @@ class PaypalController extends Controller
 		$result = $payment->execute($execution, $this->_api_context);
 
 		if($result->getState() == 'approved') {
-			\Session::put('success', 'Payment success');
-			return Redirect::to('/shop-checkoutReview');
+			//\Session::put('success', 'Payment success');
+
+			//insert data to orders table
+            $order = new Orders();
+            $order->customer_id             = Auth::user()->customer_id;
+            $order->billing_firstname       = Auth::user()->first_name;
+            $order->billing_lastname        = Auth::user()->last_name;
+            $order->billing_phone_number    = Auth::user()->phone_number;
+            $order->billing_email           = Auth::user()->email;
+            $order->shipping_firstname      = Auth::user()->first_name;
+            $order->shipping_lastname       = Auth::user()->last_name;
+            $order->shipping_phone_number   = Auth::user()->phone_number;
+            $order->shipping_email          = Auth::user()->email;
+            $order->delivery_method_id      = session('delivery_method');
+            $order->order_date              = date('Y-m-d');
+            $order->total_amount            = Cart::total();
+            $order->status                  = 'approved';
+            $order->save();
+
+            //insert data to payment table
+            $payment = new Payments();
+            $payment->payment_method_id = 1;
+            $payment->order_id          = $order->order_id;
+            $payment->amount            = Cart::total();
+            $payment->reference_code    = $result->getId();
+            $payment->save();
+
+            //insert data to Invoice table
+            $invoice = new Invoices();
+            $invoice->payment_id    = $payment->payment_id;
+            $invoice->date          = date('Y-m-d');
+            $invoice->save();
+
+            //update the invoice number at payment table
+            $payment->invoice_number = $invoice->invoice_number;
+            $payment->save();
+
+            //destroy the cart session
+            Cart::destroy();
+
+			return Redirect::to('/shop-checkoutCompleted');
 		}
 
 		\Session::put('error', 'Payment failed');

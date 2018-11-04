@@ -195,5 +195,44 @@ class CartController extends Controller
 
     //     return redirect()->back()->with('message', 'Customers Address has been added.');
     // }
-    
+
+    public function cartCheckoutSubmit(Request $request)
+    {
+
+        $request->validate([
+            'billing_address1' => 'string|required|max:100',
+            'billing_barangay' => 'string|required|max:100',
+            'billing_city' => 'string|required|max:100',
+            'billing_province' => 'string|required|max:100',
+            'billing_zipcode' => 'string|required|max:100',
+            'billing_country' => 'string|required|max:50',
+            'shipping_address1' => 'required_without:shipping_same_as_billing|max:100',
+            'shipping_barangay' => 'string|required_without:shipping_same_as_billing|max:100',
+            'shipping_city' => 'string|required_without:shipping_same_as_billing|max:100',
+            'shipping_province' => 'string|required_without:shipping_same_as_billing|max:100',
+            'shipping_zipcode' => 'max:100',
+            'shipping_country' => 'string|required_without:shipping_same_as_billing|max:50',
+            'shipping_same_as_billing' => 'integer',
+        ]);
+        $same_as_billing = isset($request->shipping_same_as_billing) ? true : false;
+        $customerAddress = [
+            'billing_address1'  => $request->billing_address1,
+            'billing_barangay'  => $request->billing_barangay,
+            'billing_city'  => $request->billing_city,
+            'billing_province'  => $request->billing_province,
+            'billing_zipcode'  => $request->billing_zipcode,
+            'billing_country'  => $request->billing_country,
+            'shipping_address1'  => $same_as_billing ? $request->billing_address1 : $request->shipping_address1,
+            'shipping_barangay'  => $same_as_billing ? $request->billing_barangay : $request->shipping_barangay,
+            'shipping_city'  => $same_as_billing ? $request->billing_city : $request->shipping_city,
+            'shipping_province'  => $same_as_billing ? $request->billing_province : $request->shipping_province,
+            'shipping_zipcode'  => $same_as_billing ? $request->billing_zipcode : $request->shipping_zipcode,
+            'shipping_country'  => $same_as_billing ? $request->billing_country : $request->shipping_country
+        ];
+        session(['customerAddress' => $customerAddress]);
+        session(['delivery_method' => $request->delivery_method]);
+
+        return redirect('/shop-checkoutPayment');
+
+    }
 }

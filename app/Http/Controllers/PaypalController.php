@@ -26,6 +26,7 @@ use URL;
 use App\Models\Orders;
 use App\Models\Payments;
 use App\Models\Invoices;
+use App\Models\OrderDetails;
 
 class PaypalController extends Controller
 {
@@ -175,7 +176,7 @@ class PaypalController extends Controller
             $order->shipping_email          = Auth::user()->email;
             $order->delivery_method_id      = session('delivery_method');
             $order->order_date              = date('Y-m-d');
-            $order->total_amount            = Cart::total();
+            $order->total_amount            = str_replace(",", "", Cart::total());
             $order->status                  = 'approved';
             $order->save();
 
@@ -183,7 +184,7 @@ class PaypalController extends Controller
             $payment = new Payments();
             $payment->payment_method_id = 1;
             $payment->order_id          = $order->order_id;
-            $payment->amount            = Cart::total();
+            $payment->amount            = str_replace(",", "", Cart::total());
             $payment->reference_code    = $result->getId();
             $payment->save();
 
@@ -196,6 +197,27 @@ class PaypalController extends Controller
             //update the invoice number at payment table
             $payment->invoice_number = $invoice->invoice_number;
             $payment->save();
+
+            //insert data to order details table
+            foreach(Cart::content() AS $cart) {
+                $options = $cart->options;
+
+                $order_details = new OrderDetails();
+                $order_details->order_id = $order->order_id;
+                $order_details->product_id = $cart->id;
+                $order_details->product_name = $cart->name;
+                $order_details->quantity = $cart->qty;
+                $order_details->price = str_replace(",", "", $cart->price);
+                $order_details->amount = str_replace(",", "", $cart->price) * $cart->qty;
+
+                $order_details->description = $options->desc;
+                $order_details->color_id = $options->color_id;
+                $order_details->size_id = $options->size_id;
+                $order_details->color = $options->color;
+                $order_details->size = $options->size;
+
+                $order_details->save();
+            }
 
             //destroy the cart session
             Cart::destroy();

@@ -53,7 +53,7 @@ class CartController extends Controller
 
     public function cartShow(){
         $cartProducts = Cart::Content();
-        
+
         return view('user.templates.shop-cart',['cartProducts'=>$cartProducts]);
     }
 

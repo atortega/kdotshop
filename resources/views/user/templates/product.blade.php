@@ -366,7 +366,9 @@
 									</div>
 -->
 									@foreach($result as $row)
-									<div class="col-lg-3 col-md-6">
+
+									<div class="col-lg-3 col-md-6 object-non-visible animated object-visible fadeIn"
+											data-animation-effect="fadeIn" data-effect-delay="1500">
 										<div class="listing-item white-bg bordered mb-20">
 											<div class="overlay-container">
 												

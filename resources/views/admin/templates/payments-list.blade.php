@@ -32,7 +32,8 @@
                             <tr>
                                 <th>Order Number</th>
                                 <th>Payment Date</th>
-                                <th>Customer's Info</th>
+                                <th>Customer's Name</th>
+                                <th>Contact Number</th>
                                 <th>Payment Method</th>
                                 <th>Reference Number</th>
                                 <th>Total Amount</th>
@@ -50,7 +51,8 @@
                             columns: [
                                 { data: 'orderNumber', name: 'orderNumber' },
                                 { data: 'paymentDate', name: 'paymentDate' },
-                                { data: 'customersInfo', name: 'customersInfo' },
+                                { data: 'customersName', name: 'customersName' },
+                                { data: 'phone_number', name: 'phone_nnumber' },
                                 { data: 'paymentMethod', name: 'paymentMethod' },
                                 { data: 'referenceNumber', name: 'referenceNumber' },
                                 { data: 'totalAmount', name: 'totalAmount' },

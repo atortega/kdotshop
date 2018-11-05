@@ -15,7 +15,7 @@
                 <img src='{{ asset("storage/$category->category_image") }}' alt="">
                 <a class="overlay-link" href="/product/?category={{ $category->category_id }}"></a>
 
-                <img src="{{ asset("storage/$category->category_image") }}" alt="" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'">
+                <img src='{{ asset("storage/$category->category_image") }}' alt="" onerror="this.onerror=null;this.src='storage/products/default-product-image.jpg'">
                 <a class="overlay-link" href="/product/?category={{ $category->category_id }}" ></a>
 
                 <div class="overlay-bottom">

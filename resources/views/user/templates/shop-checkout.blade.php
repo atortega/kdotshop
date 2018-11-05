@@ -584,7 +584,7 @@
 								Next Step (Pikcup)
                             </a>
                             -->
-							<button type="submit" class="btn btn-group btn-default">Next Step (Pikcup)</button>
+							<button type="submit" class="btn btn-group btn-default">Next Step (Pickup)</button>
                         </div>
                         <!-- shop-checkout pick-up end -->
 						</form>

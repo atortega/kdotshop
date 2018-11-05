@@ -239,22 +239,26 @@
 	$(document).ready(function() {
 
 		//triggers button #user-profile, then redirects to user's profile
+		//-----------------------------------------------
 		$("#user-profile").click(function(){
 			window.location.href = '/account';
 		});
 
 		//triggers basket icon (button), then redirects to shopping cart
+		//-----------------------------------------------
 		$(".gotoshopcart").click(function(){
 			window.location.href = '/shop-cart';
 		});
 
 		//tester for <input id="qty"> and <p id="qty_display"/>
+		//-----------------------------------------------
 		$("#qty").keyup(function() {
 			var value = $(this).val();
 			$("#qty_display").text(value);
 		}).keyup();
 
 		//update cart quantity
+		//-----------------------------------------------
 		$('.update-cart').click(function() {
 			console.log($(this).attr('data-cart'));
 			console.log($("#qty_"+$(this).attr('data-cart')).val());
@@ -299,18 +303,21 @@
 		});
 
 		// Sign Up button is disabled if checkbox is unchecked
+		//-----------------------------------------------
 		$("#signUpButtonID").attr("disabled", !this.checked);
 		$("#signUpCheckBoxID").click(function() {
 			$("#signUpButtonID").attr("disabled", !this.checked);
 		});
 
 		// Verification Code input field is disabled if keypress is .off("keypress")
+		//-----------------------------------------------
 		$("#vCode").attr('disabled','disabled');
 		$("#phonenumber").keypress(function() {
 			$("#vCode").removeAttr('disabled');
-		});
+		});	
 
-		/*———————————————————————————————————————————————————————*/
+		// IMG Upload - User Avatar
+		//-----------------------------------------------
 		// [1] Preview image before it is uploaded
 		$(document).on('change', '.btn-file :file', function() {
 			var input = $(this),
@@ -361,6 +368,90 @@
             } 
 		});
 		/*———————————————————————————————————————————————————————*/
+
+
+		// Copy billing address to shipping address
+		//-----------------------------------------------
+		 $("#shipping-info-check").change(function(){
+		 	if(this.checked){
+				$("#shipping_address1").val($("#billing_address1").val());
+				$("#shipping_barangay").val($("#billing_barangay").val());
+				$("#shipping_city").val($("#billing_city").val());
+				$("#shipping_province").val($("#billing_province").val());
+				$("#shipping_zipcode").val($("#billing_zipcode").val());
+				$("#shipping_country").val($("#billing_country").val());
+			}else{
+				$("#shipping_address1").val('');
+				$("#shipping_barangay").val('');
+				$("#shipping_city").val('');
+				$("#shipping_province").val('');
+				$("#shipping_zipcode").val('');
+				$("#shipping_country").val('');
+			}
+			
+		});
+
+		$("#shop-checkout-pickup").hide();
+		$(function() {
+			$("#pickup").click(function() {
+				if ($(this).prop('checked')) {
+					$("#billing-info").show();
+					$("#shipping-info").hide();
+				}
+			});
+			$("#delivery").click(function() {
+				if ($(this).prop('checked')) {
+					$("#billing-info").show();
+					$("#shipping-info").show();
+				}
+			});
+		});
+		/*———————————————————————————————————————————————————————*/		
+
+
+		// 
+		//-----------------------------------------------
+		$("#review-and-complete").hide();
+		$("#proceedWithPayPal").hide();
+		$("#proceedWithPalawan").hide();
+		$(function() {
+			$("#paymaya-option").click(function() {
+				if ($(this).prop('checked')) {
+					$("#proceedWithPayMaya").show();
+					$("#review-and-complete").hide();
+					$("#proceedWithPayPal").hide();
+					$("#proceedWithPalawan").hide();
+				}
+			});
+			$("#paypal-option").click(function() {
+				if ($(this).prop('checked')) {
+					$("#proceedWithPayPal").show();
+					$("#review-and-complete").hide();
+					$("#proceedWithPayMaya").hide();
+					$("#proceedWithPalawan").hide();
+				}
+			});
+			$("#palawan-option").click(function() {
+				if ($(this).prop('checked')) {
+					$("#proceedWithPalawan").show();
+					$("#proceedWithPayPal").hide();
+					$("#proceedWithPayMaya").hide();
+				}
+			});
+		});
+
+
+		// triggers the radio button upon selecting <img> of a certain payment method
+		//-----------------------------------------------------------------------------
+		$("#img-paymaya").click(function() {
+			$("#paymaya-option").prop('checked', true).trigger('click');
+		});
+		$("#img-paypal").click(function() {
+			$("#paypal-option").prop('checked', true).trigger('click');
+		});
+		$("#img-palawan").click(function() {
+			$("#palawan-option").prop('checked', true).trigger('click');
+		});
 
 	});
 	</script>

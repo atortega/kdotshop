@@ -171,422 +171,411 @@
                                     {{ session()->get('message') }}
                                 </div>
                             @endif
-						<form class="form-horizontal" action="{{ url('/shop-checkout-submit')}}" method="post">{{ csrf_field()}}
-                        <fieldset>
-                            <legend>How do you want to get your Item?</legend>
+						<form action="{{ url('/shop-checkout-submit')}}" method="post"
+							class="form-horizontal">
+							{{ csrf_field()}}
+	                        <fieldset>
+	                            <legend>How do you want to get your Item?</legend>
 
 
-                                <div class="checkbox padding-top-clear form-check">
-                                    <div class="form-check" for="shipping-info-check">
-										<input type="radio" name="delivery_method" value="1" id="delivery" checked> Delivery<br>
-										<input type="radio" name="delivery_method" value="2" id="pickup"> Pick-up<br>
-                                    </div>
-                                </div>
+	                                <div class="checkbox padding-top-clear form-check">
+	                                    <div class="form-check" for="shipping-info-check">
+											<input type="radio" name="delivery_method" value="1" id="delivery" checked> Delivery<br>
+											<input type="radio" name="delivery_method" value="2" id="pickup"> Pick-up<br>
+	                                    </div>
+	                                </div>
 
-                        </fieldset>
+	                        </fieldset>
 
-                        <fieldset id="billing-info">
-							<legend>Billing information</legend>
-								<!-- <div class="row">
-									<div class="col-xl-3">
-										<h3 class="title">Personal Information</h3>
-									</div>
-
-									<div class="col-xl-8 ml-xl-auto">
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingFirstName">
-												First Name
-											<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
-													type="text" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingLastName">
-												Last Name
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
-													type="text" name="last_name" value="{{ Auth::user()->last_name }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingTel">
-												Contact Number
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
-													type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingemail" >
-												E-mail
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-													type="text" name="email" value="{{ Auth::user()->email }}" disabled>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="space"></div> -->
-								<div class="row">
-									<div class="col-xl-3">
-										<h3 class="title">Your Address</h3>
-									</div>
-
-									<div class="col-xl-8 ml-xl-auto">
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingAddress">
-												House No., Street
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control" id="billing_address1"
-													type="text" name="billing_address1" value="{{ $user->billing_address1 }}">
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingAddress">
-												Barangay
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<select class="form-control" id="billing_barangay" name="billing_barangay">
-                                            		@foreach($places as $barangay)
-	                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
-
-
-
-                                            		@endforeach
-
-                                        		</select>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingAddress">
-												Municipality/City
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<select class="form-control" id="billing_city" name="billing_city">
-                                            		@foreach($cities as $city)
-	                                                <option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
-
-
-
-                                            		@endforeach
-
-                                        		</select>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingCity">
-												Province
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-
-												<select class="form-control" id="billing_province" name="billing_province">
-                                            		@foreach($provinces as $province)
-	                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
-
-
-
-                                            		@endforeach
-
-                                        		</select>
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="billingPostalCode">
-												Zip Code
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<input class="form-control" id="billing_zipcode" name="billing_zipcode" 
-
-													type="text" value="{{ $user->billing_zipcode }}">		
-											</div>
-										</div>
-
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label">
-												Country
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-												<select class="form-control" id="billing_country" name="billing_country">
-                                            		@foreach($countries as $country)
-                                                		<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
-
-                                            		@endforeach
-                                        		</select>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="space"></div>
-
-								<div class="space"></div>
-
-								<div class="row">
-									<!--
-										<div class="col-xl-3">
-											<h3 class="title mt-5 mt-lg-0">Additional Info</h3>
-										</div>
-										<div class="col-xl-8 ml-xl-auto">
-											<div class="form-group row">
-												<div class="col-12">
-													<textarea class="form-control" rows="4"></textarea>
-												</div>
-											</div>
-										</div>
-									-->
-								</div>
-						</fieldset>
-
-						<fieldset id="shipping-info">
-							<legend>Shipping information</legend>
-							<!-- <form class="form-horizontal"> -->
-								<div id="shipping-information" class="space-bottom">
+	                        <fieldset id="billing-info">
+								<legend>Billing information</legend>
 									<!-- <div class="row">
 										<div class="col-xl-3">
-											<h3 class="title mt-5 mt-lg-0">Personal Information</h3>
+											<h3 class="title">Personal Information</h3>
 										</div>
-										
+
 										<div class="col-xl-8 ml-xl-auto">
-											<div class="form-group row">
+											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
-													for="shippingFirstName" >
+													for="billingFirstName">
 													First Name
-													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-													<input class="form-control" id="shippingFirstName"
-														type="text" placeholder="First Name">
-												</div> 
+													<input class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" 
+														type="text" name="first_name" value="{{ Auth::user()->first_name }}" disabled>
+												</div>
 											</div>
 
-											<div class="form-group row">
+											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
-													for="shippingLastName">
+													for="billingLastName">
 													Last Name
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-													<input class="form-control" id="shippingLastName"
-														type="text" placeholder="Last Name">
+													<input class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" 
+														type="text" name="last_name" value="{{ Auth::user()->last_name }}" disabled>
 												</div>
 											</div>
 
-											<div class="form-group row">
+											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
-													for="shippingTel">
+													for="billingTel">
 													Contact Number
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-													<input class="form-control" id="shippingTel"
-														type="text" placeholder="Contact Number">
+													<input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
+														type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
 												</div>
 											</div>
 
-											<div class="form-group row">
+											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
-													for="shippingemail">
+													for="billingemail" >
 													E-mail
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-													<input class="form-control" id="shippingemail"
-														type="email" placeholder="E-mail">
+													<input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+														type="text" name="email" value="{{ Auth::user()->email }}" disabled>
 												</div>
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="space"></div> -->
 									<div class="row">
 										<div class="col-xl-3">
-											<h3 class="title mt-5 mt-lg-0">Your Address</h3>
+											<h4 class="title">Your Billing Address</h4>
 										</div>
-										
+
 										<div class="col-xl-8 ml-xl-auto">
 											<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="shippingAddress">
-												House No., Street
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-
-												<input class="form-control" id="shipping_address1"
-													type="text" name="shipping_address1" value="">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingAddress">
+													House No., Street
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<input class="form-control" id="billing_address1"
+														type="text" name="billing_address1" value="{{ $user->billing_address1 }}">
+												</div>
 											</div>
-										</div>
 
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="shipping_barangay">
-												Barangay
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-
-												<select class="form-control" id="shipping_barangay" name="shipping_barangay">
-                                            		@foreach($places as $barangay)
-	                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingAddress">
+													Barangay
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<select class="form-control" id="billing_barangay" name="billing_barangay">
+	                                            		@foreach($places as $barangay)
+		                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
 
 
 
-                                            		@endforeach
+	                                            		@endforeach
 
-                                        		</select>
+	                                        		</select>
+												</div>
 											</div>
-										</div>
 
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="shipping_city">
-												Municipality/City
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
-
-												<select class="form-control" id="shipping_city" name="shipping_city">
-                                            		@foreach($cities as $city)
-	                                                <option value="{{$city->cities}}" {{ $city->cities == $user->shipping_city ? 'selected' : '' }}> {{$city->cities}}</option>
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingAddress">
+													Municipality/City
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<select class="form-control" id="billing_city" name="billing_city">
+	                                            		@foreach($cities as $city)
+		                                                <option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
 
 
 
-                                            		@endforeach
+	                                            		@endforeach
 
-                                        		</select>
+	                                        		</select>
+												</div>
 											</div>
-										</div>
 
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="shipping_province">
-												Province
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingCity">
+													Province
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
 
-												<select class="form-control" id="shipping_province" name="shipping_province">
-                                            		@foreach($provinces as $province)
-	                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
-
+													<select class="form-control" id="billing_province" name="billing_province">
+	                                            		@foreach($provinces as $province)
+		                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
 
 
-                                            		@endforeach
 
-                                        		</select>
+	                                            		@endforeach
+
+	                                        		</select>
+												</div>
 											</div>
-										</div>
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label"
-												for="shipping_zipcode">
-												Zip Code
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
 
-												<input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="">
-											</div>
-										</div>
-										<div class="form-group has-feedback row">
-											<label class="col-lg-3 control-label text-lg-right col-form-label">
-												Country
-												<strong class="text-default" style="font-size: 18px;"> *</strong>
-											</label>
-											<div class="col-lg-9">
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingPostalCode">
+													Zip Code
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<input class="form-control" id="billing_zipcode" name="billing_zipcode" 
 
-												<select class="form-control" id="shipping_country" name="shipping_country">
-                                            		@foreach($countries as $country)
-                                                		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}> {{$country->name}}</option>
-                                                		
-                                            		@endforeach
-                                        		</select>
+														type="text" value="{{ $user->billing_zipcode }}">		
+												</div>
 											</div>
-										</div>
+
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label">
+													Country
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<select class="form-control" id="billing_country" name="billing_country">
+	                                            		@foreach($countries as $country)
+	                                                		<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
+
+	                                            		@endforeach
+	                                        		</select>
+												</div>
+											</div>
 										</div>
 									</div>
-									
+
+									<div class="space"></div>
+
 									<div class="space"></div>
 
 									<div class="row">
-										
+										<!--
+											<div class="col-xl-3">
+												<h3 class="title mt-5 mt-lg-0">Additional Info</h3>
+											</div>
+											<div class="col-xl-8 ml-xl-auto">
+												<div class="form-group row">
+													<div class="col-12">
+														<textarea class="form-control" rows="4"></textarea>
+													</div>
+												</div>
+											</div>
+										-->
+									</div>
+							</fieldset>
 
-										<div class="col-xl-8 ml-xl-auto">	
+							<fieldset id="shipping-info">
+								<legend>Shipping information</legend>
+								<!-- <form class="form-horizontal"> -->
+									<div id="shipping-information" class="space-bottom">
+										<!-- <div class="row">
+											<div class="col-xl-3">
+												<h3 class="title mt-5 mt-lg-0">Personal Information</h3>
+											</div>
+											
+											<div class="col-xl-8 ml-xl-auto">
+												<div class="form-group row">
+													<label class="col-lg-3 control-label text-lg-right col-form-label"
+														for="shippingFirstName" >
+														First Name
+														<strong class="text-default" style="font-size: 18px;"> *</strong>
+													</label>
+													<div class="col-lg-9">
+														<input class="form-control" id="shippingFirstName"
+															type="text" placeholder="First Name">
+													</div> 
+												</div>
+
+												<div class="form-group row">
+													<label class="col-lg-3 control-label text-lg-right col-form-label"
+														for="shippingLastName">
+														Last Name
+														<strong class="text-default" style="font-size: 18px;"> *</strong>
+													</label>
+													<div class="col-lg-9">
+														<input class="form-control" id="shippingLastName"
+															type="text" placeholder="Last Name">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-lg-3 control-label text-lg-right col-form-label"
+														for="shippingTel">
+														Contact Number
+														<strong class="text-default" style="font-size: 18px;"> *</strong>
+													</label>
+													<div class="col-lg-9">
+														<input class="form-control" id="shippingTel"
+															type="text" placeholder="Contact Number">
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-lg-3 control-label text-lg-right col-form-label"
+														for="shippingemail">
+														E-mail
+														<strong class="text-default" style="font-size: 18px;"> *</strong>
+													</label>
+													<div class="col-lg-9">
+														<input class="form-control" id="shippingemail"
+															type="email" placeholder="E-mail">
+													</div>
+												</div>
+											</div>
+										</div>
 										
+										<div class="space"></div> -->
+										<div class="row">
+											<div class="col-xl-3">
+												<h4 class="title mt-5 mt-lg-0">Your Shipping Address</h4>
+											</div>
+											
+											<div class="col-xl-8 ml-xl-auto">
+												<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="shippingAddress">
+													House No., Street
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<input class="form-control" id="shipping_address1"
+														type="text" name="shipping_address1" value="">
+												</div>
+											</div>
+
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="shipping_barangay">
+													Barangay
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<select class="form-control" id="shipping_barangay" name="shipping_barangay">
+	                                            		@foreach($places as $barangay)
+		                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+
+
+
+	                                            		@endforeach
+
+	                                        		</select>
+												</div>
+											</div>
+
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="shipping_city">
+													Municipality/City
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<select class="form-control" id="shipping_city" name="shipping_city">
+	                                            		@foreach($cities as $city)
+		                                                <option value="{{$city->cities}}" {{ $city->cities == $user->shipping_city ? 'selected' : '' }}> {{$city->cities}}</option>
+
+
+
+	                                            		@endforeach
+
+	                                        		</select>
+												</div>
+											</div>
+
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="shipping_province">
+													Province
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<select class="form-control" id="shipping_province" name="shipping_province">
+	                                            		@foreach($provinces as $province)
+		                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+
+
+
+	                                            		@endforeach
+
+	                                        		</select>
+												</div>
+											</div>
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="shipping_zipcode">
+													Zip Code
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="">
+												</div>
+											</div>
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label">
+													Country
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+
+													<select class="form-control" id="shipping_country" name="shipping_country">
+	                                            		@foreach($countries as $country)
+	                                                		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}> {{$country->name}}</option>
+
+
+
+	                                            		@endforeach
+	                                        		</select>
+												</div>
+											</div>
+											</div>
+										</div>
+										
+										<div class="space"></div>
+
+										<div class="row">
+											
+
+											<div class="col-xl-8 ml-xl-auto">	
+											
+											</div>
 										</div>
 									</div>
-								</div>
-									
-								<div class="checkbox padding-top-clear form-check">
-									<input class="form-check-input" type="checkbox" id="shipping-info-check" name="shipping_same_as_billing" value="1" checked>
-									<div class="form-check" for="shipping-info-check">
-										<label class="form-check-label">
-											My Shipping information is the same as my Billing information.
-										</label>
+										
+									<div class="checkbox padding-top-clear form-check">
+										<input class="form-check-input" type="checkbox" id="shipping-info-check"
+											name="shipping_same_as_billing" value="1" checked>
+										<div class="form-check" for="shipping-info-check">
+											<label class="form-check-label">
+												My Shipping information is the same as my Billing information.
+											</label>
+										</div>
 									</div>
-								</div>
-						<!-- 	</form> -->
-						</fieldset>
+							<!-- 	</form> -->
+							</fieldset>
 
-						<!-- shop-checkout delivery start -->
-                        <div id="shop-checkout-delivery" class="text-right">  
-                            <a href="/shop-cart" class="btn btn-group btn-default">
-								Go Back To Cart
-                            </a>
-                            <!--
-                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-								Next Step (Deliver)
-                            </a>
-                            -->
-                            <button type="submit" class="btn btn-group btn-default">Next Step (Deliver)</button>
-                        </div>
-                        <!-- shop-checkout delivery end -->
-
-                        <!-- shop-checkout pick-up start -->
-                        <div id="shop-checkout-pickup" class="text-right">  
-                            <a href="/shop-cart" class="btn btn-group btn-default">
-								Go Back To Cart
-                            </a>
-                            <!--
-                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-								Next Step (Pikcup)
-                            </a>
-                            -->
-							<button type="submit" class="btn btn-group btn-default">Next Step (Pikcup)</button>
-                        </div>
-                        <!-- shop-checkout pick-up end -->
+	                        <div class="text-right">  
+	                            <a href="/shop-cart" class="btn btn-group btn-default">
+									Go Back To Cart
+	                            </a>
+	                            <!--
+	                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
+									Next Step (Deliver)
+	                            </a>
+	                            -->
+	                            <button type="submit" class="btn btn-group btn-default">Next Step</button>
+	                        </div>
 						</form>
                     </div>
                     <!-- main end -->

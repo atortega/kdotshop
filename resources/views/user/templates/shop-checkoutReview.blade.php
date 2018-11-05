@@ -81,34 +81,61 @@
                   <tr>
                     <th>Product </th>
                     <th>Price </th>
+                    <th>Color</th>
+                    <th>Size</th>
                     <th>Quantity</th>
                     <th class="amount">Total </th>
                   </tr>
                 </thead>
                 <tbody>
-                  
-                 
-                    @foreach($cartProducts as $cartProduct)   
-                  <tr>
-                    <td class="product">
-                      <a href="/shop-productDetails/{{$cartProduct->product_id}}">
-                         {{$cartProduct->name}}
-                      </a> 
-                      <small>
-                        {{$cartProduct->desc}}
-                      </small>
-                    </td>
-                    <td class="price">₱ {{$cartProduct->price}} </td>
-                    <td class="quantity">
-                      <div class="form-group">
-                        <input type="text" class="form-control" value="{{$cartProduct->qty}}" disabled>
-                      </div>                      
-                    </td>
-                     <?php
-                        $subTotal = $cartProduct->qty * $cartProduct->price;
-                      ?>  
-                    <td class="amount">₱ {{$subTotal}}</td>
-                  </tr>
+                  @foreach($cartProducts as $cartProduct)   
+                    <tr style="max-height: 10px;">
+                        <td class="product">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="{{ asset('storage/'.$cartProduct->options->image) }}"
+                                        style="margin: auto; max-height: 100% ;"
+                                        onerror="this.onerror=null;
+                                        this.src='storage/products/default-product-image.jpg'" />
+                                </div>
+                                <div class="col-md-9" style="vertical-align: middle; margin: auto 0 auto 0;">
+                                    <a href='{{ asset("/shop-productDetails/$cartProduct->id") }}'>
+                                        {{$cartProduct->name}}
+                                    </a>
+                                    <small>
+                                        {{$cartProduct->options->desc}}
+                                    </small>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td class="price" style="width: 10px !important;">
+                            ₱ {{$cartProduct->price}} 
+                        </td>
+
+                        <td class="color" style="width: 10px !important;">
+                           {{$cartProduct->options->color}}
+                        </td>
+
+                        <td class="size" style="width: 10px !important;">
+                           {{$cartProduct->options->size}}
+                        </td>
+
+                        <td class="quantity">
+                            <div class="form-group">
+                                <input class="form-control" value="{{$cartProduct->qty}}" 
+                                    type="text" disabled>
+                            </div>
+                        </td>
+
+                        <?php
+                            $subTotal = $cartProduct->qty * $cartProduct->price;
+                        ?>
+
+                        <td class="amount">
+                            ₱ {{$subTotal}}
+                        </td>
+                    </tr>
                   @endforeach
                  <!--  <tr>
                     <td class="total-quantity" colspan="3">Subtotal</td>
@@ -119,12 +146,12 @@
                     <td class="price">TheProject25672</td>
                     <td class="amount">-20%</td>
                   </tr> -->
-                <tr>                    
-                  <td class="shipping_fee" colspan="6">Shipping Fee</td>
-                     <!--  ₱ {{59.00}} -->
-                </tr>
+                  <tr>                    
+                    <td class="shipping_fee" colspan="6">Shipping Fee</td>
+                    <!--  ₱ {{59.00}} -->
+                  </tr>
                   <tr>
-                    <td class="total-quantity" colspan="3">Total {{Cart::count()}} Items</td>
+                    <td class="total-quantity" colspan="5">Total {{Cart::count()}} Items</td>
                     
                     <td class="total-amount">₱ {{ Cart::total() }}</td>
                   </tr>
@@ -165,7 +192,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+<!--                   <tr>
                     <td>Full Name</td>
                     <td class="information">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}  </td>
                   </tr>
@@ -176,7 +203,7 @@
                   <tr>
                     <td>Contact Number</td>
                     <td class="information">{{ Auth::user()->phone_number }}</td>
-                  </tr>
+                  </tr> -->
                   <tr>
                     <td>Address</td>
                     <td class="information">{{ $user->shipping_address1 }} {{ $user->shipping_barangay }}, {{ $user->shipping_city }}  {{ $user->shipping_province }} ,{{ $user->shipping_zipcode }} {{ $user->shipping_country}}</td>
@@ -187,19 +214,19 @@
               <table class="table cart table-hover table-colored">
                 <thead>
                   <tr>
-                    <th colspan="2">Payment Method </th>
+                    <th colspan="2">Delivery Method </th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Credit Card</td>
-                    <td class="information">Visa ***917 </td>
+                    <td>{{ session('delivery_method') }}</td>
+                    <!-- <td class="information"></td> -->
                   </tr>
                 </tbody>
               </table>
               <div class="text-right">  
-                <a href="/shop-checkoutPayment" class="btn btn-group btn-default">Go Back</a>
-                <a href="/shop-checkoutCompleted" class="btn btn-group btn-default">Complete Your Order</a>
+                <a href="/shop-checkout" class="btn btn-group btn-default">Go Back</a>
+                <a href="/shop-checkoutPayment" class="btn btn-group btn-default">Proceed to Payment</a>
               </div>
 
             </div>

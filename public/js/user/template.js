@@ -1357,47 +1357,6 @@
 			}
 		});
 
-
-		// Copy billing address to shipping address//
-		 $("#shipping-info-check").change(function(){
-		 	if(this.checked){
-				$("#shipping_address1").val($("#billing_address1").val());
-				$("#shipping_barangay").val($("#billing_barangay").val());
-				$("#shipping_city").val($("#billing_city").val());
-				$("#shipping_province").val($("#billing_province").val());
-				$("#shipping_zipcode").val($("#billing_zipcode").val());
-				$("#shipping_country").val($("#billing_country").val());
-			}else{
-				$("#shipping_address1").val('');
-				$("#shipping_barangay").val('');
-				$("#shipping_city").val('');
-				$("#shipping_province").val('');
-				$("#shipping_zipcode").val('');
-				$("#shipping_country").val('');
-			}
-			
-		});
-
-		$("#shop-checkout-pickup").hide();
-		$(function() {
-			$("#pickup").click(function() {
-				if ($(this).prop('checked')) {
-					$("#billing-info").show();
-					$("#shipping-info").hide();
-					$("#shop-checkout-delivery").hide();
-					$("#shop-checkout-pickup").show();
-				}
-			});
-			$("#delivery").click(function() {
-				if ($(this).prop('checked')) {
-					$("#billing-info").show();
-					$("#shipping-info").show();
-					$("#shop-checkout-delivery").show();
-					$("#shop-checkout-pickup").hide();
-				}
-			});
-		});
-
 		// Full Width Image Overlay
 		//-----------------------------------------------
 		if ($(".full-image-overlay").length>0) {

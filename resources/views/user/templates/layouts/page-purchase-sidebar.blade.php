@@ -34,7 +34,7 @@
                   <nav>
                     <ul class="nav flex-column">
                       <li class="nav-item"><a class="nav-link" href="/purchase">My Order</a></li>
-                       <li class="nav-item"><a class="nav-link" href="/payment-receipt">Payment Receipt</a></li>
+                      <!-- <li class="nav-item"><a class="nav-link" href="/payment-receipt">Payment Receipt</a></li> -->
                       <li class="nav-item"><a class="nav-link" href="/ship">To Ship</a></li>
                       <li class="nav-item"><a class="nav-link" href="/completed">Completed</a></li>
                       <li class="nav-item"><a class="nav-link" href="/cancelled">Cancelled</a></li>

@@ -183,13 +183,13 @@ class CartController extends Controller
     //     $address->billing_province  = $request['billing_province'];
     //     $address->billing_zipcode   = $request['billing_zipcode'];
     //     $address->billing_country   = $request['billing_country'];
-    //     $address->shipping_address1 = $request['shipping_address1'];
-    //     $address->shipping_barangay = $request['shipping_barangay'];
-    //     $address->shipping_city     = $request['shipping_city'];
-    //     $address->shipping_province = $request['shipping_province'];
-    //     $address->shipping_zipcode  = $request['shipping_zipcode'];
-    //     $address->shipping_country  = $request['shipping_country'];
-    //     $address->shipping_same_as_billing_address  = 0;
+        // $address->shipping_address1 = $request['shipping_address1'];
+        // $address->shipping_barangay = $request['shipping_barangay'];
+        // $address->shipping_city     = $request['shipping_city'];
+        // $address->shipping_province = $request['shipping_province'];
+        // $address->shipping_zipcode  = $request['shipping_zipcode'];
+        // $address->shipping_country  = $request['shipping_country'];
+        // $address->shipping_same_as_billing_address  = 0;
 
     //     $address->save();
 
@@ -198,7 +198,6 @@ class CartController extends Controller
 
     public function cartCheckoutSubmit(Request $request)
     {
-
         $request->validate([
             'billing_address1' => 'string|required|max:100',
             'billing_barangay' => 'string|required|max:100',
@@ -229,10 +228,19 @@ class CartController extends Controller
             'shipping_zipcode'  => $same_as_billing ? $request->billing_zipcode : $request->shipping_zipcode,
             'shipping_country'  => $same_as_billing ? $request->billing_country : $request->shipping_country
         ];
+
+        $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
+        $customer_address->shipping_address1    = $request['shipping_address1'];
+        $customer_address->shipping_barangay    = $request['shipping_barangay'];
+        $customer_address->shipping_city        = $request['shipping_city'];
+        $customer_address->shipping_province    = $request['shipping_province'];
+        $customer_address->shipping_zipcode     = $request['shipping_zipcode'];
+        $customer_address->shipping_country     = $request['shipping_country'];
+        $customer_address->save();
+
         session(['customerAddress' => $customerAddress]);
         session(['delivery_method' => $request->delivery_method]);
 
-        return redirect('/shop-checkoutPayment');
-
+        return redirect('/shop-checkoutReview');
     }
 }

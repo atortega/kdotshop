@@ -59,7 +59,7 @@
                                 { data: 'order_id', name: 'order_id' },
                                 { data: 'order_date', name: 'order_date' },
                                 { data: 'first_name', name: 'first_name' },
-                                { data: 'payment_name', name: 'payment_name'}
+                                { data: 'payment_name', name: 'payment_name'},
                                 { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'status', name: 'status' },
                                 { data: 'actions', name: 'actions', orderable: false }

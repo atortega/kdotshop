@@ -562,60 +562,13 @@
 											</label>
 										</div>
 									</div>
-
-								</div>
-									
-								<div class="checkbox padding-top-clear form-check">
-									<input class="form-check-input" type="checkbox" id="shipping-info-check" name="shipping_same_as_billing" value="1" checked>
-									<div class="form-check" for="shipping-info-check">
-										<label class="form-check-label">
-											My Shipping information is the same as my Billing information.
-										</label>
-									</div>
-								</div>
-						<!-- 	</form> -->
-						</fieldset>
-
-						<!-- shop-checkout delivery start -->
-                        <div id="shop-checkout-delivery" class="text-right">  
-                            <a href="/shop-cart" class="btn btn-group btn-default">
-								Go Back To Cart
-                            </a>
-                            <!--
-                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-								Next Step (Deliver)
-                            </a>
-                            -->
-                            <button type="submit" class="btn btn-group btn-default">Next Step (Deliver)</button>
-                        </div>
-                        <!-- shop-checkout delivery end -->
-
-                        <!-- shop-checkout pick-up start -->
-                        <div id="shop-checkout-pickup" class="text-right">  
-                            <a href="/shop-cart" class="btn btn-group btn-default">
-								Go Back To Cart
-                            </a>
-                            <!--
-                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-								Next Step (Pikcup)
-                            </a>
-                            -->
-							<button type="submit" class="btn btn-group btn-default">Next Step (Pickup)</button>
-                        </div>
-                        <!-- shop-checkout pick-up end -->
-
-							<!-- 	</form> -->
+							<!-- </form> -->
 							</fieldset>
 
 	                        <div class="text-right">  
 	                            <a href="/shop-cart" class="btn btn-group btn-default">
 									Go Back To Cart
 	                            </a>
-	                            <!--
-	                            <a href="/shop-checkoutPayment" class="btn btn-group btn-default">
-									Next Step (Deliver)
-	                            </a>
-	                            -->
 	                            <button type="submit" class="btn btn-group btn-default">Next Step</button>
 	                        </div>
 

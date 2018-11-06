@@ -43,7 +43,7 @@ class OrdersController extends Controller
             ->leftjoin('payment_methods', 'payment_methods.payment_method_id', '=', 'payments.payment_method_id')
             ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
             ->get();
-dd($orders);
+// dd($orders);
         $datatables = Datatables::of($orders)
             ->addColumn('actions', function ($data) {
                     return "

@@ -83,6 +83,7 @@
                             console.log(order_id);
                             $.get( "/admin/orders/details/get/"+order_id, function( data ) {
                                 console.log(data);
+                                $("#modalOrderDetails tbody").html('');
                                 $.each(data, function(index, row) {
                                     console.log(row.product_name);
                                     var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td align='right'>" + row.quantity + "</td><td align='right'>" + parseFloat(row.price).toFixed(2) +"</td><td align='right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
@@ -150,7 +151,7 @@
                 <div class="modal-footer">
                     <input type="hidden" id="size_id" name="size_id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
+                    <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

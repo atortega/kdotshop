@@ -323,8 +323,8 @@
 			$("#vCode").removeAttr('disabled');
 		});	
 
+		/*———————————————————————————————————————————————————————*/
 		// IMG Upload - User Avatar
-		//-----------------------------------------------
 		// [1] Preview image before it is uploaded
 		$(document).on('change', '.btn-file :file', function() {
 			var input = $(this),
@@ -334,29 +334,29 @@
 
 		// [2] Change input value on fileselect
 		$('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
+			
+			var input = $(this).parents('.input-group').find(':text'),
+				log = label;
+			
+			if( input.length ) {
+				input.val(log);
+			} else {
+				if( log ) alert(log);
+			}
+			
 		});
 
 		// [3] Change img onload
 		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+			
+				reader.onload = function (e) {
+					$('#img-upload').attr('src', e.target.result);
+				}
+				
+				reader.readAsDataURL(input.files[0]);
+			}
 		}
 
 		// [4] Read file type input on change
@@ -375,7 +375,6 @@
             } 
 		});
 		/*———————————————————————————————————————————————————————*/
-
 
 		// Copy billing address to shipping address
 		//-----------------------------------------------
@@ -398,25 +397,29 @@
 			
 		});
 
-		$("#shop-checkout-pickup").hide();
+
+		// toggles options for delivery method (radio button)
+		//-----------------------------------------------
+		$("#delivery_method_name").val('Delivery');
 		$(function() {
 			$("#pickup").click(function() {
 				if ($(this).prop('checked')) {
 					$("#billing-info").show();
 					$("#shipping-info").hide();
+					$("#delivery_method_name").val('Pickup');
 				}
 			});
 			$("#delivery").click(function() {
 				if ($(this).prop('checked')) {
 					$("#billing-info").show();
 					$("#shipping-info").show();
+					$("#delivery_method_name").val('Delivery');
 				}
 			});
-		});
-		/*———————————————————————————————————————————————————————*/		
+		});	
 
 
-		// toggles
+		// toggles payment options (radio button)
 		//-----------------------------------------------
 		$("#review-and-complete").hide();
 		$("#proceedWithPayPal").hide();
@@ -448,7 +451,7 @@
 		});
 
 
-		// triggers the radio button upon selecting <img> of a certain payment method
+		// triggers the radio button upon clicking <img> of a certain payment method
 		//-----------------------------------------------------------------------------
 		$("#img-paymaya").click(function() {
 			$("#paymaya-option").prop('checked', true).trigger('click');

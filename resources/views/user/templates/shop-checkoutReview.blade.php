@@ -179,7 +179,7 @@
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td class="information">{{ $user->billing_address1 }} {{ $user->billing_barangay }}, {{ $user->billing_city }}  {{ $user->billing_province }} ,{{ $user->billing_zipcode }} {{ $user->billing_country}} </td>
+                    <td class="information">{{ $user->billing_address1 }}, {{ $user->billing_barangay }}, {{ $user->billing_city }} {{ $user->billing_zipcode }}, {{ $user->billing_province }}, {{ $user->billing_country}}</td>
                   </tr>
                   
                 </tbody>
@@ -219,7 +219,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>{{ session('delivery_method') }}</td>
+                    <td>{{ session('delivery_method_name') }}</td>
                     <!-- <td class="information"></td> -->
                   </tr>
                 </tbody>

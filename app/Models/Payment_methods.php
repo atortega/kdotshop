@@ -16,5 +16,5 @@ class Payment_methods extends Model
     	'payment_name',
     	'payment_desc'
 
-    ]
+    ];
 }

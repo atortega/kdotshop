@@ -20,7 +20,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Payments</h1>
+                        <h1 class="page-header">Deliveries</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -30,13 +30,11 @@
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                <th>Order Number</th>
-                                <th>Payment Date</th>
-                                <th>Customer's Name</th>
-                                <th>Contact Number</th>
+                                <th>Id</th>
+                                <th>Delivery Method</th>
+                                <th>Customer Name</th>
+                                <th>Delivery Address</th>
                                 <th>Payment Method</th>
-                                <th>Reference Number</th>
-                                <th>Total Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,15 +45,13 @@
                         $('#table').DataTable({
                             processing: true,
                             serverSide: true,
-                            ajax: '{{ url('admin/payments/index') }}',
+                            ajax: '{{ url('admin/delivery/index') }}',
                             columns: [
                                 { data: 'order_id', name: 'order_id' },
-                                { data: 'date_paid', name: 'date_paid' },
+                                { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'customer_name', name: 'customer_name' },
-                                { data: 'phone_number', name: 'phone_number' },
+                                { data: 'delivery_address', name: 'delivery_address' },
                                 { data: 'payment_name', name: 'payment_name' },
-                                { data: 'reference_code', name: 'reference_code' },
-                                { data: 'total_amount', name: 'total_amount' },
                                 { data: 'actions', name: 'actions', orderable: false }
                             ]
                         });
@@ -64,10 +60,7 @@
 
             </div>
             <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
+	</div>
     <!-- /#wrapper -->
 
     

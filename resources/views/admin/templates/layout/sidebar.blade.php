@@ -31,6 +31,9 @@
             <a href="/admin/payments"><i class="fa fa-edit fa-fw"></i> Payments</a>
         </li>
         <li>
+            <a href="/admin/delivery"><i class="fa fa-edit fa-fw"></i> Delivery</a>
+        </li>
+        <li>
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Utility<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li>

@@ -254,6 +254,13 @@ Route::group(['middleware' => 'auth' ], function() {
             });
 
 
+            //Deliveries
+            Route::get('/delivery/index', 'DeliveryController@index');
+
+            Route::get('/delivery', function () {
+                return view('admin.templates.delivery-list');
+            });            
+
             //Colors
             Route::get('/colors/index', 'ColorsController@index');
             Route::post('/colors/create/save', 'ColorsController@addNew');

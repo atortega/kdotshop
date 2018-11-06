@@ -33,10 +33,11 @@ class PaymentsController extends Controller
 
 		$payments = DB::table('payments')
 			->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
-			->leftjoin('orders', 'payments.payment_id', '=', 'orders.payment_id')
+			->leftjoin('orders', 'payments.order_id', '=', 'orders.order_id')
 			->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
 			->select('payments.*', 'orders.order_id', 'customer.first_name', 'customer.phone_number', 'payment_methods.payment_name', 'orders.total_amount')
 			->get();
+
 		$datatables = Datatables::of($payments)
 		            ->addColumn('actions', function ($data) {
 		                    return "

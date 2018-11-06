@@ -313,6 +313,7 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/admin/profile', function () {
                 return view('admin.templates.page-profile');
             });
+            Route::post('/admin/editprofile', 'CustomersController@saveProfile');
             Route::get('/admin/edit', function () {
                 return view('admin.templates.page-editProfile');
             });

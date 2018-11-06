@@ -102,7 +102,7 @@
 										
 											<a href="/admin" class="dropdown-item">
 												<i class="fa fa-key pr-2"></i>
-												<span class="pl-5px">Admin</span>
+												<span>Admin</span>
 											</a>
 									
 										@endif

@@ -128,8 +128,7 @@
 
                 </script>
             </div>
-            <!-- /.container-flui,
-                d -->
+            <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
 

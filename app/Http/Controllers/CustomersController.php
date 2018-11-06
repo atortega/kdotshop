@@ -255,7 +255,12 @@ class CustomersController extends Controller
 
         $customer->save();
 
-        return redirect('/account');
+        if($request['referer']=='admin'){
+            return redirect('/admin/profile');
+        }else{
+            return redirect('/account');
+        }
+
     }
 
     // Saves a new avatar

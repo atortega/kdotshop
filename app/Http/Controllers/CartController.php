@@ -240,6 +240,7 @@ class CartController extends Controller
 
         session(['customerAddress' => $customerAddress]);
         session(['delivery_method' => $request->delivery_method]);
+        session(['delivery_method_name' => $request->delivery_method_name]);
 
         return redirect('/shop-checkoutReview');
     }

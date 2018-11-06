@@ -67,13 +67,20 @@
 							<div class="separator-2"></div>
 							
 							<ul class="social-links circle animated-effect-1">
+								<li class="googleplus">
+									<a href="{{ URL::asset('https://plus.google.com/u/0/109139515253704692407') }}"
+										target="_blank"><i class="fa fa-google-plus"></i>
+									</a>
+								</li>
 								<li class="facebook">
 									<a href="{{ URL::asset('https://www.facebook.com/kdotcutaran') }}" 
-										target="_blank"><i class="fa fa-facebook"></i></a>
+										target="_blank"><i class="fa fa-facebook"></i>
+									</a>
 								</li>
 								<li class="twitter">
 									<a href="{{ URL::asset('https://twitter.com/KdotShop') }}" 
-										target="_blank"><i class="fa fa-twitter"></i></a>
+										target="_blank"><i class="fa fa-twitter"></i>
+									</a>
 								</li>
 							</ul>
 
@@ -316,8 +323,8 @@
 			$("#vCode").removeAttr('disabled');
 		});	
 
+		/*———————————————————————————————————————————————————————*/
 		// IMG Upload - User Avatar
-		//-----------------------------------------------
 		// [1] Preview image before it is uploaded
 		$(document).on('change', '.btn-file :file', function() {
 			var input = $(this),
@@ -327,29 +334,29 @@
 
 		// [2] Change input value on fileselect
 		$('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
+			
+			var input = $(this).parents('.input-group').find(':text'),
+				log = label;
+			
+			if( input.length ) {
+				input.val(log);
+			} else {
+				if( log ) alert(log);
+			}
+			
 		});
 
 		// [3] Change img onload
 		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+			
+				reader.onload = function (e) {
+					$('#img-upload').attr('src', e.target.result);
+				}
+				
+				reader.readAsDataURL(input.files[0]);
+			}
 		}
 
 		// [4] Read file type input on change
@@ -368,7 +375,6 @@
             } 
 		});
 		/*———————————————————————————————————————————————————————*/
-
 
 		// Copy billing address to shipping address
 		//-----------------------------------------------
@@ -391,25 +397,29 @@
 			
 		});
 
-		$("#shop-checkout-pickup").hide();
+
+		// toggles options for delivery method (radio button)
+		//-----------------------------------------------
+		$("#delivery_method_name").val('Delivery');
 		$(function() {
 			$("#pickup").click(function() {
 				if ($(this).prop('checked')) {
 					$("#billing-info").show();
 					$("#shipping-info").hide();
+					$("#delivery_method_name").val('Pickup');
 				}
 			});
 			$("#delivery").click(function() {
 				if ($(this).prop('checked')) {
 					$("#billing-info").show();
 					$("#shipping-info").show();
+					$("#delivery_method_name").val('Delivery');
 				}
 			});
-		});
-		/*———————————————————————————————————————————————————————*/		
+		});	
 
 
-		// 
+		// toggles payment options (radio button)
 		//-----------------------------------------------
 		$("#review-and-complete").hide();
 		$("#proceedWithPayPal").hide();
@@ -441,7 +451,7 @@
 		});
 
 
-		// triggers the radio button upon selecting <img> of a certain payment method
+		// triggers the radio button upon clicking <img> of a certain payment method
 		//-----------------------------------------------------------------------------
 		$("#img-paymaya").click(function() {
 			$("#paymaya-option").prop('checked', true).trigger('click');

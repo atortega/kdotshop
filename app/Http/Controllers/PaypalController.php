@@ -185,6 +185,7 @@ class PaypalController extends Controller
             $payment->payment_method_id = 2;
             $payment->order_id          = $order->order_id;
             $payment->amount            = str_replace(",", "", Cart::total());
+            $payment->date_paid         = date('Y-m-d');
             $payment->reference_code    = $result->getId();
             $payment->save();
 

@@ -49,14 +49,14 @@
                             serverSide: true,
                             ajax: '{{ url('admin/payments/index') }}',
                             columns: [
-                                { data: 'orderNumber', name: 'orderNumber' },
-                                { data: 'paymentDate', name: 'paymentDate' },
-                                { data: 'customersName', name: 'customersName' },
+                                { data: 'order_id', name: 'order_id' },
+                                { data: 'date_paid', name: 'date_paid' },
+                                { data: 'first_name', name: 'first_name' },
                                 { data: 'phone_number', name: 'phone_nnumber' },
-                                { data: 'paymentMethod', name: 'paymentMethod' },
-                                { data: 'referenceNumber', name: 'referenceNumber' },
-                                { data: 'totalAmount', name: 'totalAmount' },
-                                { data: 'actions', name: 'actions' },
+                                { data: 'payment_name', name: 'payment_name' },
+                                { data: 'reference_code', name: 'reference_code' },
+                                { data: 'total_amount', name: 'total_amount' },
+                                { data: 'actions', name: 'actions', orderable: false }
                             ]
                         });
                     });

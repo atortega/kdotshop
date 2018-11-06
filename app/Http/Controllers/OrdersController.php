@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
@@ -41,13 +42,14 @@ class OrdersController extends Controller
             ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
             ->leftjoin('payments', 'payments.order_id', '=', 'orders.order_id')
             ->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
-            ->select('orders.*', 'customer.first_name', 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
+            ->select('orders.*', 'customer.first_name', DB::raw("concat(customer.first_name, ' ', customer.last_name) as customer_name"), 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
+            ->orderBy('orders.order_id', 'desc')
             ->get();
-//dd($orders);
+
         $datatables = Datatables::of($orders)
             ->addColumn('actions', function ($data) {
                     return "
-                        <button class='btn btn-xs btn-primary size-edit-btn' sid='$data->order_id'>View Details</button>
+                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>View Details</button>
                         ";
                 })
                 ->escapeColumns('actions')
@@ -65,10 +67,15 @@ class OrdersController extends Controller
 
     public function getOrderDetailById($id = null)
     {
+        /*
         $getOrderQuery = DB::table('orders')->where('order_id', '=', $id)->first();
         $getCustomersQuery = DB::table('customer')->where('customer_id', '=', $id)->first();
         $getPaymentMethodQuery = DB::table('payment_methods')->where('payment_method_id', '=', $id)->first();
         $getDeliveryMethodQuery = DB::table('delivery_methods')->where('delivery_methods_id', '=', $id)->first();
+         */
+        $order_details = OrderDetails::where('order_id', $id)->orderBy('product_name')->get();
+
+        return ($order_details);
     }
 
     public function paginateProducts(Request $request)

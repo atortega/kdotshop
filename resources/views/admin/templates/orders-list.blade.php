@@ -80,15 +80,18 @@
 
                         $('#table').on('click', '.orders-edit-btn', function() {
                             var order_id = $(this).attr('sid');
+                            var total = 0;
                             console.log(order_id);
                             $.get( "/admin/orders/details/get/"+order_id, function( data ) {
                                 console.log(data);
                                 $("#modalOrderDetails tbody").html('');
                                 $.each(data, function(index, row) {
                                     console.log(row.product_name);
-                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td align='right'>" + row.quantity + "</td><td align='right'>" + parseFloat(row.price).toFixed(2) +"</td><td align='right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
+                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td class='text-right'>" + row.quantity + "</td><td class='text-right'>" + parseFloat(row.price).toFixed(2) +"</td><td class='text-right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
                                     $("#modalOrderDetails tbody").append(markup);
+                                    total = total + row.amount;
                                 });
+                                $("#modalOrderDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
                             });
 
                             $('#myModal').modal('show');
@@ -138,13 +141,16 @@
                             <thead>
                                 <th>Product ID</th>
                                 <th>Product Name</th>
-                                <th>QTY</th>
-                                <th align=""right">Unit Price</th>
-                                <th align=""right">Amount</th>
+                                <th class='text-right'>QTY</th>
+                                <th class='text-right'>Unit Price</th>
+                                <th class='text-right'>Amount</th>
                             </thead>
                             <tbody>
 
                             </tbody>
+                            <tfoot>
+
+                            </tfoot>
                         </table>
                     </div>
                 </div>

@@ -58,7 +58,7 @@
                             columns: [
                                 { data: 'order_id', name: 'order_id' },
                                 { data: 'order_date', name: 'order_date' },
-                                { data: 'first_name', name: 'first_name' },
+                                { data: 'customer_name', name: 'customer_name' },
                                 { data: 'payment_name', name: 'payment_name'},
                                 { data: 'delivery_method_name', name: 'delivery_method_name' },
                                 { data: 'status', name: 'status' },
@@ -77,6 +77,23 @@
                                 $("#count").val(settings.json.recordsFiltered);
                             }
                         });
+
+                        $('#table').on('click', '.orders-edit-btn', function() {
+                            var order_id = $(this).attr('sid');
+                            console.log(order_id);
+                            $.get( "/admin/orders/details/get/"+order_id, function( data ) {
+                                console.log(data);
+                                $("#modalOrderDetails tbody").html('');
+                                $.each(data, function(index, row) {
+                                    console.log(row.product_name);
+                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td align='right'>" + row.quantity + "</td><td align='right'>" + parseFloat(row.price).toFixed(2) +"</td><td align='right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
+                                    $("#modalOrderDetails tbody").append(markup);
+                                });
+                            });
+
+                            $('#myModal').modal('show');
+                        });
+
 
               //cutted
 
@@ -113,22 +130,28 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Color - Update</h4>
+                    <h4 class="modal-title">Order Details</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="size">Color</label>
-                        <input type="text" class="form-control" id="color" name="color" placeholder="Enter Size" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Size Description">
+                    <div class="table-responsive">
+                        <table id="modalOrderDetails" class="table">
+                            <thead>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>QTY</th>
+                                <th align=""right">Unit Price</th>
+                                <th align=""right">Amount</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" id="size_id" name="size_id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
+                    <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

@@ -35,11 +35,11 @@ class DeliveryController extends Controller
             ->get();
 
            $datatables = Datatables::of($delivery)
-            ->addColumn('actions', function ($data) {
+           /* ->addColumn('actions', function ($data) {
                     return "
                         <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>View Details</button>
                         ";
-                })
+                })*/
                 ->escapeColumns('actions')
                 ->make(true);
 

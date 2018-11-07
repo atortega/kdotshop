@@ -35,7 +35,7 @@
                                 <th>Customer Name</th>
                                 <th>Delivery Address</th>
                                 <th>Payment Method</th>
-                                <th>Action</th>
+                                <!-- <th>Action</th> -->
                             </tr>
                         </thead>
                     </table>
@@ -52,7 +52,7 @@
                                 { data: 'customer_name', name: 'customer_name' },
                                 { data: 'delivery_address', name: 'delivery_address' },
                                 { data: 'payment_name', name: 'payment_name' },
-                                { data: 'actions', name: 'actions', orderable: false }
+                                /*{ data: 'actions', name: 'actions', orderable: false }*/
                             ]
                         });
                     });

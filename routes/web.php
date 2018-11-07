@@ -242,6 +242,7 @@ Route::group(['middleware' => 'auth' ], function() {
             //Orders
             Route::get('/orders/index', 'OrdersController@index');
             Route::get('/orders/details/get/{id}', 'OrdersController@getOrderDetailById');
+            Route::get('/orders/tracker/get/{id}', 'OrdersController@getOrderTrackers');
             Route::get('/orders', function () {
                 return view('admin.templates.orders-list');
             });

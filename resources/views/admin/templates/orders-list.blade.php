@@ -94,10 +94,19 @@
                                 $("#modalOrderDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
                             });
 
-                            $('#myModal').modal('show');
+                            $('#editModal').modal('show');
                         });
 
+                        $('#table').on('click', '.orders-tracker-btn', function() {
+                            var order_id = $(this).attr('sid');
+                            var total = 0;
+                            console.log(order_id);
+                            $("#tracker_order_id").html(order_id);
+                            $.get( "/admin/orders/tracker/get/"+order_id, function( data ) {
 
+                            });
+                            $('#trackerModal').modal('show');
+                        });
               //cutted
 
                     });
@@ -126,9 +135,9 @@
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="/js/bootbox.min.js"></script>
+    <script src="/js/admin/bootbox.min.js"></script>
 
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="editModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -164,6 +173,41 @@
     </div><!-- /.modal -->
 
 
+    <div class="modal fade" id="trackerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Order Tracker</h4>
+                    <div>Order ID: <span id="tracker_order_id"></span></span></div>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table id="modalOrderTracker" class="table">
+                            <thead>
+                            <th>Reference</th>
+                            <th class='text-right'>Status</th>
+                            <th class='text-right'>Created On</th>
+                            <th class='text-right'>Updated On</th>
+                            <th class='text-right'>Notes</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="size_id" name="size_id" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </body>
 
 </html>

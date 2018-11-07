@@ -49,7 +49,8 @@ class OrdersController extends Controller
         $datatables = Datatables::of($orders)
             ->addColumn('actions', function ($data) {
                     return "
-                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>View Details</button>
+                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>Details</button>
+                        <button class='btn btn-xs btn-success orders-tracker-btn' sid='$data->order_id'>Tracker</button>
                         ";
                 })
                 ->escapeColumns('actions')
@@ -107,5 +108,16 @@ class OrdersController extends Controller
 
         $perpage_array = [10, 25, 50, 100];
 
+    }
+
+    public function getOrderTrackers($order_id) {
+        $query = DB::table('order_trackers')
+            ->leftJoin('payments', 'payments.order_id', 'order_trackers.order_id')
+            ->where('order_trackers.order_id', $order_id)
+            ->orderByDesc('order_trackers.order_tracker_id')
+            ->select('order_trackers.*', 'payments.reference_code')
+            ->get();
+
+        return $query;
     }
 }

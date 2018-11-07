@@ -71,23 +71,23 @@
                                 $("#count").val(settings.json.recordsFiltered);
                             }
                         });
-                         $('#table').on('click', '.payments-edit-btn', function() {
-                            var payment_id = $(this).attr('sid');
+                         $('#table').on('click', '.orders-edit-btn', function() {
+                            var order_id = $(this).attr('sid');
                             var total = 0;
-                            console.log(payment_id);
-                            $.get( "/admin/payments/details/get/"+payment_id, function( data ) {
+                            console.log(order_id);
+                            $.get( "/admin/orders/details/get/"+order_id, function( data ) {
                                 console.log(data);
-                                $("#modalPaymentDetails tbody").html('');
+                                $("#modalOrderDetails tbody").html('');
                                 $.each(data, function(index, row) {
                                     console.log(row.product_name);
                                     var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td class='text-right'>" + row.quantity + "</td><td class='text-right'>" + parseFloat(row.price).toFixed(2) +"</td><td class='text-right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
-                                    $("#modalPaymentDetails tbody").append(markup);
+                                    $("#modalOrderDetails tbody").append(markup);
                                     total = total + row.amount;
                                 });
-                                $("#modalPaymentDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
+                                $("#modalOrderDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
                             });
 
-                            $('#myModal').modal('show');
+                            $('#editModal').modal('show');
                         });
                     });
                 </script>

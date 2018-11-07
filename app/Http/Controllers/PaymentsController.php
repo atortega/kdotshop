@@ -43,7 +43,7 @@ class PaymentsController extends Controller
 		$datatables = Datatables::of($payments)
 		            ->addColumn('actions', function ($data) {
 		                    return "
-		                        <button class='btn btn-xs btn-primary payments-edit-btn' sid='$data->payment_id'>View Details</button>
+		                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>View Details</button>
 		                        ";
 		                })
 		                ->escapeColumns('actions')
@@ -51,10 +51,23 @@ class PaymentsController extends Controller
 
 		return ($datatables);
 	}
-	 public function getPaymentDetailById($id = null)
+	/* public function getPaymentDetailById($id = null)
     {
         $payment_details = PaymentDetails::where('payment_id', $id)->orderBy('product_name')->get();
 
         return ($payment_details);
+    }*/
+     public function getOrderDetailById($id = null)
+    {
+        /*
+        $getOrderQuery = DB::table('orders')->where('order_id', '=', $id)->first();
+        $getCustomersQuery = DB::table('customer')->where('customer_id', '=', $id)->first();
+        $getPaymentMethodQuery = DB::table('payment_methods')->where('payment_method_id', '=', $id)->first();
+        $getDeliveryMethodQuery = DB::table('delivery_methods')->where('delivery_methods_id', '=', $id)->first();
+         */
+        $order_details = OrderDetails::where('order_id', $id)->orderBy('product_name')->get();
+
+        return ($order_details);
     }
+
 }

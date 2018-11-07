@@ -43,7 +43,7 @@ class PaymentsController extends Controller
 		$datatables = Datatables::of($payments)
 		            ->addColumn('actions', function ($data) {
 		                    return "
-		                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>View Details</button>
+		                        <button class='btn btn-xs btn-primary payments-edit-btn' sid='$data->order_id'>View Details</button>
 		                        ";
 		                })
 		                ->escapeColumns('actions')

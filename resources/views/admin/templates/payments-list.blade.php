@@ -71,7 +71,7 @@
                                 $("#count").val(settings.json.recordsFiltered);
                             }
                         });
-                         $('#table').on('click', '.orders-edit-btn', function() {
+                         $('#table').on('click', '.payments-edit-btn', function() {
                             var order_id = $(this).attr('sid');
                             var total = 0;
                             console.log(order_id);
@@ -112,6 +112,41 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Order Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table id="modalOrderDetails" class="table">
+                            <thead>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th class='text-right'>QTY</th>
+                            <th class='text-right'>Unit Price</th>
+                            <th class='text-right'>Amount</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="size_id" name="size_id" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
 
 </body>

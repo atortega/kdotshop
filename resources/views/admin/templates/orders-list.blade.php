@@ -103,6 +103,12 @@
                             console.log(order_id);
                             $("#tracker_order_id").html(order_id);
                             $.get( "/admin/orders/tracker/get/"+order_id, function( data ) {
+                                console.log(data);
+                                $("#modalOrderTracker tbody").html('');
+                                $.each(data, function(index, row) {
+                                    var markup = "<tr><td>"+row.reference_code+"</td><td>" + row.status + "</td><td>" + row.created_at + "</td><td>" + row.updated_at +"</td><td>" + row.notes + "</td></tr>";
+                                    $("#modalOrderTracker tbody").append(markup);
+                                });
 
                             });
                             $('#trackerModal').modal('show');

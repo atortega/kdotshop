@@ -52,7 +52,7 @@ class CustomersController extends Controller
             'middle_name'       => 'required',
             'birthdate'         => '',
             'gender'            => '',
-            'address'           => 'required|max:100',
+            'address'           => '',
             'phone_number'      => 'required',
             'email'             => 'required|email|unique:customer,email',
             'password'          => 'required',

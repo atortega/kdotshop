@@ -99,7 +99,7 @@
                                             type: "POST",
                                             data: {category_id: category_id, _token: $('meta[name="csrf-token"]').attr('content')},
                                             cache: false,
-                                            url: '/admin/categories/delete',
+                                            url: '/admin/sub-categories/delete',
                                             success: function(data){
                                                 console.log(data);
                                                 datatable.draw('page');

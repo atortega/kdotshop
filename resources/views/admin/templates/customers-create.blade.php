@@ -55,10 +55,17 @@
                             <label for="name">Middle Name</label>
                             <input type="text" class="form-control" id="mname" name="middle_name" placeholder="Enter Middle Name" value="{{ old('middle_name') }}">
                         </div>
-                        <div class="form-group">
-                            <label for="name">Gender</label>
-                            <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter Gender" value="{{ old('gender') }}">
-                        </div>
+                        <div class="form-group" > 
+                            <label for="gender">
+                                {{ __('Gender') }}
+                            </label>
+                            <div class="">
+                                <select class="form-control" id="gender" placeholder="Gender" name="gender" value="{{ old('gender') }}">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>  
+                            </div>
+                        </div> 
 
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>

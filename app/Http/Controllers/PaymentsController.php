@@ -20,6 +20,8 @@ use App\Models\CustomersAddress;
 use App\Models\Delivery_methods;
 use App\Models\Payment_methods;
 use App\Models\Orders;
+use App\Models\Products;
+use App\Models\PaymentDetails;
 
 use App\Models\Payments;
 
@@ -41,7 +43,7 @@ class PaymentsController extends Controller
 		$datatables = Datatables::of($payments)
 		            ->addColumn('actions', function ($data) {
 		                    return "
-		                        <button class='btn btn-xs btn-primary size-edit-btn' sid='$data->order_id'>View Details</button>
+		                        <button class='btn btn-xs btn-primary payments-edit-btn' sid='$data->payment_id'>View Details</button>
 		                        ";
 		                })
 		                ->escapeColumns('actions')
@@ -49,4 +51,10 @@ class PaymentsController extends Controller
 
 		return ($datatables);
 	}
+	 public function getPaymentDetailById($id = null)
+    {
+        $payment_details = PaymentDetails::where('payment_id', $id)->orderBy('product_name')->get();
+
+        return ($payment_details);
+    }
 }

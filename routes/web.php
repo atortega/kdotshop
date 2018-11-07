@@ -249,7 +249,7 @@ Route::group(['middleware' => 'auth' ], function() {
 
             //Payments
             Route::get('/payments/index', 'PaymentsController@index');
-
+            Route::get('/payments/details/get/{id}', 'PaymentsController@getOrderDetailById');
             Route::get('/payments', function () {
                 return view('admin.templates.payments-list');
             });

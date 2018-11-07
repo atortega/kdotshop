@@ -181,7 +181,7 @@
 								Pay with PayPal
 								<i class="fa fa-paypal"></i>
 							</a>
-							<a href="#"
+							<a href="/palawan"
 									id="proceedWithPalawan"
 									class="btn btn-animated btn-group btn-info"
 									style="background-color: #007236">

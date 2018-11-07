@@ -264,7 +264,11 @@
 												<div class="col-lg-9">
 													<input class="form-control" id="billing_address1"
 														type="text" name="billing_address1"
-														value="{{ $user->billing_address1 }}">
+														value="{{ $user->billing_address1 }}" hidden>
+													<!-- input field (view only) start -->
+													<input class="form-control" type="text"
+														value="{{ $user->billing_address1 }}" disabled>
+													<!-- input field (view only) end -->
 												</div>
 											</div>
 
@@ -276,11 +280,18 @@
 												</label>
 												<div class="col-lg-9">
 													<select class="form-control" id="billing_barangay"
-															name="billing_barangay">
+															name="billing_barangay" hidden>
 														@foreach($places as $barangay)
 															<option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
 														@endforeach
 													</select>
+													<!-- select field (view only) start -->
+													<select class="form-control" disabled>
+														@foreach($places as $barangay)
+															<option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+														@endforeach
+													</select>
+													<!-- select field (view only) end -->
 												</div>
 											</div>
 
@@ -292,11 +303,18 @@
 												</label>
 												<div class="col-lg-9">
 													<select class="form-control" id="billing_city"
-															name="billing_city">
+															name="billing_city" hidden>
 														@foreach($cities as $city)
 															<option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
 														@endforeach
 													</select>
+													<!-- select field (view only) start -->
+													<select class="form-control" disabled>
+														@foreach($cities as $city)
+															<option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
+														@endforeach
+													</select>
+													<!-- select field (view only) end -->
 												</div>
 											</div>
 
@@ -308,11 +326,18 @@
 												</label>
 												<div class="col-lg-9">
 													<select class="form-control" id="billing_province"
-															name="billing_province">
+															name="billing_province" hidden>
 														@foreach($provinces as $province)
 															<option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
-	                                            		@endforeach
-	                                        		</select>
+														@endforeach
+													</select>
+													<!-- select field (view only) start -->
+													<select class="form-control" disabled>
+														@foreach($provinces as $province)
+															<option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+														@endforeach
+													</select>
+													<!-- select field (view only) end -->
 												</div>
 											</div>
 
@@ -325,7 +350,11 @@
 												<div class="col-lg-9">
 													<input class="form-control" id="billing_zipcode"
 														name="billing_zipcode" type="text"
-														value="{{ $user->billing_zipcode }}">		
+														value="{{ $user->billing_zipcode }}" hidden>
+													<!-- input field (view only) start -->
+													<input class="form-control" value="{{ $user->billing_zipcode }}"
+														disabled>
+													<!-- input field (view only) end -->
 												</div>
 											</div>
 
@@ -336,11 +365,18 @@
 												</label>
 												<div class="col-lg-9">
 													<select class="form-control" id="billing_country"
-															name="billing_country">
-	                                            		@foreach($countries as $country)
-	                                                		<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
-	                                            		@endforeach
-	                                        		</select>
+															name="billing_country" hidden>
+														@foreach($countries as $country)
+															<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
+														@endforeach
+													</select>
+													<!-- select field (view only) start -->
+													<select class="form-control" disabled>
+														@foreach($countries as $country)
+															<option value="{{$country->code}}" {{ $country->code == $user->billing_country ? 'selected' : '' }}> {{$country->name}}</option>
+														@endforeach
+													</select>
+													<!-- select field (view only) end -->
 												</div>
 											</div>
 
@@ -383,7 +419,6 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
 													<input class="form-control" id="shipping_address1"
 														type="text" name="shipping_address1" value="">
 												</div>
@@ -396,15 +431,11 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
-													<select class="form-control" id="shipping_barangay" name="shipping_barangay">
-	                                            		@foreach($places as $barangay)
-		                                                <option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
-
-
-
-	                                            		@endforeach
-
+													<select class="form-control" id="shipping_barangay"
+															name="shipping_barangay">
+														@foreach($places as $barangay)
+															<option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+														@endforeach
 	                                        		</select>
 												</div>
 											</div>
@@ -416,15 +447,11 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
-													<select class="form-control" id="shipping_city" name="shipping_city">
-	                                            		@foreach($cities as $city)
-		                                                <option value="{{$city->cities}}" {{ $city->cities == $user->shipping_city ? 'selected' : '' }}> {{$city->cities}}</option>
-
-
-
-	                                            		@endforeach
-
+													<select class="form-control" id="shipping_city"
+															name="shipping_city">
+														@foreach($cities as $city)
+															<option value="{{$city->cities}}" {{ $city->cities == $user->shipping_city ? 'selected' : '' }}> {{$city->cities}}</option>
+														@endforeach
 	                                        		</select>
 												</div>
 											</div>
@@ -436,18 +463,15 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
-													<select class="form-control" id="shipping_province" name="shipping_province">
-	                                            		@foreach($provinces as $province)
-		                                                <option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
-
-
-
-	                                            		@endforeach
-
-	                                        		</select>
+													<select class="form-control" id="shipping_province"
+															name="shipping_province">
+														@foreach($provinces as $province)
+															<option value="{{$province->provinces}}" {{ $province->provinces == $user->billing_province ? 'selected' : '' }}> {{$province->provinces}}</option>
+														@endforeach
+													</select>
 												</div>
 											</div>
+
 											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
 													for="shipping_zipcode">
@@ -455,8 +479,8 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
-													<input id="shipping_zipcode" type="text" class="form-control" name="shipping_zipcode" value="">
+													<input id="shipping_zipcode" type="text" class="form-control"
+														name="shipping_zipcode" value="">
 												</div>
 											</div>
 											<div class="form-group has-feedback row">
@@ -465,12 +489,12 @@
 													<strong class="text-default" style="font-size: 18px;"> *</strong>
 												</label>
 												<div class="col-lg-9">
-
-													<select class="form-control" id="shipping_country" name="shipping_country">
-	                                            		@foreach($countries as $country)
-	                                                		<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}> {{$country->name}}</option>
-	                                            		@endforeach
-	                                        		</select>
+													<select class="form-control" id="shipping_country"
+															name="shipping_country">
+														@foreach($countries as $country)
+															<option value="{{$country->code}}" {{ $country->code == $user->shipping_country ? 'selected' : '' }}> {{$country->name}}</option>
+														@endforeach
+													</select>
 												</div>
 											</div>
 											</div>
@@ -479,8 +503,6 @@
 										<div class="space"></div>
 
 										<div class="row">
-											
-
 											<div class="col-xl-8 ml-xl-auto">	
 											
 											</div>
@@ -499,21 +521,20 @@
 							<!-- </form> -->
 							</fieldset>
 
-	                        <div class="text-right">  
-	                            <a href="/shop-cart" class="btn btn-group btn-default">
+							<div class="text-right">  
+								<a href="/shop-cart" class="btn btn-group btn-default">
 									Go Back To Cart
-	                            </a>
-	                            <button type="submit" class="btn btn-group btn-default">Next Step</button>
-	                        </div>
-
+								</a>
+								<button type="submit" class="btn btn-group btn-default">Next Step</button>
+							</div>
 						</form>
-                    </div>
-                    <!-- main end -->
-                </div>
-            </div>
-        </section>
+					</div>
+					<!-- main end -->
+				</div>
+			</div>
+		</section>
         <!-- main-container end -->
-    </div>
+	</div>
     <!-- page-wrapper end -->
 
     <!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
@@ -525,12 +546,7 @@
     <!-- ================================================== -->
     <!-- Jquery and Bootstap core js files -->  
 
-
-
 	<!-- scrollToTop -->
 	<!-- ================ -->
-	
-
-
 </body>
 </html>

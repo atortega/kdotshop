@@ -148,7 +148,7 @@
                         </a>
                       </li>
                       <li class="googleplus">
-                        <a href="#">
+                        <a href="{{ url('https://plus.google.com/u/0/+JoshuaLigad') }}" target="_blank">
                           <i class="fa fa-google-plus"></i>
                         </a>
                       </li>

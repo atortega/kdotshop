@@ -180,6 +180,8 @@ class PaypalController extends Controller
             $order->status                  = 'approved';
             $order->save();
 
+            //insert data to delivery_addresses table
+            $delivery =
             //insert data to payment table
             $payment = new Payments();
             $payment->payment_method_id = 2;

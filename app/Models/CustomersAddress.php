@@ -10,7 +10,7 @@ class CustomersAddress extends Model
 
     protected $primaryKey = 'customers_address_id';
 
-    public $timestamp= false;
+    public $timestamps = false;
 
     protected $fillable=[
         'customer_id',

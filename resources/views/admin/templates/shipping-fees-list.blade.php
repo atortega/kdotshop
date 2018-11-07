@@ -78,20 +78,16 @@
                             }
                         });
 
-                        $('#table').on('click', '.orders-edit-btn', function() {
-                            var order_id = $(this).attr('sid');
+                        $('#table').on('click', '.fees-edit-btn', function() {
+                            var id = $(this).attr('sid');
                             var total = 0;
-                            console.log(order_id);
-                            $.get( "/admin/orders/details/get/"+order_id, function( data ) {
+                            console.log(id);
+                            $.get("/admin/shipping/fees/get/" + id, function (data) {
                                 console.log(data);
-                                $("#modalOrderDetails tbody").html('');
-                                $.each(data, function(index, row) {
-                                    console.log(row.product_name);
-                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td class='text-right'>" + row.quantity + "</td><td class='text-right'>" + parseFloat(row.price).toFixed(2) +"</td><td class='text-right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
-                                    $("#modalOrderDetails tbody").append(markup);
-                                    total = total + row.amount;
-                                });
-                                $("#modalOrderDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
+                                $("#place").val(data.place);
+                                $("#id").val(data.id);
+                                $("#distance").val(data.km);
+                                $("#shipping_fee").val(data.shipping_fee);
                             });
 
                             $('#editModal').modal('show');
@@ -131,10 +127,10 @@
 
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="../../vendor/metisMenu/metisMenu.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
@@ -148,35 +144,31 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Order Details</h4>
+                    <h4 class="modal-title">Shipping Fees Update</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="table-responsive">
-                        <table id="modalOrderDetails" class="table">
-                            <thead>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th class='text-right'>QTY</th>
-                                <th class='text-right'>Unit Price</th>
-                                <th class='text-right'>Amount</th>
-                            </thead>
-                            <tbody>
-
-                            </tbody>
-                            <tfoot>
-
-                            </tfoot>
-                        </table>
+                    <div class="form-group">
+                        <label for="color">Barangay</label>
+                        <input type="text" class="form-control" id="place" name="place" placeholder="Enter Barangay" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Distnce(KM)</label>
+                        <input type="text" class="form-control" id="distance" name="distance" placeholder="Enter Distance">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Fee</label>
+                        <input type="text" class="form-control" id="shipping_fee" name="shipping_fee" placeholder="Enter Shipping Fee">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="size_id" name="size_id" />
+                    <input type="hidden" id="id" name="id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
+                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
 
 
     <div class="modal fade" id="trackerModal">

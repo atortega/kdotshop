@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Datatables;
 
+use App\Models\Places;
+
 class ShippingFeeController extends Controller
 {
     public function index()
@@ -26,5 +28,11 @@ class ShippingFeeController extends Controller
             ->make(true);
 
         return ($datatables);
+    }
+
+    public function getShippingFeeById($id)
+    {
+        $fee = Places::where('id', $id)->first();
+        return $fee;
     }
 }

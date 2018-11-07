@@ -8,8 +8,11 @@ class Delivery_addresses extends Model
 {
     protected $table='delivery_addresses';
 
-    public $timestamp= false;
+    public $timestamps = false;
 
+    protected $primaryKey = 'delivery_address_id';
+
+/*
     protected $fillable=[
         'customer_id',
         'billing_first_name',
@@ -30,4 +33,5 @@ class Delivery_addresses extends Model
         'shipping_zip_code'
 
     ];
+*/
 }

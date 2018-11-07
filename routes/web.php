@@ -255,6 +255,11 @@ Route::group(['middleware' => 'auth' ], function() {
                 return view('admin.templates.payments-list');
             });
 
+            //Shipping Fees
+            Route::get('/shipping/fees', function () {
+                return view('admin.templates.shipping-fees-list');
+            });
+            Route::get('/shipping/fees/index', 'ShippingFeeController@index');
 
             //Deliveries
             Route::get('/delivery/index', 'DeliveryController@index');

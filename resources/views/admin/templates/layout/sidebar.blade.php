@@ -34,6 +34,9 @@
             <a href="/admin/delivery"><i class="fa fa-edit fa-fw"></i> Delivery</a>
         </li>
         <li>
+            <a href="/admin/shipping/fees"><i class="fa fa-edit fa-fw"></i> Shipping Fees</a>
+        </li>
+        <li>
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Utility<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li>

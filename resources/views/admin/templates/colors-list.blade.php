@@ -148,7 +148,7 @@
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="../js/bootbox.min.js"></script>
+    <script src="../js/admin/bootbox.min.js"></script>
 
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">

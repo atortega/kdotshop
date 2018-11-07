@@ -288,4 +288,23 @@ class ProductsController extends Controller
                     'perpage'                   => $perpage
                 ]);
     }
+
+    /*
+     * Delete Product
+     *
+     * @param Array $request
+     *
+     * @return Array $return
+     */
+    public function deleteProduct(Request $request)
+    {
+        $request->validate([
+            'product_id' => 'required',
+        ]);
+
+        $product = Products::where('product_id', $request['product_id']);
+        $product->delete();
+
+        return array('error' => false, "message"  => "Product successfully deleted!");
+    }
 }

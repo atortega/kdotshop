@@ -27,6 +27,7 @@ use App\Models\Orders;
 use App\Models\Payments;
 use App\Models\Invoices;
 use App\Models\OrderDetails;
+use App\Models\Delivery_addresses;
 
 class PaypalController extends Controller
 {
@@ -181,7 +182,22 @@ class PaypalController extends Controller
             $order->save();
 
             //insert data to delivery_addresses table
-            $delivery =
+            $address = session('customerAddress');
+
+
+            $delivery = new Delivery_addresses();
+            $delivery->order_id = $order->order_id;
+            $delivery->customer_id = $order->customer_id;
+            $delivery->first_name = $order->shipping_firstname;
+            $delivery->last_name = $order->shipping_lastname;
+            $delivery->address = $address['shipping_address1'];
+            $delivery->barangay = $address['shipping_barangay'];
+            $delivery->city = $address['shipping_city'];
+            $delivery->province = $address['shipping_province'];
+            $delivery->zipcode = $address['shipping_zipcode'];
+            $delivery->country = $address['shipping_country'];
+            $delivery->save();
+
             //insert data to payment table
             $payment = new Payments();
             $payment->payment_method_id = 2;

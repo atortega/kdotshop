@@ -230,12 +230,18 @@ class CartController extends Controller
         ];
 
         $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
-        $customer_address->shipping_address1    = $request['shipping_address1'];
-        $customer_address->shipping_barangay    = $request['shipping_barangay'];
-        $customer_address->shipping_city        = $request['shipping_city'];
-        $customer_address->shipping_province    = $request['shipping_province'];
-        $customer_address->shipping_zipcode     = $request['shipping_zipcode'];
-        $customer_address->shipping_country     = $request['shipping_country'];
+        $customer_address->billing_address1    = $customerAddress['billing_address1'];
+        $customer_address->billing_barangay    = $customerAddress['billing_barangay'];
+        $customer_address->billing_city        = $customerAddress['billing_city'];
+        $customer_address->billing_province    = $customerAddress['billing_province'];
+        $customer_address->billing_zipcode     = $customerAddress['billing_zipcode'];
+        $customer_address->billing_country     = $customerAddress['billing_country'];
+        $customer_address->shipping_address1    = $customerAddress['shipping_address1'];
+        $customer_address->shipping_barangay    = $customerAddress['shipping_barangay'];
+        $customer_address->shipping_city        = $customerAddress['shipping_city'];
+        $customer_address->shipping_province    = $customerAddress['shipping_province'];
+        $customer_address->shipping_zipcode     = $customerAddress['shipping_zipcode'];
+        $customer_address->shipping_country     = $customerAddress['shipping_country'];
         $customer_address->save();
 
         session(['customerAddress' => $customerAddress]);

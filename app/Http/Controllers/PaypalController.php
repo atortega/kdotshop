@@ -28,6 +28,7 @@ use App\Models\Payments;
 use App\Models\Invoices;
 use App\Models\OrderDetails;
 use App\Models\Delivery_addresses;
+use App\Models\OrderTrackers;
 
 class PaypalController extends Controller
 {
@@ -216,6 +217,15 @@ class PaypalController extends Controller
             //update the invoice number at payment table
             $payment->invoice_number = $invoice->invoice_number;
             $payment->save();
+
+            //insert data to order_trackers table
+            $tracker = new OrderTrackers();
+            $tracker->order_id = $order->order_id;
+            $tracker->status = $order->status;
+            $tracker->notes = 'Initial purchased. Successfully paid via paypal';
+            $tracker->created_by_id = Auth::user()->customer_id;
+            $tracker->created_by_name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $tracker->save();
 
             //insert data to order details table
             foreach(Cart::content() AS $cart) {

@@ -50,7 +50,7 @@
                             columns: [
                                 { data: 'sub_category_name', name: 'sub_category_name' },
                                 { data: 'category_name', name: 'category_name' },
-                                { data: 'sub_category_desc', name: 'sub_category_desc' },
+                                { data: 'category_desc', name: 'sub_category_desc' },
                                 { data: 'actions', name: 'actions' },
                             ],
                             drawCallback: function( settings ) {
@@ -70,19 +70,18 @@
                         $('#table').on('click', '.category-edit-btn', function(){
                             var sub_category_id = $(this).attr('sid');
                             var subcat = JSON.parse($(this).attr('data-subcat'));
-                            /*
-                            $.get( "/categories/get/"+category_id, function( data ) {
-                                $("#description").val(data.category_desc);
-                                $("#category_name").val(data.category_name);
-                                $("#sub_category_id").val(sub_category_id);
-                                $("#sub_category_name").val(sub_cat.sub_category_name);
+                            
+                            $.get( "/categories/get/"+sub-category_id, function( data ) {
+                                $("#description").val(subcat.category_desc);
+                                $("#category_name").val(subcat.category_name);
+                                $("#sub-category").val(subcat.sub_category_name);
                             });
-                            */
-                            $("#description").val(subcat.sub_category_desc);
+                            
+                            /*$("#description").val(subcat.sub_category_desc);
                             $("#category_name").val(subcat.category_name);
                             $("#sub_category_id").val(sub_category_id);
                             $("#sub_category_name").val(subcat.sub_category_name);
-
+*/
                             $('#myModal').modal('show');
                         });
 
@@ -91,13 +90,13 @@
                             var category_name = $(this).attr('sname');
                             bootbox.confirm({
                                 size: "small",
-                                message: "Are you sure to delete this category, "+category_name+"?",
+                                message: "Are you sure to delete this sub-category, "+sub_category_name+"?",
                                 callback: function(result){
                                     /* result is a boolean; true = OK, false = Cancel*/
                                     if (result) {
                                         $.ajax({
                                             type: "POST",
-                                            data: {category_id: category_id, _token: $('meta[name="csrf-token"]').attr('content')},
+                                            data: {sub_category_id: sub_category_id, _token: $('meta[name="csrf-token"]').attr('content')},
                                             cache: false,
                                             url: '/admin/sub-categories/delete',
                                             success: function(data){
@@ -163,7 +162,7 @@
 
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-    <script src="/js/bootbox.min.js"></script>
+    <script src="/js/admin/bootbox.min.js"></script>
 
     <div class="modal fade" id="myModal">
         <div class="modal-dialog">

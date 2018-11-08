@@ -309,9 +309,8 @@ Route::group(['middleware' => 'auth' ], function() {
 
 
             //Sub Categories
-            Route::get('/sub-categories/create', function () {
-                return view('admin.templates.sub-categories-create');
-            });
+            
+            Route::get('/sub-categories/create', 'SubCategoriesController@createSubCategoryForm');
             Route::get('/sub-categories', function () {
                 return view('admin.templates.sub-categories-list');
             });

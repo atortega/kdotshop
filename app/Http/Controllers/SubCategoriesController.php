@@ -18,7 +18,9 @@ class SubCategoriesController extends Controller
 
         $subcategories = Datatables::of(DB::table('sub_categories')
                             ->leftJoin('categories', 'sub_categories.category_id', '=', 'categories.category_id')
+
                         )
+         
             ->addColumn('actions', function ($data) {
                 return "
                 	<button class='btn btn-xs btn-primary sub-category-edit-btn' sid='$data->sub_category_id'>Edit</button>
@@ -30,6 +32,7 @@ class SubCategoriesController extends Controller
 
 
         return ($subcategories);
+
     }
 
     public function getIndex()
@@ -55,15 +58,15 @@ class SubCategoriesController extends Controller
     public function addNew(Request $request)
     {
         $request->validate([
-            'category_id'       => 'bail|required|unique:categories,category_name|max:30',
-            'sub_category_name' => 'required|max:30',
-            'sub_category_desc' => 'required|max:100',
+            'category_name'       => 'bail|required|unique:categories,category_name|max:30',
+            'sub-category' => 'required|max:30',
+            'description' => 'required|max:100',
         ]);
 
         $subcategory = new SubCategories();
-        $subcategory->category_id       = $request['category_id'];
-        $subcategory->sub_category_name = $request['sub_category_name'];
-        $subcategory->sub_category_desc = $request['sub_category_desc'];
+        $subcategory->category_id       = $request['category_name'];
+        $subcategory->sub_category_name = $request['sub-category'];
+        $subcategory->sub_category_desc = $request['description'];
         $subcategory->save();
 
         return redirect()->back()->with('message', 'New product sub category has been added.');
@@ -134,4 +137,14 @@ class SubCategoriesController extends Controller
         $subcategory = SubCategories::where('category_id', $cat)->get();
         return $subcategory;
     }
+
+    public function createSubCategoryForm()
+    {
+        $categories = Categories::orderBy('category_name')->get();
+
+        return view('admin.templates.sub-categories-create', ['categories' => $categories]);
+    }
+
+    
+    
 }

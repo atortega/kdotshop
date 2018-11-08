@@ -186,10 +186,9 @@
                                     <div class="form-group has-feedback row">
                                         <div class="col-md-12">
                                             <h5>Municipality/City</h5>
-                                            <input id="shipping_city" type="text" class="form-control" name="shipping_city" value="{{ $user->shipping_city }}" autofocus>
                                             <select class="form-control" id="shipping_city" name="shipping_city">
                                                 @foreach($cities as $city)
-                                                    <option value="{{$city->cities}}" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
+                                                    <option value="$user->shipping_city" {{ $city->cities == $user->billing_city ? 'selected' : '' }}> {{$city->cities}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

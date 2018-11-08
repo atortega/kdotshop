@@ -405,7 +405,7 @@
 									<div id="shipping-information" class="space-bottom">
 
 										
-										<div class="space"></div> -->
+										<div class="space"></div> 
 										<div class="row">
 											<div class="col-xl-3">
 												<h4 class="title mt-5 mt-lg-0">Your Shipping Address</h4>

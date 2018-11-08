@@ -116,6 +116,15 @@
 
                         $('#table').on('click', '.orders-update-btn', function(){
                             var order_id = $(this).attr('sid');
+                            var status = $(this).attr('data-status');
+                            var reference_code = $(this).attr('data-reference');
+                            var order_status = ['pending', 'approved', 'delivery', 'completed'];
+                            if (status == 'pending') {
+                                $('#reference_oode').show();
+                            } else {
+                                $('#reference_oode').hide();
+                            }
+
                             /*
                             $.get( "/colors/get/"+color_id, function( data ) {
                                 $("#description").val(data.description);

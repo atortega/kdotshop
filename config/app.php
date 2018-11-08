@@ -166,7 +166,6 @@ return [
 
         Yajra\DataTables\DatatablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Nexmo\Laravel\NexmoServiceProvider::class,
     ],
 
     /*
@@ -222,7 +221,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
     ],
 
 ];

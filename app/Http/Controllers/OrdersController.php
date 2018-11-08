@@ -42,7 +42,7 @@ class OrdersController extends Controller
             ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
             ->leftjoin('payments', 'payments.order_id', '=', 'orders.order_id')
             ->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
-            ->select('orders.*', 'customer.first_name', DB::raw("concat(customer.first_name, ' ', customer.last_name) as customer_name"), 'delivery_methods.delivery_method_name', 'payment_methods.payment_name')
+            ->select('orders.*', 'customer.first_name', DB::raw("concat(customer.first_name, ' ', customer.last_name) as customer_name"), 'delivery_methods.delivery_method_name', 'payment_methods.payment_name', 'payments.reference_code')
             ->orderBy('orders.order_id', 'desc')
             ->get();
 
@@ -51,7 +51,7 @@ class OrdersController extends Controller
                     return "
                         <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>Details</button>
                         <button class='btn btn-xs btn-success orders-tracker-btn' sid='$data->order_id'>Tracker</button>
-                        <button class='btn btn-xs btn-success orders-update-btn' sid='$data->order_id'>Update Order</button>
+                        <button class='btn btn-xs btn-success orders-update-btn' sid='$data->order_id' data-status='$data->status' data-reference='$data->reference_code'>Update Order</button>
                         ";
                 })
                 ->escapeColumns('actions')

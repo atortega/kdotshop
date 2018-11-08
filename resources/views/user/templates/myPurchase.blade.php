@@ -57,38 +57,65 @@
 
                 </div>
 
-					<div class="main col-9">
+					<div id="page-wrapper">
+            			<div class="container-fluid">
+               				<div class="row">
+                    			<div class="col-lg-12">
+                        			<!--   -->
+                    			</div>
+                			</div>
+             	
 
-						<!-- page-title start -->
-						<!-- ================ -->
-						<h3 class="page-title">My Purchase History</h3>
-						<!-- page-title end -->
-
-						<!-- Alert Messages -->
-
-						<div class="separator"></div>
-
-						<table class="table cart table-hover table-colored">
-							<thead>
-								<tr>
-									<th>Order Number</th>
-									<th>Product Name</th>									
-									<th>Payment Methods</th>
-									<th>Date Purchased</th>
-									<th>Serial Number</th>
-									<th>Invoice Number</th>
-									<th>Total Quantity</th>
-									<th>Total Payments</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td class="total-quantity" colspan="7"></td>
-									<td class="total-amount"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+                				<div class="main col-12 container-fluid">
+                    				<table class="table table-bordered" id="table">
+                        				<thead>
+                           					<tr>
+				                                <th>Date Purchased</th>
+				                                <th>Products</th>
+				                                <th>Payment Method</th>
+				                                <th>Delivery Method</th>
+				                                <th>Reference Code</th>
+				                                <th>Quantity</th>
+				                                <th>Amount Paid</th>
+				                                
+                            				</tr>
+                        				</thead>
+                    				</table>
+                				</div>
+				                <script>
+				                    $(function() {
+				                        $('#table').DataTable({
+				                            processing: true,
+				                            serverSide: true,
+				                            ajax: '{{ url('user/myPurchase/index') }}',
+				                            columns: [
+				                                { data: 'date_paid', name: 'date_paid' },
+				                                { data: 'product_name', name: 'product_name' },
+				                                { data: 'payment_name', name: 'payment_name' },
+				                                { data: 'delivery_method_name', name: 'delivery_method_name' },
+				                                { data: 'reference_code', name: 'reference_code' },
+				                                { data: 'quantity', name: 'quantity' },
+				                                { data: 'total_amount', name: 'total_amount' },
+				                                
+				                            ],
+				                            drawCallback: function( settings ) {
+				                                if (settings.aoData.length > 0) {
+				                                    $.each(settings.aoColumns, function(index, col) {
+				                                        col.bSortable = true;
+				                                    });
+				                                } else {
+				                                    $.each(settings.aoColumns, function(index, col) {
+				                                        col.bSortable = false;
+				                                    });
+				                                }
+				                                $("#count").val(settings.json.recordsFiltered);
+				                            }
+				                        });
+				                        
+				                    });
+				                </script>
+            			</div>
+        			</div>
 					<!-- main end -->
 				</div>
 			</div>

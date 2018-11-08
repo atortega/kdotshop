@@ -172,7 +172,7 @@
                                 </div>
                             @endif
 						<form action="{{ url('/shop-checkout-submit')}}" method="post"
-							class="form-horizontal">
+							class="form-horizontal" id="frmCheckout">
 							{{ csrf_field()}}
 	                        <fieldset>
 	                            <legend>How do you want to get your Item?</legend>
@@ -282,7 +282,7 @@
 													<select class="form-control" id="billing_barangay"
 															name="billing_barangay" hidden>
 														@foreach($places as $barangay)
-															<option value="{{$barangay->place}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+															<option value="{{$barangay->place}}" data-billing-fee="{{$barangay->shipping_fee}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
 														@endforeach
 													</select>
 													<!-- select field (view only) start -->
@@ -434,7 +434,7 @@
 													<select class="form-control" id="shipping_barangay"
 															name="shipping_barangay">
 														@foreach($places as $barangay)
-															<option value="{{$barangay->place}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+															<option value="{{$barangay->place}}" data-shipping-fee="{{$barangay->shipping_fee}}" {{ $barangay->place == $user->shipping_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
 														@endforeach
 	                                        		</select>
 												</div>
@@ -525,6 +525,8 @@
 								<a href="/shop-cart" class="btn btn-group btn-default">
 									Go Back To Cart
 								</a>
+								<input type="hidden" name="billing_address_fee" id = "billing_address_fee" />
+								<input type="hidden" name="shipping_address_fee" id = "shipping_address_fee" />
 								<button type="submit" class="btn btn-group btn-default">Next Step</button>
 							</div>
 						</form>
@@ -548,5 +550,17 @@
 
 	<!-- scrollToTop -->
 	<!-- ================ -->
+	<script>
+        $(function() {
+            $( "#frmCheckout" ).submit(function( event ) {
+                var billing_fee = $('#billing_barangay option:selected').attr('data-billing-fee');
+                var shipping_fee = $('#shipping_barangay option:selected').attr('data-shipping-fee');
+                $("#billing_address_fee").val(billing_fee);
+                $("#shipping_address_fee").val(shipping_fee);
+                console.log(shipping_fee);
+
+            });
+        });
+	</script>
 </body>
 </html>

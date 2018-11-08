@@ -133,7 +133,7 @@
                         ?>
 
                         <td class="amount">
-                            ₱ {{$subTotal}}
+                            ₱ {{ number_format($subTotal,2) }}
                         </td>
                     </tr>
                   @endforeach
@@ -147,13 +147,15 @@
                     <td class="amount">-20%</td>
                   </tr> -->
                   <tr>                    
-                    <td class="shipping_fee" colspan="6">Shipping Fee</td>
-                    <!--  ₱ {{59.00}} -->
+                    <td class="shipping_fee" colspan="5">Shipping Fee</td>
+                    <td class="total-amount">₱ {{ number_format(Session::get('shipping_fee'),2) }}</td>
                   </tr>
                   <tr>
                     <td class="total-quantity" colspan="5">Total {{Cart::count()}} Items</td>
-                    
-                    <td class="total-amount">₱ {{ Cart::total() }}</td>
+                    @php
+                    $total = str_replace(",", "", Cart::total()) + Session::get('shipping_fee');
+                    @endphp
+                    <td class="total-amount">₱ {{ number_format($total,2) }}</td>
                   </tr>
                 </tbody>
               </table>

@@ -77,17 +77,27 @@ class PaypalController extends Controller
 			$data['items'][]=$item_detail;
 		}
 
+		//For Shipping
+        $item_detail = new Item();
+        $item_detail->setName("Shipping Fee")
+            ->setCurrency('PHP')
+            ->setQuantity('1')
+            ->setPrice(Session::get('shipping_fee'));
+        $data['items'][]=$item_detail;
+        //End Shipping
+
+
 		$item_list = new ItemList();
 		$item_list->setItems(array($data));
 
 		$details = new Details();
 		// $details->setShipping(1.2)
 		$details->setTax(0)
-		 	->setSubtotal((float) str_replace(",", "", Cart::total()));
+		 	->setSubtotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee'));
 
 		$amount = new Amount();
 		$amount->setCurrency("PHP")
-			->setTotal((float) str_replace(",", "", Cart::total()))
+			->setTotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee') )
 			->setDetails($details);
 
 		$transaction = new Transaction();
@@ -178,7 +188,8 @@ class PaypalController extends Controller
             $order->shipping_email          = Auth::user()->email;
             $order->delivery_method_id      = session('delivery_method');
             $order->order_date              = date('Y-m-d');
-            $order->total_amount            = str_replace(",", "", Cart::total());
+            $order->shipping_fee            = Session::get('shipping_fee');
+            $order->total_amount            = str_replace(",", "", Cart::total() + Session::get('shipping_fee') );
             $order->status                  = 'approved';
             $order->save();
 
@@ -203,7 +214,7 @@ class PaypalController extends Controller
             $payment = new Payments();
             $payment->payment_method_id = 2;
             $payment->order_id          = $order->order_id;
-            $payment->amount            = str_replace(",", "", Cart::total());
+            $payment->amount            = str_replace(",", "", Cart::total()  + Session::get('shipping_fee'));
             $payment->date_paid         = date('Y-m-d');
             $payment->reference_code    = $result->getId();
             $payment->save();

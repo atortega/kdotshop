@@ -214,6 +214,11 @@ class CartController extends Controller
             'shipping_same_as_billing' => 'integer',
         ]);
         $same_as_billing = isset($request->shipping_same_as_billing) ? true : false;
+        if ($same_as_billing) {
+            $shipping_fee = $request->billing_address_fee;
+        } else {
+            $shipping_fee = $request->shipping_address_fee;
+        }
         $customerAddress = [
             'billing_address1'  => $request->billing_address1,
             'billing_barangay'  => $request->billing_barangay,
@@ -247,6 +252,7 @@ class CartController extends Controller
         session(['customerAddress' => $customerAddress]);
         session(['delivery_method' => $request->delivery_method]);
         session(['delivery_method_name' => $request->delivery_method_name]);
+        session(['shipping_fee' => $shipping_fee]);
 
         return redirect('/shop-checkoutReview');
     }

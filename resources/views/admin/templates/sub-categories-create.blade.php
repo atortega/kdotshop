@@ -47,8 +47,13 @@
 
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter Category Name" style="text-transform:uppercase">
-                        </div>                        
+                            <select class="form-control" id="category_name" name="category_name">
+                                @foreach($categories as $category)
+                                    <option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                                @endforeach
+                            </select>
+                        </div> 
+                                             
                         <div class="form-group">
                             <label for="category">Sub-Category</label>
                             <input type="text" class="form-control" id="sub-category" name="sub-category" placeholder="Enter Sub-Category" style="text-transform:uppercase">

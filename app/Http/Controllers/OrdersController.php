@@ -51,6 +51,7 @@ class OrdersController extends Controller
                     return "
                         <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>Details</button>
                         <button class='btn btn-xs btn-success orders-tracker-btn' sid='$data->order_id'>Tracker</button>
+                        <button class='btn btn-xs btn-success orders-update-btn' sid='$data->order_id'>Update Order</button>
                         ";
                 })
                 ->escapeColumns('actions')

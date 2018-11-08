@@ -109,32 +109,36 @@
 						<strong>STEP 6: </strong>Wait for your orders to be proccessed. It will be delivered based on the Method you choose during your purchase. Thank you! 
 				</div>
 				
-					 
-					
-
-
-
-					
-
 			</div>
+		</div>
+
+		<div class="text-right space-bottom">
+			<a href="/shop-checkoutPayment" class="btn btn-group btn-default">
+				Go Back
+			</a>
+			<a href="#" class="btn btn-group btn-animated btn-default">
+				Place Order
+				<i class="fa fa-arrow-down"></i>
+			</a>
 		</div>
 	</div>
 
-    <div class='modal fade' id='seeImage' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-    <div class='modal-dialog' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-            <span aria-hidden='true'>&times;</span>
-          </button>
-        </div>
-        <div class='modal-body'>
-    
-        <img src='{{ asset("image/palawan_form.png") }}'>
-        </div>
-      </div>
-    </div>
-  </div>
+
+	<div class='modal fade' id='seeImage' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+		<div class='modal-dialog' role='document'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+						<span aria-hidden='true'>&times;</span>
+					</button>
+				</div>
+
+				<div class='modal-body'>
+					<img src='{{ asset("image/palawan_form.png") }}'>
+				</div>
+			</div>
+		</div>
+	</div>
 
         @include('user.templates.layouts.footer')
       <!-- footer end -->

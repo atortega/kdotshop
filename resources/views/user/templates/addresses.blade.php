@@ -177,9 +177,11 @@
                                     <div class="form-group has-feedback row">
                                         <div class="col-md-12">
                                             <h5>Barangay</h5>
-                                            <input id="shipping_barangay" class="form-control"
-                                                type="text" name="shipping_barangay"
-                                                value="{{ $user->shipping_barangay }}" autofocus>
+                                            <select class="form-control" id="shipping_barangay" name="shipping_barangay">
+                                                @foreach($places as $barangay)
+                                                    <option value="{{$user->shipping_barangay}}" {{ $barangay->place == $user->billing_barangay ? 'selected' : '' }}> {{$barangay->place}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 

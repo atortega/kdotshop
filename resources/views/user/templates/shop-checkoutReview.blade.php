@@ -50,9 +50,6 @@
             <li class="breadcrumb-item">
               <a class="link-dark" href="/shop-checkout">Checkout</a>
             </li>
-            <li class="breadcrumb-item">
-              <a class="link-dark" href="/shop-checkoutPayment">Checkout Payment</a>
-            </li>
             <li class="breadcrumb-item active">Checkout Review</li>
           </ol>
         </div>
@@ -181,7 +178,7 @@
                   </tr>
                   <tr>
                     <td>Address</td>
-                    <td class="information">{{ $user->billing_address1 }}, {{ $user->billing_barangay }}, {{ $user->billing_city }} {{ $user->billing_zipcode }}, {{ $user->billing_province }}, {{ $user->billing_country}}</td>
+                    <td class="information">{{ $user->billing_address1 }}, {{ $user->billing_barangay }}, {{ $user->billing_city }}, {{ $user->billing_province }} {{ $user->billing_zipcode }}, {{ $user->billing_country}}</td>
                   </tr>
                   
                 </tbody>
@@ -208,7 +205,7 @@
                   </tr> -->
                   <tr>
                     <td>Address</td>
-                    <td class="information">{{ $user->shipping_address1 }} {{ $user->shipping_barangay }}, {{ $user->shipping_city }}  {{ $user->shipping_province }} ,{{ $user->shipping_zipcode }} {{ $user->shipping_country}}</td>
+                    <td class="information">{{ $user->shipping_address1 }}, {{ $user->shipping_barangay }}, {{ $user->shipping_city }}, {{ $user->shipping_province }} {{ $user->shipping_zipcode }} {{ $user->shipping_country}}</td>
                   </tr>
                 </tbody>
               </table>

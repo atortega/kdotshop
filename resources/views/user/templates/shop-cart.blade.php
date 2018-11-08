@@ -161,7 +161,12 @@
                       ?>
 
                     <td class="amount">
-                      ₱ {{$subTotal}}
+                      <span id="subTotal" data-subtotal="{{ $cartProduct->rowId }}">
+                        ₱ {{$subTotal}}
+                      </span>
+                      <span id="updateQtySpinner" class="text-center" data-spinner="{{ $cartProduct->rowId }}">
+                        <i class="fa fa-spinner fa-spin"></i>
+                      </span>
                     </td>
 
 

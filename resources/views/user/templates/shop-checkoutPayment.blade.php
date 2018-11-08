@@ -91,42 +91,76 @@
 						<fieldset>
 							<legend>Payment</legend>
 							<form class="form-horizontal">
-								<div class="checkbox">
+								<!-- <div class="checkbox"> -->
 									<div class="row">
-										<div class="col-xl-3">
-											<div class="form-check">
-												<input id="paymaya-option" class="form-check-input"
-													type="radio" name="payment-radio-option" value="paymaya" checked>
-												<label class="form-check-label">
-													<img id="img-paymaya" src='{{ asset("image/payment-methods/paymaya-218x48.png") }}'>
-													<i class="fa fa-cc-mastercard pl-10"></i>
-													<i class="fa fa-cc-visa pl-10"></i>
-												</label>
-											</div>
-											<div class="space-bottom"></div>
+										<div class="col-md-4" align="center">
+											<!-- <input id="paymaya-option" class="form-check-input"
+												type="radio" name="payment-radio-option" value="paymaya"> -->
+											<label>
+												<img id="img-paymaya" src='{{ asset("image/payment-methods/paymaya-218x48.png") }}' style="max-height: 42px;">
+											</label>
+
+											<div class="space"></div>
+
+											<a href="#"
+													id="proceedWithPayMaya"
+													class="btn btn-animated btn-group btn-info"
+													style="background-color: #42b72a; width: 180px;">
+												Pay with PayMaya
+												<i>
+													<img style="padding-top: 8px;" src='{{ asset("image/payment-methods/fa-fa-paymaya.png") }}'>
+												</i>
+											</a>
 										</div>
-										<!-- <div class="col-xl-9">
-										<p></p>
-										</div> -->
+
+										<div class="col-md-4" align="center">
+											<!-- <input id="paypal-option" class="form-check-input"
+												type="radio" name="payment-radio-option" value="paypal"> -->
+											<label>
+												<img id="img-paypal" src='{{ asset("image/payment-methods/paypal-180x48.png") }}' style="max-height: 42px;">
+											</label>
+
+											<div class="space"></div>
+
+											<a href="" data-toggle="modal" data-target="#myModal"
+													id="proceedWithPayMaya"
+													class="btn btn-animated btn-group btn-info"
+													style="background-color: #002f86;">
+												Pay with PayPal
+												<i class="fa fa-paypal"></i>
+
+											</a>
+										</div>
+
+										<div class="col-md-4" align="center">
+
+											<!-- <input id="palawan-option" class="form-check-input"
+												type="radio" name="payment-radio-option" value="palawan"> -->
+											<label>
+												<img id="img-palawan" src='{{ asset("image/payment-methods/palawan-express-padala-180x60.png") }}' style="max-height: 42px;">
+											</label>
+
+											<div class="space"></div>
+
+											<a href="/palawan"
+													id="proceedWithPalawan"
+													class="btn btn-animated btn-group btn-info"
+													style="background-color: #007236;">
+												Pay with Palawan
+												<i>
+													<img style="padding-top: 8px;" src='{{ asset("image/payment-methods/fa-fa-palawan.png") }}'>
+												</i>
+											</a>
+										</div>
 									</div>
 
-									<div class="space"></div>
+									
 
 									<div class="row">
-										<div class="col-xl-3">
-											<div class="form-check">
-												<input id="paypal-option" class="form-check-input"
-													type="radio" name="payment-radio-option" value="paypal">
-												<label class="form-check-label">
-													<img id="img-paypal" src='{{ asset("image/payment-methods/paypal-180x48.png") }}'>
-													<i class="fa fa-cc-paypal pl-10"></i>
-												</label>
-											</div>
-											<div class="space-bottom"></div>
-										</div>
+
 
 										<div class="col-xl-9">
-											<p>After submitting your order, you will be redirected to the PayPal website where you can make your payment. Once your payment has been successfully completed and confirmed by PayPal, delivery of the ordered products will be initiated.</p>
+
 
 											<div class="col-lg-9">
 												<div class="row">
@@ -137,24 +171,15 @@
 										</div>
 									</div>
 
-									<div class="space"></div>
+									
 
 									<div class="row">
-										<div class="col-xl-3">
-											<div class="form-check">
-												<input id="palawan-option" class="form-check-input"
-													type="radio" name="payment-radio-option" value="palawan">
-												<label class="form-check-label">
-													<img id="img-palawan" src='{{ asset("image/payment-methods/palawan-express-padala-180x60.png") }}'>
-												</label>
-											</div>
-											<!-- <div class="space-bottom"></div> -->
-										</div>
+
 										<!-- <div class="col-xl-9">
 										<p></p>
 										</div> -->
 									</div>
-								</div>
+								<!-- </div> -->
 							</form>
 						</fieldset>
 
@@ -162,34 +187,9 @@
 							<a href="/shop-checkout" class="btn btn-group btn-default">
 								Go Back
 							</a>
-							<a href="/shop-checkoutReview" id="review-and-complete" class="btn btn-group btn-default">
+							<!-- <a href="/shop-checkoutReview" id="review-and-complete" class="btn btn-group btn-default">
 								Review and Complete Your Order
-							</a>
-							<a href="#"
-									id="proceedWithPayMaya"
-									class="btn btn-animated btn-group btn-info"
-									style="background-color: #42b72a">
-								Pay with PayMaya
-								<i>
-									<img style="padding-top: 8px;" src='{{ asset("image/payment-methods/fa-fa-paymaya.png") }}'>
-								</i>
-							</a>							
-							<a href="/pay-with-paypal"
-									id="proceedWithPayPal"
-									class="btn btn-animated btn-group btn-info"
-									style="background-color: #002f86">
-								Pay with PayPal
-								<i class="fa fa-paypal"></i>
-							</a>
-							<a href="/palawan"
-									id="proceedWithPalawan"
-									class="btn btn-animated btn-group btn-info"
-									style="background-color: #007236">
-								Pay with Palawan
-								<i>
-									<img style="padding-top: 8px;" src='{{ asset("image/payment-methods/fa-fa-palawan.png") }}'>
-								</i>
-							</a>
+							</a> -->
 						</div>
 					</div>
 					<!-- main end -->
@@ -198,11 +198,42 @@
 		</section>
 		<!-- main-container end -->
 
+	
+		<div class="modal fade" id="myModal"
+			tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="asdasd">Are you sure you want to proceed with PayPal?</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>After submitting your order, you will be redirected to the PayPal website where you can make your payment. Once your payment has been successfully completed and confirmed by PayPal, delivery of the ordered products will be initiated.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">
+							Cancel
+						</button>
+						<a href="/pay-with-paypal"
+								id="proceedWithPayMaya"
+								class="btn btn-sm btn-default">
+							Proceed
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<!-- footer start -->
 		@include('user.templates.layouts.footer')
 		<!-- footer end -->
 	</div>
 	<!-- page-wrapper end -->
+	
+
 
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->

@@ -259,8 +259,14 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/shipping/fees', function () {
                 return view('admin.templates.shipping-fees-list');
             });
+            Route::get('/shipping/fees/create', function () {
+                return view('admin.templates.shipping-fee-create');
+            });
             Route::get('/shipping/fees/index', 'ShippingFeeController@index');
             Route::get('/shipping/fees/get/{id}', 'ShippingFeeController@getShippingFeeById');
+            Route::post('/shipping/fees/edit', 'ShippingFeeController@editShippingFee');
+            Route::post('/shipping/fees/delete', 'ShippingFeeController@deleteShippingFee');
+            Route::post('/shipping/fees/create/save', 'ShippingFeeController@addShippingFee');
 
             //Deliveries
             Route::get('/delivery/index', 'DeliveryController@index');

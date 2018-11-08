@@ -35,6 +35,8 @@
                 <!-- /.row -->
 
                 <div class="container-fluid">
+                    <a href="/admin/shipping/fees/create" class="btn btn-primary btn-xs" role="button">Add New</a>
+                    <div class="mb-3">&nbsp;</div>
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
@@ -93,21 +95,57 @@
                             $('#editModal').modal('show');
                         });
 
-                        $('#table').on('click', '.orders-tracker-btn', function() {
-                            var order_id = $(this).attr('sid');
-                            var total = 0;
-                            console.log(order_id);
-                            $("#tracker_order_id").html(order_id);
-                            $.get( "/admin/orders/tracker/get/"+order_id, function( data ) {
-                                console.log(data);
-                                $("#modalOrderTracker tbody").html('');
-                                $.each(data, function(index, row) {
-                                    var markup = "<tr><td>"+row.reference_code+"</td><td>" + row.status + "</td><td>" + row.created_at + "</td><td>" + row.updated_at +"</td><td>" + row.notes + "</td></tr>";
-                                    $("#modalOrderTracker tbody").append(markup);
-                                });
-
+                        $('#table').on('click', '.fees-delete-btn', function(){
+                            var id = $(this).attr('sid');
+                            var place = $(this).attr('sname');
+                            bootbox.confirm({
+                                size: "small",
+                                message: "Are you sure to delete the fee for " + place + "?",
+                                callback: function(result){
+                                    /* result is a boolean; true = OK, false = Cancel*/
+                                    if (result) {
+                                        $.ajax({
+                                            type: "POST",
+                                            data: {id: id, _token: $('meta[name="csrf-token"]').attr('content')},
+                                            cache: false,
+                                            url: '/admin/shipping/fees/delete',
+                                            success: function(data){
+                                                console.log(data);
+                                                datatable.draw('page');
+                                            },
+                                            error: function(){
+                                                // error handling
+                                            }
+                                        });
+                                    }
+                                }
                             });
-                            $('#trackerModal').modal('show');
+                        });
+
+                        $('.save-changes').click(function() {
+                            $.ajax({
+                                type: "POST",
+                                dataType: 'json',
+                                data: {
+                                    id: $('#id').val(),
+                                    place: $("#place").val(),
+                                    distance: $("#distance").val(),
+                                    shipping_fee: $("#shipping_fee").val(),
+                                    _token: $('meta[name="csrf-token"]').attr('content')
+                                },
+                                cache: false,
+                                url: '/admin/shipping/fees/edit',
+                                success: function(data){
+                                    console.log(data);
+                                    datatable.draw('page');
+                                },
+                                error: function(e){  // error handling
+                                    console.log(e);
+                                }
+                            });
+                            //alert('Changes saved!');
+                            $('#editModal').modal('hide');
+                            datatable.draw('page');
                         });
               //cutted
 
@@ -149,7 +187,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="color">Barangay</label>
-                        <input type="text" class="form-control" id="place" name="place" placeholder="Enter Barangay" disabled>
+                        <input type="text" class="form-control" id="place" name="place" placeholder="Enter Barangay">
                     </div>
                     <div class="form-group">
                         <label for="description">Distnce(KM)</label>

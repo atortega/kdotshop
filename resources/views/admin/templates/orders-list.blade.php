@@ -106,14 +106,26 @@
                                 console.log(data);
                                 $("#modalOrderTracker tbody").html('');
                                 $.each(data, function(index, row) {
-                                    var markup = "<tr><td>"+row.reference_code+"</td><td>" + row.status + "</td><td>" + row.created_at + "</td><td>" + row.updated_at +"</td><td>" + row.notes + "</td></tr>";
+                                    var markup = "<tr><td>"+row.reference_code+"</td><td>" + row.status + "</td><td>" + row.updated_at +"</td><td>" + row.notes + "</td></tr>";
                                     $("#modalOrderTracker tbody").append(markup);
                                 });
 
                             });
                             $('#trackerModal').modal('show');
                         });
-              //cutted
+
+                        $('#table').on('click', '.orders-update-btn', function(){
+                            var order_id = $(this).attr('sid');
+                            /*
+                            $.get( "/colors/get/"+color_id, function( data ) {
+                                $("#description").val(data.description);
+                                $("#color").val(data.color);
+                                $("#color_id").val(color_id);
+
+                            });
+                            */
+                            $('#myModal').modal('show');
+                        });
 
                     });
 
@@ -193,7 +205,6 @@
                             <thead>
                             <th>Reference</th>
                             <th class='text-right'>Status</th>
-                            <th class='text-right'>Created On</th>
                             <th class='text-right'>Updated On</th>
                             <th class='text-right'>Notes</th>
                             </thead>
@@ -205,11 +216,38 @@
                             </tfoot>
                         </table>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" id="size_id" name="size_id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <!--<button type="button" class="btn btn-primary save-changes" >Save changes</button>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Order Tracker - Update</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="color">Status</label>
+                        <input type="text" class="form-control" id="status" name="status" placeholder="Enter Status" >
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Notes</label>
+                        <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="color_id" name="color_id" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-changes" >Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

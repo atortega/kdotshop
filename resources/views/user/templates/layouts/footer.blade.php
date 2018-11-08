@@ -268,9 +268,13 @@
 		//update cart quantity
 		//-----------------------------------------------
 		$('.update-cart').click(function() {
+			$('#subTotal_'+$(this).attr('data-cart')).replaceWith("<i class='fa fa-spinner fa-spin'></i>");
+			$('#cartTotal').replaceWith("<i class='fa fa-spinner fa-spin'></i>");
+			var qty = $("#qty_"+$(this).attr('data-cart')).val();
+
+			// view console Logs
 			console.log($(this).attr('data-cart'));
 			console.log($("#qty_"+$(this).attr('data-cart')).val());
-			var qty = $("#qty_"+$(this).attr('data-cart')).val();
 			console.log(qty);
 
 			$.ajax({
@@ -284,8 +288,7 @@
 				cache: false,
 				url: '/cart-update',
 				success: function(data){
-					console.log(data);
-					
+					// console.log(data);
 					$.notify({
 						// options
 						message: 'Your cart has been successfully updated.'
@@ -298,11 +301,11 @@
 							x: 20
 						}
 					});
-
 					//reload page after success notification
 					setTimeout(function(){
-					    location.reload('/shop-cart');
+						location.reload('/shop-cart');
 					}, 2800);
+
 				},
 				error: function(){  // error handling
 					console.log();
@@ -422,6 +425,7 @@
 
 		// toggles payment options (radio button)
 		//-----------------------------------------------
+		/*
 		$("#review-and-complete").hide();
 		$("#proceedWithPayPal").hide();
 		$("#proceedWithPalawan").hide();
@@ -450,10 +454,11 @@
 				}
 			});
 		});
-
+		*/
 
 		// triggers the radio button upon clicking <img> of a certain payment method
 		//-----------------------------------------------------------------------------
+		/*
 		$("#img-paymaya").click(function() {
 			$("#paymaya-option").prop('checked', true).trigger('click');
 		});
@@ -463,6 +468,7 @@
 		$("#img-palawan").click(function() {
 			$("#palawan-option").prop('checked', true).trigger('click');
 		});
+		*/
 
 	});
 	</script>

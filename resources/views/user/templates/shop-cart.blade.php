@@ -161,12 +161,9 @@
                       ?>
 
                     <td class="amount">
-                      <span id="subTotal" data-subtotal="{{ $cartProduct->rowId }}">
+                      <div id="subTotal_{{ $cartProduct->rowId }}">
                         ₱ {{$subTotal}}
-                      </span>
-                      <span id="updateQtySpinner" class="text-center" data-spinner="{{ $cartProduct->rowId }}">
-                        <i class="fa fa-spinner fa-spin"></i>
-                      </span>
+                      </div>
                     </td>
 
 
@@ -183,7 +180,7 @@
 
                   <tr>
                     <td class="total-quantity" colspan="6">Total {{ Cart::count() }} Items</td>
-                    <td class="total-amount">₱ {{ Cart::total() }}</td>
+                    <td class="total-amount"><span id="cartTotal">₱ {{ Cart::total() }}</span></td>
                   </tr>
                     
                 </tbody>

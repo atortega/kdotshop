@@ -22,6 +22,7 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use Session;
 use URL;
+use Nexmo\Laravel\Facade\Nexmo;
 
 use App\Models\Orders;
 use App\Models\Payments;
@@ -261,6 +262,17 @@ class PaypalController extends Controller
 
             //destroy the cart session
             Cart::destroy();
+
+            //send sms
+            $basic  = new \Nexmo\Client\Credentials\Basic('6d49c856', '6dsF7oesEXBWekMr');
+            $client = new \Nexmo\Client($basic);
+
+            $message = $client->message()->send([
+                'to' => Auth::user()->phone_number,
+                'from' => 'KDotShop',
+                'text' => 'Thanks for your purchase @ KdotShop Online. This is the reference number of the transaction: ' . $payment->reference_code
+            ]);
+            //end send sms
 
 			return Redirect::to('/shop-checkoutCompleted');
 		}

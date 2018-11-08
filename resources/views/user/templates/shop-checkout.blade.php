@@ -184,8 +184,6 @@
 											<input type="radio" name="delivery_method" value="2" id="pickup">
 											Pickup<br>
 	                                    </div>
-	                                    	<input type="text" name="delivery_method_name"
-	                                    		id="delivery_method_name" value="" hidden>
 	                                </div>
 
 	                        </fieldset>
@@ -523,8 +521,9 @@
 
 							<div class="text-right">  
 								<a href="/shop-cart" class="btn btn-group btn-default">
-									Go Back To Cart
+									Go Back to Cart
 								</a>
+								<input type="hidden" name="delivery_method_name" id="delivery_method_name"/>
 								<input type="hidden" name="billing_address_fee" id = "billing_address_fee" />
 								<input type="hidden" name="shipping_address_fee" id = "shipping_address_fee" />
 								<button type="submit" class="btn btn-group btn-default">Next Step</button>

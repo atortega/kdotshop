@@ -190,7 +190,7 @@ class PaypalController extends Controller
             $order->delivery_method_id      = session('delivery_method');
             $order->order_date              = date('Y-m-d');
             $order->shipping_fee            = Session::get('shipping_fee');
-            $order->total_amount            = str_replace(",", "", Cart::total() + Session::get('shipping_fee') );
+            $order->total_amount            = str_replace(",", "", Cart::total()) + Session::get('shipping_fee');
             $order->status                  = 'approved';
             $order->save();
 
@@ -215,7 +215,7 @@ class PaypalController extends Controller
             $payment = new Payments();
             $payment->payment_method_id = 2;
             $payment->order_id          = $order->order_id;
-            $payment->amount            = str_replace(",", "", Cart::total()  + Session::get('shipping_fee'));
+            $payment->amount            = str_replace(",", "", Cart::total())  + Session::get('shipping_fee');
             $payment->date_paid         = date('Y-m-d');
             $payment->reference_code    = $result->getId();
             $payment->save();

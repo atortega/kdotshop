@@ -236,10 +236,12 @@ class CustomersController extends Controller
     {
         $request->validate([
             'first_name'        => 'required',
+            'middle_name'        => 'required',
             'last_name'         => 'required',
+            'birthdate'         => 'date',
             'gender'            => 'required',
             'phone_number'      => 'required|min:11|numeric',
-            'birthdate'         => 'date'
+            'email'             => 'required'
         ]);
 
         $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
@@ -249,9 +251,10 @@ class CustomersController extends Controller
         $customer->first_name   =  $request['first_name'];
         $customer->middle_name  =  $request['middle_name'];
         $customer->last_name    =  $request['last_name'];
-        $customer->gender       =  $request['gender'];
         $customer->birthdate    =  $birthdate;
+        $customer->gender       =  $request['gender'];
         $customer->phone_number =  $request['phone_number'];
+        $customer->email =  $request['email'];
 
         $customer->save();
 

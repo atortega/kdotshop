@@ -60,7 +60,7 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="phone_number" class="form-control" id="phonenumber"
-                                    placeholder="Enter Phone Number (required)" name="phone_number" required>
+                                    placeholder="+63 *** *** ****" value="+63" name="phone_number" required>
                                 <i class="glyphicon glyphicon-phone form-control-feedback pr-4"></i>
                                 <!--
                                 <button type="submit" class="btn btn-animated btn-default pull-right">

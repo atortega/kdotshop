@@ -42,128 +42,128 @@ class PaypalController extends Controller
 	// 	return view('customer.paypal.paywithpaypal');
 	// }
 
-	public function payWithPalawan()
-	{
-		// API
-		// Documentation: http://paypal.github.io/PayPal-PHP-SDK/sample/doc/payments/CreatePaymentUsingPayPal.html
+	// public function payWithPalawan()
+	// {
+	// 	// API
+	// 	// Documentation: http://paypal.github.io/PayPal-PHP-SDK/sample/doc/payments/CreatePaymentUsingPayPal.html
 
-		$payer = new Customers();
-		$payer->setPaymentMethod('palawan');
+	// 	$payer = new Customers();
+	// 	$payer->setPaymentMethod('palawan');
 
-		// trying to set an array of data, in which items are found in Cart...
-		$data = [];
-		$data['items'] = [];
+	// 	// trying to set an array of data, in which items are found in Cart...
+	// 	$data = [];
+	// 	$data['items'] = [];
 
-		// supposedly, this is to fetch data from Cart::content
-		foreach(Cart::content() as $cart){
+	// 	// supposedly, this is to fetch data from Cart::content
+	// 	foreach(Cart::content() as $cart){
 
-			$item_detail = new Item();
+	// 		$item_detail = new Item();
 
-            $item_detail->setName($cart->name) /** item name **/
-			->setCurrency('PHP')
-			->setQuantity($cart->qty)
-			//->setSku("123123") // Similar to `item_number` in Classic API
-			->setPrice($cart->price); /** unit price **/
+ //            $item_detail->setName($cart->name) /** item name **/
+	// 		->setCurrency('PHP')
+	// 		->setQuantity($cart->qty)
+	// 		//->setSku("123123") // Similar to `item_number` in Classic API
+	// 		->setPrice($cart->price); /** unit price **/
 
-			$data['items'][]=$item_detail;
-		}
+	// 		$data['items'][]=$item_detail;
+	// 	}
 
-		//For Shipping
-        $item_detail = new Item();
-        $item_detail->setName("Shipping Fee")
-            ->setCurrency('PHP')
-            ->setQuantity('1')
-            ->setPrice(Session::get('shipping_fee'));
-        $data['items'][]=$item_detail;
-        //End Shipping
+	// 	//For Shipping
+ //        $item_detail = new Item();
+ //        $item_detail->setName("Shipping Fee")
+ //            ->setCurrency('PHP')
+ //            ->setQuantity('1')
+ //            ->setPrice(Session::get('shipping_fee'));
+ //        $data['items'][]=$item_detail;
+ //        //End Shipping
 
 
-		$item_list = new ItemList();
-		$item_list->setItems(array($data));
+	// 	$item_list = new ItemList();
+	// 	$item_list->setItems(array($data));
 
-		$details = new Details();
-		// $details->setShipping(1.2)
-		$details->setTax(0)
-		 	->setSubtotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee'));
+	// 	$details = new Details();
+	// 	// $details->setShipping(1.2)
+	// 	$details->setTax(0)
+	// 	 	->setSubtotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee'));
 
-		$amount = new Amount();
-		$amount->setCurrency("PHP")
-			->setTotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee') )
-			->setDetails($details);
+	// 	$amount = new Amount();
+	// 	$amount->setCurrency("PHP")
+	// 		->setTotal((float) str_replace(",", "", Cart::total()) + Session::get('shipping_fee') )
+	// 		->setDetails($details);
 
-		$transaction = new Transaction();
-		$transaction->setAmount($amount)
-			->setItemList($data)
-			->setDescription("Your transaction description")
-			->setInvoiceNumber(uniqid());
+	// 	$transaction = new Transaction();
+	// 	$transaction->setAmount($amount)
+	// 		->setItemList($data)
+	// 		->setDescription("Your transaction description")
+	// 		->setInvoiceNumber(uniqid());
 
-		// $baseUrl = getBaseUrl();
-		$redirect_urls = new RedirectUrls();
-		$redirect_urls->setReturnUrl(URL::to('/palawan/status')) /** Specify return URL **/
-			->setCancelUrl(URL::to('/'));
+	// 	// $baseUrl = getBaseUrl();
+	// 	$redirect_urls = new RedirectUrls();
+	// 	$redirect_urls->setReturnUrl(URL::to('/palawan/status')) /** Specify return URL **/
+	// 		->setCancelUrl(URL::to('/'));
 
-		$payment = new Payment();
-		$payment->setIntent('Sale')
-			->setPayer($payer)
-			->setRedirectUrls($redirect_urls)
-			->setTransactions([$transaction]);
+	// 	$payment = new Payment();
+	// 	$payment->setIntent('Sale')
+	// 		->setPayer($payer)
+	// 		->setRedirectUrls($redirect_urls)
+	// 		->setTransactions([$transaction]);
 
-		// try {
+	// 	// try {
 
-		//     $payment->create($this->_api_context);
+	// 	//     $payment->create($this->_api_context);
 
-		// } catch (\PayPal\Exception\PayPalConnectionException $e) {
+	// 	// } catch (\PayPal\Exception\PayPalConnectionException $e) {
 
-		// 	if(\Config::get('app.debug')){
-		// 		\Session::put('error', 'Connection timeout');
-		// 		return Redirect::to('/shop-checkoutPayment');
-		// 	}else{
+	// 	// 	if(\Config::get('app.debug')){
+	// 	// 		\Session::put('error', 'Connection timeout');
+	// 	// 		return Redirect::to('/shop-checkoutPayment');
+	// 	// 	}else{
 
-		// 		\Session::put('error', 'Some error have occured, sorry for the inconvenience');
-		// 		return Redirect::to('/shop-checkoutPayment');
-		// 	}
-		// }
+	// 	// 		\Session::put('error', 'Some error have occured, sorry for the inconvenience');
+	// 	// 		return Redirect::to('/shop-checkoutPayment');
+	// 	// 	}
+	// 	// }
 
-		// foreach($payment->getLinks() as $link) {
-		// 	if($link->getRel() == 'approval_url') {
-		// 		$redirect_url = $link->getHref();
-		// 		break;
-		// 	}
-		}
+	// 	// foreach($payment->getLinks() as $link) {
+	// 	// 	if($link->getRel() == 'approval_url') {
+	// 	// 		$redirect_url = $link->getHref();
+	// 	// 		break;
+	// 	// 	}
+	// 	}
 
-		/** add payment ID to session **/
-		Session::put('palawan_payment_id', $payment->getId());
+	// 	/** add payment ID to session **/
+	// 	Session::put('palawan_payment_id', $payment->getId());
 
-		if(isset($redirect_url)) {
-			/** redirect to paypal **/
-			return Redirect::away($redirect_url);
-		}
+	// 	if(isset($redirect_url)) {
+	// 		/** redirect to paypal **/
+	// 		return Redirect::away($redirect_url);
+	// 	}
 
-		\Session::put('error', 'Unknown error occured');
-		return Redirect::to('/shop-checkoutPayment');
-	}
+	// 	\Session::put('error', 'Unknown error occured');
+	// 	return Redirect::to('/shop-checkoutPayment');
+	// }
 
 	public function getPaymentStatus(Request $request)
-	{
-		/** Get the payment ID before session clear **/
-		$payment_id = Session::get('palawan_payment_id');
+	// {
+	// 	/** Get the payment ID before session clear **/
+	// 	$payment_id = Session::get('palawan_payment_id');
 
-		/** clear the session payment ID **/
-		Session::forget('palawan_payment_id');
+	// 	/** clear the session payment ID **/
+	// 	Session::forget('palawan_payment_id');
 
-		if(empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-			\Session::put('error', 'Payment failed');
-			return Redirect::to('/shop-checkoutPayment');
-		}
+	// 	if(empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+	// 		\Session::put('error', 'Payment failed');
+	// 		return Redirect::to('/shop-checkoutPayment');
+	// 	}
 
-		$payment = Payment::get($payment_id, $this->_api_context);
-		$execution = new PaymentExecution();
-		$execution->setPayerId(Input::get('PayerID'));
+	// 	$payment = Payment::get($payment_id, $this->_api_context);
+	// 	$execution = new PaymentExecution();
+	// 	$execution->setPayerId(Input::get('PayerID'));
 
-		/** Execute the payment **/
-		$result = $payment->execute($execution, $this->_api_context);
+	// 	/** Execute the payment **/
+	// 	$result = $payment->execute($execution, $this->_api_context);
 
-		if($result->getState() == 'approved') {
+	// 	if($result->getState() == 'approved') {
 			//\Session::put('success', 'Payment success');
 
 			//insert data to orders table
@@ -224,7 +224,7 @@ class PaypalController extends Controller
             $tracker = new OrderTrackers();
             $tracker->order_id = $order->order_id;
             $tracker->status = $order->status;
-            $tracker->notes = 'Initial purchased. Successfully paid via paypal';
+            $tracker->notes = 'Initial purchased. Successfully paid via palawam';
             $tracker->created_by_id = Auth::user()->customer_id;
             $tracker->created_by_name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
             $tracker->save();
@@ -233,7 +233,7 @@ class PaypalController extends Controller
             foreach(Cart::content() AS $cart) {
                 $options = $cart->options;
 
-                $order_details = new OrderDetails();
+                $order_details = new OrderDetails();1
                 $order_details->order_id = $order->order_id;
                 $order_details->product_id = $cart->id;
                 $order_details->product_name = $cart->name;

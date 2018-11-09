@@ -211,9 +211,23 @@ class ProductsController extends Controller
 
         $getProductQuery = DB::table('products')->where('product_id', '=' , $id)->first();
         $getSkuQuery = DB::table('sku')->where('product_id', '=' , $id)->first();
-        $getColorQuery = DB::table('colors')->get();
-        $getSizeQuery = DB::table('sizes')->get();
+        //$getColorQuery = DB::table('colors')->get();
+        //$getSizeQuery = DB::table('sizes')->get();
+        $getSizeQuery = DB::table('sku')
+            ->leftJoin('sizes', 'sku.size_id', '=', 'sizes.size_id')
+            ->where('sku.product_id', $id)
+            ->select('sizes.*')
+            ->get();
 
+        $getColorQuery = DB::table('sku')
+            ->leftJoin('colors', 'sku.color_id', '=', 'colors.color_id')
+            ->where('sku.product_id', $id)
+            ->select('colors.*')
+            ->get();
+
+        if (is_null($getSizeQuery[0]->size_id)) {
+            $getSizeQuery = [];
+        }
         return View::make('user.templates.shop-productDetails', compact([
                                                                         'getProductQuery',
                                                                         'getSkuQuery',

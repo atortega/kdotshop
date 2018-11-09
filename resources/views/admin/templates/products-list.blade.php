@@ -59,6 +59,7 @@
                             processing: true,
                             serverSide: true,
                             ajax: '{{ url("admin/products/index") }}',
+                            aaSorting: [ [0,'desc'] ],
                             columns: [
                                 { data: 'product_id', name: 'product_id' },
                                 { data: 'category_name', name: 'category_name' },

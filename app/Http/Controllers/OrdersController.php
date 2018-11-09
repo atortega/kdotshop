@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomUser;
 use App\Models\OrderDetails;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -23,6 +24,7 @@ use App\Models\Payments;
 use App\Models\Payment_methods;
 
 use App\Models\Orders;
+use App\Models\OrderTrackers;
 
 class OrdersController extends Controller
 {
@@ -121,5 +123,89 @@ class OrdersController extends Controller
             ->get();
 
         return $query;
+    }
+
+    public function OrderTrackerUpdate(Request $request)
+    {
+        $request->validate([
+            'order_id' => 'required',
+            'notes' => 'required'
+        ]);
+
+        //get the order record
+        $order = Orders::where('order_id', $request->order_id)->first();
+
+        //get customer record
+        $customer = CustomUser::where('customer_id', $order->customer_id)->first();
+
+        //get payment record for this order
+        $payment = Payments::where('order_id', $request->order_id)->first();
+
+        if (empty($request->status)) {
+            //insert data to order_trackers table
+            $tracker = new OrderTrackers();
+            $tracker->order_id = $request->order_id;
+            $tracker->status = $order->status;
+            $tracker->notes = $request->notes;
+            $tracker->updated_by_id = Auth::user()->customer_id;
+            $tracker->updated_by_name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $tracker->save();
+        }
+
+        if ($request->status == 'cancelled') {
+            //insert data to order_trackers table
+            $tracker = new OrderTrackers();
+            $tracker->order_id = $request->order_id;
+            $tracker->status = $request->status;
+            $tracker->notes = $request->notes;
+            $tracker->updated_by_id = Auth::user()->customer_id;
+            $tracker->updated_by_name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $tracker->save();
+
+            //update the status in order table
+            $order->status = $request->status;
+            $order->save();
+
+            //send sms to user
+            $basic  = new \Nexmo\Client\Credentials\Basic('6d49c856', '6dsF7oesEXBWekMr');
+            $client = new \Nexmo\Client($basic);
+
+            $message = $client->message()->send([
+                'to' => $customer->phone_number,
+                'from' => 'KDotShop',
+                'text' => 'Your recent order with KDotShop Online has been cancelled by the administrator. Please contact support for more details.'
+            ]);
+        }
+
+        if ($request->status == 'approved') {
+            if (!empty($request->reference_code)) {
+                $payment->reference_code    = $request->reference_code;
+                $payment->date_paid         = date('Y-m-d');
+                $payment->save();
+
+                //send sms to user
+                $basic  = new \Nexmo\Client\Credentials\Basic('6d49c856', '6dsF7oesEXBWekMr');
+                $client = new \Nexmo\Client($basic);
+
+                $message = $client->message()->send([
+                    'to' => $customer->phone_number,
+                    'from' => 'KDotShop',
+                    'text' => 'We received your message with reference ocde. We will verify the payment and will send you another sms for delivery schedule.'
+                ]);
+            }
+
+            //update the status in order table
+            $order->status = $request->status;
+            $order->save();
+
+            //insert data to order_trackers table
+            $tracker = new OrderTrackers();
+            $tracker->order_id = $request->order_id;
+            $tracker->status = $request->status;
+            $tracker->notes = $request->notes;
+            $tracker->updated_by_id = Auth::user()->customer_id;
+            $tracker->updated_by_name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
+            $tracker->save();
+        }
     }
 }

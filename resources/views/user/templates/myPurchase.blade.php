@@ -88,7 +88,7 @@
 				                        $('#table').DataTable({
 				                            processing: true,
 				                            serverSide: true,
-				                            ajax: '{{ url('user/myPurchase/index') }}',
+				                            ajax: '{{ url('purchase/list') }}',
 				                            columns: [
 				                                { data: 'date_paid', name: 'date_paid' },
 				                                { data: 'product_name', name: 'product_name' },

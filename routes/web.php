@@ -76,6 +76,8 @@ Route::get('page-verificationCode', function () {
 Route::get('/purchase', function () {
     return view('user.templates.myPurchase');
 });
+Route::get('/purchase/list', 'MyPurchaseController@index');
+
 Route::get('/ship', function () {
     return view('user.templates.myPurchase_SHIP');
 });
@@ -251,6 +253,7 @@ Route::group(['middleware' => 'auth' ], function() {
             Route::get('/orders/index', 'OrdersController@index');
             Route::get('/orders/details/get/{id}', 'OrdersController@getOrderDetailById');
             Route::get('/orders/tracker/get/{id}', 'OrdersController@getOrderTrackers');
+            Route::post('/orders/tracker/update', 'OrdersController@OrderTrackerUpdate');
             Route::get('/orders', function () {
                 return view('admin.templates.orders-list');
             });

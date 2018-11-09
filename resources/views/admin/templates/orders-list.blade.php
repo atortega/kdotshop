@@ -119,21 +119,52 @@
                             var status = $(this).attr('data-status');
                             var reference_code = $(this).attr('data-reference');
                             var order_status = ['pending', 'approved', 'delivery', 'completed'];
+                            console.log(status);
                             if (status == 'pending') {
-                                $('#reference_oode').show();
+                                $('#reference-code-group').show();
                             } else {
-                                $('#reference_oode').hide();
+                                $('#reference-code-group').hide();
                             }
-
-                            /*
-                            $.get( "/colors/get/"+color_id, function( data ) {
-                                $("#description").val(data.description);
-                                $("#color").val(data.color);
-                                $("#color_id").val(color_id);
-
-                            });
-                            */
+                            $("#order_id").val(order_id);
+                            $( '#form-errors' ).html( '' );
+                            $( '#notes' ).html( '' );
+                            $( '#status' ).val( '' );
+                            $( '#reference_code' ).val( '' );
+                            $("#tracker_order_id2").html(order_id);
                             $('#myModal').modal('show');
+                        });
+
+                        $('.save-changes').click(function() {
+                            $.ajax({
+                                type: "POST",
+                                //dataType: 'json',
+                                data: {
+                                    status: $('#status').val(),
+                                    reference_code: $("#reference_code").val(),
+                                    notes: $("#notes").val(),
+                                    order_id: $("#order_id").val(),
+                                    _token: $('meta[name="csrf-token"]').attr('content')
+                                },
+                                cache: false,
+                                url: '/admin/orders/tracker/update',
+                                success: function(data){
+                                    console.log(data);
+                                    $('#myModal').modal('hide');
+                                    datatable.draw('page');
+                                },
+                                error: function(e){  // error handling
+                                    console.log(e);
+                                    var errors = e.responseJSON;
+                                    var errorsHtml = '';
+                                    $.each(errors.errors, function( key, value ) {
+                                        errorsHtml += '<p class="text-danger">' + value[0] + '</p>';
+                                    });
+
+                                    $( '#form-errors' ).html( errorsHtml );
+                                }
+                            });
+                            //alert('Changes saved!');
+
                         });
 
                     });
@@ -244,19 +275,32 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Order Tracker - Update</h4>
+                    <div>Order ID: <span id="tracker_order_id2"></span></span></div>
                 </div>
                 <div class="modal-body">
+                    <div id="form-errors"></div>
                     <div class="form-group">
                         <label for="color">Status</label>
-                        <input type="text" class="form-control" id="status" name="status" placeholder="Enter Status" >
+                        <select class="form-control" id="status" name="status">
+                            <option value="">Select Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="approved">Approved</option>
+                            <option value="delivery">Delivery</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="reference-code-group">
+                        <label for="color">Reference Number</label>
+                        <input type="text" class="form-control" id="reference_code" name="reference_code" placeholder="Enter Reference Code" >
                     </div>
                     <div class="form-group">
                         <label for="description">Notes</label>
-                        <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
+                        <textarea class="form-control" placeholder="Notes" id="notes" name="notes" required></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="color_id" name="color_id" />
+                    <input type="hidden" id="order_id" name="order_id" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary save-changes" >Save changes</button>
                 </div>

@@ -227,7 +227,7 @@ class CartController extends Controller
         if ($request->delivery_method == 2) {
             $shipping_fee = 0;
         }
-        
+
         $customerAddress = [
             'billing_address1'  => $request->billing_address1,
             'billing_barangay'  => $request->billing_barangay,

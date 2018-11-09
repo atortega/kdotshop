@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Request;
 use Datatables;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
@@ -28,25 +27,31 @@ class MyPurchaseController extends Controller
 {
     public function index()
 	{
-		$orders = Orders::orderBy('order_id')->get();
-		$payment_method = Payment_methods::orderBy('payment_name')->get();
-		$total_amount = Orders::orderBy('total_amount')->get();
-		$products = Products::orderBy('product_name')->get();
-		$delivery_methods = Delivery_methods::orderBy('delivery_methods_name')->get();
 
+        $orders = DB::table('orders')
+            ->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
+            ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
+            ->leftjoin('payments', 'payments.order_id', '=', 'orders.order_id')
+            ->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
+            ->select('orders.*', 'customer.first_name', DB::raw("concat(customer.first_name, ' ', customer.last_name) as customer_name"), 'delivery_methods.delivery_method_name', 'payment_methods.payment_name', 'payments.reference_code')
+            ->where('orders.customer_id', Auth::user()->customer_id)
+            ->orderBy('orders.order_id', 'desc')
+            ->get();
 
-		$payments = DB::table('payments')
-			->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
-			->leftjoin('order_details', 'products.product_id', '=', 'order_details.product_id' )
-			->leftjoin('orders', 'payments.order_id', '=', 'orders.order_id')
-			->select('orders.*', 'orders.order_id', 'payments.date_paid','products.product_name',  'payment_methods.payment_name', 'delivery_methods.delivery_methods_name','payments.reference_code','orders.total_amount')
-			->get();
+        $datatables = Datatables::of($orders)
+            ->addColumn('actions', function ($data) {
+                return "
+                        <button class='btn btn-xs btn-primary orders-edit-btn' sid='$data->order_id'>Details</button>
+                        <button class='btn btn-xs btn-success orders-tracker-btn' sid='$data->order_id'>Tracker</button>
+                        <button class='btn btn-xs btn-success orders-update-btn' sid='$data->order_id' data-status='$data->status' data-reference='$data->reference_code'>Update Order</button>
+                        ";
+            })
+            ->escapeColumns('actions')
+            ->make(true);
 
-		$datatables = Datatables::of($payments)
-		            
-
-		return ($datatables);
+        return ($datatables);
 	}
+
 	/* public function getPaymentDetailById($id = null)
     {
         $payment_details = PaymentDetails::where('payment_id', $id)->orderBy('product_name')->get();
@@ -67,4 +72,4 @@ class MyPurchaseController extends Controller
     }
 
 }
-}
+

@@ -197,6 +197,7 @@
                             <label class="col-md-3 text-md-right control-label col-form-label"
                                 for="password">
                                 {{ __('Password') }}
+                                <strong class="text-default" style="font-size: 18px;"> *</strong>
                             </label>
                             <div class="col-md-8">
                                 <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" 

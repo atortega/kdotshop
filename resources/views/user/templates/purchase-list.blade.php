@@ -88,9 +88,9 @@
 				                        $('#table').DataTable({
 				                            processing: true,
 				                            serverSide: true,
-				                            ajax: '{{ url('purchase/list') }}',
+				                            ajax: '{{ url("purchase/index") }}',
 				                            columns: [
-				                                { data: 'date_paid', name: 'date_paid' },
+				                                { data: 'order_date', name: 'order_date' },
 				                                { data: 'product_name', name: 'product_name' },
 				                                { data: 'payment_name', name: 'payment_name' },
 				                                { data: 'delivery_method_name', name: 'delivery_method_name' },
@@ -98,21 +98,8 @@
 				                                { data: 'quantity', name: 'quantity' },
 				                                { data: 'total_amount', name: 'total_amount' },
 				                                { data: 'status', name: 'status' },
-				                            ],
-				                            drawCallback: function( settings ) {
-				                                if (settings.aoData.length > 0) {
-				                                    $.each(settings.aoColumns, function(index, col) {
-				                                        col.bSortable = true;
-				                                    });
-				                                } else {
-				                                    $.each(settings.aoColumns, function(index, col) {
-				                                        col.bSortable = false;
-				                                    });
-				                                }
-				                                $("#count").val(settings.json.recordsFiltered);
-				                            }
+				                            ]
 				                        });
-				                        
 				                    });
 				                </script>
             			</div>

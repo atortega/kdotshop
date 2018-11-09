@@ -71,10 +71,11 @@
                         				<thead>
                            					<tr>
 				                                <th>Date Purchased</th>
+				                                <th>Products</th>
 				                                <th>Payment Method</th>
 				                                <th>Delivery Method</th>
 				                                <th>Reference Code</th>
-				                                <th>Shipping Fee</th>
+				                                <th>Quantity</th>
 				                                <th>Amount Paid</th>
 				                                <th>Status</th>
 				                                
@@ -82,7 +83,25 @@
                         				</thead>
                     				</table>
                 				</div>
-
+				                <script>
+				                    $(function() {
+				                        $('#table').DataTable({
+				                            processing: true,
+				                            serverSide: true,
+				                            ajax: '{{ url("purchase/index") }}',
+				                            columns: [
+				                                { data: 'order_date', name: 'order_date' },
+				                                { data: 'product_name', name: 'product_name' },
+				                                { data: 'payment_name', name: 'payment_name' },
+				                                { data: 'delivery_method_name', name: 'delivery_method_name' },
+				                                { data: 'reference_code', name: 'reference_code' },
+				                                { data: 'quantity', name: 'quantity' },
+				                                { data: 'total_amount', name: 'total_amount' },
+				                                { data: 'status', name: 'status' },
+				                            ]
+				                        });
+				                    });
+				                </script>
             			</div>
         			</div>
 					<!-- main end -->
@@ -101,39 +120,6 @@
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
 	<!-- Jquery and Bootstap core js files -->
-	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-	<script>
-        $(function() {
-            $('#table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ url('purchase/list') }}',
-                columns: [
-                    { data: 'order_date', name: 'order_date' },
-                    { data: 'payment_name', name: 'payment_name' },
-                    { data: 'delivery_method_name', name: 'delivery_method_name' },
-                    { data: 'reference_code', name: 'reference_code' },
-                    { data: 'shipping_fee', name: 'shipping_fee' },
-                    { data: 'total_amount', name: 'total_amount' },
-                    { data: 'status', name: 'status' },
-                ],
-                drawCallback: function( settings ) {
-                    if (settings.aoData.length > 0) {
-                        $.each(settings.aoColumns, function(index, col) {
-                            col.bSortable = true;
-                        });
-                    } else {
-                        $.each(settings.aoColumns, function(index, col) {
-                            col.bSortable = false;
-                        });
-                    }
-                    $("#count").val(settings.json.recordsFiltered);
-                }
-            });
-
-        });
-	</script>
 
 </body>
 </html>

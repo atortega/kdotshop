@@ -73,10 +73,10 @@ Route::get('page-verificationCode', function () {
     return view('user.templates.page-verificationCode');
 });
 //P U R C H A S E  P A G E
+Route::get('/purchase/index', 'PurchaseController@index');
 Route::get('/purchase', function () {
-    return view('user.templates.myPurchase');
+    return view('user.templates.purchase-list');
 });
-Route::get('/purchase/list', 'MyPurchaseController@index');
 
 Route::get('/ship', function () {
     return view('user.templates.myPurchase_SHIP');

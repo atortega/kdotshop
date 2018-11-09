@@ -285,7 +285,7 @@ class PaypalController extends Controller
             $message = $client->message()->send([
                 'to' => $new_number,
                 'from' => 'KDotShop',
-                'text' => 'Thanks for your purchase @ KdotShop Online. This is the reference number of the transaction: ' . $payment->reference_code
+                'text' => 'Thanks for your purchase @ KDot Online Shop. This is the reference number of the transaction: ' . $payment->reference_code
             ]);
             //end send sms
 

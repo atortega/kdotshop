@@ -23,7 +23,7 @@ use App\Models\Orders;
 use App\Models\Products;
 use App\Models\PaymentDetails;
 use App\Models\Payments;
-class MyPurchaseController extends Controller
+class PurchaseController extends Controller
 {
     public function index()
 	{

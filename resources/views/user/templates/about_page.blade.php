@@ -78,7 +78,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <p>KDot Fashion Shop started its business in 2017 owned by Khristyl Alyssa U. Cutaran. KDot offers the wide range of products in categories from apparel products to accesories, fashion, bags, shoes and gadgets.</p>
-                  <p>It also offers multiple payment methods including Paypal, Palawan and PayMaya. The customer can choose the mode of delivery between LBC delivery or he can pick up the products he ordered at the actual store.Based in Santorini, Talamban, Cebu City.</p>
+                  <p>It also offers multiple payment methods including Paypal, Palawan and PayMaya. The customer can choose the mode of delivery between JRS delivery or he can pick up the products he ordered at the actual store.Based in Santorini, Talamban, Cebu City.</p>
                 </div>
                 <div class="col-lg-6">
                   <div class="slick-carousel content-slider-with-controls">

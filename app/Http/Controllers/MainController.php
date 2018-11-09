@@ -44,8 +44,9 @@ class MainController extends Controller
             ->leftJoin('sku', 'sku.product_id', '=', 'products.product_id')
             ->leftJoin('colors', 'colors.color_id', '=', 'sku.color_id')
             ->leftJoin('sizes', 'sizes.size_id', '=', 'sku.size_id')
-            ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.*', 'colors.*', 'sizes.*')
-            ->orderByRaw('RAND()')
+            ->leftJoin('popular_products', 'products.product_id', '=','popular_products.product_id')
+            ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name', 'sku.*', 'colors.*', 'sizes.*', 'popular_products.total_purchased')
+            ->orderBy('popular_products.total_purchased', 'desc')
             ->take(8)
             ->get();
 

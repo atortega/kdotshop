@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\CustomerVerificationCodes;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,8 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customers = Datatables::of(Customers::query())
+        $result = Customers::where('status', 'active')->get();
+        $customers = Datatables::of($result)
             ->addColumn('actions', function ($data) {
                 return "
                     <button class='btn btn-xs btn-danger customer-delete-btn' sid='$data->customer_id' sname='$data->name'>Delete</button>
@@ -66,10 +68,10 @@ class CustomersController extends Controller
         $customer->last_name    = $request['last_name'];
         $customer->birthdate    = $request['birthdate'];
         $customer->gender       = $request['gender'];
-        $customer->address      =  $request['address'];
-        $customer->phone_number =  $request['phone_number'];
-        $customer->email        =  $request['email'];
-        $customer->password     =  md5($request['password']);
+        $customer->address      = $request['address'];
+        $customer->phone_number = $request['phone_number'];
+        $customer->email        = $request['email'];
+        $customer->password     = md5($request['password']);
         
         $customer->save();
         
@@ -93,7 +95,8 @@ class CustomersController extends Controller
         ]);
 
         $customer = Customers::find($request['customer_id']);
-        $customer->delete();
+        $customer->status = 'inactive';
+        $customer->save();
 
         return array('error' => false, "message"  => "Customer successfully deleted!");
     }
@@ -108,22 +111,22 @@ class CustomersController extends Controller
     public function editCustomer(Request $request)
     {
         $request->validate([
-            'first_name'        => 'required|max:30',
-            'middle_name'       => 'required|max:30',
-            'last_name'         => 'required|max:30',
-            'gender'            => 'required|max:300',
-            'email'             => 'required',
-            'phone_number'      => 'required',
+            'first_name'    => 'required|max:30',
+            'middle_name'   => 'required|max:30',
+            'last_name'     => 'required|max:30',
+            'gender'        => 'required|max:300',
+            'email'         => 'required',
+            'phone_number'  => 'required',
             
         ]);
 
         $customer = Customers::where('customer_id', $request['customer_id'])->first();
-        $customer->first_name       = $request['first_name'];
-        $customer->middle_name      = $request['middle_name'];
-        $customer->last_name        = $request['last_name'];
-        $customer->gender           =$request['gender'];
-        $customer->email            = $request['email'];
-        $customer->phone_number     = $request['phone_number'];
+        $customer->first_name   = $request['first_name'];
+        $customer->middle_name  = $request['middle_name'];
+        $customer->last_name    = $request['last_name'];
+        $customer->gender       = $request['gender'];
+        $customer->email        = $request['email'];
+        $customer->phone_number = $request['phone_number'];
 
         $customer->save();
 
@@ -175,8 +178,8 @@ class CustomersController extends Controller
     public function loginCustomer(Request $request)
     {
         $request->validate([
-            'email'             => 'required|email|exists:customer,email',
-            'password'          => 'required|string|min:8',
+            'email'     => 'required|email|exists:customer,email',
+            'password'  => 'required|string|min:8',
         ]);
 
 
@@ -202,9 +205,9 @@ class CustomersController extends Controller
     public function forgetPassword(Request $request)
     {
         $request->validate([
-            'email'             => 'required|email|unique:customer,email',
+            'email'                 => 'required|email|unique:customer,email',
             'new_password'          => 'required|string',
-            'confirm_new_password' => 'required|string',
+            'confirm_new_password'  => 'required|string',
         ]);
 
         $customer = Customers::where("email", $request->email)->first();
@@ -236,7 +239,7 @@ class CustomersController extends Controller
     {
         $request->validate([
             'first_name'        => 'required',
-            'middle_name'        => 'required',
+            'middle_name'       => 'required',
             'last_name'         => 'required',
             'birthdate'         => 'date',
             'gender'            => 'required',
@@ -248,13 +251,13 @@ class CustomersController extends Controller
 
         $birthdate = date('Y-m-d H:i:s', strtotime($request['birthdate']));
 
-        $customer->first_name   =  $request['first_name'];
-        $customer->middle_name  =  $request['middle_name'];
-        $customer->last_name    =  $request['last_name'];
-        $customer->birthdate    =  $birthdate;
-        $customer->gender       =  $request['gender'];
-        $customer->phone_number =  $request['phone_number'];
-        $customer->email =  $request['email'];
+        $customer->first_name   =   $request['first_name'];
+        $customer->middle_name  =   $request['middle_name'];
+        $customer->last_name    =   $request['last_name'];
+        $customer->birthdat     =   $birthdate;
+        $customer->gender       =   $request['gender'];
+        $customer->phone_number =   $request['phone_number'];
+        $customer->email        =   $request['email'];
 
         $customer->save();
 
@@ -418,5 +421,49 @@ class CustomersController extends Controller
         $address->save();
 
         return redirect()->back()->with('message', 'Customers Address has been added.');
+    }
+
+    /*
+     * Show Customer Verification Page
+     */
+    public function showVerificationPageForm()
+    {
+        return view('user.templates.page-verification');
+    }
+
+    /*
+     * Verify Customer
+     *
+     * @param Request $request
+     *
+     * @return void
+     */
+    public function verifyCustomer(Request $request)
+    {
+        $request->validate([
+            'verification_code'        => 'required'
+        ]);
+
+        $code = CustomerVerificationCodes::where('customer_id', Auth::user()->customer_id)->first();
+        if ($code->verification_code != $request->verification_code) {
+            return redirect()->back()->with('message', 'Invalid verification code.');
+        }
+        $code->date_verified = date('Y-m-d');
+        $code->save();
+
+        $user = Customers::where('customer_id', Auth::user()->customer_id)->first();
+        $user->status = 'active';
+        $user->save();
+
+        return redirect('/');
+    }
+
+    /*
+     * Show un-authorized page
+     *
+     */
+    public function showUnauthorizePage()
+    {
+        return view('user.templates.unauthorized');
     }
 }

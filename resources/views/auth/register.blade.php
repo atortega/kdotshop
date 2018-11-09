@@ -62,13 +62,15 @@
                                 <input type="phone_number" class="form-control" id="phonenumber"
                                     placeholder="Enter Phone Number (required)" name="phone_number" required>
                                 <i class="glyphicon glyphicon-phone form-control-feedback pr-4"></i>
+                                <!--
                                 <button type="submit" class="btn btn-animated btn-default pull-right">
                                     {{ __('Send Verification Code') }}
                                     <i class="fa fa-send"></i>
                                 </button>
+                                -->
                             </div>  
                         </div>   
-
+                        <!--
                         <div class="form-group has-feedback row"> 
                             <label class="col-md-3 text-md-right control-label col-form-label"
                                 for="verification-code">
@@ -79,7 +81,7 @@
                                 <i class="glyphicon glyphicon-comment form-control-feedback pr-4"></i>
                             </div>
                         </div>
-
+                        -->
                         <div class="separator"></div>
 
                         <div class="form-group has-feedback row"> 

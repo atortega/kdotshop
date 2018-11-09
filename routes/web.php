@@ -134,71 +134,79 @@ Route::get('/invoice', function () {
 Route::get('/invoice','CartController@cartShowInvoice');
 
 
+Route::get('/customer-verification-page', 'CustomersController@showVerificationPageForm');
+Route::post('/customer-verification-page/submit', 'CustomersController@verifyCustomer');
 
+Route::get('/customer-unauthorize', 'CustomersController@showUnauthorizePage');
 
 Route::group(['middleware' => 'auth' ], function() {
-    // P A G E . A C C O U N T
-    Route::get('/account', function () {
-        return view('user.templates.page-account');
+    Route::group(['middleware' => 'App\Http\Middleware\CheckStatus'], function() {
+        // P A G E . A C C O U N T
+        Route::get('/account', function () {
+            return view('user.templates.page-account');
+        });
+        Route::get('/updateProfile', function () {
+            return view('user.templates.editprofile');
+        });
+        Route::get('/updatePassword', function () {
+            return view('user.templates.updatePassword');
+        });
+        Route::get('/payment-receipt', function () {
+            return view('user.templates.payment-receipt');
+        });
+
+
+        Route::get('/updateProfile', 'CustomersController@updateProfileForm');
+        Route::post('/saveProfile', 'CustomersController@saveProfile');
+        Route::post('/saveNewAvatar', 'CustomersController@saveNewAvatar');
+        Route::get('/removeAvatar', 'CustomersController@removeAvatar');
+        Route::get('/account', 'CustomersController@accountAvatarCheckDB');
+        Route::post('/change-password', 'CustomersController@changePassword');
+        Route::post('/change-password', 'CustomersController@changePassword');
+        Route::post('/addresses/add', 'CustomersController@insertAddress');
+        Route::get('/addresses', 'CustomersController@AddressViewForm');
+
+
+        // S H O P - C H E C K O U T
+
+
+        Route::get('/shop-checkout','CartController@cartShowCheckout');
+        Route::post('/shop-checkout-submit','CartController@cartCheckoutSubmit');
+        // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
+        //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
+
+
+        // S H O P - C H E C K O U T P A Y M E N T
+        Route::get('/shop-checkoutPayment', function () {
+            return view('user.templates.shop-checkoutPayment');
+        });
+
+        Route::get('/paypal', function (){
+            return view('user.templates.paypal.paywithpaypal');
+        });
+
+        // route for processing payment
+        Route::get('/pay-with-paypal', 'PaypalController@payWithPaypal');
+
+        // route for check status of the payment
+        Route::get('/paypal/status', 'PaypalController@getPaymentStatus');
+
+        // S H O P - C H E C K O U T R E V I E W
+        Route::get('/shop-checkoutReview', function () {
+            return view('user.templates.shop-checkoutReview');
+        });
+        Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
+        // Route::get('/shop-checkoutReview', 'CartController@CheckoutBillingAddress');
+
+
+        // S H O P - C H E C K O U T C O M P L E T E D
+        Route::get('/shop-checkoutCompleted', function () {
+            return view('user.templates.shop-checkoutCompleted');
+        });
+
+
     });
-    Route::get('/updateProfile', function () {
-        return view('user.templates.editprofile');
-    });
-    Route::get('/updatePassword', function () {
-        return view('user.templates.updatePassword');
-    });
-    Route::get('/payment-receipt', function () {
-        return view('user.templates.payment-receipt');
-    });
 
-
-    Route::get('/updateProfile', 'CustomersController@updateProfileForm');
-    Route::post('/saveProfile', 'CustomersController@saveProfile');
-    Route::post('/saveNewAvatar', 'CustomersController@saveNewAvatar');
-    Route::get('/removeAvatar', 'CustomersController@removeAvatar');
-    Route::get('/account', 'CustomersController@accountAvatarCheckDB');
-    Route::post('/change-password', 'CustomersController@changePassword');
-    Route::post('/change-password', 'CustomersController@changePassword');
-    Route::post('/addresses/add', 'CustomersController@insertAddress');
-    Route::get('/addresses', 'CustomersController@AddressViewForm');
-    
-
-    // S H O P - C H E C K O U T
-
-
-    Route::get('/shop-checkout','CartController@cartShowCheckout');
-    Route::post('/shop-checkout-submit','CartController@cartCheckoutSubmit');
-    // Route::post('/shop-checkout/add', 'CustomersController@insertAddress');
-    //Route::get('/shop-checkout', 'CartController@CheckoutAddressViewForm');
-
-
-    // S H O P - C H E C K O U T P A Y M E N T
-    Route::get('/shop-checkoutPayment', function () {
-        return view('user.templates.shop-checkoutPayment');
-    });
-
-    Route::get('/paypal', function (){
-        return view('user.templates.paypal.paywithpaypal');
-    });
-
-    // route for processing payment
-    Route::get('/pay-with-paypal', 'PaypalController@payWithPaypal');
-
-    // route for check status of the payment
-    Route::get('/paypal/status', 'PaypalController@getPaymentStatus');
-
-    // S H O P - C H E C K O U T R E V I E W
-    Route::get('/shop-checkoutReview', function () {
-        return view('user.templates.shop-checkoutReview');
-    });
-    Route::get('/shop-checkoutReview','CartController@cartShowCheckoutReview');
-    // Route::get('/shop-checkoutReview', 'CartController@CheckoutBillingAddress');
-
-
-    // S H O P - C H E C K O U T C O M P L E T E D
-    Route::get('/shop-checkoutCompleted', function () {
-        return view('user.templates.shop-checkoutCompleted');
-    });
 
     Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function() {
         

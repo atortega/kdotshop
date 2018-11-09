@@ -25,6 +25,10 @@
 					<th><span  >Customer Name</span></th>
 					<td><span  >{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span></td>
 				</tr>
+				<tr>
+					<th><span  >Shipping Address</span></th>
+					<td><span  >{{ $user->billing_address1 }}, {{ $user->billing_barangay }}, {{ $user->billing_city }}, {{ $user->billing_province }} {{ $user->billing_zipcode }}, {{ $user->billing_country}}</span></td>
+				</tr>
 			</table>
 			<table class="inventory">
 				<thead>
@@ -109,8 +113,19 @@
 			<table class="balance">
 				<thead>
 					<tr>
-						<th><strong>Total Amount</strong></th>
+						<th><strong>Subtotal</strong></th>
 						<td style="text-align: center;"><span data-prefix>₱ {{ Cart::total() }}</span>
+					</tr>
+					<tr>
+						<th><strong>Shippimg Fee</strong></th>
+						<td style="text-align: center;"><span data-prefix>₱ {{ number_format(Session::get('shipping_fee'),2) }}</span>
+					</tr>
+					<tr>
+						<th><strong>Total Amount</strong></th>
+						@php
+                    	$total = str_replace(",", "", Cart::total()) + Session::get('shipping_fee');
+                    	@endphp
+						<td style="text-align: center;"><span data-prefix>₱ {{ number_format($total,2) }}</span>
 					</tr>
 				</thead>
 			</table>
@@ -118,7 +133,7 @@
 		<aside>
 			<h1><span>Additional Notes</span></h1>
 			<div>
-				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+				<p>N/A</p>
 				<br><br>
 				<div align="center" >
 					<button onclick="printpage();"

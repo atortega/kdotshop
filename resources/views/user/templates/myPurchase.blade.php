@@ -77,6 +77,7 @@
 				                                <th>Reference Code</th>
 				                                <th>Quantity</th>
 				                                <th>Amount Paid</th>
+				                                <th>Status</th>
 				                                
                             				</tr>
                         				</thead>
@@ -96,7 +97,7 @@
 				                                { data: 'reference_code', name: 'reference_code' },
 				                                { data: 'quantity', name: 'quantity' },
 				                                { data: 'total_amount', name: 'total_amount' },
-				                                
+				                                { data: 'status', name: 'status' },
 				                            ],
 				                            drawCallback: function( settings ) {
 				                                if (settings.aoData.length > 0) {

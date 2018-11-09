@@ -137,8 +137,13 @@ class CartController extends Controller
 
     public function cartShowInvoice(){
         $cartProducts = Cart::Content();
+        $countries = Country::orderBy('code')->get();
+        $places = Places::orderBy('place')->get();
+        $cities = Cities::orderBy('cities')->get();
+        $provinces = Provinces::orderBy('provinces')->get();
+        $customer_address = CustomersAddress::where('customer_id', Auth::user()->customer_id)->first();
        
-        return view('user.templates.invoice.invoice',['cartProducts'=>$cartProducts]);
+        return view('user.templates.invoice.invoice',['places' =>$places,'cartProducts'=>$cartProducts, 'user' => $customer_address, 'countries' => $countries,  'cities' => $cities , 'provinces' => $provinces]);
     }
 
     // public function CheckoutAddressViewForm()

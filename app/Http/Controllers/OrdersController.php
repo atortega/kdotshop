@@ -76,7 +76,8 @@ class OrdersController extends Controller
         $getDeliveryMethodQuery = DB::table('delivery_methods')->where('delivery_methods_id', '=', $id)->first();
          */
         $order_details = OrderDetails::where('order_id', $id)->orderBy('product_name')->get();
-
+        $order_details = OrderDetails::where('order_id', $id)->orderBy('color')->get();
+        $order_details = OrderDetails::where('order_id', $id)->orderBy('size')->get();
         return ($order_details);
     }
 

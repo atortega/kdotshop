@@ -87,11 +87,11 @@
                                 $("#modalOrderDetails tbody").html('');
                                 $.each(data, function(index, row) {
                                     console.log(row.product_name);
-                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td class='text-right'>" + row.quantity + "</td><td class='text-right'>" + parseFloat(row.price).toFixed(2) +"</td><td class='text-right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
+                                    var markup = "<tr><td>"+row.product_id+"</td><td>" + row.product_name + "</td><td class='text-right'>" + row.color + "</td><td class='text-right'>"+ row.size + "</td><td class='text-right'>"+ row.quantity + "</td><td class='text-right'>" + parseFloat(row.price).toFixed(2) +"</td><td class='text-right'>" + parseFloat(row.amount).toFixed(2) + "</td></tr>";
                                     $("#modalOrderDetails tbody").append(markup);
                                     total = total + row.amount;
                                 });
-                                $("#modalOrderDetails tbody").append("<tr><td colspan='5' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
+                                $("#modalOrderDetails tbody").append("<tr><td colspan='8' class='text-right font-weight-bold'>" + parseFloat(total).toFixed(2) + "</td></tr>");
                             });
 
                             $('#editModal').modal('show');
@@ -177,6 +177,8 @@
                             <thead>
                                 <th>Product ID</th>
                                 <th>Product Name</th>
+                                <th class='text-right'>Color</th>
+                                <th class='text-right'>Size</th>
                                 <th class='text-right'>QTY</th>
                                 <th class='text-right'>Unit Price</th>
                                 <th class='text-right'>Amount</th>

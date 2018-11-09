@@ -249,10 +249,21 @@
 									<div class="space"></div> -->
 									<div class="row">
 										<div class="col-xl-3">
-											<h4 class="title">Your Billing Address</h4>
+											<h4 class="title">Your Billing Address Information </h4>
 										</div>
 
 										<div class="col-xl-8 ml-xl-auto">
+											<div class="form-group has-feedback row">
+												<label class="col-lg-3 control-label text-lg-right col-form-label"
+													for="billingTel">
+													Contact Number
+													<strong class="text-default" style="font-size: 18px;"> *</strong>
+												</label>
+												<div class="col-lg-9">
+													<input class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}"
+														type="text" name="phone_number" value="{{ Auth::user()->phone_number }}" disabled>
+												</div>
+											</div>
 											<div class="form-group has-feedback row">
 												<label class="col-lg-3 control-label text-lg-right col-form-label"
 													for="billingAddress">

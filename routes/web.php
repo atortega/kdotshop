@@ -130,6 +130,8 @@ Route::get('/palawan', function () {
     return view('user.templates.palawan');
 });
 
+Route::get('/palawan/checkout', 'PalawanController@proceedPaymentCheckout');
+
 Route::get('/invoice', function () {
     return view('user.templates.invoice.invoice ');
 });

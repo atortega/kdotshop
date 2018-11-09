@@ -116,7 +116,7 @@
 			<a href="/shop-checkoutPayment" class="btn btn-group btn-default">
 				Go Back
 			</a>
-			<a href="#" class="btn btn-group btn-animated btn-default">
+			<a href="/palawan/checkout" class="btn btn-group btn-animated btn-default">
 				Place Order
 				<i class="fa fa-arrow-down"></i>
 			</a>

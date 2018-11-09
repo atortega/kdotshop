@@ -132,6 +132,7 @@
 
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
-	<!-- Jquery and Bootstap core js files -->	
+	<!-- Jquery and Bootstap core js files -->
+
 </body>
 </html>

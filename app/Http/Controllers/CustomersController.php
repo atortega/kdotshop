@@ -243,8 +243,7 @@ class CustomersController extends Controller
             'last_name'         => 'required',
             'birthdate'         => 'date',
             'gender'            => 'required',
-            'phone_number'      => 'required|min:11|numeric',
-            'email'             => 'required'
+            'phone_number'      => 'required|min:11|numeric'
         ]);
 
         $customer = Customers::where('customer_id', Auth::user()->customer_id)->first();
@@ -254,10 +253,9 @@ class CustomersController extends Controller
         $customer->first_name   =   $request['first_name'];
         $customer->middle_name  =   $request['middle_name'];
         $customer->last_name    =   $request['last_name'];
-        $customer->birthdat     =   $birthdate;
+        $customer->birthdate     =   $birthdate;
         $customer->gender       =   $request['gender'];
         $customer->phone_number =   $request['phone_number'];
-        $customer->email        =   $request['email'];
 
         $customer->save();
 

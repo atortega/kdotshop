@@ -65,11 +65,10 @@
 										<thead>
 											<tr>
 												<th>Date Purchased</th>
-												<th>Products</th>
 												<th>Payment Method</th>
 												<th>Delivery Method</th>
 												<th>Reference Code</th>
-												<th>Quantity</th>
+												<th>Shipping Fee</th>
 												<th>Amount Paid</th>
 												<th>Status</th>
 											</tr>
@@ -103,11 +102,10 @@
 				aaSorting: [ [0, 'desc'] ],
 				columns: [
 					{ data: 'order_date', name: 'order_date' },
-					{ data: 'product_name', name: 'product_name' },
 					{ data: 'payment_name', name: 'payment_name' },
 					{ data: 'delivery_method_name', name: 'delivery_method_name' },
 					{ data: 'reference_code', name: 'reference_code' },
-					{ data: 'quantity', name: 'quantity' },
+					{ data: 'shipping_fee', name: 'shipping_fee' },
 					{ data: 'total_amount', name: 'total_amount' },
 					{ data: 'status', name: 'status' }
 				]

@@ -54,56 +54,34 @@
 					<!-- ================ -->
 					<div class="col-3">
                     @include('user.templates.layouts.page-purchase-sidebar')
+                	</div>
 
-                </div>
-
-					<div id="page-wrapper">
-            			<div class="container-fluid">
-               				<div class="row">
-                    			<div class="col-lg-12">
-                        			<!--   -->
-                    			</div>
+					
+        			<div class="container-fluid">
+           				<div class="row">
+                			<div class="col-lg-12">
+								<div class="container-fluid">
+									<table class="table-condensed table-hover table-colored" id="table">
+										<thead>
+											<tr>
+												<th>Date Purchased</th>
+												<th>Products</th>
+												<th>Payment Method</th>
+												<th>Delivery Method</th>
+												<th>Reference Code</th>
+												<th>Quantity</th>
+												<th>Amount Paid</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+									</table>
+								</div>
                 			</div>
-             	
+						</div>
+					</div>
+					<!-- /.container-fluid -->
 
-                				<div class="main col-12 container-fluid">
-                    				<table class="table table-bordered" id="table">
-                        				<thead>
-                           					<tr>
-				                                <th>Date Purchased</th>
-				                                <th>Products</th>
-				                                <th>Payment Method</th>
-				                                <th>Delivery Method</th>
-				                                <th>Reference Code</th>
-				                                <th>Quantity</th>
-				                                <th>Amount Paid</th>
-				                                <th>Status</th>
-				                                
-                            				</tr>
-                        				</thead>
-                    				</table>
-                				</div>
-				                <script>
-				                    $(function() {
-				                        $('#table').DataTable({
-				                            processing: true,
-				                            serverSide: true,
-				                            ajax: '{{ url("purchase/index") }}',
-				                            columns: [
-				                                { data: 'order_date', name: 'order_date' },
-				                                { data: 'product_name', name: 'product_name' },
-				                                { data: 'payment_name', name: 'payment_name' },
-				                                { data: 'delivery_method_name', name: 'delivery_method_name' },
-				                                { data: 'reference_code', name: 'reference_code' },
-				                                { data: 'quantity', name: 'quantity' },
-				                                { data: 'total_amount', name: 'total_amount' },
-				                                { data: 'status', name: 'status' },
-				                            ]
-				                        });
-				                    });
-				                </script>
-            			</div>
-        			</div>
+					
 					<!-- main end -->
 				</div>
 			</div>
@@ -116,7 +94,26 @@
 	<!-- ================ -->
 	@include('user.templates.layouts.footer')
 	<!-- footer end -->
-
+	<script>
+		$(function() {
+			$('#table').DataTable({
+				processing: true,
+				serverSide: true,
+				ajax: '{{ url('purchase/index') }}',
+				aaSorting: [ [0, 'desc'] ],
+				columns: [
+					{ data: 'order_date', name: 'order_date' },
+					{ data: 'product_name', name: 'product_name' },
+					{ data: 'payment_name', name: 'payment_name' },
+					{ data: 'delivery_method_name', name: 'delivery_method_name' },
+					{ data: 'reference_code', name: 'reference_code' },
+					{ data: 'quantity', name: 'quantity' },
+					{ data: 'total_amount', name: 'total_amount' },
+					{ data: 'status', name: 'status' }
+				]
+			});
+		});
+	</script>
 	<!-- JavaScript files placed at the end of the document so the pages load faster -->
 	<!-- ================================================== -->
 	<!-- Jquery and Bootstap core js files -->

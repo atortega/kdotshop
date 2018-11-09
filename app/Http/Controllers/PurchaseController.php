@@ -23,24 +23,24 @@ use App\Models\Orders;
 use App\Models\Products;
 use App\Models\PaymentDetails;
 use App\Models\Payments;
+
 class PurchaseController extends Controller
 {
     public function index()
 	{
-
         $orders = DB::table('orders')
-            ->leftjoin('products', 'orders.product_id', '=', 'products.product_id')
+            ->leftjoin('order_details', 'orders.order_id', '=', 'order_details.order_id')
             ->leftjoin('customer', 'orders.customer_id', '=', 'customer.customer_id')
             ->leftjoin('delivery_methods', 'orders.delivery_method_id', '=', 'delivery_methods.delivery_method_id')
             ->leftjoin('payments', 'payments.order_id', '=', 'orders.order_id')
             ->leftjoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.payment_method_id')
-            ->select('orders.*', 'products.product_name', 'payment_methods.payment_name', 'delivery_methods.delivery_method_name', 'payments.reference_code')
+            ->select('orders.*', 'order_details.product_name', 'order_details.quantity', 'payment_methods.payment_name',
+                'delivery_methods.delivery_method_name', 'payments.reference_code')
             ->where('orders.customer_id', Auth::user()->customer_id)
             ->orderBy('orders.order_id', 'desc')
             ->get();
 
         $datatables = Datatables::of($orders)
-            ->escapeColumns('actions')
             ->make(true);
 
         return ($datatables);
@@ -52,6 +52,7 @@ class PurchaseController extends Controller
 
         return ($payment_details);
     }*/
+
      public function getOrderDetailById($id = null)
     {
         /*

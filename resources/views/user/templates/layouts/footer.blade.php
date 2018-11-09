@@ -222,6 +222,8 @@
 	<!-- Bootstrap Scripts -->
 	<script src="{{ URL::asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 	<script src="{{ URL::asset('js/user/bootstrap-notify.min.js') }}"></script>
+	<!-- DataTables jQuery JS -->
+	<script src="{{ URL::asset('js/user/jquery.dataTables.min.js') }}"></script>
 	<!-- jQuery Revolution Slider  -->
 	<script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js') }}"></script>
 	<script src="{{ URL::asset('plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js') }}"></script>

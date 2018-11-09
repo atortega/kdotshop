@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\CustomerVerificationCodes;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,8 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customers = Datatables::of(Customers::query())
+        $result = Customers::where('status', 'active')->get();
+        $customers = Datatables::of($result)
             ->addColumn('actions', function ($data) {
                 return "
                     <button class='btn btn-xs btn-danger customer-delete-btn' sid='$data->customer_id' sname='$data->name'>Delete</button>
@@ -93,7 +95,8 @@ class CustomersController extends Controller
         ]);
 
         $customer = Customers::find($request['customer_id']);
-        $customer->delete();
+        $customer->status = 'inactive';
+        $customer->save();
 
         return array('error' => false, "message"  => "Customer successfully deleted!");
     }
@@ -418,5 +421,49 @@ class CustomersController extends Controller
         $address->save();
 
         return redirect()->back()->with('message', 'Customers Address has been added.');
+    }
+
+    /*
+     * Show Customer Verification Page
+     */
+    public function showVerificationPageForm()
+    {
+        return view('user.templates.page-verification');
+    }
+
+    /*
+     * Verify Customer
+     *
+     * @param Request $request
+     *
+     * @return void
+     */
+    public function verifyCustomer(Request $request)
+    {
+        $request->validate([
+            'verification_code'        => 'required'
+        ]);
+
+        $code = CustomerVerificationCodes::where('customer_id', Auth::user()->customer_id)->first();
+        if ($code->verification_code != $request->verification_code) {
+            return redirect()->back()->with('message', 'Invalid verification code.');
+        }
+        $code->date_verified = date('Y-m-d');
+        $code->save();
+
+        $user = Customers::where('customer_id', Auth::user()->customer_id)->first();
+        $user->status = 'active';
+        $user->save();
+
+        return redirect('/');
+    }
+
+    /*
+     * Show un-authorized page
+     *
+     */
+    public function showUnauthorizePage()
+    {
+        return view('user.templates.unauthorized');
     }
 }

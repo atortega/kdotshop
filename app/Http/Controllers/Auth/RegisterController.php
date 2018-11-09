@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\CustomUser;
+use App\Models\CustomerVerificationCodes;
+
 use App\Http\Controllers\Controller;
 use App\Models\CustomersAddress;
 use Illuminate\Support\Facades\Hash;
@@ -71,8 +73,26 @@ class RegisterController extends Controller
             'birthdate' => $data['birthdate'],
             'gender' => $data['gender'],
             'email' => $data['email'],
+            'status' => 'pending',
             'password' => Hash::make($data['password']),
         ]);
+
+        $otp = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+        $code = new CustomerVerificationCodes();
+        $code->customer_id = $user->customer_id;
+        $code->verification_code = $otp;
+        $code->save();
+
+        //Send the verification code to user via sms
+        $basic  = new \Nexmo\Client\Credentials\Basic('6d49c856', '6dsF7oesEXBWekMr');
+        $client = new \Nexmo\Client($basic);
+
+        $message = $client->message()->send([
+            'to' => $user->phone_number,
+            'from' => 'KDotShop',
+            'text' => 'Thanks for registering with KDotShop Online. To activate your account, please enter this verification code: ' . $otp
+        ]);
+        //end sending sms
 
         $address = CustomersAddress::create([
            'customer_id' => $user->customer_id,

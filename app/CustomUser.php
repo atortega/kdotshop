@@ -31,7 +31,8 @@ class CustomUser extends Authenticatable
         'email',
         'password',
         'provider',
-        'provider_id'
+        'provider_id',
+        'status'
     ];
 
     /**

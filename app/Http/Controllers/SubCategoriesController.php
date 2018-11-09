@@ -24,7 +24,7 @@ class SubCategoriesController extends Controller
             ->addColumn('actions', function ($data) {
                 return "
                 	<button class='btn btn-xs btn-primary sub-category-edit-btn' sid='$data->sub_category_id'>Edit</button>
-                    <button class='btn btn-xs btn-danger sub-category-delete-btn' sid='$data->sub_category_id' sname='$data->sub_category_name'>Delete</button>
+                    <button class='btn btn-xs btn-danger sub-category-delete-btn' sid='$data->sub_category_id' sname='$data->sub_category_name' >Delete</button>
                 	";
             })
             ->escapeColumns('actions')
@@ -74,7 +74,13 @@ class SubCategoriesController extends Controller
 
     public function getProductSubCategoryById($id)
     {
-        return SubCategories::where('sub_category_id', $id)->first();
+        //return SubCategories::where('sub_category_id', $id)->first();
+        $query = DB::table('sub_categories')
+            ->leftJoin('categories', 'categories.category_id', '=', 'sub_categories.category_id')
+            ->select('sub_categories.*', 'categories.category_name')
+            ->where('sub_categories.sub_category_id', $id)
+            ->get();
+        return ($query);
     }
 
     public function getProductSubCategoriesByCategoryId()
@@ -99,15 +105,14 @@ class SubCategoriesController extends Controller
     public function editProductSubCategory(Request $request)
     {
         $request->validate([
-            'sub_category_desc' => 'required|max:100',
-            'category_id'       => 'required',
+            'description' => 'required|max:200',
+            'sub_category_id'       => 'required',
             'sub_category_name' => 'required',
         ]);
 
         $subcategory = SubCategories::where('sub_category_id', $request['sub_category_id'])->first();
-        $subcategory->category_id = $request['category_id'];
         $subcategory->sub_category_name = $request['sub_category_name'];
-        $subcategory->sub_category_desc = $request['sub_category_desc'];
+        $subcategory->sub_category_desc = $request['description'];
         $subcategory->save();
 
         return array('error' => false, "message" => "Product sub category successfully updated!");

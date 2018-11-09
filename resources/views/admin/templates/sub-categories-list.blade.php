@@ -67,14 +67,17 @@
                             }
                         });
 
-                        $('#table').on('click', '.category-edit-btn', function(){
+                        $('#table').on('click', '.sub-category-edit-btn', function(){
                             var sub_category_id = $(this).attr('sid');
-                            var subcat = JSON.parse($(this).attr('data-subcat'));
+                            var sub_category_name = $(this).attr('sname');
                             
-                            $.get( "/categories/get/"+sub-category_id, function( data ) {
-                                $("#description").val(subcat.category_desc);
-                                $("#category_name").val(subcat.category_name);
-                                $("#sub-category").val(subcat.sub_category_name);
+                            $.get( "/sub-categories/get/"+sub_category_id, function( data2 ) {
+                                console.log(data2[0]);
+                                var data = data2[0];
+                                $("#description").val(data.sub_category_desc);
+                                $("#category_name").val(data.category_name);
+                                $("#sub_category_name").val(data.sub_category_name);
+                                $("#sub_category_id").val(data.sub_category_id);
                             });
                             
                             /*$("#description").val(subcat.sub_category_desc);
@@ -85,9 +88,9 @@
                             $('#myModal').modal('show');
                         });
 
-                        $('#table').on('click', '.category-delete-btn', function(){
-                            var category_id = $(this).attr('sid');
-                            var category_name = $(this).attr('sname');
+                        $('#table').on('click', '.sub-category-delete-btn', function(){
+                            var sub_category_id = $(this).attr('sid');
+                            var sub_category_name = $(this).attr('sname');
                             bootbox.confirm({
                                 size: "small",
                                 message: "Are you sure to delete this sub-category, "+sub_category_name+"?",
@@ -126,14 +129,15 @@
                                 url: '/admin/sub-categories/edit',
                                 success: function(data){
                                     console.log(data);
+                                    $('#myModal').modal('hide');
+                                    datatable.draw('page');
                                 },
                                 error: function(e){  // error handling
                                     console.log(e);
                                 }
                             });
                             //alert('Changes saved!');
-                            $('#myModal').modal('hide');
-                            datatable.draw('page');
+
                         });
 
                     });
@@ -169,7 +173,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Category - Update</h4>
+                    <h4 class="modal-title">Sub-Category - Update</h4>
                 </div>
                 <form id="modalForm" name="modalForm">
                     {{ csrf_field() }}

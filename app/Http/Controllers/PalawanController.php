@@ -147,7 +147,7 @@ class PalawanController extends Controller
         $message = $client->message()->send([
             'to' => $new_number,
             'from' => 'KDotShop',
-            'text' => 'Thanks for your purchase @ KdotShop Online thru Palawan Pawnshop. Total amount of purchased is PHP ' . number_format($order->total_amount,2)
+            'text' => 'Thanks for your purchase @ KDot Online Shop thru Palawan Express Padala. Total amount of purchased is PHP ' . number_format($order->total_amount,2)
         ]);
         //end send sms
 

@@ -115,10 +115,10 @@
                                 @endforeach
                               </select>
                             </div>
-                            @php $count = count($getSizeQuery) @endphp
+
                             @if(count($getSizeQuery) > 0)
                             <div class="form-group col-lg-4">
-                              <label>Size {{ $count }}</label>
+                              <label>Size</label>
                               <select class="form-control" id="size">
                                 @foreach($getSizeQuery as $sizes)
                                   <option value="{{$sizes->size_id}}">{{$sizes->size}}</option>

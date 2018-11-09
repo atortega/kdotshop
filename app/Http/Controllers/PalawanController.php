@@ -65,7 +65,7 @@ class PalawanController extends Controller
 
         //insert data to payment table
         $payment = new Payments();
-        $payment->payment_method_id = 1;
+        $payment->payment_method_id = 3;
         $payment->order_id          = $order->order_id;
         $payment->amount            = str_replace(",", "", Cart::total())  + Session::get('shipping_fee');
         $payment->save();

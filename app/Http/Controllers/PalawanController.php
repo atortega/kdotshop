@@ -21,6 +21,7 @@ use App\Models\OrderDetails;
 use App\Models\Delivery_addresses;
 use App\Models\OrderTrackers;
 use App\Models\Sku;
+use App\Models\PopularProducts;
 
 class PalawanController extends Controller
 {
@@ -121,6 +122,18 @@ class PalawanController extends Controller
             }
             $sku->number_of_items = $bal;
             $sku->save();
+
+            //Add the product to popular_products database
+            $popular = PopularProducts::where('product_id', $cart->id)->first();
+            if (!$popular) {
+                $popular = new PopularProducts();
+                $popular->total_purchased = $cart->qty;
+                $popular->product_id = $cart->id;
+            } else {
+                $popular->total_purchased = $popular->total_purchased + $cart->qty;
+            }
+            $popular->save();
+
         }
 
         //destroy the cart session

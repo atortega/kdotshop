@@ -31,6 +31,7 @@ use App\Models\Invoices;
 use App\Models\OrderDetails;
 use App\Models\Delivery_addresses;
 use App\Models\OrderTrackers;
+use App\Models\PopularProducts;
 
 class PaypalController extends Controller
 {

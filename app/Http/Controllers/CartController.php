@@ -41,7 +41,9 @@ class CartController extends Controller
                 'color_id'  =>  $request->color,
                 'size_id'   =>  $request->size,
                 'color'     =>  $color->color,
-                'size'      =>  $size->size
+                'size'      =>  $size->size,
+                'sku'       =>  $skuById->sku,
+                'sku_id'    =>  $skuById->id
             ]
 
 

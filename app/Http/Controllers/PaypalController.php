@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -256,8 +257,20 @@ class PaypalController extends Controller
                 $order_details->size_id = $options->size_id;
                 $order_details->color = $options->color;
                 $order_details->size = $options->size;
+                $order_details->sku = $options->sku;
+                $order_details->sku_id = $options->sku_id;
 
                 $order_details->save();
+
+                //deduct product inventory
+                $sku = Sku::where('id', $options->sku_id)->first();
+                if ($sku->number_of_items >= $cart->qty) {
+                    $bal = $sku->number_of_items - $cart->qty;
+                } else {
+                    $bal = 0;
+                }
+                $sku->number_of_items = $bal;
+                $sku->save();
             }
 
             //destroy the cart session

@@ -41,6 +41,13 @@ class PurchaseController extends Controller
             ->get();
 
         $datatables = Datatables::of($orders)
+            ->addColumn('shipping_fee', function ($data) {
+                return "₱ $data->shipping_fee";
+            })
+            ->addColumn('total_amount', function ($data) {
+                return "₱ $data->total_amount";
+            })
+            ->escapeColumns('shipping_fee', 'total_amount')
             ->make(true);
 
         return ($datatables);

@@ -217,9 +217,7 @@ Route::group(['middleware' => 'auth' ], function() {
         /* ___________________ADMIN SIDE___________________ */
 
         Route::prefix('admin')->group(function () {
-            Route::get('/', function () {
-                return view('admin.templates.index');
-            });
+            Route::get('/', 'AdminController@index');
 
 
             //Customers

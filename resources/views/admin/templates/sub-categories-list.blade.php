@@ -68,6 +68,7 @@
                         });
 
 
+
                          $('#table').on('click', '.category-edit-btn', function(){
                             var sub_category_id = $(this).attr('sid');
                             console.log('id: '+sub_category_id);
@@ -78,6 +79,8 @@
                                 $("#category_name").val(data[0].category_name);
                                 $("#sub_category_name").val(data[0].sub_category_name);
                                 $("sub_category_desc").val(data[0].sub_category_desc);
+
+
 
                         $('#table').on('click', '.sub-category-edit-btn', function(){
                             var sub_category_id = $(this).attr('sid');

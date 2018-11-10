@@ -35,5 +35,8 @@
     <!-- Color Scheme (In order to change the color scheme, replace the blue.css with the color scheme that you prefer) -->
     <link href="{{ URL::asset('css/user/skins/pink.css') }}" rel="stylesheet">
 
-    <!-- Custom css -->
+    <!-- DataTables jQuery CSS -->
+    <link href="{{ URL::asset('css/user/jquery.dataTables.min.css') }}" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link href="{{ URL::asset('css/user/custom.css') }}" rel="stylesheet">

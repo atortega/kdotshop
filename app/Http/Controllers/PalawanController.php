@@ -140,13 +140,14 @@ class PalawanController extends Controller
         Cart::destroy();
 
         //send sms
+        $new_number = substr_replace(Auth::user()->phone_number, '63', 0, (Auth::user()->phone_number[0] == '0'));
         $basic  = new \Nexmo\Client\Credentials\Basic('6d49c856', '6dsF7oesEXBWekMr');
         $client = new \Nexmo\Client($basic);
 
         $message = $client->message()->send([
-            'to' => Auth::user()->phone_number,
+            'to' => $new_number,
             'from' => 'KDotShop',
-            'text' => 'Thanks for your purchase @ KdotShop Online thru Palawan Pawnshop. Total amount of purchased is PHP ' . number_format($order->total_amount,2)
+            'text' => 'Thanks for your purchase @ KDot Online Shop thru Palawan Express Padala. Total amount of purchased is PHP ' . number_format($order->total_amount,2)
         ]);
         //end send sms
 

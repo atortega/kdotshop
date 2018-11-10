@@ -104,7 +104,8 @@
                         <form class="clearfix row grid-space-10">
                             <div class="form-group col-lg-4">
                               <label>Quantity</label>
-                              <input type="number" class="form-control" id="quantity" value="1" min="1" max="100">
+                              <input type="number" class="form-control" id="quantity" value="1" min="1" max="{{ $getSkuQuery->number_of_items }}">
+                              <span class="text-danger small">Stock(s) remaining: {{ $getSkuQuery->number_of_items }}</span>
                             </div>
                             <div class="form-group col-lg-4">
                               <label>Color</label>
@@ -114,6 +115,8 @@
                                 @endforeach
                               </select>
                             </div>
+
+                            @if(count($getSizeQuery) > 0)
                             <div class="form-group col-lg-4">
                               <label>Size</label>
                               <select class="form-control" id="size">
@@ -122,6 +125,7 @@
                                 @endforeach
                               </select>
                             </div>
+                            @endif
                         </form>
                       <div class="light-gray-bg p-20 bordered clearfix">
                         <span class="product price"><i class="fa fa-tag pr-10"></i>

@@ -78,7 +78,7 @@
               <div class="separator"></div>
               <!-- page-title end -->
 
-              <p class="lead text-center">Thank you for visiting us and making your first purchase! We’re glad that you found what you were looking for. It is our goal that you are always happy with what you bought from us, so please let us know if your buying experience was anything short of excellent. We look forward to seeing you again. Have a great day!</p>
+              <p class="lead text-center">Thank you for visiting us and making your purchase! We’re glad that you found what you were looking for. It is our goal that you are always happy with what you bought from us, so please let us know if your buying experience was anything short of excellent. We look forward to seeing you again. Have a great day!</p>
               <p class="text-center">
                 <a href="/" class="btn btn-default btn-lg">Continue Shopping!</a> 
               </p>

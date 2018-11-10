@@ -14,7 +14,7 @@ class AdminController extends Controller
     {
         $total_customers = Customers::where('status', 'active')->count();
         $total_orders = Orders::count();
-        $total_income = Payments::sum('amount');
+        $total_income = Payments::whereNotNull('reference_code')->sum('amount');
 
         $data = [
             'total_customers' => $total_customers,

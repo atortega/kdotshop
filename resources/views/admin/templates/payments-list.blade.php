@@ -128,8 +128,6 @@
                             <th class='text-right'>Color</th>
                             <th class='text-right'>Sizes</th>
                             <th class='text-right'>QTY</th>
-                            <th class='text-right'>Color</th>
-                            <th class='text-right'>Sizes</th>
                             <th class='text-right'>Unit Price</th>
                             <th class='text-right'>Amount</th>
                             </thead>

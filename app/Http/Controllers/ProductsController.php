@@ -22,6 +22,7 @@ class ProductsController extends Controller
     {
         //$products = Datatables::of(Products::query())->make(true);
         //$products = Datatables::of(Products::get_products())->make(true);
+
         $categories = Categories::orderBy('category_name')->get();
         $sub_categories = Sub_categories::orderBy('sub_category_name')->get();
         $colors = Colors::orderBy('color')->get();
@@ -33,6 +34,7 @@ class ProductsController extends Controller
             ->select('products.*', 'categories.category_name', 'sub_categories.sub_category_name')
             ->get();
         $datatables = Datatables::of($products)
+            
             ->addColumn('actions', function ($data) {
                 return "
                     <div align='center'>
@@ -76,6 +78,7 @@ class ProductsController extends Controller
      */
     public function createProduct()
     {
+
         $categories = Categories::orderBy('category_name')->get();
         $sub_categories = Sub_categories::orderBy('sub_category_name')->get();
         $colors = Colors::orderBy('color')->get();
@@ -307,4 +310,6 @@ class ProductsController extends Controller
 
         return array('error' => false, "message"  => "Product successfully deleted!");
     }
+
+
 }

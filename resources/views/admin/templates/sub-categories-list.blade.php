@@ -67,21 +67,18 @@
                             }
                         });
 
-                        $('#table').on('click', '.category-edit-btn', function(){
+                         $('#table').on('click', '.category-edit-btn', function(){
                             var sub_category_id = $(this).attr('sid');
-                            var subcat = JSON.parse($(this).attr('data-subcat'));
-                            
-                            $.get( "/categories/get/"+sub-category_id, function( data ) {
-                                $("#description").val(subcat.category_desc);
-                                $("#category_name").val(subcat.category_name);
-                                $("#sub-category").val(subcat.sub_category_name);
+                            console.log('id: '+sub_category_id);
+                            $.get( "/categories/get/"+sub_category_id, function( data ) {
+                                console.log(data);
+                                console.log('id'+sub_category_id);
+                                
+                                $("#category_name").val(data[0].category_name);
+                                $("#sub_category_name").val(data[0].sub_category_name);
+                                $("sub_category_desc").val(data[0].sub_category_desc);
                             });
-                            
-                            /*$("#description").val(subcat.sub_category_desc);
-                            $("#category_name").val(subcat.category_name);
-                            $("#sub_category_id").val(sub_category_id);
-                            $("#sub_category_name").val(subcat.sub_category_name);
-*/
+
                             $('#myModal').modal('show');
                         });
 
@@ -115,7 +112,7 @@
                         $('form#modalForm').submit(function(e) {
                             e.preventDefault();
                             var formData = new FormData(this);
-                            console.log("Cat: " + $("#category_id").val());
+                            console.log("Cat: " + $("#sub_category_id").val());
                             $.ajax({
                                 type: "post",
                                 dataType: 'json',

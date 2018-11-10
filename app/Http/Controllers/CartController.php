@@ -39,9 +39,9 @@ class CartController extends Controller
                 'desc'      =>  $productById->product_desc,
                 'image'     =>  $productById->product_image,
                 'color_id'  =>  $request->color,
-                'size_id'   =>  $request->size,
+                'size_id'   =>  isset($request->size) ? $request->size : 0,
                 'color'     =>  $color->color,
-                'size'      =>  $size->size,
+                'size'      =>  isset($size->size) ? $size->size : '',
                 'sku'       =>  $skuById->sku,
                 'sku_id'    =>  $skuById->id
             ]

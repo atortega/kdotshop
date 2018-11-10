@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-body">
-                                        <strong>₱ 1000.00</strong>
+                                        <strong>₱ {{ number_format($total_income,2) }}</strong>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                                                 <i class="fa fa-users fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">12</div>
+                                                <div class="huge">{{ $total_customers }}</div>
                                                 <div><strong>Total Customers</strong></div>
                                             </div>
                                         </div>
@@ -105,12 +105,12 @@
                                                 <i class="fa fa-truck fa-5x"></i>
                                             </div>
                                             <div class="col-xs-9 text-right">
-                                                <div class="huge">12</div>
-                                                <div><strong>Total Deliveries</strong></div>
+                                                <div class="huge">{{ $total_orders }}</div>
+                                                <div><strong>Total Orders</strong></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <a href="/admin/customers">
+                                    <a href="/admin/orders">
                                         <div class="panel-body">
                                             <span class="pull-left">View Details</span>
                                             <span class="pull-right">

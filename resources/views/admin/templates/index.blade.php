@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
                                     <div class="panel-body">
-                                        <strong>₱ 1000.00</strong>
+                                        <strong>₱ {{ number_format($total_income,2) }}</strong>
                                     </div>
                                 </div>
                             </div>

@@ -76,6 +76,7 @@ $(function() {
         resize: true
     });
 
+    /*
     Morris.Bar({
         element: 'morris-bar-chart',
         data: [{
@@ -113,5 +114,23 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-    
+    */
+    $.ajax({
+        type: "GET",
+        url: "/admin/morris-bar",
+        data: 0,
+        dataType: 'json',
+        success: function(data){
+            console.log(data);
+            Morris.Bar({
+                element: 'morris-bar-chart',
+                data: data,
+                xkey: 'y',
+                ykeys: ['a', 'b'],
+                labels: ['Orders', 'Paid'],
+                hideHover: 'auto',
+                resize: true
+            });
+        }
+    });
 });

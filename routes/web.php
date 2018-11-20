@@ -218,7 +218,7 @@ Route::group(['middleware' => 'auth' ], function() {
 
         Route::prefix('admin')->group(function () {
             Route::get('/', 'AdminController@index');
-
+            Route::get('/morris-bar', 'AdminController@getMorrisBarData');
 
             //Customers
             Route::get('/customers', function () {

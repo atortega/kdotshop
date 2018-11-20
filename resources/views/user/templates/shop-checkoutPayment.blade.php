@@ -93,27 +93,8 @@
 							<form class="form-horizontal">
 								<!-- <div class="checkbox"> -->
 									<div class="row">
-										<div class="col-md-4" align="center">
-											<!-- <input id="paymaya-option" class="form-check-input"
-												type="radio" name="payment-radio-option" value="paymaya"> -->
-											<label>
-												<img id="img-paymaya" src='{{ asset("image/payment-methods/paymaya-218x48.png") }}' style="max-height: 42px;">
-											</label>
-
-											<div class="space"></div>
-
-											<a href="#"
-													id="proceedWithPayMaya"
-													class="btn btn-animated btn-group btn-info"
-													style="background-color: #42b72a; width: 180px;">
-												Pay with PayMaya
-												<i>
-													<img style="padding-top: 8px;" src='{{ asset("image/payment-methods/fa-fa-paymaya.png") }}'>
-												</i>
-											</a>
-										</div>
-
-										<div class="col-md-4" align="center">
+										
+										<div class="col-md-6" align="center">
 											<!-- <input id="paypal-option" class="form-check-input"
 												type="radio" name="payment-radio-option" value="paypal"> -->
 											<label>
@@ -132,7 +113,7 @@
 											</a>
 										</div>
 
-										<div class="col-md-4" align="center">
+										<div class="col-md-6" align="center">
 
 											<!-- <input id="palawan-option" class="form-check-input"
 												type="radio" name="payment-radio-option" value="palawan"> -->

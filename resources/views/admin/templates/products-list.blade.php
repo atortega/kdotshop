@@ -326,7 +326,7 @@
 
                         <div class="form-group">
                             <label for="product_name">Quantity</label>
-                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter the number of items" value="">
+                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter the number of items" value="" disabled>
                         </div>
 
                         <div class="form-group">

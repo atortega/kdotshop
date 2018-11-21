@@ -168,7 +168,15 @@
       @include('user.templates.layouts.footer')
       <script>
           $(function() {
+
               $("#frmSubmit").click(function() {
+                  var maxQ = $("#quantity").prop('max');
+                  console.log(maxQ);
+                  if ($("#quantity").val() > maxQ) {
+                    $("#quantity").addClass('has-error');
+                    alert('Quantity should not be greater than '+maxQ);
+                    return false;
+                  }
                   $("#qty").val($("#quantity").val());
                   $("#color_id").val($("#color").val());
                   $("#size_id").val($("#size").val());
